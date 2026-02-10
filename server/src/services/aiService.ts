@@ -28,16 +28,20 @@ export async function generateFeedback(request: FeedbackRequest): Promise<string
   try {
     const client = getOpenAIClient();
     
-    const completion = await client.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: userPrompt }
-      ],
-      max_tokens: 60,
-      temperature: 0.5,
-      timeout: 3000
-    });
+    const completion = await client.chat.completions.create(
+      {
+        model: "gpt-4o-mini",
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userPrompt }
+        ],
+        max_tokens: 60,
+        temperature: 0.5
+      },
+      {
+        timeout: 3000
+      }
+    );
 
     return completion.choices[0].message.content?.trim() || "Try again.";
   } catch (error) {

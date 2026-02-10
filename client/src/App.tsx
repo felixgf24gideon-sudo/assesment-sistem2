@@ -1,4 +1,3 @@
-import React from 'react';
 import { LearningProvider, useLearning } from './contexts/LearningContext';
 import { ProfileSelector } from './components/ProfileSelector';
 import { QuestionCard } from './components/QuestionCard';

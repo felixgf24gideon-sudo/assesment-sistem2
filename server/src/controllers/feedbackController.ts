@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { generateFeedback } from '../services/aiService';
 import { FeedbackRequest, CognitiveStyle } from '../../../shared/types';
-import { questions } from '../../../client/src/data/questions';
+import { questions } from '../../../shared/questions';
 
 function parseProfileCode(code: string): { level: number; style: CognitiveStyle } {
   return {

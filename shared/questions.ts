@@ -1,11 +1,4 @@
-interface Question {
-  id: string;
-  text: string;
-  options: string[];
-  correctAnswer: number;
-  topic: string;
-  difficulty: number;
-}
+import { Question } from './types';
 
 export const questions: Question[] = [
   {

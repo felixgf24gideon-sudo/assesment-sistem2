@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useLearning } from '../contexts/LearningContext';
 import { parseProfileCode } from '../utils/profileParser';
 import { validateProfileCode } from '../utils/validators';

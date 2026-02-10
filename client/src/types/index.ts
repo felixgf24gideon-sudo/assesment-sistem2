@@ -1,4 +1,4 @@
-export * from '../../shared/types';
+export * from '../../../shared/types';
 
 export interface LearningState {
   profile: StudentProfile | null;
@@ -16,11 +16,16 @@ export interface LearningState {
 
 export type LearningAction =
   | { type: 'SET_PROFILE'; payload: StudentProfile }
-  | { type: 'SELECT_ANSWER'; payload: number }
+  | { type: 'SELECT_ANSWER'; payload: number | null }
   | { type: 'SUBMIT_ANSWER' }
   | { type: 'SET_LOADING'; payload: boolean }
   | { type: 'FEEDBACK_RECEIVED'; payload: { feedback: string; isCorrect: boolean } }
   | { type: 'NEXT_QUESTION' }
   | { type: 'RESET_ATTEMPTS' };
 
-import { StudentProfile } from '../../shared/types';
+import { StudentProfile } from '../../../shared/types';
+
+export interface FeedbackResponse {
+  feedback: string;
+  isCorrect: boolean;
+}

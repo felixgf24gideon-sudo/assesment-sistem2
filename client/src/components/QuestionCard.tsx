@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLearning } from '../contexts/LearningContext';
 import { questions } from '../data/questions';
 import { submitAnswer } from '../services/api';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLearning } from '../contexts/LearningContext';
 
 export function ProgressIndicator() {
