@@ -1,30 +1,37 @@
-export * from '../../../shared/types';
-import { StudentProfile } from '../../../shared/types';
+// client/src/types/index.ts
 
-export interface LearningState {
-  profile: StudentProfile | null;
-  currentQuestionIndex: number;
-  attemptCount: number;
-  correctnessState: 'neutral' | 'incorrect' | 'correct';
-  selectedAnswer: number | null;
-  aiFeedback: string;
-  isLoading: boolean;
-  sessionProgress: {
-    totalQuestions: number;
-    answeredCorrectly: number;
-  };
+// User Profile
+export interface UserProfile {
+  id: string;
+  email: string;
+  full_name: string;
+  pedagogic_level: number;
+  profile_code: string;
+  visual_preference: 'T' | 'P';
+  processing_orientation: 'G' | 'A';
+  behavioral_tempo: 'I' | 'R';
+  total_questions_attempted: number;
+  total_questions_correct: number;
+  created_at: string;
 }
 
-export type LearningAction =
-  | { type: 'SET_PROFILE'; payload: StudentProfile }
-  | { type: 'SELECT_ANSWER'; payload: number | null }
-  | { type: 'SUBMIT_ANSWER' }
-  | { type: 'SET_LOADING'; payload: boolean }
-  | { type: 'FEEDBACK_RECEIVED'; payload: { feedback: string; isCorrect: boolean } }
-  | { type: 'NEXT_QUESTION' }
-  | { type: 'RESET_ATTEMPTS' };
+// Auth State
+export interface AuthState {
+  user: UserProfile | null;
+  isLoading: boolean;
+  error: string | null;
+}
 
-export interface FeedbackResponse {
-  feedback: string;
-  isCorrect: boolean;
+// Login Credentials
+export interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+// Register Data
+export interface RegisterData {
+  email: string;
+  password: string;
+  full_name: string;
+  profile_code: string;
 }
