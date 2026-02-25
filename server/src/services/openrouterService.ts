@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import axios from 'axios';
+import { getAIStrategy, getProfileDescription, parseProfileCode } from '../config/profileSystem';
 
 // Read environment variables
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
@@ -17,10 +18,11 @@ const APP_URL = process.env.APP_URL || 'http://localhost:3000';
 console.log('🔧 OpenRouter Service Initialized:');
 console.log(`   API Key: ${OPENROUTER_API_KEY ? OPENROUTER_API_KEY.substring(0, 15) + '...' : '❌ NOT SET'}`);
 console.log(`   Model: ${AI_MODEL}`);
-console.log(`   Base URL: ${OPENROUTER_BASE_URL}\n`);
+console.log(`   Base URL: ${OPENROUTER_BASE_URL}`);
+console.log(`   Using: Parametric Profile System ✅\n`);
 
 if (!OPENROUTER_API_KEY) {
-  throw new Error('❌ OPENROUTER_API_KEY is not set. Please check your .env file in server/ folder.');
+  console.warn('⚠️ OPENROUTER_API_KEY is not set. Using fallback feedback.');
 }
 
 interface ChatMessage {
@@ -55,6 +57,10 @@ export async function callOpenRouter(
     temperature?: number;
   } = {}
 ): Promise<string> {
+  if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY === 'sk-or-v1-YOUR_KEY_HERE') {
+    throw new Error('OpenRouter API key not configured');
+  }
+
   try {
     const response = await axios.post<OpenRouterResponse>(
       `${OPENROUTER_BASE_URL}/chat/completions`,
@@ -93,71 +99,70 @@ export async function callOpenRouter(
 }
 
 /**
- * Generate corrective feedback (saat jawaban salah)
+ * Generate corrective feedback (wrong answer) - Uses Parametric Profile System
  */
 export async function generateCorrectiveFeedback(params: {
   profileCode: string;
-  pedagogicLevel: number;
-  visualPreference: 'T' | 'P';
-  processingOrientation: 'G' | 'A';
-  behavioralTempo: 'I' | 'R';
   questionText: string;
   correctAnswer: string;
   studentAnswer: string;
   attemptNumber: number;
+  imageDescription?: string;
 }): Promise<string> {
-  const {
-    profileCode,
-    pedagogicLevel,
-    visualPreference,
-    processingOrientation,
-    behavioralTempo,
-    questionText,
-    correctAnswer,
-    studentAnswer,
-    attemptNumber,
-  } = params;
+  const { profileCode, questionText, correctAnswer, studentAnswer, attemptNumber, imageDescription } = params;
 
-  const systemPrompt = `You are an adaptive learning tutor for computational thinking.
+  // Get AI strategy from parametric profile system
+  const strategy = getAIStrategy(profileCode);
+  const description = getProfileDescription(profileCode);
+  const profileParams = parseProfileCode(profileCode);
 
-STUDENT PROFILE (${profileCode}):
-- Pedagogic Level: ${pedagogicLevel} (1=beginner, 6=expert)
-- Visual Preference: ${visualPreference === 'T' ? 'Text-based (logical sentences)' : 'Picture-based (visual metaphors)'}
-- Processing: ${processingOrientation === 'G' ? 'Global (big picture first)' : 'Analytic (step-by-step)'}
-- Tempo: ${behavioralTempo === 'I' ? 'Impulsive (direct & concise)' : 'Reflective (elaborate & thoughtful)'}
+  // Get hint for current attempt (0-indexed array, so attemptNumber - 1)
+  const currentHint = strategy.correctiveFeedback.hintProgression[Math.min(attemptNumber - 1, 2)];
 
-ADAPTATION RULES:
-1. Attempt ${attemptNumber}/3:
-   ${attemptNumber === 1 ? '- Give subtle hint (guide toward pattern)' : ''}
-   ${attemptNumber === 2 ? '- Give clearer hint (mention key concept)' : ''}
-   ${attemptNumber >= 3 ? '- Be very direct (almost reveal answer)' : ''}
+  const systemPrompt = `Kamu adalah tutor AI yang menggunakan **CORRECTIVE FEEDBACK dengan pendekatan Reinforcement Learning**.
 
-2. Level ${pedagogicLevel}:
-   ${pedagogicLevel <= 2 ? '- Use simple language, avoid jargon' : ''}
-   ${pedagogicLevel >= 3 && pedagogicLevel <= 4 ? '- Use moderate technical terms' : ''}
-   ${pedagogicLevel >= 5 ? '- Use precise terminology' : ''}
+**PRINSIP INTI:**
+1. ❌ JANGAN PERNAH menyebutkan jawaban yang benar atau opsi (A/B/C/D)
+2. 💪 SELALU mulai dengan validasi emosional positif
+3. 📈 Hint makin detail seiring attempt meningkat (scaffolding)
 
-3. Visual ${visualPreference}:
-   ${visualPreference === 'T' ? '- Use logical, text-based explanations' : '- Use visual metaphors (e.g., "imagine a tree structure")'}
+**STUDENT PROFILE (${profileCode}):**
+${description}
 
-4. Processing ${processingOrientation}:
-   ${processingOrientation === 'G' ? '- Start with big picture concept' : '- Break into clear steps'}
+**AI FEEDBACK STRATEGY FOR THIS PROFILE:**
+- **Max Words:** ${strategy.correctiveFeedback.maxWords} KATA (STRICT LIMIT!)
+- **Tone:** ${strategy.correctiveFeedback.tone}
+- **Opening:** ${strategy.correctiveFeedback.openingPhrase}
+- **Structure:** ${strategy.correctiveFeedback.structure}
+- **Visual Style:** ${strategy.correctiveFeedback.visualStyle}
+- **Closing:** ${strategy.correctiveFeedback.closingStyle}
 
-5. Tempo ${behavioralTempo}:
-   ${behavioralTempo === 'I' ? '- Be direct and concise' : '- Encourage deeper thinking'}
+**ATTEMPT ${attemptNumber}/3 - HINT STRATEGY:**
+${currentHint}
 
-RESPONSE FORMAT:
-- Maximum 50 words
-- Do NOT reveal the answer directly
-- Guide the student toward understanding`;
+**STRUKTUR OUTPUT WAJIB:**
+1. **[VALIDASI POSITIF]** - ${strategy.correctiveFeedback.openingPhrase}
+2. **[HINT ADAPTIF]** - ${currentHint}
+3. **[PERTANYAAN PEMANDU]** - ${strategy.correctiveFeedback.closingStyle}
 
-  const userPrompt = `QUESTION:
+**ATURAN KERAS:**
+- Bahasa Indonesia natural & friendly
+- MAKSIMAL ${strategy.correctiveFeedback.maxWords} KATA
+- ${profileParams.processing === 'G' ? '🌍 WAJIB mulai dari big picture' : '🔍 Breakdown step-by-step sistematis'}
+- ${strategy.correctiveFeedback.visualStyle}
+- NO opsi jawaban (A/B/C/D)
+- NO reveal answer`;
+
+  const userPrompt = `SOAL:
 ${questionText}
 
-CORRECT ANSWER: ${correctAnswer}
-STUDENT'S ANSWER: ${studentAnswer} (INCORRECT)
+${imageDescription ? `📊 VISUAL CONTEXT:\n${imageDescription}\n` : ''}
 
-Provide adaptive corrective feedback:`;
+JAWABAN BENAR: ${correctAnswer}
+JAWABAN SISWA: ${studentAnswer} ❌ (SALAH)
+ATTEMPT: ${attemptNumber}/3
+
+Berikan corrective feedback sesuai strategi profil ${profileCode}:`;
 
   const feedback = await callOpenRouter(
     [
@@ -165,8 +170,8 @@ Provide adaptive corrective feedback:`;
       { role: 'user', content: userPrompt },
     ],
     {
-      maxTokens: 150,
-      temperature: 0.7,
+      maxTokens: Math.round(strategy.correctiveFeedback.maxWords * 2.5),
+      temperature: 0.8,
     }
   );
 
@@ -174,59 +179,69 @@ Provide adaptive corrective feedback:`;
 }
 
 /**
- * Generate explanatory feedback (saat jawaban benar)
+ * Generate positive reinforcement (correct answer) - Uses Parametric Profile System
  */
 export async function generateExplanation(params: {
   profileCode: string;
-  pedagogicLevel: number;
-  visualPreference: 'T' | 'P';
-  processingOrientation: 'G' | 'A';
-  behavioralTempo: 'I' | 'R';
   questionText: string;
   correctAnswer: string;
   attemptNumber: number;
+  imageDescription?: string;
 }): Promise<string> {
-  const {
-    profileCode,
-    pedagogicLevel,
-    visualPreference,
-    processingOrientation,
-    behavioralTempo,
-    questionText,
-    correctAnswer,
-    attemptNumber,
-  } = params;
+  const { profileCode, questionText, correctAnswer, attemptNumber, imageDescription } = params;
 
-  const systemPrompt = `You are an adaptive learning tutor for computational thinking.
+  // Get AI strategy from parametric profile system
+  const strategy = getAIStrategy(profileCode);
+  const description = getProfileDescription(profileCode);
+  const profileParams = parseProfileCode(profileCode);
 
-STUDENT PROFILE (${profileCode}):
-- Pedagogic Level: ${pedagogicLevel} (1=beginner, 6=expert)
-- Visual: ${visualPreference === 'T' ? 'Text-based' : 'Picture-based'}
-- Processing: ${processingOrientation === 'G' ? 'Global (big picture)' : 'Analytic (step-by-step)'}
-- Tempo: ${behavioralTempo === 'I' ? 'Impulsive (concise)' : 'Reflective (elaborate)'}
+  // Reward tone based on attempt
+  const rewardTones = [
+    '🎉 LUAR BIASA! Langsung benar di percobaan pertama!',
+    '✅ Bagus! Kamu berhasil setelah berpikir ulang!',
+    '👏 Akhirnya benar! Persistence kamu keren!'
+  ];
+  const praise = rewardTones[Math.min(attemptNumber - 1, 2)];
 
-TASK:
-The student answered correctly after ${attemptNumber} attempt(s).
-Provide congratulatory explanation of WHY the answer is correct.
+  const systemPrompt = `Kamu adalah tutor AI yang memberikan **POSITIVE REINFORCEMENT & VALIDASI**.
 
-ADAPTATION:
-- Level ${pedagogicLevel}: ${pedagogicLevel <= 2 ? 'Reinforce basics' : pedagogicLevel <= 4 ? 'Add deeper insight' : 'Mention advanced connections'}
-- Visual ${visualPreference}: ${visualPreference === 'T' ? 'Conceptual explanation' : 'Visual analogy'}
-- Processing ${processingOrientation}: ${processingOrientation === 'G' ? 'Show broader pattern' : 'Break down reasoning'}
-- Tempo ${behavioralTempo}: ${behavioralTempo === 'I' ? 'Concise, move forward' : 'Invite deeper thinking'}
+**PRINSIP INTI:**
+1. 🎉 VALIDASI kesuksesan dengan antusias!
+2. 💡 EXPLAIN mengapa jawaban benar (reinforce understanding)
+3. 🌟 HUBUNGKAN ke konsep lebih luas (transfer learning)
 
-FORMAT:
-- Start with brief praise
-- Explain WHY answer is correct
-- Connect to broader concept
-- Maximum 80 words`;
+**STUDENT PROFILE (${profileCode}):**
+${description}
 
-  const userPrompt = `QUESTION:
+**AI FEEDBACK STRATEGY FOR THIS PROFILE:**
+- **Max Words:** ${strategy.positiveReinforcement.maxWords} KATA
+- **Enthusiasm:** ${strategy.positiveReinforcement.enthusiasmLevel}
+- **Praise Style:** ${strategy.positiveReinforcement.praiseStyle}
+- **Explanation Depth:** ${strategy.positiveReinforcement.explanationDepth}
+
+**ATTEMPT ${attemptNumber}/3 - REWARD:**
+${praise}
+
+**STRUKTUR OUTPUT WAJIB:**
+1. **[VALIDASI ENTHUSIASTIC]** - ${praise}
+2. **[EXPLAIN WHY CORRECT]** - ${strategy.positiveReinforcement.explanationDepth}
+3. **[BROADER CONCEPT]** - Hubungkan ke konsep lebih luas (1 kalimat)
+
+**ATURAN KERAS:**
+- Bahasa Indonesia enthusiastic & educational
+- MAKSIMAL ${strategy.positiveReinforcement.maxWords} KATA
+- ${profileParams.processing === 'G' ? '🌍 Mulai dari konsep besar' : '🔍 Trace reasoning step-by-step'}
+- Tone: Celebratory but still educational`;
+
+  const userPrompt = `SOAL:
 ${questionText}
 
-CORRECT ANSWER: ${correctAnswer}
+${imageDescription ? `📊 VISUAL CONTEXT:\n${imageDescription}\n` : ''}
 
-Provide adaptive explanation:`;
+JAWABAN BENAR: ${correctAnswer} ✅
+ATTEMPT: ${attemptNumber}/3
+
+Berikan positive reinforcement sesuai profil ${profileCode}:`;
 
   const explanation = await callOpenRouter(
     [
@@ -234,16 +249,161 @@ Provide adaptive explanation:`;
       { role: 'user', content: userPrompt },
     ],
     {
-      maxTokens: 250,
-      temperature: 0.7,
+      maxTokens: Math.round(strategy.positiveReinforcement.maxWords * 2.5),
+      temperature: 0.8,
     }
   );
 
   return explanation;
 }
 
+/**
+ * Generate detailed walkthrough (post-correct explanation) - Uses Parametric Profile System
+ */
+export async function generateDetailedWalkthrough(params: {
+  profileCode: string;
+  questionText: string;
+  correctAnswer: string;
+  allOptions: string[];
+  imageDescription?: string;
+}): Promise<string> {
+  const { profileCode, questionText, correctAnswer, allOptions, imageDescription } = params;
+
+  // Get AI strategy from parametric profile system
+  const strategy = getAIStrategy(profileCode);
+  const description = getProfileDescription(profileCode);
+
+  const systemPrompt = `Kamu adalah AI tutor yang memberikan **DETAILED WALKTHROUGH** untuk soal computational thinking yang sudah dijawab benar.
+
+**TUJUAN:**
+Jelaskan langkah-langkah pengerjaan secara detail dan personalized, sehingga siswa paham CARA BERPIKIR yang benar.
+
+**STUDENT PROFILE (${profileCode}):**
+${description}
+
+**AI WALKTHROUGH STRATEGY FOR THIS PROFILE:**
+- **Max Words:** ${strategy.detailedWalkthrough.maxWords} KATA
+- **Approach:** ${strategy.detailedWalkthrough.approach}
+- **Structure:** ${strategy.detailedWalkthrough.structure}
+- **Starting Point:** ${strategy.detailedWalkthrough.startingPoint}
+- **Detail Level:** ${strategy.detailedWalkthrough.detailLevel}
+- **Visual Style:** ${strategy.detailedWalkthrough.visualStyle}
+
+**STRUKTUR OUTPUT:**
+${strategy.detailedWalkthrough.structure}
+
+**TONE & STYLE:**
+- Educational & clear (bukan celebratory - ini explanatory)
+- ${strategy.detailedWalkthrough.visualStyle}
+
+**ATURAN KERAS:**
+- Bahasa Indonesia
+- MAKSIMAL ${strategy.detailedWalkthrough.maxWords} KATA
+- Gunakan numbering/bullet untuk struktur jelas
+- Brief explain MENGAPA opsi lain salah (1-2 kalimat)`;
+
+  const userPrompt = `SOAL:
+${questionText}
+
+${imageDescription ? `📊 VISUAL CONTEXT:\n${imageDescription}\n` : ''}
+
+SEMUA OPSI JAWABAN:
+${allOptions.map((opt, idx) => `${String.fromCharCode(65 + idx)}. ${opt}`).join('\n')}
+
+JAWABAN BENAR: ${correctAnswer}
+
+Berikan detailed walkthrough sesuai profil ${profileCode}:`;
+
+  const walkthrough = await callOpenRouter(
+    [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: userPrompt },
+    ],
+    {
+      maxTokens: Math.round(strategy.detailedWalkthrough.maxWords * 2.5),
+      temperature: 0.7,
+    }
+  );
+
+  return walkthrough;
+}
+
+/**
+ * Generate feedback (unified interface) - Uses Parametric Profile System
+ */
+export async function generateFeedback(params: {
+  questionText: string;
+  questionTopic: string;
+  userAnswer: string;
+  correctAnswer: string;
+  allOptions: string[];
+  isCorrect: boolean;
+  attemptCount: number;
+  userProfile: string;
+  difficulty: number;
+  imageDescription?: string;
+}): Promise<string> {
+  const {
+    questionText,
+    userAnswer,
+    correctAnswer,
+    isCorrect,
+    attemptCount,
+    userProfile,
+    imageDescription
+  } = params;
+
+  console.log('🤖 Generating AI feedback with Parametric Profile System...');
+  console.log(`   Profile: ${userProfile}`);
+  console.log(`   Description: ${getProfileDescription(userProfile)}`);
+  console.log(`   Correct: ${isCorrect}, Attempt: ${attemptCount}`);
+
+  try {
+    if (isCorrect) {
+      return await generateExplanation({
+        profileCode: userProfile,
+        questionText,
+        correctAnswer,
+        attemptNumber: attemptCount,
+        imageDescription
+      });
+    } else {
+      return await generateCorrectiveFeedback({
+        profileCode: userProfile,
+        questionText,
+        correctAnswer,
+        studentAnswer: userAnswer,
+        attemptNumber: attemptCount,
+        imageDescription
+      });
+    }
+  } catch (error) {
+    console.error('❌ AI generation failed, using fallback');
+    
+    // Enhanced fallback
+    if (isCorrect) {
+      const successFallbacks = [
+        '🎉 Sempurna! Langsung benar di percobaan pertama!',
+        '✅ Bagus! Kamu berhasil setelah mencoba lagi!',
+        '👏 Akhirnya benar! Persistence kamu keren!'
+      ];
+      return successFallbacks[Math.min(attemptCount - 1, 2)];
+    } else {
+      const hintFallbacks = [
+        '😊 Belum tepat, tapi gak apa-apa! Coba perhatikan konsep dasar dari soal ini. Apa prinsip utamanya? 🤔',
+        '💪 Belum benar, tapi tetap semangat! Fokus ke bagian mana yang mungkin terlewat. Coba trace langkah-langkahnya satu per satu.',
+        '🎯 Ayo, hampir! Mari breakdown step-by-step: identifikasi setiap operasi yang terjadi, lalu cek hasil akhirnya.'
+      ];
+      return hintFallbacks[Math.min(attemptCount - 1, 2)];
+    }
+  }
+}
+
+// Default export
 export default {
   callOpenRouter,
   generateCorrectiveFeedback,
   generateExplanation,
+  generateDetailedWalkthrough,
+  generateFeedback,
 };
