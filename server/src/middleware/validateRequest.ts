@@ -1,28 +1,32 @@
+// server/src/middleware/validateRequest.ts
 import { Request, Response, NextFunction } from 'express';
 
-export function validateRequest(req: Request, res: Response, next: NextFunction) {
-  const { profileCode, questionId, selectedAnswer, attemptNumber } = req.body;
+export function validateRequest(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void {
+  const { questionText, userAnswer, correctAnswer, isCorrect, attemptCount } = req.body;
 
-  if (!profileCode || typeof profileCode !== 'string') {
-    return res.status(400).json({ error: 'Profile code is required' });
+  // Only validate truly required fields
+  if (!questionText || userAnswer === undefined || correctAnswer === undefined) {
+    res.status(400).json({
+      error: 'Missing required fields',
+      required: ['questionText', 'userAnswer', 'correctAnswer']
+    });
+    return;
   }
 
-  const profileRegex = /^[1-6][TP][GA][IR]$/;
-  if (!profileRegex.test(profileCode)) {
-    return res.status(400).json({ error: 'Invalid profile code format' });
+  // isCorrect and attemptCount should be present
+  if (typeof isCorrect !== 'boolean' || typeof attemptCount !== 'number') {
+    res.status(400).json({
+      error: 'Invalid field types',
+      details: 'isCorrect must be boolean, attemptCount must be number'
+    });
+    return;
   }
 
-  if (!questionId || typeof questionId !== 'string') {
-    return res.status(400).json({ error: 'Question ID is required' });
-  }
-
-  if (typeof selectedAnswer !== 'number' || selectedAnswer < 0) {
-    return res.status(400).json({ error: 'Valid selected answer is required' });
-  }
-
-  if (typeof attemptNumber !== 'number' || attemptNumber < 1) {
-    return res.status(400).json({ error: 'Valid attempt number is required' });
-  }
-
+  // userProfile is OPTIONAL (will default to '3TGI' in controller)
+  console.log('✅ Request validation passed');
   next();
 }

@@ -1,0 +1,521 @@
+// server/src/services/openrouterService.ts
+
+// Load environment variables FIRST
+import dotenv from 'dotenv';
+dotenv.config();
+
+import axios from 'axios';
+
+// Read environment variables
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+const OPENROUTER_BASE_URL = process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1';
+const AI_MODEL = process.env.AI_MODEL || 'deepseek/deepseek-r1';
+const APP_NAME = process.env.APP_NAME || 'adaptive-practice';
+const APP_URL = process.env.APP_URL || 'http://localhost:3000';
+
+// Debug output
+console.log('🔧 OpenRouter Service Initialized:');
+console.log(`   API Key: ${OPENROUTER_API_KEY ? OPENROUTER_API_KEY.substring(0, 15) + '...' : '❌ NOT SET'}`);
+console.log(`   Model: ${AI_MODEL}`);
+console.log(`   Base URL: ${OPENROUTER_BASE_URL}\n`);
+
+if (!OPENROUTER_API_KEY) {
+  console.warn('⚠️ OPENROUTER_API_KEY is not set. Using fallback feedback.');
+}
+
+interface ChatMessage {
+  role: 'system' | 'user' | 'assistant';
+  content: string;
+}
+
+interface OpenRouterResponse {
+  id: string;
+  model: string;
+  choices: {
+    message: {
+      role: string;
+      content: string;
+    };
+    finish_reason: string;
+  }[];
+  usage: {
+    prompt_tokens: number;
+    completion_tokens: number;
+    total_tokens: number;
+  };
+}
+
+/**
+ * Call OpenRouter API (OpenAI-compatible)
+ */
+export async function callOpenRouter(
+  messages: ChatMessage[],
+  options: {
+    maxTokens?: number;
+    temperature?: number;
+  } = {}
+): Promise<string> {
+  if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY === 'sk-or-v1-YOUR_KEY_HERE') {
+    throw new Error('OpenRouter API key not configured');
+  }
+
+  try {
+    const response = await axios.post<OpenRouterResponse>(
+      `${OPENROUTER_BASE_URL}/chat/completions`,
+      {
+        model: AI_MODEL,
+        messages,
+        max_tokens: options.maxTokens || 200,
+        temperature: options.temperature || 0.7,
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+          'HTTP-Referer': APP_URL,
+          'X-Title': APP_NAME,
+          'Content-Type': 'application/json',
+        },
+        timeout: 30000,
+      }
+    );
+
+    const content = response.data.choices[0]?.message?.content;
+    
+    if (!content) {
+      throw new Error('No content in OpenRouter response');
+    }
+
+    console.log('✅ OpenRouter API call successful');
+    console.log(`   Model: ${response.data.model}`);
+    console.log(`   Tokens: ${response.data.usage.total_tokens}`);
+
+    return content.trim();
+  } catch (error: any) {
+    console.error('❌ OpenRouter API error:', error.response?.data || error.message);
+    throw new Error(`OpenRouter API failed: ${error.message}`);
+  }
+}
+
+/**
+ * Generate corrective feedback (saat jawaban salah) - REINFORCEMENT LEARNING APPROACH
+ */
+export async function generateCorrectiveFeedback(params: {
+  profileCode: string;
+  pedagogicLevel: number;
+  visualPreference: 'T' | 'P';
+  processingOrientation: 'G' | 'A';
+  behavioralTempo: 'I' | 'R';
+  questionText: string;
+  correctAnswer: string;
+  studentAnswer: string;
+  attemptNumber: number;
+}): Promise<string> {
+  const {
+    profileCode,
+    pedagogicLevel,
+    visualPreference,
+    processingOrientation,
+    behavioralTempo,
+    questionText,
+    correctAnswer,
+    studentAnswer,
+    attemptNumber,
+  } = params;
+
+  // REINFORCEMENT LEARNING: Progressive hint strategy
+  const hintGuidance = {
+    1: 'SANGAT SUBTLE - Hanya sebutkan konsep/prinsip umum yang relevan. JANGAN detail!',
+    2: 'MODERATE - Tunjukkan area/bagian mana yang salah, tapi jangan kasih langkah lengkap',
+    3: 'JELAS - Breakdown langkah-langkah, hampir kasih jawaban tapi tetap jangan reveal opsi yang benar'
+  };
+
+  const currentHintLevel = hintGuidance[attemptNumber as keyof typeof hintGuidance] || hintGuidance[3];
+
+  const systemPrompt = `Kamu adalah tutor AI yang menggunakan **CORRECTIVE FEEDBACK dengan pendekatan Reinforcement Learning**.
+
+**PRINSIP INTI:**
+1. ❌ JANGAN PERNAH menyebutkan jawaban yang benar atau opsi (A/B/C/D)
+2. 💪 SELALU mulai dengan validasi emosional positif (contoh: "Belum tepat, tapi gak apa-apa!")
+3. 📈 Hint makin detail seiring attempt meningkat (scaffolding)
+
+**STUDENT PROFILE (${profileCode}):**
+- **Level ${pedagogicLevel}/6**: ${pedagogicLevel <= 2 ? 'Pemula → Bahasa sederhana, tanpa jargon' : pedagogicLevel <= 4 ? 'Menengah → Boleh istilah teknis moderat' : 'Mahir → Gunakan terminologi presisi'}
+- **Visual ${visualPreference}**: ${visualPreference === 'T' ? 'TEXT → Penjelasan logis & konseptual' : 'PICTURE → Gunakan analogi visual/metafora (e.g., "bayangkan tumpukan piring")'}
+- **Processing ${processingOrientation}**: ${processingOrientation === 'G' ? '🌍 GLOBAL → WAJIB mulai dari konsep besar/prinsip umum' : '🔍 ANALYTIC → Breakdown step-by-step sistematis'}
+- **Tempo ${behavioralTempo}**: ${behavioralTempo === 'I' ? '⚡ IMPULSIVE → To-the-point, maksimal 50 kata!' : '🤔 REFLECTIVE → Boleh elaboratif, maksimal 90 kata'}
+
+**ATTEMPT ${attemptNumber}/3 - STRATEGI HINT:**
+${currentHintLevel}
+
+**STRUKTUR OUTPUT WAJIB:**
+1. **[VALIDASI POSITIF]** - 1 kalimat pendek yang menyemangati
+   Contoh: "Belum tepat, tapi tetap semangat! 💪" / "Hmm, belum benar. Gak apa-apa, coba lagi! 😊"
+   
+2. **[HINT ADAPTIF]** - Sesuai attempt:
+   ${attemptNumber === 1 ? '→ Attempt 1: Sebutkan KONSEP/PRINSIP dasar saja (sangat umum, misal: "Ingat prinsip LIFO")' : ''}
+   ${attemptNumber === 2 ? '→ Attempt 2: Tunjukkan BAGIAN mana yang salah + arahkan fokus (misal: "Perhatikan langkah pengambilan buku")' : ''}
+   ${attemptNumber >= 3 ? '→ Attempt 3: BREAKDOWN langkah-langkah logis detail, tapi TETAP jangan kasih jawaban!' : ''}
+   
+3. **[PERTANYAAN PEMANDU]** - Akhiri dengan pertanyaan yang mengarahkan pemikiran
+   Contoh: "Coba trace ulang: apa yang tersisa setelah langkah pertama?"
+
+**TONE VALIDASI (pilih salah satu yang natural):**
+- "Belum tepat, tapi cara berpikirmu bagus! 😊"
+- "Wah, hampir! Tinggal sedikit lagi nih 🎯"
+- "Belum benar, tapi gak apa-apa - kamu pasti bisa! 🚀"
+- "Hmm, masih ada yang kurang. Ayo coba lagi! 💡"
+
+**ATURAN KERAS:**
+- Bahasa Indonesia natural & friendly
+- ${behavioralTempo === 'I' ? '⚡ MAKSIMAL 50 KATA (strict!)' : 'Maksimal 90 kata'}
+- ${processingOrientation === 'G' ? '🌍 HARUS mulai dari big picture' : '🔍 Breakdown sistematis'}
+- Gunakan emoji 1-2 untuk friendly tone
+- NO opsi jawaban (A/B/C/D)
+- NO reveal answer
+
+**CONTOH OUTPUT:**
+
+**Attempt 1 (Global + Impulsive):**
+"Belum tepat, tapi gak papa! 😊 Ingat konsep Stack: LIFO (Last-In, First-Out). Coba pikirkan: mana yang paling atas setelah operasi? 🤔"
+
+**Attempt 2 (Analytic + Reflective):**
+"Hmm, belum benar. Mari coba lagi! 💪 Fokus ke langkah pengambilan: saat mengambil 2 buku teratas, buku mana saja yang hilang dari tumpukan? Setelah itu, Komik ditambahkan ke posisi mana?"
+
+**Attempt 3 (Global + Impulsive):**
+"Ayo, hampir! 🎯 Breakdown: 1) Mulai dengan 4 buku, 2) Ambil 2 teratas → sisa 2 buku, 3) Tambah Komik di atas. Sekarang trace: urutan dari bawah ke atas gimana?"`;
+
+  const userPrompt = `SOAL:
+${questionText}
+
+JAWABAN BENAR: ${correctAnswer}
+JAWABAN SISWA: ${studentAnswer} ❌ (SALAH)
+ATTEMPT: ${attemptNumber}/3
+
+Berikan corrective feedback dengan reinforcement learning approach dalam Bahasa Indonesia:`;
+
+  const feedback = await callOpenRouter(
+    [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: userPrompt },
+    ],
+    {
+      maxTokens: behavioralTempo === 'I' ? 120 : 200,
+      temperature: 0.8,
+    }
+  );
+
+  return feedback;
+}
+
+/**
+ * Generate explanatory feedback (saat jawaban benar) - POSITIVE REINFORCEMENT
+ */
+export async function generateExplanation(params: {
+  profileCode: string;
+  pedagogicLevel: number;
+  visualPreference: 'T' | 'P';
+  processingOrientation: 'G' | 'A';
+  behavioralTempo: 'I' | 'R';
+  questionText: string;
+  correctAnswer: string;
+  attemptNumber: number;
+}): Promise<string> {
+  const {
+    profileCode,
+    pedagogicLevel,
+    visualPreference,
+    processingOrientation,
+    behavioralTempo,
+    questionText,
+    correctAnswer,
+    attemptNumber,
+  } = params;
+
+  // REINFORCEMENT LEARNING: Reward based on performance
+  const rewardTone = {
+    1: '🎉 LUAR BIASA! Langsung benar di percobaan pertama!',
+    2: '✅ Bagus! Kamu berhasil setelah berpikir ulang!',
+    3: '👏 Akhirnya benar! Persistence kamu keren!'
+  };
+
+  const praise = rewardTone[attemptNumber as keyof typeof rewardTone] || rewardTone[3];
+
+  const systemPrompt = `Kamu adalah tutor AI yang memberikan **POSITIVE REINFORCEMENT & VALIDASI**.
+
+**PRINSIP INTI:**
+1. 🎉 VALIDASI kesuksesan dengan antusias!
+2. 💡 EXPLAIN mengapa jawaban benar (reinforce understanding)
+3. 🌟 HUBUNGKAN ke konsep lebih luas (transfer learning)
+
+**STUDENT PROFILE (${profileCode}):**
+- **Level ${pedagogicLevel}/6**: ${pedagogicLevel <= 2 ? 'Pemula → Reinforce basics' : pedagogicLevel <= 4 ? 'Menengah → Add insight' : 'Mahir → Mention advanced connections'}
+- **Visual ${visualPreference}**: ${visualPreference === 'T' ? 'TEXT → Conceptual explanation' : 'PICTURE → Visual analogy'}
+- **Processing ${processingOrientation}**: ${processingOrientation === 'G' ? '🌍 GLOBAL → Show big picture pattern' : '🔍 ANALYTIC → Trace reasoning steps'}
+- **Tempo ${behavioralTempo}**: ${behavioralTempo === 'I' ? '⚡ IMPULSIVE → Ringkas, max 70 kata' : '🤔 REFLECTIVE → Elaboratif, max 110 kata'}
+
+**ATTEMPT ${attemptNumber}/3 - REWARD:**
+${praise}
+
+**STRUKTUR OUTPUT WAJIB:**
+1. **[VALIDASI ENTHUSIASTIC]** - ${praise}
+2. **[EXPLAIN WHY CORRECT]** - Jelaskan logika/reasoning yang membuat jawaban benar
+3. **[BROADER CONCEPT]** - Hubungkan ke konsep/prinsip lebih luas (1 kalimat)
+
+**CONTOH VALIDASI:**
+- Attempt 1: "🎉 Sempurna! Langsung benar di percobaan pertama - excellent understanding!"
+- Attempt 2: "✅ Mantap! Setelah berpikir ulang, kamu menemukan pattern yang tepat!"
+- Attempt 3: "👏 Berhasil! Kegigihan kamu membuahkan hasil - great persistence!"
+
+**ATURAN KERAS:**
+- Bahasa Indonesia enthusiastic & educational
+- ${behavioralTempo === 'I' ? '⚡ MAKSIMAL 70 KATA' : 'Maksimal 110 kata'}
+- ${processingOrientation === 'G' ? '🌍 Mulai dari konsep besar' : '🔍 Trace reasoning'}
+- Gunakan emoji 2-3 untuk positive vibe
+- Tone: Celebratory but still educational
+
+**CONTOH OUTPUT:**
+
+**Correct Attempt 1 (Global + Impulsive):**
+"🎉 Sempurna! Langsung benar! Kamu tepat memahami Stack LIFO: operasi ambil & tambah mengubah urutan tumpukan. Ini konsep fundamental di struktur data! ✨"
+
+**Correct Attempt 2 (Analytic + Reflective):**
+"✅ Bagus sekali! Kamu berhasil melacak perubahan tumpukan dengan benar. Setelah mengambil 2 buku teratas (Biografi & Sains), tersisa Sejarah & Novel, lalu Komik ditambahkan di puncak. Pemahaman operasi Stack kamu solid! 💪"
+
+**Correct Attempt 3 (Global + Reflective):**
+"👏 Akhirnya benar! Persistence seperti ini penting dalam computational thinking. Stack memang tricky karena urutan berubah setiap operasi, tapi kamu berhasil debug dengan iterasi. Keep this mindset! 🚀"`;
+
+  const userPrompt = `SOAL:
+${questionText}
+
+JAWABAN BENAR: ${correctAnswer} ✅
+ATTEMPT: ${attemptNumber}/3
+
+Berikan positive reinforcement & validasi dalam Bahasa Indonesia:`;
+
+  const explanation = await callOpenRouter(
+    [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: userPrompt },
+    ],
+    {
+      maxTokens: behavioralTempo === 'I' ? 180 : 280,
+      temperature: 0.8,
+    }
+  );
+
+  return explanation;
+}
+
+/**
+ * Generate detailed AI walkthrough (post-correct answer explanation)
+ * NEW FEATURE: AI Explain untuk menjelaskan cara pengerjaan setelah jawaban benar
+ */
+export async function generateDetailedWalkthrough(params: {
+  profileCode: string;
+  pedagogicLevel: number;
+  visualPreference: 'T' | 'P';
+  processingOrientation: 'G' | 'A';
+  behavioralTempo: 'I' | 'R';
+  questionText: string;
+  correctAnswer: string;
+  allOptions: string[];
+}): Promise<string> {
+  const {
+    profileCode,
+    pedagogicLevel,
+    visualPreference,
+    processingOrientation,
+    behavioralTempo,
+    questionText,
+    correctAnswer,
+    allOptions,
+  } = params;
+
+  const systemPrompt = `Kamu adalah AI tutor yang memberikan **DETAILED WALKTHROUGH** untuk soal computational thinking yang sudah dijawab benar.
+
+**TUJUAN:**
+Jelaskan langkah-langkah pengerjaan secara detail dan personalized, sehingga siswa paham CARA BERPIKIR yang benar untuk menyelesaikan soal serupa.
+
+**STUDENT PROFILE (${profileCode}):**
+- **Level ${pedagogicLevel}/6**: ${pedagogicLevel <= 2 ? 'Pemula → Step-by-step detail dengan bahasa sederhana, explain every term' : pedagogicLevel <= 4 ? 'Menengah → Balance antara konsep & praktek, use moderate terms' : 'Mahir → Fokus ke reasoning & edge cases, use precise terminology'}
+- **Visual ${visualPreference}**: ${visualPreference === 'T' ? 'TEXT → Gunakan penjelasan logis, formula, pseudocode jika relevan' : 'PICTURE → Gunakan analogi visual, diagram verbal (e.g., "Bayangkan tumpukan piring 🍽️", "Seperti antrian di bank 🏦")'}
+- **Processing ${processingOrientation}**: ${processingOrientation === 'G' ? '🌍 GLOBAL → WAJIB mulai dari konsep besar/prinsip umum, LALU breakdown ke detail' : '🔍 ANALYTIC → Step-by-step detail dari awal sampai akhir, sistematis'}
+- **Tempo ${behavioralTempo}**: ${behavioralTempo === 'I' ? '⚡ IMPULSIVE → Langsung to-the-point, maksimal 150 kata' : '🤔 REFLECTIVE → Detail & elaborate, maksimal 250 kata, invite deeper thinking'}
+
+**STRUKTUR OUTPUT:**
+
+${processingOrientation === 'G' ? `
+**[GLOBAL APPROACH - Konsep Dulu]**
+1. **🎯 Konsep Kunci**: Sebutkan prinsip/teori yang digunakan (1-2 kalimat)
+2. **📋 Overview Solusi**: Gambaran besar cara penyelesaian
+3. **🔢 Breakdown Detail**: Step-by-step execution
+4. **✅ Kesimpulan**: Kenapa jawaban ini benar + brief mention opsi lain
+` : `
+**[ANALYTIC APPROACH - Step-by-Step]**
+1. **Langkah 1**: [Jelaskan langkah pertama dengan detail]
+2. **Langkah 2**: [Jelaskan langkah kedua]
+3. **Langkah 3**: [dst...]
+4. **Hasil Akhir**: [Kesimpulan + kenapa opsi lain salah]
+`}
+
+**TONE & STYLE:**
+- Educational & clear (bukan celebratory lagi - ini explanatory)
+- ${visualPreference === 'P' ? 'Gunakan analogi visual & emoji 📦🔄🎯 untuk ilustrasi' : 'Fokus ke logika & reasoning tanpa banyak emoji'}
+- ${pedagogicLevel <= 2 ? 'Avoid jargon, explain technical terms' : pedagogicLevel <= 4 ? 'Use moderate technical terms, balance theory & practice' : 'Use precise terminology, mention edge cases'}
+
+**ATURAN KERAS:**
+- Bahasa Indonesia
+- ${behavioralTempo === 'I' ? '⚡ MAKSIMAL 150 KATA (concise!)' : 'Maksimal 250 kata'}
+- Gunakan numbering/bullet untuk struktur jelas
+- ${visualPreference === 'P' ? 'Sertakan emoji/visual cues untuk ilustrasi' : 'Text-based, minimal emoji'}
+- Brief explain MENGAPA opsi lain salah (1-2 kalimat)
+- NO reveal opsi (A/B/C/D) di awal - sebut di akhir saja
+
+**CONTOH OUTPUT (Global + Picture-based + Impulsive):**
+
+**🎯 Konsep Kunci: Stack LIFO**
+Stack bekerja seperti tumpukan piring 🍽️ - yang terakhir masuk, pertama keluar.
+
+**📋 Solusi:**
+1. **State Awal**: [Sejarah, Novel, Sains, Biografi] ← Biografi paling atas
+2. **Ambil 2 teratas**: Pop Biografi & Sains → Sisa: [Sejarah, Novel] ← Novel kini teratas
+3. **Tambah Komik**: Push Komik di atas → Hasil: [Sejarah, Novel, Komik] ← Komik teratas
+
+**✅ Jawaban Benar**: Opsi menunjukkan Komik (atas), Novel, Sejarah (bawah)
+**❌ Opsi Lain**: Masih menyertakan Biografi/Sains yang sudah diambil.
+
+**CONTOH OUTPUT (Analytic + Text + Reflective):**
+
+**Langkah-Langkah Pengerjaan:**
+
+1. **Identifikasi State Awal**
+   Tumpukan: Sejarah (bawah) → Novel → Sains → Biografi (atas)
+   Dalam Stack, operasi dilakukan dari atas (top).
+
+2. **Eksekusi Operasi "Ambil 2 Buku"**
+   - Ambil pertama: Pop Biografi (teratas) → Tersisa [Sejarah, Novel, Sains]
+   - Ambil kedua: Pop Sains → Tersisa [Sejarah, Novel] (Novel kini top)
+
+3. **Eksekusi Operasi "Letakkan Komik"**
+   Push Komik ke top → Hasil: [Sejarah, Novel, Komik]
+
+4. **Kesimpulan**
+   Urutan akhir dari bawah ke atas: Sejarah, Novel, Komik (teratas).
+   Opsi yang menyertakan Biografi atau Sains salah karena keduanya sudah di-pop dari Stack.`;
+
+  const userPrompt = `SOAL:
+${questionText}
+
+SEMUA OPSI JAWABAN:
+${allOptions.map((opt, idx) => `${String.fromCharCode(65 + idx)}. ${opt}`).join('\n')}
+
+JAWABAN BENAR: ${correctAnswer}
+
+Berikan detailed walkthrough personalized dalam Bahasa Indonesia:`;
+
+  const walkthrough = await callOpenRouter(
+    [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: userPrompt },
+    ],
+    {
+      maxTokens: behavioralTempo === 'I' ? 300 : 500,
+      temperature: 0.7,
+    }
+  );
+
+  return walkthrough;
+}
+
+/**
+ * Generate feedback (unified interface for controller)
+ * This is the main function called by the controller
+ */
+export async function generateFeedback(params: {
+  questionText: string;
+  questionTopic: string;
+  userAnswer: string;
+  correctAnswer: string;
+  allOptions: string[];
+  isCorrect: boolean;
+  attemptCount: number;
+  userProfile: string;
+  difficulty: number;
+}): Promise<string> {
+  const {
+    questionText,
+    userAnswer,
+    correctAnswer,
+    isCorrect,
+    attemptCount,
+    userProfile,
+  } = params;
+
+  // Parse profile code (e.g., "3TGI")
+  const pedagogicLevel = parseInt(userProfile[0]) || 3;
+  const visualPreference = (userProfile[1] || 'T') as 'T' | 'P';
+  const processingOrientation = (userProfile[2] || 'G') as 'G' | 'A';
+  const behavioralTempo = (userProfile[3] || 'I') as 'I' | 'R';
+
+  console.log('🤖 Generating AI feedback...');
+  console.log(`   Profile: ${userProfile} (Level ${pedagogicLevel})`);
+  console.log(`   Style: Visual=${visualPreference}, Processing=${processingOrientation}, Tempo=${behavioralTempo}`);
+  console.log(`   Correct: ${isCorrect}, Attempt: ${attemptCount}`);
+
+  try {
+    if (isCorrect) {
+      // Generate explanation for correct answer
+      return await generateExplanation({
+        profileCode: userProfile,
+        pedagogicLevel,
+        visualPreference,
+        processingOrientation,
+        behavioralTempo,
+        questionText,
+        correctAnswer,
+        attemptNumber: attemptCount
+      });
+    } else {
+      // Generate corrective feedback for wrong answer
+      return await generateCorrectiveFeedback({
+        profileCode: userProfile,
+        pedagogicLevel,
+        visualPreference,
+        processingOrientation,
+        behavioralTempo,
+        questionText,
+        correctAnswer,
+        studentAnswer: userAnswer,
+        attemptNumber: attemptCount
+      });
+    }
+  } catch (error) {
+    console.error('❌ AI generation failed, using fallback');
+    
+    // Enhanced fallback feedback with reinforcement learning tone
+    if (isCorrect) {
+      const successFallbacks = [
+        '🎉 Sempurna! Langsung benar di percobaan pertama!',
+        '✅ Bagus! Kamu berhasil setelah mencoba lagi!',
+        '👏 Akhirnya benar! Persistence kamu keren!'
+      ];
+      return successFallbacks[Math.min(attemptCount - 1, 2)];
+    } else {
+      const hintFallbacks = [
+        '😊 Belum tepat, tapi gak apa-apa! Coba perhatikan konsep dasar dari soal ini. Apa prinsip utamanya? 🤔',
+        '💪 Belum benar, tapi tetap semangat! Fokus ke bagian mana yang mungkin terlewat. Coba trace langkah-langkahnya satu per satu.',
+        '🎯 Ayo, hampir! Mari breakdown step-by-step: identifikasi setiap operasi yang terjadi, lalu cek hasil akhirnya.'
+      ];
+      return hintFallbacks[Math.min(attemptCount - 1, 2)];
+    }
+  }
+}
+
+// Default export (for import openrouterService from ...)
+export default {
+  callOpenRouter,
+  generateCorrectiveFeedback,
+  generateExplanation,
+  generateFeedback,
+  generateDetailedWalkthrough,  // ← NEW: Added detailed walkthrough
+};
