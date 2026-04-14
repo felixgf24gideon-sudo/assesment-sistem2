@@ -1,0 +1,193 @@
+// server/src/services/evaluationService.ts
+
+import axios from 'axios';
+
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY!;
+const EVALUATION_MODEL = 'google/gemini-flash-2.0-exp'; // FREE!
+
+interface EvaluationRequest {
+  profile: string;
+  question: string;
+  options: string[];
+  correctAnswer: string;
+  studentAnswer: string; // For future use (corrective feedback)
+  aiFeedback: string;
+}
+
+interface EvaluationResult {
+  instructional_quality: number;
+  specificity: number;
+  correctness: number;
+  clarity: number;
+  motivational_tone: number;
+  level_suitability: number;
+  modality_alignment: number;
+  structure_alignment: number;
+  tempo_alignment: number;
+  overall_cognitive_alignment: number;
+  overall_average: number;
+  strongest_dimension: string;
+  weakest_dimension: string;
+  learning_impact: string;
+  raw_response: string;
+}
+
+const JUDGE_PROMPT_TEMPLATE = `You are an expert evaluator of AI-generated educational feedback.
+
+Your task is to evaluate ONLY the quality of the AI FEEDBACK.
+Do NOT evaluate the question quality.
+Do NOT evaluate the student answer quality.
+Your focus is whether the feedback is pedagogically effective and aligned.
+
+Be analytical, strict, and evidence-based.
+Do not reward politeness unless it improves learning.
+Do not assume longer feedback is better.
+
+==================================================
+STUDENT PROFILE DECODING RULE
+==================================================
+
+The student profile follows this structure:
+
+[Level][Modality][Structure][Tempo]
+
+LEVEL (1–6):
+1 = Beginner → Needs concrete explanation, simple language, strong scaffolding
+2 = Basic → Needs clear explanation and moderate scaffolding
+3 = Intermediate → Can handle some abstraction
+4 = Proficient → Requires less scaffolding
+5 = Advanced → Comfortable with abstraction
+6 = Expert → Minimal scaffolding needed
+
+MODALITY:
+T = Text-based learner → Prefers logical, structured verbal explanation
+P = Visual learner → Benefits from analogy, imagery, conceptual illustration
+
+STRUCTURE:
+G = Global → Understands overview first, then details
+A = Analytic → Prefers step-by-step logical explanation
+
+TEMPO:
+I = Impulsive → Prefers concise, direct feedback (but depth must remain)
+R = Reflective → Benefits from detailed, thorough explanation
+
+==================================================
+CONTEXT
+==================================================
+
+Student Profile: {{PROFILE}}
+
+Question:
+{{QUESTION}}
+
+Options:
+{{OPTIONS}}
+
+Correct Answer: {{CORRECT_ANSWER}}
+
+AI Feedback to Evaluate:
+{{AI_FEEDBACK}}
+
+==================================================
+RUBRIC (Score 1–5)
+==================================================
+
+1. Instructional Quality
+2. Specificity & Actionability
+3. Correctness / Accuracy
+4. Clarity & Coherence
+5. Motivational / Growth-Oriented Tone
+6. Suitability to Level
+7. Cognitive Alignment (evaluate sub-dimensions: Modality, Structure, Tempo)
+
+==================================================
+OUTPUT FORMAT (STRICT JSON ONLY)
+==================================================
+
+Respond ONLY with valid JSON in this exact structure:
+
+{
+  "instructional_quality": <1-5>,
+  "specificity": <1-5>,
+  "correctness": <1-5>,
+  "clarity": <1-5>,
+  "motivational_tone": <1-5>,
+  "level_suitability": <1-5>,
+  "modality_alignment": <1-5>,
+  "structure_alignment": <1-5>,
+  "tempo_alignment": <1-5>,
+  "overall_cognitive_alignment": <average of modality, structure, tempo>,
+  "overall_average": <average of all 7 main dimensions>,
+  "strongest_dimension": "<dimension name>",
+  "weakest_dimension": "<dimension name>",
+  "learning_impact": "<brief assessment>"
+}
+
+Do NOT include any text outside the JSON object.
+`;
+
+function buildEvaluationPrompt(req: EvaluationRequest): string {
+  const optionsFormatted = req.options.map((opt, idx) => 
+    `${String.fromCharCode(65 + idx)}. ${opt}`
+  ).join('\n');
+
+  return JUDGE_PROMPT_TEMPLATE
+    .replace('{{PROFILE}}', req.profile)
+    .replace('{{QUESTION}}', req.question)
+    .replace('{{OPTIONS}}', optionsFormatted)
+    .replace('{{CORRECT_ANSWER}}', req.correctAnswer)
+    .replace('{{AI_FEEDBACK}}', req.aiFeedback);
+}
+
+export async function evaluateFeedback(
+  req: EvaluationRequest
+): Promise<EvaluationResult> {
+  
+  const prompt = buildEvaluationPrompt(req);
+
+  console.log(`   📊 Evaluating with ${EVALUATION_MODEL}...`);
+
+  try {
+    const response = await axios.post(
+      'https://openrouter.ai/api/v1/chat/completions',
+      {
+        model: EVALUATION_MODEL,
+        messages: [
+          {
+            role: 'user',
+            content: prompt
+          }
+        ],
+        temperature: 0.3, // Lower for consistent evaluation
+        max_tokens: 2000
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+          'HTTP-Referer': 'http://localhost:3000',
+          'X-Title': 'Adaptive Practice Evaluation',
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+
+    const rawResponse = response.data.choices[0].message.content;
+    
+    // Parse JSON response
+    const jsonMatch = rawResponse.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      throw new Error('No JSON found in response');
+    }
+
+    const evaluation = JSON.parse(jsonMatch[0]);
+
+    return {
+      ...evaluation,
+      raw_response: rawResponse
+    };
+
+  } catch (error: any) {
+    console.error('❌ Evaluation error:', error.message);
+    throw error;
+  }
+}

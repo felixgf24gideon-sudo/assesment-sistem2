@@ -1,0 +1,821 @@
+user_cognitive,user_pedagogic_level,question,option,user_answer,true_answer,ai_feedback,feedback_word_count,instructional_quality,specificity,correctness,clarity,motivational_tone,level_suitability,modality_alignment,structure_alignment,tempo_alignment,overall_cognitive_alignment,overall_average,strongest_dimension,weakest_dimension,learning_impact
+1TGI,1,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+1TGI,1,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+1TGI,1,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+1TGI,1,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+1TGI,1,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+1TGI,1,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+1TGI,1,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+1TGI,1,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+1TGI,1,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+1TGI,1,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+1TGI,1,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+3TGI,3,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+3TGI,3,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+3TGI,3,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+3TGI,3,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+3TGI,3,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+3TGI,3,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+3TGI,3,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+3TGI,3,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+3TGI,3,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+3TGI,3,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+3TGI,3,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+5TGR,5,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+5TGR,5,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+5TGR,5,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+5TGR,5,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+5TGR,5,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+5TGR,5,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+5TGR,5,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+5TGR,5,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+5TGR,5,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+5TGR,5,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+5TGR,5,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+6PAR,6,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+6PAR,6,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+6PAR,6,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+6PAR,6,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+6PAR,6,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+6PAR,6,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+6PAR,6,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+6PAR,6,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+6PAR,6,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+6PAR,6,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"
+6PAR,6,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"ERROR: openrouterService.generateCorrectiveFeedback is not a function",0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,ERROR,ERROR,"ERROR"

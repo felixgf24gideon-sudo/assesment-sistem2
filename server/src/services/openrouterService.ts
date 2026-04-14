@@ -1,409 +1,313 @@
 // server/src/services/openrouterService.ts
-
-// Load environment variables FIRST
-import dotenv from 'dotenv';
-dotenv.config();
+// PERSONALIZATION-OPTIMIZED FOR 6-DIMENSION RUBRIC
 
 import axios from 'axios';
-import { getAIStrategy, getProfileDescription, parseProfileCode } from '../config/profileSystem';
+import { ProfileParams, getAIStrategy } from '../config/profileSystem';
 
-// Read environment variables
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-const OPENROUTER_BASE_URL = process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1';
-const AI_MODEL = process.env.AI_MODEL || 'deepseek/deepseek-r1';
-const APP_NAME = process.env.APP_NAME || 'adaptive-practice';
-const APP_URL = process.env.APP_URL || 'http://localhost:3000';
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY!;
+const GENERATION_MODEL = process.env.AI_MODEL || 'google/gemma-3-27b-it';
 
-// Debug output
-console.log('🔧 OpenRouter Service Initialized:');
-console.log(`   API Key: ${OPENROUTER_API_KEY ? OPENROUTER_API_KEY.substring(0, 15) + '...' : '❌ NOT SET'}`);
-console.log(`   Model: ${AI_MODEL}`);
-console.log(`   Base URL: ${OPENROUTER_BASE_URL}`);
-console.log(`   Using: Parametric Profile System ✅\n`);
-
-if (!OPENROUTER_API_KEY) {
-  console.warn('⚠️ OPENROUTER_API_KEY is not set. Using fallback feedback.');
+interface FeedbackGenerationRequest {
+  profileCode?: string;
+  profile?: ProfileParams;
+  question: string;
+  options: string[];
+  studentAnswer: string;
+  correctAnswer: string;
+  attempt?: number;
 }
 
-interface ChatMessage {
-  role: 'system' | 'user' | 'assistant';
-  content: string;
-}
-
-interface OpenRouterResponse {
-  id: string;
-  model: string;
-  choices: {
-    message: {
-      role: string;
-      content: string;
-    };
-    finish_reason: string;
-  }[];
-  usage: {
-    prompt_tokens: number;
-    completion_tokens: number;
-    total_tokens: number;
+interface FeedbackGenerationResponse {
+  feedback: string;
+  wordCount: number;
+  dimensions: {
+    targetTempo: 'I' | 'R';
+    targetModality: 'T' | 'P';
+    targetStructure: 'G' | 'A';
+    motivationStyle: string;
   };
 }
 
-/**
- * Call OpenRouter API (OpenAI-compatible)
- */
-export async function callOpenRouter(
-  messages: ChatMessage[],
-  options: {
-    maxTokens?: number;
-    temperature?: number;
-  } = {}
-): Promise<string> {
-  if (!OPENROUTER_API_KEY || OPENROUTER_API_KEY === 'sk-or-v1-YOUR_KEY_HERE') {
-    throw new Error('OpenRouter API key not configured');
+// ===== PARSE PROFILE =====
+function getProfileFromRequest(req: FeedbackGenerationRequest): ProfileParams {
+  if (req.profile) {
+    return req.profile;
   }
+  
+  if (req.profileCode) {
+    const parts = req.profileCode.toUpperCase();
+    return {
+      level: parseInt(parts[0]) || 3,
+      visual: (parts[1] === 'P' ? 'P' : 'T') as 'T' | 'P',
+      processing: (parts[2] === 'A' ? 'A' : 'G') as 'G' | 'A',
+      tempo: (parts[3] === 'R' ? 'R' : 'I') as 'I' | 'R'
+    };
+  }
+  
+  // Default profile
+  return {
+    level: 3,
+    visual: 'T',
+    processing: 'G',
+    tempo: 'I'
+  };
+}
+
+// ===== WORD LIMIT CALCULATOR =====
+function getWordLimitByProfile(tempo: 'I' | 'R'): {
+  min: number;
+  max: number;
+  target: number;
+} {
+  return tempo === 'I'
+    ? { min: 30, max: 100, target: 60 }
+    : { min: 120, max: 300, target: 200 };
+}
+
+// ===== MODALITY INSTRUCTION =====
+function getModalityInstruction(modality: 'T' | 'P'): string {
+  if (modality === 'T') {
+    return `
+MODALITY: TEXT/LOGIC
+Format: Logical sequences, formal reasoning, step-by-step proof
+Structure:
+  1. State the logical error precisely
+  2. Show where logic breaks down
+  3. Present correct logical chain
+  4. Provide mathematical or formal proof
+Language: Precise terminology, formal tone`;
+  } else {
+    return `
+MODALITY: VISUAL/ANALOGY
+Format: Vivid analogies, metaphors, conceptual imagery
+Structure:
+  1. Open with relatable analogy: "Bayangkan..."
+  2. Draw parallel: "Sama seperti X ke Y..."
+  3. Apply to problem: "Di sini, Z ke W..."
+  4. Concrete example: "Konkretnya: [example]"
+Language: Narrative, imagery-rich, conversational`;
+  }
+}
+
+// ===== STRUCTURE INSTRUCTION =====
+function getStructureInstruction(structure: 'G' | 'A'): string {
+  if (structure === 'G') {
+    return `
+STRUCTURE: GLOBAL-FIRST
+Order:
+  1. State the BIG CONCEPT or main idea
+  2. Explain how it breaks down into parts
+  3. Point out the specific error in this case
+  4. Summarize how it all fits together
+Flow: Context → Details → Application`;
+  } else {
+    return `
+STRUCTURE: ANALYTIC/STEP-BY-STEP
+Order:
+  1. Foundation or basic principle
+  2. Build next layer
+  3. Identify where reasoning failed
+  4. Show correct progression
+  5. Reach conclusion
+Flow: Ground up → Logical chain → Result`;
+  }
+}
+
+// ===== PERSONALIZED MOTIVATION =====
+function getPersonalizedMotivation(profile: ProfileParams): string {
+  const { tempo, processing } = profile;
+
+  const motivationMap: Record<string, string> = {
+    'IG': `Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.`,
+    'IA': `Langkah logismu tajam! Pastikan urutan langkahnya benar.`,
+    'RG': `Analisis mendalam sekali! Koneksi ke konsep utama yang kamu cari.`,
+    'RA': `Penyelesaian step-by-step mu rapi! Coba perhatikan satu langkah lagi.`
+  };
+
+  const key = `${tempo}${processing}`;
+  return motivationMap[key] || `Coba lagi! Kamu bisa lebih baik.`;
+}
+
+// ===== BUILD PERSONALIZED SYSTEM PROMPT =====
+function buildPersonalizedSystemPrompt(profile: ProfileParams): string {
+  const wordLimit = getWordLimitByProfile(profile.tempo);
+  const modalityInstr = getModalityInstruction(profile.visual);
+  const structureInstr = getStructureInstruction(profile.processing);
+  const motivationStyle = getPersonalizedMotivation(profile);
+
+  // Get additional strategy from profileSystem
+  const strategy = getAIStrategy(`${profile.level}${profile.visual}${profile.processing}${profile.tempo}`);
+  const tone = strategy.correctiveFeedback.tone;
+
+  return `
+You are an Adaptive Learning AI Tutor optimized for personalized feedback.
+
+===== STUDENT COGNITIVE PROFILE =====
+
+Level: ${profile.level}/6
+Modality: ${profile.visual === 'T' ? 'TEXT/LOGIC' : 'VISUAL/ANALOGY'}
+Structure: ${profile.processing === 'G' ? 'GLOBAL' : 'ANALYTIC'}
+Tempo: ${profile.tempo === 'I' ? 'IMPULSIVE' : 'REFLECTIVE'}
+
+===== TONE GUIDANCE =====
+${tone}
+
+===== CRITICAL OPTIMIZATION RULES =====
+
+RULE 1: TEMPO ALIGNMENT (STRICTEST)
+${profile.tempo === 'I'
+  ? `- Word limit: EXACTLY 30-100 words (target: 60)
+- First sentence MUST contain the diagnosis
+- One key insight per paragraph
+- Use bullet points if needed
+- No elaboration; pure precision
+- Get straight to the point`
+  : `- Word limit: EXACTLY 120-300 words (target: 200)
+- Multiple paragraphs OK
+- Provide context and scaffolding
+- Show connections between concepts
+- Elaborate to support understanding
+- Take time to explain thoroughly`
+}
+
+RULE 2: INSTRUCTIONAL QUALITY (SURGICAL PRECISION)
+- Sentence 1: Identify EXACT misconception
+- Sentence 2: State root cause
+- Sentences 3+: Explain why & show correct reasoning
+- Signal-to-Noise Ratio: >80% (every word essential)
+- NO padding, NO filler, NO generic statements
+
+RULE 3: MODALITY ALIGNMENT
+${modalityInstr}
+
+RULE 4: STRUCTURE ALIGNMENT
+${structureInstr}
+
+RULE 5: PERSONALIZED MOTIVATION (NOT GENERIC)
+- DO NOT use: "Good job!", "Try again!", "Keep going!"
+- DO use: "${motivationStyle}"
+- Reference this learner's cognitive style specifically
+
+===== FORMAT TEMPLATE =====
+
+[DIAGNOSIS - 1-2 sentences]
+Identify the misconception precisely.
+
+[EXPLANATION - 3-${profile.tempo === 'I' ? 3 : 5} sentences]
+Explain why it's wrong, what's correct, why the difference matters.
+
+[PERSONALIZED MOTIVATION - 1 sentence]
+${motivationStyle}
+
+===== CONSTRAINTS =====
+- Language: Indonesian
+- Word count: ${wordLimit.min}-${wordLimit.max} words (HARD LIMIT)
+- Do NOT exceed limits
+- Every sentence must serve learning purpose
+- Do NOT use generic praise
+- Do NOT use irrelevant context
+
+===== START FEEDBACK NOW =====
+`;
+}
+
+// ===== GENERATE PERSONALIZED FEEDBACK =====
+export async function generateAdaptiveFeedback(
+  req: FeedbackGenerationRequest
+): Promise<FeedbackGenerationResponse> {
+  const profile = getProfileFromRequest(req);
+  const { question, options, studentAnswer, correctAnswer, attempt } = req;
+
+  const systemPrompt = buildPersonalizedSystemPrompt(profile);
+  const userPrompt = `
+Question:
+${question}
+
+Options:
+${options.map((opt, idx) => `${String.fromCharCode(65 + idx)}. ${opt}`).join('\n')}
+
+Student's (Wrong) Answer: ${studentAnswer}
+Correct Answer: ${correctAnswer}
+
+Generate personalized corrective feedback for this student.
+`;
 
   try {
-    const response = await axios.post<OpenRouterResponse>(
-      `${OPENROUTER_BASE_URL}/chat/completions`,
+    const response = await axios.post<any>(
+      'https://openrouter.ai/api/v1/chat/completions',
       {
-        model: AI_MODEL,
-        messages,
-        max_tokens: options.maxTokens || 200,
-        temperature: options.temperature || 0.7,
+        model: GENERATION_MODEL,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userPrompt }
+        ],
+        temperature: 0.6,
+        max_tokens: 600,
+        top_p: 0.9
       },
       {
         headers: {
-          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-          'HTTP-Referer': APP_URL,
-          'X-Title': APP_NAME,
-          'Content-Type': 'application/json',
-        },
-        timeout: 30000,
+          Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+          'HTTP-Referer': 'http://localhost:3000',
+          'X-Title': 'Adaptive Practice - Personalized Feedback',
+          'Content-Type': 'application/json'
+        }
       }
     );
 
-    const content = response.data.choices[0]?.message?.content;
-    
-    if (!content) {
-      throw new Error('No content in OpenRouter response');
+    const feedback = response.data?.choices?.[0]?.message?.content?.trim() || '';
+    const wordCount = feedback.split(/\s+/).length;
+
+    // Validate against hard rules
+    const wordLimit = getWordLimitByProfile(profile.tempo);
+    if (wordCount < wordLimit.min || wordCount > wordLimit.max) {
+      console.warn(
+        `⚠️ Word count ${wordCount} violates limits [${wordLimit.min}-${wordLimit.max}]`
+      );
     }
 
-    console.log('✅ OpenRouter API call successful');
-    console.log(`   Model: ${response.data.model}`);
-    console.log(`   Tokens: ${response.data.usage.total_tokens}`);
-
-    return content.trim();
+    return {
+      feedback,
+      wordCount,
+      dimensions: {
+        targetTempo: profile.tempo,
+        targetModality: profile.visual,
+        targetStructure: profile.processing,
+        motivationStyle: getPersonalizedMotivation(profile)
+      }
+    };
   } catch (error: any) {
-    console.error('❌ OpenRouter API error:', error.response?.data || error.message);
-    throw new Error(`OpenRouter API failed: ${error.message}`);
+    console.error('❌ Feedback generation error:', error.message);
+    throw error;
   }
 }
 
-/**
- * Generate corrective feedback (wrong answer) - Uses Parametric Profile System
- */
-export async function generateCorrectiveFeedback(params: {
+// ===== RESEARCH-SPECIFIC VERSION =====
+export async function generateCorrectiveFeedbackForResearch(req: {
   profileCode: string;
   questionText: string;
-  correctAnswer: string;
-  studentAnswer: string;
-  attemptNumber: number;
-  imageDescription?: string;
-}): Promise<string> {
-  const { profileCode, questionText, correctAnswer, studentAnswer, attemptNumber, imageDescription } = params;
-
-  // Get AI strategy from parametric profile system
-  const strategy = getAIStrategy(profileCode);
-  const description = getProfileDescription(profileCode);
-  const profileParams = parseProfileCode(profileCode);
-
-  // Get hint for current attempt (0-indexed array, so attemptNumber - 1)
-  const currentHint = strategy.correctiveFeedback.hintProgression[Math.min(attemptNumber - 1, 2)];
-
-  const systemPrompt = `Kamu adalah tutor AI yang menggunakan **CORRECTIVE FEEDBACK dengan pendekatan Reinforcement Learning**.
-
-**PRINSIP INTI:**
-1. ❌ JANGAN PERNAH menyebutkan jawaban yang benar atau opsi (A/B/C/D)
-2. 💪 SELALU mulai dengan validasi emosional positif
-3. 📈 Hint makin detail seiring attempt meningkat (scaffolding)
-
-**STUDENT PROFILE (${profileCode}):**
-${description}
-
-**AI FEEDBACK STRATEGY FOR THIS PROFILE:**
-- **Max Words:** ${strategy.correctiveFeedback.maxWords} KATA (STRICT LIMIT!)
-- **Tone:** ${strategy.correctiveFeedback.tone}
-- **Opening:** ${strategy.correctiveFeedback.openingPhrase}
-- **Structure:** ${strategy.correctiveFeedback.structure}
-- **Visual Style:** ${strategy.correctiveFeedback.visualStyle}
-- **Closing:** ${strategy.correctiveFeedback.closingStyle}
-
-**ATTEMPT ${attemptNumber}/3 - HINT STRATEGY:**
-${currentHint}
-
-**STRUKTUR OUTPUT WAJIB:**
-1. **[VALIDASI POSITIF]** - ${strategy.correctiveFeedback.openingPhrase}
-2. **[HINT ADAPTIF]** - ${currentHint}
-3. **[PERTANYAAN PEMANDU]** - ${strategy.correctiveFeedback.closingStyle}
-
-**ATURAN KERAS:**
-- Bahasa Indonesia natural & friendly
-- MAKSIMAL ${strategy.correctiveFeedback.maxWords} KATA
-- ${profileParams.processing === 'G' ? '🌍 WAJIB mulai dari big picture' : '🔍 Breakdown step-by-step sistematis'}
-- ${strategy.correctiveFeedback.visualStyle}
-- NO opsi jawaban (A/B/C/D)
-- NO reveal answer`;
-
-  const userPrompt = `SOAL:
-${questionText}
-
-${imageDescription ? `📊 VISUAL CONTEXT:\n${imageDescription}\n` : ''}
-
-JAWABAN BENAR: ${correctAnswer}
-JAWABAN SISWA: ${studentAnswer} ❌ (SALAH)
-ATTEMPT: ${attemptNumber}/3
-
-Berikan corrective feedback sesuai strategi profil ${profileCode}:`;
-
-  const feedback = await callOpenRouter(
-    [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: userPrompt },
-    ],
-    {
-      maxTokens: Math.round(strategy.correctiveFeedback.maxWords * 2.5),
-      temperature: 0.8,
-    }
-  );
-
-  return feedback;
-}
-
-/**
- * Generate positive reinforcement (correct answer) - Uses Parametric Profile System
- */
-export async function generateExplanation(params: {
-  profileCode: string;
-  questionText: string;
-  correctAnswer: string;
-  attemptNumber: number;
-  imageDescription?: string;
-}): Promise<string> {
-  const { profileCode, questionText, correctAnswer, attemptNumber, imageDescription } = params;
-
-  // Get AI strategy from parametric profile system
-  const strategy = getAIStrategy(profileCode);
-  const description = getProfileDescription(profileCode);
-  const profileParams = parseProfileCode(profileCode);
-
-  // Reward tone based on attempt
-  const rewardTones = [
-    '🎉 LUAR BIASA! Langsung benar di percobaan pertama!',
-    '✅ Bagus! Kamu berhasil setelah berpikir ulang!',
-    '👏 Akhirnya benar! Persistence kamu keren!'
-  ];
-  const praise = rewardTones[Math.min(attemptNumber - 1, 2)];
-
-  const systemPrompt = `Kamu adalah tutor AI yang memberikan **POSITIVE REINFORCEMENT & VALIDASI**.
-
-**PRINSIP INTI:**
-1. 🎉 VALIDASI kesuksesan dengan antusias!
-2. 💡 EXPLAIN mengapa jawaban benar (reinforce understanding)
-3. 🌟 HUBUNGKAN ke konsep lebih luas (transfer learning)
-
-**STUDENT PROFILE (${profileCode}):**
-${description}
-
-**AI FEEDBACK STRATEGY FOR THIS PROFILE:**
-- **Max Words:** ${strategy.positiveReinforcement.maxWords} KATA
-- **Enthusiasm:** ${strategy.positiveReinforcement.enthusiasmLevel}
-- **Praise Style:** ${strategy.positiveReinforcement.praiseStyle}
-- **Explanation Depth:** ${strategy.positiveReinforcement.explanationDepth}
-
-**ATTEMPT ${attemptNumber}/3 - REWARD:**
-${praise}
-
-**STRUKTUR OUTPUT WAJIB:**
-1. **[VALIDASI ENTHUSIASTIC]** - ${praise}
-2. **[EXPLAIN WHY CORRECT]** - ${strategy.positiveReinforcement.explanationDepth}
-3. **[BROADER CONCEPT]** - Hubungkan ke konsep lebih luas (1 kalimat)
-
-**ATURAN KERAS:**
-- Bahasa Indonesia enthusiastic & educational
-- MAKSIMAL ${strategy.positiveReinforcement.maxWords} KATA
-- ${profileParams.processing === 'G' ? '🌍 Mulai dari konsep besar' : '🔍 Trace reasoning step-by-step'}
-- Tone: Celebratory but still educational`;
-
-  const userPrompt = `SOAL:
-${questionText}
-
-${imageDescription ? `📊 VISUAL CONTEXT:\n${imageDescription}\n` : ''}
-
-JAWABAN BENAR: ${correctAnswer} ✅
-ATTEMPT: ${attemptNumber}/3
-
-Berikan positive reinforcement sesuai profil ${profileCode}:`;
-
-  const explanation = await callOpenRouter(
-    [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: userPrompt },
-    ],
-    {
-      maxTokens: Math.round(strategy.positiveReinforcement.maxWords * 2.5),
-      temperature: 0.8,
-    }
-  );
-
-  return explanation;
-}
-
-/**
- * Generate detailed walkthrough (post-correct explanation) - Uses Parametric Profile System
- */
-export async function generateDetailedWalkthrough(params: {
-  profileCode: string;
-  questionText: string;
-  correctAnswer: string;
-  allOptions: string[];
-  imageDescription?: string;
-}): Promise<string> {
-  const { profileCode, questionText, correctAnswer, allOptions, imageDescription } = params;
-
-  // Get AI strategy from parametric profile system
-  const strategy = getAIStrategy(profileCode);
-  const description = getProfileDescription(profileCode);
-
-  const systemPrompt = `Kamu adalah AI tutor yang memberikan **DETAILED WALKTHROUGH** untuk soal computational thinking yang sudah dijawab benar.
-
-**TUJUAN:**
-Jelaskan langkah-langkah pengerjaan secara detail dan personalized, sehingga siswa paham CARA BERPIKIR yang benar.
-
-**STUDENT PROFILE (${profileCode}):**
-${description}
-
-**AI WALKTHROUGH STRATEGY FOR THIS PROFILE:**
-- **Max Words:** ${strategy.detailedWalkthrough.maxWords} KATA
-- **Approach:** ${strategy.detailedWalkthrough.approach}
-- **Structure:** ${strategy.detailedWalkthrough.structure}
-- **Starting Point:** ${strategy.detailedWalkthrough.startingPoint}
-- **Detail Level:** ${strategy.detailedWalkthrough.detailLevel}
-- **Visual Style:** ${strategy.detailedWalkthrough.visualStyle}
-
-**STRUKTUR OUTPUT:**
-${strategy.detailedWalkthrough.structure}
-
-**TONE & STYLE:**
-- Educational & clear (bukan celebratory - ini explanatory)
-- ${strategy.detailedWalkthrough.visualStyle}
-
-**ATURAN KERAS:**
-- Bahasa Indonesia
-- MAKSIMAL ${strategy.detailedWalkthrough.maxWords} KATA
-- Gunakan numbering/bullet untuk struktur jelas
-- Brief explain MENGAPA opsi lain salah (1-2 kalimat)`;
-
-  const userPrompt = `SOAL:
-${questionText}
-
-${imageDescription ? `📊 VISUAL CONTEXT:\n${imageDescription}\n` : ''}
-
-SEMUA OPSI JAWABAN:
-${allOptions.map((opt, idx) => `${String.fromCharCode(65 + idx)}. ${opt}`).join('\n')}
-
-JAWABAN BENAR: ${correctAnswer}
-
-Berikan detailed walkthrough sesuai profil ${profileCode}:`;
-
-  const walkthrough = await callOpenRouter(
-    [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: userPrompt },
-    ],
-    {
-      maxTokens: Math.round(strategy.detailedWalkthrough.maxWords * 2.5),
-      temperature: 0.7,
-    }
-  );
-
-  return walkthrough;
-}
-
-/**
- * Generate feedback (unified interface) - Uses Parametric Profile System
- */
-export async function generateFeedback(params: {
-  questionText: string;
-  questionTopic: string;
   userAnswer: string;
   correctAnswer: string;
   allOptions: string[];
-  isCorrect: boolean;
-  attemptCount: number;
-  userProfile: string;
-  difficulty: number;
-  imageDescription?: string;
 }): Promise<string> {
-  const {
-    questionText,
-    userAnswer,
-    correctAnswer,
-    isCorrect,
-    attemptCount,
-    userProfile,
-    imageDescription
-  } = params;
+  const profileParts = req.profileCode.toUpperCase();
+  const profile: ProfileParams = {
+    level: parseInt(profileParts[0]) || 3,
+    visual: (profileParts[1] === 'P' ? 'P' : 'T') as 'T' | 'P',
+    processing: (profileParts[2] === 'A' ? 'A' : 'G') as 'G' | 'A',
+    tempo: (profileParts[3] === 'R' ? 'R' : 'I') as 'I' | 'R'
+  };
 
-  console.log('🤖 Generating AI feedback with Parametric Profile System...');
-  console.log(`   Profile: ${userProfile}`);
-  console.log(`   Description: ${getProfileDescription(userProfile)}`);
-  console.log(`   Correct: ${isCorrect}, Attempt: ${attemptCount}`);
+  const response = await generateAdaptiveFeedback({
+    profile,
+    question: req.questionText,
+    options: req.allOptions,
+    studentAnswer: req.userAnswer,
+    correctAnswer: req.correctAnswer,
+    attempt: 1
+  });
 
-  try {
-    if (isCorrect) {
-      return await generateExplanation({
-        profileCode: userProfile,
-        questionText,
-        correctAnswer,
-        attemptNumber: attemptCount,
-        imageDescription
-      });
-    } else {
-      return await generateCorrectiveFeedback({
-        profileCode: userProfile,
-        questionText,
-        correctAnswer,
-        studentAnswer: userAnswer,
-        attemptNumber: attemptCount,
-        imageDescription
-      });
-    }
-  } catch (error) {
-    console.error('❌ AI generation failed, using fallback');
-    
-    // Enhanced fallback
-    if (isCorrect) {
-      const successFallbacks = [
-        '🎉 Sempurna! Langsung benar di percobaan pertama!',
-        '✅ Bagus! Kamu berhasil setelah mencoba lagi!',
-        '👏 Akhirnya benar! Persistence kamu keren!'
-      ];
-      return successFallbacks[Math.min(attemptCount - 1, 2)];
-    } else {
-      const hintFallbacks = [
-        '😊 Belum tepat, tapi gak apa-apa! Coba perhatikan konsep dasar dari soal ini. Apa prinsip utamanya? 🤔',
-        '💪 Belum benar, tapi tetap semangat! Fokus ke bagian mana yang mungkin terlewat. Coba trace langkah-langkahnya satu per satu.',
-        '🎯 Ayo, hampir! Mari breakdown step-by-step: identifikasi setiap operasi yang terjadi, lalu cek hasil akhirnya.'
-      ];
-      return hintFallbacks[Math.min(attemptCount - 1, 2)];
-    }
-  }
+  return response.feedback;
 }
 
-// Default export
-export default {
-  callOpenRouter,
-  generateCorrectiveFeedback,
-  generateExplanation,
-  generateDetailedWalkthrough,
-  generateFeedback,
-};
+export { FeedbackGenerationRequest, FeedbackGenerationResponse };

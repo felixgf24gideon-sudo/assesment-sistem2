@@ -1,0 +1,50 @@
+user_cognitive,user_pedagogic_level,question,option,true_answer,ai_explained_simple,ai_explained_detailed
+1TGI,1,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",D,"🎉 LUAR BIASA! Langsung benar di percobaan pertama!
+
+Jawaban D benar *karena* memenuhi semua permintaan pembeli. Setiap warna (1, 2, 3) muncul dua kali. Tidak ada bunga dengan jenis dan warna yang sama (misalnya, tidak ada A1 lagi setelah A1 muncul). *Oleh karena itu*, setiap jenis bunga (A, B, C, D) juga tidak lebih dari dua kali dalam rangkaian. 
+
+Ini adalah contoh bagaimana kita mengatur pilihan berdasarkan aturan tertentu. Prinsip ini sering digunakan dalam perencanaan dan penyelesaian masalah sehari-hari.","Oke, mari kita pecahkan soal ini!
+
+**1. Overview/Big Picture:**
+
+Tujuan kita adalah mencari rangkaian bunga yang memenuhi 3 aturan pembeli. Kita akan periksa setiap opsi, melihat apakah mereka cocok dengan semua aturan tersebut. Intinya, kita cari rangkaian yang ""benar"" sesuai permintaan.
+
+**2. Key Concepts:**
+
+*   **Warna Muncul 2 Kali:** Setiap angka (1, 2, 3) harus ada dua kali dalam rangkaian.
+*   **Jenis & Warna Berbeda:** Tidak boleh ada bunga dengan jenis yang sama (A, B, C, D) dan warna yang sama (1, 2, 3). Contoh: Tidak boleh ada A1 dan A1 lagi.
+*   **Jumlah Jenis:** Setiap jenis bunga maksimal ada 2 kali.
+
+**3. Connection to Answer:**
+
+Opsi D (A1 - B2 - C3 - D3 - B1 - D2) memenuhi semua aturan:
+*   Warna 1, 2, dan 3 muncul masing-masing 2 kali.
+*   Tidak ada jenis bunga yang punya warna yang sama (A selalu dengan angka berbeda, dst.).
+*   Setiap jenis bunga (A, B, C, D) hanya muncul maksimal 2 kali.
+
+**4. Why Other Options are Wrong:**
+
+*   **A:** B2 muncul dua kali, melanggar aturan jenis & warna berbeda.
+*   **B:** A2 dan A3 melanggar aturan jenis & warna berbeda.
+*   **C:** D3 muncul dua kali, melanggar aturan jenis & warna berbeda.
+
+
+
+Semoga penjelasan ini mudah dipahami! Intinya, kita lihat apakah rangkaian bunga itu ""rapi"" dan sesuai dengan semua permintaan pembeli."

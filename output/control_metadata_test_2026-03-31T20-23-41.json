@@ -1,0 +1,69 @@
+{
+  "experiment_type": "control_group",
+  "personalization": false,
+  "generation_model": "google/gemma-3-27b-it",
+  "evaluation_method": "LLM-as-Judge (6-Dimension Rubric)",
+  "timestamp": "2026-03-31T20:23:41.636Z",
+  "total_entries": 44,
+  "successful_entries": 44,
+  "failed_entries": 0,
+  "metrics": {
+    "totalEntries": 44,
+    "avgWordCount": 274.6363636363636,
+    "minWordCount": 155,
+    "maxWordCount": 605,
+    "avgOverallScore": 4.054545454545456,
+    "avgInstructionalQuality": 3.6818181818181817,
+    "avgSpecificity": 4,
+    "avgClarity": 3.6818181818181817,
+    "avgMotivationalTone": 4.659090909090909,
+    "avgLevelSuitability": 4.25,
+    "avgCognitiveAlignment": 4.045454545454546,
+    "avgModalityAlignment": 4.659090909090909,
+    "avgStructureAlignment": 4.25,
+    "avgTempoAlignment": 3.227272727272727,
+    "byLevel": {
+      "1": {
+        "avgWords": 293.45454545454544,
+        "avgOverallScore": 3.3454545454545457,
+        "avgCognitiveAlignment": 3.272727272727273,
+        "avgLevelSuitability": 3.3636363636363638,
+        "count": 11
+      },
+      "3": {
+        "avgWords": 274.27272727272725,
+        "avgOverallScore": 3.7818181818181813,
+        "avgCognitiveAlignment": 3.4242424242424248,
+        "avgLevelSuitability": 3.909090909090909,
+        "count": 11
+      },
+      "5": {
+        "avgWords": 259.45454545454544,
+        "avgOverallScore": 4.436363636363636,
+        "avgCognitiveAlignment": 4.818181818181818,
+        "avgLevelSuitability": 4.818181818181818,
+        "count": 11
+      },
+      "6": {
+        "avgWords": 271.3636363636364,
+        "avgOverallScore": 4.654545454545453,
+        "avgCognitiveAlignment": 4.666666666666667,
+        "avgLevelSuitability": 4.909090909090909,
+        "count": 11
+      }
+    },
+    "byTempo": {
+      "I": {
+        "avgWords": 283.8636363636364,
+        "avgScore": 3.563636363636364,
+        "avgTempoAlignment": 1.4545454545454546
+      },
+      "R": {
+        "avgWords": 265.40909090909093,
+        "avgScore": 4.545454545454543,
+        "avgTempoAlignment": 5
+      }
+    }
+  },
+  "description": "Profile code provided as ID only - No personalization instructions - Control baseline for research"
+}

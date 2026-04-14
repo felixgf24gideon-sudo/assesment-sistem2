@@ -1,14 +1,5 @@
 // server/src/config/profileSystem.ts
 
-/**
- * PARAMETRIC PROFILE SYSTEM
- * 
- * Generates AI feedback strategies for 48 profiles algorithmically
- * Based on 4 core parameters: Level, Visual, Processing, Tempo
- * 
- * Eliminates need for 48 manual definitions (efficient & scalable)
- */
-
 export type ProfileCode = string;
 
 export interface ProfileParams {
@@ -55,6 +46,155 @@ export function parseProfileCode(code: string): ProfileParams {
   };
 }
 
+// ===== PERSONALIZED OPENING PHRASE GENERATOR =====
+/**
+ * Generate opening phrase berdasarkan FULL profile, bukan hardcoded
+ * 
+ * Dimensi:
+ * - Level: Determines support level & complexity
+ * - Visual: Determines use of analogies vs logic
+ * - Processing: Determines big-picture vs step-by-step
+ * - Tempo: Determines brevity vs elaboration
+ */
+function generateOpeningPhrase(
+  level: number,
+  visual: 'T' | 'P',
+  processing: 'G' | 'A',
+  tempo: 'I' | 'R'
+): string {
+  
+  // ===== SUPPORT LEVEL (based on level & tempo) =====
+  const supportLevel = level <= 2 ? 'very_high' : level <= 3 ? 'high' : 'moderate';
+  
+  // ===== ACKNOWLEDGE THEIR COGNITIVE STYLE =====
+  // This is the KEY to personalization!
+  
+  let acknowledgment = '';
+  
+  // 1. Acknowledge their VISUAL style
+  if (visual === 'P') {
+    // Visual/Analogy learners
+    if (level <= 2) {
+      acknowledgment += 'Saya lihat kamu mencoba membayangkan solusinya.';
+    } else if (level <= 4) {
+      acknowledgment += 'Analogi yang kamu gunakan cukup dekat.';
+    } else {
+      acknowledgment += 'Your conceptual approach is sound.';
+    }
+  } else {
+    // Text/Logic learners
+    if (level <= 2) {
+      acknowledgment += 'Saya lihat logika kamu sedang berjalan.';
+    } else if (level <= 4) {
+      acknowledgment += 'Reasoning mu mulai ada di jalur yang tepat.';
+    } else {
+      acknowledgment += 'Your logical framework is solid.';
+    }
+  }
+  
+  // 2. Acknowledge their PROCESSING style
+  if (processing === 'G') {
+    // Global learners - they see big picture
+    if (level <= 2) {
+      acknowledgment += ' Kamu sudah tangkap konsep besarnya!';
+    } else if (level <= 4) {
+      acknowledgment += ' Pemahaman konsep-mu baik.';
+    } else {
+      acknowledgment += ' Your conceptual grasp is strong.';
+    }
+  } else {
+    // Analytic learners - they work step-by-step
+    if (level <= 2) {
+      acknowledgment += ' Langkah-langkahmu terstruktur dengan baik!';
+    } else if (level <= 4) {
+      acknowledgment += ' Urutan pemikiran-mu logis.';
+    } else {
+      acknowledgment += ' Your procedural logic is correct.';
+    }
+  }
+  
+  // 3. Add personalized correction based on TEMPO
+  let correction = '';
+  
+  if (tempo === 'I') {
+    // Impulsive: brief, direct, acknowledgment-focused
+    if (supportLevel === 'very_high') {
+      correction = ' Tapi ada yang kurang tepat di sini.';
+    } else if (supportLevel === 'high') {
+      correction = ' Perlu adjustment di satu area.';
+    } else {
+      correction = ' Reconsider this part.';
+    }
+  } else {
+    // Reflective: elaborate, supportive, invitation to reflect
+    if (supportLevel === 'very_high') {
+      correction = ' Mari kita lihat bersama di mana yang perlu diperbaiki dan kenapa.';
+    } else if (supportLevel === 'high') {
+      correction = ' Ada satu area yang perlu ditelaah lebih dalam untuk keakuratan.';
+    } else {
+      correction = ' Let\'s examine this particular aspect more carefully.';
+    }
+  }
+  
+  return acknowledgment + correction;
+}
+
+// ===== PERSONALIZED CLOSING STYLE GENERATOR =====
+/**
+ * Generate closing berdasarkan profil, bukan generic
+ */
+function generateClosingStyle(
+  level: number,
+  visual: 'T' | 'P',
+  processing: 'G' | 'A',
+  tempo: 'I' | 'R'
+): string {
+  
+  const supportLevel = level <= 2 ? 'very_high' : level <= 3 ? 'high' : 'moderate';
+  
+  // ===== FOR IMPULSIVE LEARNERS =====
+  if (tempo === 'I') {
+    if (supportLevel === 'very_high') {
+      return 'Coba lagi sekarang! Kamu pasti bisa! 💪';
+    } else if (supportLevel === 'high') {
+      if (processing === 'G') {
+        return 'Coba dengan insight konsep ini. Kamu siap!';
+      } else {
+        return 'Trace lagi step-nya. Mantap!';
+      }
+    } else {
+      if (visual === 'P') {
+        return 'Reconsider with this perspective.';
+      } else {
+        return 'Retry with this logic in mind.';
+      }
+    }
+  }
+  
+  // ===== FOR REFLECTIVE LEARNERS =====
+  else {
+    if (supportLevel === 'very_high') {
+      if (processing === 'G') {
+        return 'Pikirkan hubungan antara konsep besar ini dengan jawaban mu. Kamu akan menemukan jawabannya! 💡';
+      } else {
+        return 'Perhatikan di mana alur langkah-langkahnya terputus. Aku percaya kamu bisa menemukan jawabannya! 💡';
+      }
+    } else if (supportLevel === 'high') {
+      if (processing === 'G') {
+        return 'Dengan pemahaman konsep ini, bagaimana kamu melihat masalahnya kembali?';
+      } else {
+        return 'Trace step-by-step lagi dengan fokus pada area yang kami diskusikan.';
+      }
+    } else {
+      if (visual === 'P') {
+        return 'Consider the conceptual framework we discussed. How does it apply here?';
+      } else {
+        return 'Analyze the logical chain once more with this understanding.';
+      }
+    }
+  }
+}
+
 export function deriveAIStrategy(params: ProfileParams): AIStrategy {
   const { level, visual, processing, tempo } = params;
   
@@ -65,25 +205,20 @@ export function deriveAIStrategy(params: ProfileParams): AIStrategy {
   const positiveWords = Math.round(correctiveWords * 1.6);
   const walkthroughWords = Math.round(correctiveWords * (tempo === 'I' ? 2.5 : 3.5));
   
+  // ===== TONE (based on level) =====
   let tone: string;
   if (level <= 2) {
-    tone = 'Sangat supportif, hindari jargon teknis, gunakan bahasa sehari-hari yang sangat sederhana';
+    tone = 'Sangat supportif, ramah, gunakan bahasa sehari-hari yang sangat sederhana. Hindari istilah teknis.';
   } else if (level <= 4) {
-    tone = 'Supportif dan encouraging, boleh gunakan istilah teknis moderat dengan penjelasan';
+    tone = 'Supportif dan edukatif, gunakan bahasa menengah dengan penjelasan istilah teknis yang memadai.';
   } else {
-    tone = 'Professional dan presisi, gunakan terminologi teknis yang tepat, assume prior knowledge';
+    tone = 'Sangat akademis, profesional, dan analitis tingkat tinggi. Gunakan terminologi teknis yang advance tanpa menjelaskan definisi dasar. Asumsikan siswa adalah seorang ahli (expert).';
   }
   
-  const openingPhrases = {
-    1: tempo === 'I' ? 'Belum tepat, tapi gak papa! 😊' : 'Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.',
-    2: tempo === 'I' ? 'Belum benar, ayo coba lagi! 💪' : 'Belum benar, tapi kamu sudah di jalur yang tepat. Mari analisis lebih dalam.',
-    3: tempo === 'I' ? 'Belum tepat. Mari coba lagi.' : 'Belum benar. Mari kita review reasoning-nya bersama.',
-    4: tempo === 'I' ? 'Belum tepat.' : 'Incorrect. Let\'s reconsider the approach.',
-    5: tempo === 'I' ? 'Incorrect.' : 'Incorrect. Let\'s analyze the reasoning more carefully.',
-    6: tempo === 'I' ? 'Incorrect.' : 'Incorrect. Reconsider the edge cases and underlying principles.'
-  };
-  const openingPhrase = openingPhrases[level as keyof typeof openingPhrases] || openingPhrases[3];
+  // ===== OPENING PHRASE (PERSONALIZED) =====
+  const openingPhrase = generateOpeningPhrase(level, visual, processing, tempo);
   
+  // ===== HINT PROGRESSION =====
   let hintProgression: string[];
   
   if (processing === 'G') {
@@ -149,9 +284,8 @@ export function deriveAIStrategy(params: ProfileParams): AIStrategy {
     }
   }
   
-  const closingStyle = tempo === 'I'
-    ? 'Akhiri dengan 1 pertanyaan pemandu singkat dan to-the-point'
-    : 'Akhiri dengan pertanyaan yang mengundang refleksi lebih dalam dan critical thinking';
+  // ===== CLOSING STYLE (PERSONALIZED) =====
+  const closingStyle = generateClosingStyle(level, visual, processing, tempo);
   
   const enthusiasmLevel = level <= 2 
     ? 'Very High (celebratory & encouraging)' 
@@ -180,8 +314,8 @@ export function deriveAIStrategy(params: ProfileParams): AIStrategy {
   
   const walkthroughStructure = processing === 'G'
     ? (tempo === 'I'
-        ? '1. 🎯 Konsep Kunci (1-2 kalimat) | 2. 📋 Overview Solusi | 3. ✅ Kesimpulan'
-        : '1. 🎯 Konsep Kunci | 2. 📋 Overview Solusi | 3. 🔢 Breakdown Detail | 4. ✅ Kesimpulan + mention opsi lain')
+        ? '1.  Konsep Kunci (1-2 kalimat) | 2.  Overview Solusi | 3.  Kesimpulan'
+        : '1.  Konsep Kunci | 2.  Overview Solusi | 3.  Breakdown Detail | 4.  Kesimpulan + mention opsi lain')
     : (tempo === 'I'
         ? 'Langkah 1 → 2 → 3 → Hasil (concise, no elaboration)'
         : 'Langkah 1 (dengan reasoning) → 2 (dengan reasoning) → ... → Hasil (explain each step)');
