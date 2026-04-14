@@ -1,279 +1,75 @@
-# AI Adaptive Deliberate Practice Web Application
+# Project Name: assesment-sistem2
 
-A production-ready web-based deliberate practice learning system with adaptive AI-generated feedback using React, Node.js, Express, OpenAI API, and Tailwind CSS.
+## Description
+This repository contains the source code for the assesment-sistem2 application. The application utilizes the React framework, providing a comprehensive assessment experience for users.
 
-## 🎯 Project Overview
+## State Management
+The application manages its state using the React Context API, allowing for global state management across components without the need for additional libraries such as useReducer.
 
-This application implements an intelligent learning system that adapts to individual student profiles using AI-powered feedback. The system analyzes student cognitive styles (visual preference, processing orientation, behavioral tempo) and pedagogical levels to provide personalized, context-aware learning feedback.
+## Components
+The following components are included in the project:
+- **FeedbackPanel**: Displays user feedback and assessments.
+- **LoadingSpinner**: Indicates loading states in the application.
+- **ProfileSelector**: Allows users to select their profile.
+- **ProgressIndicator**: Shows the progress of the assessment.
+- **QuestionCard**: Responsible for displaying individual questions.
 
-## 🏗️ Technical Architecture
+## Services
+The following services can be found in the `server/src/services/` directory:
+- **aiService.ts**: Handles AI-related functionalities.
+- **promptBuilder.ts**: Constructs prompts for AI processing.
 
-### Stack
-- **Frontend**: React 18 with TypeScript, Vite
-- **Backend**: Node.js with Express
-- **AI**: OpenAI API (GPT-4o-mini)
-- **Styling**: Tailwind CSS
-- **State Management**: React Context API + useReducer
+## Middleware
+The following middleware functions are implemented:
+- **validateRequest**: Validates incoming requests to ensure they meet the required criteria.
+- **errorHandler**: Catches and handles errors in the application.
 
-### Project Structure
+## Controllers
+The project includes the following controller:
+- **feedbackController.ts**: Manages the logic related to feedback submission and retrieval.
+
+## Shared Files
+The shared folder contains:
+- **types.ts**: Type definitions used throughout the application.
+- **questions.ts**: Contains the questions used in the assessment.
+
+## Questions
+The application features a set of 20 questions, each covering a specific topic. Details about the topics and question content can be found in `shared/questions.ts`.
+
+## API Endpoint Documentation
+Make sure to review the API endpoint documentation for the actual request/response structure used in the application.
+
+## Installation Instructions
+To set up the application, ensure to configure the `.env` file according to your development environment settings.
+
+## Project Structure
+The project is organized as follows:
+
 ```
-adaptive-practice-app/
-├── client/                          # React frontend
-│   ├── src/
-│   │   ├── components/             # React components
-│   │   ├── contexts/               # State management
-│   │   ├── services/               # API calls
-│   │   ├── types/                  # TypeScript definitions
-│   │   ├── utils/                  # Utility functions
-│   │   ├── data/                   # Question bank
-│   │   ├── App.tsx
-│   │   └── index.tsx
-│   └── package.json
-├── server/                          # Express backend
-│   ├── src/
-│   │   ├── controllers/            # Route handlers
-│   │   ├── services/               # Business logic
-│   │   ├── middleware/             # Express middleware
-│   │   └── server.ts
-│   └── package.json
-└── shared/                          # Shared TypeScript types
-    └── types.ts
-```
+assesment-sistem2/
+|-- client/
+|   |-- src/
+|   |   |-- components/
+|   |   |   |-- FeedbackPanel/
+|   |   |   |-- LoadingSpinner/
+|   |   |   |-- ProfileSelector/
+|   |   |   |-- ProgressIndicator/
+|   |   |   |-- QuestionCard/
+|   |
+|-- server/
+|   |-- src/
+|       |-- controllers/
+|       |   |-- feedbackController.ts
+|       |-- middleware/
+|       |   |-- validateRequest.ts
+|       |   |-- errorHandler.ts
+|       |-- services/
+|       |   |-- aiService.ts
+|       |   |-- promptBuilder.ts
+|       |-- shared/
+|           |-- types.ts
+|           |-- questions.ts
+``` 
 
-## 🚀 Setup Instructions
-
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
-- OpenAI API key
-
-### Installation
-
-1. **Clone the repository**
-```bash
-git clone <repository-url>
-cd adaptive-practice-app
-```
-
-2. **Install server dependencies**
-```bash
-cd server
-npm install
-```
-
-3. **Install client dependencies**
-```bash
-cd ../client
-npm install
-```
-
-4. **Configure environment variables**
-
-Create a `.env` file in the `server` directory:
-```bash
-cd ../server
-cp .env.example .env
-```
-
-Edit `.env` and add your OpenAI API key:
-```
-OPENAI_API_KEY=sk-your-actual-api-key-here
-PORT=5000
-NODE_ENV=development
-```
-
-### Running the Application
-
-1. **Start the backend server**
-```bash
-cd server
-npm run dev
-```
-The server will run on `http://localhost:5000`
-
-2. **Start the frontend (in a new terminal)**
-```bash
-cd client
-npm run dev
-```
-The client will run on `http://localhost:3000`
-
-3. **Access the application**
-Open your browser and navigate to `http://localhost:3000`
-
-## 📝 How to Use
-
-### Profile Codes
-
-The system uses 4-character profile codes to customize the learning experience:
-
-**Format**: `[Level][Visual][Processing][Tempo]`
-
-- **Level (1-6)**: Pedagogical level from beginner (1) to expert (6)
-- **Visual (T/P)**: Text-based (T) or Picture-based (P) preference
-- **Processing (G/A)**: Global big-picture (G) or Analytic step-by-step (A)
-- **Tempo (I/R)**: Impulsive direct (I) or Reflective guided (R)
-
-**Example Profile Codes**:
-- `1TGI` - Beginner, text, global, impulsive
-- `3PAR` - Intermediate, pictures, analytic, reflective
-- `5AGI` - Advanced, analytic, global, impulsive
-- `6PGR` - Expert, pictures, global, reflective
-
-### Using the Application
-
-1. **Enter Profile Code**: Start by entering your 4-character profile code
-2. **Answer Questions**: Select an answer and click "Submit Answer"
-3. **Review Feedback**: Receive AI-generated adaptive feedback based on your profile
-4. **Retry or Continue**: 
-   - Incorrect answers allow unlimited retries
-   - Correct answers automatically advance to the next question after 2 seconds
-5. **Track Progress**: Monitor your progress and correct answer count
-
-## 🧠 Learning System Features
-
-### Adaptive Feedback Engine
-
-The AI feedback system adapts to:
-- **Pedagogical Level**: Adjusts language complexity and depth
-- **Visual Preference**: Uses text structure or visual metaphors
-- **Processing Style**: Provides big-picture context or step-by-step breakdown
-- **Behavioral Tempo**: Gives direct corrections or guided hints
-
-### Question Bank
-
-20 diverse questions covering:
-- Algorithms
-- Data Structures
-- Web Development
-- Networking
-- Databases
-- Programming Concepts
-- React
-- Version Control
-
-## 🔧 API Endpoints
-
-### POST /api/feedback
-Generate adaptive feedback for a student answer
-
-**Request Body**:
-```json
-{
-  "profileCode": "2TGI",
-  "questionId": "q1",
-  "selectedAnswer": 1,
-  "attemptNumber": 1
-}
-```
-
-**Response**:
-```json
-{
-  "feedback": "Correct! Binary search splits the data repeatedly.",
-  "isCorrect": true
-}
-```
-
-### GET /health
-Health check endpoint
-
-**Response**:
-```json
-{
-  "status": "healthy"
-}
-```
-
-## 🛡️ Error Handling
-
-The application includes comprehensive error handling:
-
-- **Invalid Profile Code**: Shows validation message
-- **Network Errors**: Displays retry option
-- **AI API Timeout**: Falls back to generic feedback
-- **Server Errors**: Graceful error messages
-
-## 🎨 UI/UX Features
-
-- Clean, minimal interface
-- Centered layout (max-width: 600px)
-- Color-coded feedback:
-  - Red for incorrect answers
-  - Green for correct answers
-  - Gray for neutral state
-- Loading indicators during AI processing
-- Progress tracking bar
-- Responsive design
-
-## 🔒 Security
-
-- API key stored server-side only (never exposed to client)
-- Input validation on both client and server
-- CORS configuration for secure client-server communication
-- Environment variable protection
-
-## 📦 Production Build
-
-### Build the client
-```bash
-cd client
-npm run build
-```
-
-### Build the server
-```bash
-cd server
-npm run build
-npm start
-```
-
-## 🧪 Development
-
-### Server Development
-```bash
-cd server
-npm run dev  # Uses ts-node for hot reload
-```
-
-### Client Development
-```bash
-cd client
-npm run dev  # Vite dev server with hot reload
-```
-
-## 📊 System Requirements
-
-- Node.js 18 or higher
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- Active internet connection for OpenAI API
-- Valid OpenAI API key
-
-## 🎯 Future Extensibility
-
-The architecture supports easy addition of:
-- AI question generation
-- Difficulty adaptation algorithms
-- Bayesian knowledge tracing
-- Student analytics dashboard
-- Essay/open-ended questions
-- Spaced repetition scheduling
-- Multi-topic curriculum paths
-
-## 📝 License
-
-MIT
-
-## 🤝 Contributing
-
-This is a demonstration project for adaptive learning systems. For production use, consider:
-- Adding user authentication
-- Implementing data persistence
-- Adding comprehensive testing
-- Setting up CI/CD pipelines
-- Implementing rate limiting
-- Adding monitoring and analytics
-
-## 🙏 Acknowledgments
-
-Built with modern web development best practices and learning science principles, demonstrating the integration of AI technology into educational applications.
+## Additional Notes
+All features listed that are not currently implemented have been removed to reflect the actual capabilities of the project.
