@@ -1,0 +1,84 @@
+{
+  "experiment_type": "control_group",
+  "personalization": false,
+  "generation_model": "google/gemma-3-27b-it",
+  "evaluation_method": "LLM-as-Judge (6-Dimension Refined Rubric)",
+  "dimensions": [
+    "Instructional Quality",
+    "Clarity & Practicality",
+    "Modality Alignment",
+    "Structure Alignment",
+    "Tempo Alignment",
+    "Personalized Motivation"
+  ],
+  "timestamp": "2026-04-01T02:23:43.517Z",
+  "total_entries": 528,
+  "successful_entries": 528,
+  "failed_entries": 0,
+  "metrics": {
+    "totalEntries": 528,
+    "avgWordCount": 276.94507575757575,
+    "minWordCount": 1,
+    "maxWordCount": 630,
+    "avgInstructionalQuality": 3.053030303030303,
+    "avgClarityAndPracticality": 2.7518939393939394,
+    "avgModalityAlignment": 3.356060606060606,
+    "avgStructureAlignment": 3.960227272727273,
+    "avgTempoAlignment": 2.6231060606060606,
+    "avgPersonalizedMotivation": 2.5681818181818183,
+    "avgOverallPersonalizationScore": 3.052083333333332,
+    "byLevel": {
+      "1": {
+        "avgWords": 272.27272727272725,
+        "avgOverallScore": 3.0928030303030307,
+        "avgTempoAlignment": 2.6931818181818183,
+        "count": 88
+      },
+      "2": {
+        "avgWords": 286.77272727272725,
+        "avgOverallScore": 3.028409090909091,
+        "avgTempoAlignment": 2.5454545454545454,
+        "count": 88
+      },
+      "3": {
+        "avgWords": 276.0113636363636,
+        "avgOverallScore": 3.081439393939394,
+        "avgTempoAlignment": 2.659090909090909,
+        "count": 88
+      },
+      "4": {
+        "avgWords": 271.5681818181818,
+        "avgOverallScore": 3.034090909090911,
+        "avgTempoAlignment": 2.6136363636363638,
+        "count": 88
+      },
+      "5": {
+        "avgWords": 272.77272727272725,
+        "avgOverallScore": 3.039772727272728,
+        "avgTempoAlignment": 2.6704545454545454,
+        "count": 88
+      },
+      "6": {
+        "avgWords": 282.27272727272725,
+        "avgOverallScore": 3.0359848484848495,
+        "avgTempoAlignment": 2.5568181818181817,
+        "count": 88
+      }
+    },
+    "byTempo": {
+      "I": {
+        "avgWords": 272.0113636363636,
+        "avgScore": 2.644570707070708,
+        "avgTempoAlignment": 1.5113636363636365,
+        "count": 264
+      },
+      "R": {
+        "avgWords": 281.8787878787879,
+        "avgScore": 3.4595959595959602,
+        "avgTempoAlignment": 3.734848484848485,
+        "count": 264
+      }
+    }
+  },
+  "description": "Profile code provided as ID only - No personalization instructions - Control baseline for research"
+}

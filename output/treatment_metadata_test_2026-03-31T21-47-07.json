@@ -1,0 +1,78 @@
+{
+  "experiment_type": "treatment_group",
+  "personalization": true,
+  "generation_model": "google/gemma-3-27b-it",
+  "evaluation_method": "LLM-as-Judge (6-Dimension Refined Rubric)",
+  "dimensions": [
+    "Instructional Quality",
+    "Clarity & Practicality",
+    "Modality Alignment",
+    "Structure Alignment",
+    "Tempo Alignment",
+    "Personalized Motivation"
+  ],
+  "timestamp": "2026-03-31T21:47:07.086Z",
+  "total_entries": 44,
+  "successful_entries": 44,
+  "failed_entries": 0,
+  "metrics": {
+    "totalEntries": 44,
+    "avgWordCount": 133.22727272727272,
+    "minWordCount": 58,
+    "maxWordCount": 255,
+    "avgInstructionalQuality": 4.454545454545454,
+    "avgClarityAndPracticality": 4.613636363636363,
+    "avgModalityAlignment": 5,
+    "avgStructureAlignment": 4.909090909090909,
+    "avgTempoAlignment": 4.931818181818182,
+    "avgPersonalizedMotivation": 4.9772727272727275,
+    "avgOverallPersonalizationScore": 4.814393939393938,
+    "byLevel": {
+      "1": {
+        "avgWords": 75.9090909090909,
+        "avgOverallScore": 4.9393939393939394,
+        "avgTempoAlignment": 5,
+        "avgPersonalizedMotivation": 5,
+        "count": 11
+      },
+      "3": {
+        "avgWords": 78.81818181818181,
+        "avgOverallScore": 4.954545454545454,
+        "avgTempoAlignment": 4.818181818181818,
+        "avgPersonalizedMotivation": 5,
+        "count": 11
+      },
+      "5": {
+        "avgWords": 190.0909090909091,
+        "avgOverallScore": 4.636363636363637,
+        "avgTempoAlignment": 4.909090909090909,
+        "avgPersonalizedMotivation": 4.909090909090909,
+        "count": 11
+      },
+      "6": {
+        "avgWords": 188.0909090909091,
+        "avgOverallScore": 4.7272727272727275,
+        "avgTempoAlignment": 5,
+        "avgPersonalizedMotivation": 5,
+        "count": 11
+      }
+    },
+    "byTempo": {
+      "I": {
+        "avgWords": 77.36363636363636,
+        "avgScore": 4.946969696969696,
+        "avgTempoAlignment": 4.909090909090909,
+        "avgPersonalizedMotivation": 5,
+        "count": 22
+      },
+      "R": {
+        "avgWords": 189.0909090909091,
+        "avgScore": 4.681818181818183,
+        "avgTempoAlignment": 4.954545454545454,
+        "avgPersonalizedMotivation": 4.954545454545454,
+        "count": 22
+      }
+    }
+  },
+  "description": "Personalized feedback with full profile awareness and explicit personalization instructions - Treatment group for research"
+}

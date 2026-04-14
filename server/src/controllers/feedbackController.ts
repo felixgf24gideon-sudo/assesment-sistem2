@@ -1,50 +1,120 @@
-import { Request, Response } from 'express';
-import { generateFeedback } from '../services/aiService';
-import { FeedbackRequest, CognitiveStyle } from '../../../shared/types';
-import { questions } from '../../../shared/questions';
+// server/src/controllers/feedbackController.ts
 
-function parseProfileCode(code: string): { level: number; style: CognitiveStyle } {
-  return {
-    level: parseInt(code[0]),
-    style: {
-      visualPreference: code[1] as 'T' | 'P',
-      processingOrientation: code[2] as 'G' | 'A',
-      behavioralTempo: code[3] as 'I' | 'R'
-    }
-  };
-}
+import { Request, Response, NextFunction } from 'express';
+import { generateFeedback, generateDetailedWalkthrough } from '../services/openrouterService';
 
-export async function getFeedback(req: Request, res: Response) {
+/**
+ * POST /api/feedback
+ * Generate AI feedback for student answer
+ */
+export async function getFeedback(req: Request, res: Response, next: NextFunction) {
   try {
-    const { profileCode, questionId, selectedAnswer, attemptNumber } = req.body;
+    const {
+      questionText,
+      questionTopic,
+      userAnswer,
+      correctAnswer,
+      allOptions,
+      isCorrect,
+      attemptCount,
+      userProfile,
+      difficulty,
+      imageDescription
+    } = req.body;
 
-    const question = questions.find(q => q.id === questionId);
-    if (!question) {
-      return res.status(404).json({ error: 'Question not found' });
+    // Validation
+    if (!questionText || !correctAnswer || !userAnswer || userProfile === undefined) {
+      return res.status(400).json({
+        error: 'Missing required fields',
+        required: ['questionText', 'correctAnswer', 'userAnswer', 'userProfile']
+      });
     }
 
-    const isCorrect = selectedAnswer === question.correctAnswer;
-    const profile = parseProfileCode(profileCode);
+    console.log('📥 Feedback request received:');
+    console.log(`   Profile: ${userProfile}`);
+    console.log(`   Correct: ${isCorrect}`);
+    console.log(`   Attempt: ${attemptCount}`);
 
-    const feedbackRequest: FeedbackRequest = {
-      profileCode,
-      pedagogicalLevel: profile.level,
-      attemptNumber,
-      questionText: question.text,
-      correctAnswer: question.options[question.correctAnswer],
-      studentAnswer: question.options[selectedAnswer],
-      isCorrect,
-      cognitiveStyle: profile.style
-    };
+    // Generate feedback using parametric profile system
+    const feedback = await generateFeedback({
+      questionText,
+      questionTopic: questionTopic || 'General',
+      userAnswer,
+      correctAnswer,
+      allOptions: allOptions || [],
+      isCorrect: isCorrect === true || isCorrect === 'true',
+      attemptCount: parseInt(attemptCount) || 1,
+      userProfile: userProfile || '3TGI',
+      difficulty: parseInt(difficulty) || 3,
+      imageDescription
+    });
 
-    const feedback = await generateFeedback(feedbackRequest);
+    console.log('✅ Feedback generated successfully');
 
     res.json({
+      success: true,
       feedback,
-      isCorrect
+      profile: userProfile,
+      timestamp: new Date().toISOString()
     });
-  } catch (error) {
-    console.error('Feedback controller error:', error);
-    res.status(500).json({ error: 'Failed to generate feedback' });
+
+  } catch (error: any) {
+    console.error('❌ Error in getFeedback:', error);
+    next(error);
   }
 }
+
+/**
+ * POST /api/feedback/explanation
+ * Generate detailed walkthrough after correct answer
+ */
+export async function getExplanation(req: Request, res: Response, next: NextFunction) {
+  try {
+    const {
+      questionText,
+      correctAnswer,
+      allOptions,
+      userProfile,
+      imageDescription
+    } = req.body;
+
+    // Validation
+    if (!questionText || !correctAnswer || !allOptions) {
+      return res.status(400).json({
+        error: 'Missing required fields',
+        required: ['questionText', 'correctAnswer', 'allOptions']
+      });
+    }
+
+    console.log('📥 Explanation request received:');
+    console.log(`   Profile: ${userProfile}`);
+    console.log(`   Question: ${questionText.substring(0, 50)}...`);
+
+    // Generate detailed walkthrough using parametric profile system
+    const explanation = await generateDetailedWalkthrough({
+      profileCode: userProfile || '3TGI',
+      questionText,
+      correctAnswer,
+      allOptions,
+      imageDescription
+    });
+
+    console.log('✅ Explanation generated successfully');
+
+    res.json({
+      success: true,
+      explanation,
+      profile: userProfile,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error: any) {
+    console.error('❌ Error in getExplanation:', error);
+    next(error);
+  }
+}
+
+export default {
+  getFeedback,
+  getExplanation
+};

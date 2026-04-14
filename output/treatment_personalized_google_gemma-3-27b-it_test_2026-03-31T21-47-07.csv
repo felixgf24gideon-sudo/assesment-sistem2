@@ -1,0 +1,1085 @@
+user_cognitive,user_pedagogic_level,question,option,user_answer,true_answer,ai_feedback,feedback_word_count,instructional_quality,clarity_and_practicality,modality_alignment,structure_alignment,tempo_alignment,personalized_motivation,overall_personalization_score,strongest_dimension,weakest_dimension,critical_failures,learning_impact
+1TGI,1,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"Kamu kurang teliti mengecek apakah ada bunga dengan jenis dan warna yang sama. Aturan kedua bilang, tidak boleh ada bunga yang jenis dan warnanya sama dalam satu rangkaian.
+
+Opsi A melanggar aturan itu karena ada B2 dan B1, serta C3 dan C1. Opsi D memenuhi semua aturan: setiap warna muncul dua kali, tidak ada pengulangan jenis-warna, dan jumlah tiap jenis bunga maksimal dua. 
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",71,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback is highly effective for an impulsive beginner because it is brief enough to be read fully while providing the exact logical correction needed."
+1TGI,1,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"Kamu terlalu cepat melihat angka 5, 3, 7, dan 2 tanpa memahami pola keseluruhan. Kesalahanmu adalah menghitung total pagar yang *bisa* dicat setiap warna, bukan berapa pagar yang *berurutan* bisa dicat tanpa warna sama berdekatan.
+
+Pola pengecatannya M-H-K-B berulang. Setiap siklus, kamu bisa mengecat 5 + 3 + 7 + 2 = 17 pagar. Tapi, soalnya meminta pagar yang *tidak* berdampingan warnanya sama. Satu siklus penuh (M-H-K-B) memenuhi syarat ini, jadi jawabannya adalah 17 pagar, bukan 8.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",85,4.00,5.00,5.00,5.00,5.00,5.00,4.83,Personalized Motivation,Instructional Quality,"None.","This feedback is highly effective for this specific learner because it validates their speed while providing the necessary 'big picture' correction in a concise format they will actually read."
+1TGI,1,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"Kamu fokus pada hasil akhir tanpa melihat langkah awalnya. Soal ini tentang sisa pembagian, bukan mencari kelipatan.
+
+Pertama, bagi 275 apel dengan 8 (apel per kantong): 275 / 8 = 34 sisa 3. Ini berarti ada 34 kantong penuh dan 3 apel tidak dikemas. Karena soal menanyakan apel *tidak* dikemas, jawabannya adalah 3. Jangan langsung mencari jawaban, tapi pahami dulu apa yang ditanya!
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",71,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback is highly effective because it respects the learner's need for speed while forcing a pivot from global intuition to the specific logical detail they missed."
+1TGI,1,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"Kamu kurang teliti dalam menghitung jumlah huruf yang sama. Soal ini meminta kita mencari kelompok huruf yang muncul minimal 3 kali.
+
+Perhatikan: 'A' muncul 4 kali, 'B' muncul 3 kali, 'C' muncul 4 kali, dan 'F' muncul 2 kali. Ini berarti kita bisa membentuk 1 tim 'A', 1 tim 'B', dan 1 tim 'C'.  Ada kesalahan karena kamu hanya melihat satu tim saja. Total bantal yang digunakan adalah 3+3+3 = 9, sehingga bantal tak terpakai adalah 20-9 = 11.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail, terutama saat menghitung.",90,4.00,5.00,5.00,5.00,5.00,5.00,4.83,Personalized Motivation,Instructional Quality,"None","This feedback is highly effective for this specific learner because it validates their quick-thinking style while providing a concise, logical correction that they can digest instantly."
+1TGI,1,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"Kamu fokus pada baris 1 saja, padahal soalnya minta urutan *yang sesuai*—bisa lebih dari satu. Ingat, soal ini tentang jarak bunga ke pagar, bukan hanya mencari B.
+
+Baris 1 sesuai karena B lebih dekat pagar dari C. Baris 3 juga sesuai, karena jarak B ke pagar lebih pendek daripada jarak C ke pagar. Baris 2 tidak sesuai karena C lebih dekat pagar dari B.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail. Perhatikan kata kunci ""sesuai"" dan jangan terpaku pada satu jawaban saja.",83,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback will be highly effective as it respects the learner's need for speed while providing the necessary structural 'big picture' to correct their impulsive oversight."
+1TGI,1,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"Kamu keliru karena menghitung spot yang kosong *salah satu* hari, bukan kedua hari. Soal meminta spot kosong di Senin *dan* Selasa.
+
+Senin terisi 1, 3, 6, 9, 11. Selasa terisi 1, 4, 10, 11, 12. Hanya spot 1 & 11 yang terisi di kedua hari. Total spot adalah 12, jadi 12 - 5 (terisi minimal sekali) - (1 & 11 terisi dua kali) = 4 spot kosong di kedua hari.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",78,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback is highly effective because it respects the learner's need for speed while providing a logical framework that addresses their specific impulsive error."
+1TGI,1,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"Kamu terlalu cepat mengambil kesimpulan tanpa menghitung kebutuhan totalnya. Masalah ini tentang memotong kayu agar sesuai dengan pesanan Joni, bukan sekadar menjumlahkan panjang kayu yang dibutuhkan.
+
+Joni butuh (7 x 4m) + (7 x 3m) = 28m + 21m = 49m kayu. Setiap kayu 10m hanya bisa menghasilkan satu kayu 4m *dan* satu kayu 6m, atau satu kayu 3m *dan* satu kayu 7m.  Ali butuh 6 kayu 10m untuk memenuhi pesanan Joni (5 kayu untuk 4m dan 3m, 1 kayu untuk sisa 1m).
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",91,4.00,5.00,5.00,5.00,5.00,5.00,4.83,Personalized Motivation,Instructional Quality,"None.","This feedback is highly effective as it respects the learner's need for speed while surgically correcting the specific logical oversight regarding material constraints."
+1TGI,1,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"Kamu keliru karena fokus pada huruf yang sama, padahal pola utamanya adalah simetri atau satu huruf. Pola palindrome berarti kata dibaca sama dari depan atau belakang—contoh: ""ABA"". ""AAA"" adalah satu huruf yang sama, jadi memenuhi syarat.
+
+""BBBABBBB"" bukan palindrome; dibaca berbeda dari belakang. Ingat, palindrome *harus* sama persis ketika dibalik. Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",58,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback is highly effective for this specific learner because it respects their need for speed and big-picture context while providing the exact logical correction needed."
+1TGI,1,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"Kamu kurang teliti dalam membaca kode zigzag kolom per kolom. Pola zigzag berarti membaca vertikal, bukan mencoba mencari kata yang mirip.
+
+Kode “OIERKLTEILH!WBEX” jika dibaca kolom per kolom akan menghasilkan “OKIWILLBETHERE!”. Perhatikan bagaimana setiap huruf berasal dari kolom yang sama, bukan diagonal atau pola lain.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail. Kamu cepat melihat kemungkinan, tapi perlu lebih fokus pada aturan mainnya.",64,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback is highly effective because it respects the learner's speed while pivoting their 'big picture' strength toward the necessary technical precision."
+1TGI,1,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"Kamu kurang teliti dalam menghitung permen maksimal yang bisa dimakan sebelum gosok gigi. Ingat, Beba boleh makan maksimal 2 permen *sebelum* menemukan sikat gigi, lalu mulai lagi dari awal setelah gosok gigi.
+
+Lintasan ini punya dua kesempatan makan permen: P-P-S (2 permen) dan P-P-P-S (3 permen). Totalnya adalah 2 + 3 = 5 permen, ditambah satu permen terakhir sebelum selesai, menjadi 6 permen.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail, terutama hitung setiap segmen lintasan.",76,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback is highly effective as it respects the learner's need for speed while providing a logical framework to catch the details they typically overlook."
+1TGI,1,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"Kamu berasumsi Marko bersalah, padahal pernyataan mereka perlu diuji satu per satu dengan logika.
+
+Karena tiga anak selalu jujur, hanya satu yang berbohong. Jika Marko jujur, maka David yang berbohong. Tapi, David bilang Maya berbohong—ini kontradiksi. Jadi, Marko pasti berbohong, yang berarti dialah yang memecahkan kaca. Maya benar, Iva benar, dan David benar—ini tidak mungkin karena hanya ada satu pembohong.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",68,4.00,5.00,5.00,5.00,5.00,5.00,4.83,Personalized Motivation,Instructional Quality,"None.","This feedback is highly effective for this specific learner because it validates their speed while providing a structured logical framework that fits their global thinking style without overwhelming them."
+3TGI,3,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"[DIAGNOSIS - 2 sentences]
+Anda memilih opsi A, namun rangkaian tersebut melanggar aturan bahwa tidak boleh ada bunga dengan jenis dan warna yang sama. Opsi A memiliki ‘B’ dengan warna ‘1’ dan ‘2’, sementara opsi D memenuhi semua kriteria pembeli.
+
+[EXPLANATION - 3 sentences]
+Pembeli menginginkan setiap warna muncul dua kali, tidak ada duplikasi jenis-warna, dan maksimal dua bunga per jenis. Opsi A gagal karena warna 1 dan 2 muncul lebih dari sekali pada jenis B, melanggar aturan kedua. Opsi D secara akurat memenuhi semua batasan yang diberikan dalam soal.
+
+[PERSONALIZED MOTIVATION - 1 sentence]
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail, terutama saat mengecek duplikasi kode.",108,5.00,5.00,5.00,5.00,4.00,5.00,4.83,Personalized Motivation,Tempo Alignment,"None. The feedback successfully balances the learner's need for speed with their global processing style.","This feedback will be highly effective as it validates the student's quick-thinking style while providing a specific, low-friction correction for their oversight."
+3TGI,3,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"Anda keliru karena menghitung jumlah pagar berdasarkan satu siklus warna, padahal soal meminta jumlah pagar *maksimal* yang bisa dicat tanpa warna berulang. Kesalahan ini muncul karena Anda cenderung terburu-buru melihat pola tanpa menghitung total kapasitas cat.
+
+Siklus warna terdiri dari 4 warna (M-H-K-B) dan mampu mengecat 5+3+7+2 = 17 pagar. Namun, karena tidak boleh ada warna berulang, kita hanya bisa mengecat maksimal satu pagar per warna dalam satu rangkaian. Jadi, satu siklus penuh hanya bisa mengecat 4 pagar. Dengan 4 kaleng, kita bisa mengecat 15 pagar (3 siklus penuh + 3 pagar dari siklus keempat).
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",103,5.00,5.00,5.00,5.00,4.00,5.00,4.83,Personalized Motivation,Tempo Alignment,"None. The feedback successfully balances the learner's need for global context with their impulsive tempo.","This feedback will be highly effective as it validates the student's strength (global thinking) while providing a specific, logical correction for their impulsive error."
+3TGI,3,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"Anda keliru fokus pada sisa kantong, padahal soal menanyakan sisa apel *sebelum* dikantongi. Kesalahan ini umum karena Anda cenderung impulsif dan melihat detail sebelum keseluruhan struktur soal.
+
+Pertama, hitung berapa banyak kantong yang terisi: 275 apel / 8 apel/kantong = 34 kantong sisa 3 apel. Kemudian, hanya 3 apel yang tidak dikantongi. Ingat, soal spesifik menanyakan apel yang *tidak dimasukkan ke kantong*, bukan sisa kantong.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",73,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback will be highly effective because it respects the learner's time and cognitive style while turning their impulsivity into a strength by encouraging a 'big picture' check."
+3TGI,3,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"Anda keliru dalam menghitung jumlah tim yang dapat dibentuk karena fokus pada pencarian kelompok 3 huruf yang *berurutan*, padahal soal meminta kombinasi 3 huruf yang sama tanpa memperhatikan urutan. Kesalahan ini umum bagi pelajar dengan tempo impulsif.
+
+Hitunglah frekuensi setiap huruf: A(4), B(3), C(4), D(1), E(2), F(3). Tim terbentuk dari 3 huruf yang sama, jadi: 1 tim A, 1 tim B, 1 tim C, 1 tim F. Total tim = 4. Bantal terpakai = 3A + 3B + 3C + 3F = 12. Bantal tidak terpakai = 14 - 12 = 2.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",100,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback is highly effective as it validates the student's speed and global perspective while providing a precise logical correction that fits their specific cognitive constraints."
+3TGI,3,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"Anda salah fokus pada bunga B secara individual. Soal meminta *perbandingan* jarak B dan C ke pagar, bukan hanya posisi B.
+
+Baris 1 memenuhi syarat (B lebih dekat dari C). Baris 3 juga memenuhi syarat karena jarak D-B lebih pendek dari D-C. Anda melewatkan analisis Baris 3.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail. Perhatikan bahwa soal meminta semua baris yang *memenuhi* kondisi, bukan hanya satu.",67,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback is highly effective because it respects the learner's speed while providing the exact logical pivot needed to correct their impulsive oversight."
+3TGI,3,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"Anda keliru mengidentifikasi spot kosong di kedua hari; Anda fokus pada spot kosong di Senin, bukan irisan kedua himpunan. Kesalahan ini muncul karena kecenderungan impulsif Anda untuk langsung menjawab tanpa memetakan keseluruhan masalah.
+
+Untuk mencari spot kosong di kedua hari, hitunglah: (Total Spot) – (Senin ∪ Selasa). Spot yang terisi Senin atau Selasa adalah {1, 3, 4, 6, 9, 10, 11, 12}. Jadi, spot kosong di kedua hari adalah {2, 5, 7, 8} – berjumlah 4.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",84,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback is highly effective as it validates the learner's speed and global perspective while providing a precise logical correction that fits their specific cognitive profile."
+3TGI,3,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"Anda keliru karena fokus pada jumlah kebutuhan Joni, bukan memaksimalkan pemotongan per batang kayu 10m. Kesalahan ini umum bagi pelajar dengan tempo impulsif.
+
+Ali dapat memotong setiap kayu 10m menjadi 2 batang kayu 5m. Kemudian, 7 batang 4m dan 7 batang 3m membutuhkan total kayu 70m (28 + 21). Dengan 6 batang kayu 10m (60m), Ali dapat memenuhi kebutuhan tersebut, sementara 5 batang tidak cukup.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",73,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback will be highly effective because it respects the learner's speed while providing a logical 'anchor' to correct their specific impulsive oversight."
+3TGI,3,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"Anda keliru mengidentifikasi ‘AAA’ sebagai jawaban yang salah; kesalahan sebenarnya terletak pada ‘BBBABBBB’. Pola mengharuskan kata berupa palindrom atau huruf tunggal.
+
+‘AAA’ adalah palindrom valid, sementara ‘BBBABBBB’ bukan palindrom karena tidak sama jika dibalik. Periksa kembali definisi palindrom—urutan karakter harus identik maju dan mundur.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail. Anda cenderung impulsif, jadi verifikasi setiap karakter sebelum memutuskan.",61,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback will be highly effective because it respects the learner's need for speed while providing a necessary 'speed bump' to address their specific impulsive tendency."
+3TGI,3,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"Anda keliru membaca kode zigzag secara kolom; Anda berasumsi pola bacaan selalu horizontal, padahal kode ini dibaca vertikal. Kesalahan ini muncul karena Anda terburu-buru mencari pola yang familiar tanpa memeriksa seluruh struktur pesan. Kode tersebut diisi kolom per kolom, bukan baris per baris—sehingga ‘OIERK’ dibaca sebagai ‘OKI’. Perhatikan bagaimana setiap karakter berasal dari kolom yang berbeda. Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",64,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback is highly effective because it respects the learner's need for speed while providing a logical 'big-picture' correction that directly addresses their impulsive tendency."
+3TGI,3,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"Anda keliru karena hanya menghitung permen sebelum sikat gigi *pertama*, padahal Beba bisa makan permen setelah setiap sikat gigi. Kesalahan ini menunjukkan kecenderungan impulsif dalam melihat solusi secara menyeluruh.
+
+Beba boleh makan maksimal 2 permen, lalu *harus* sikat gigi. Pola ini berulang: P-P-S, P-P-S, dst. Dalam lintasan ini, ada tiga kesempatan makan 2 permen (P-P-S, P-P-S, P-P-S), sehingga total 6 permen.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail.",69,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback will be highly effective because it respects the learner's need for speed while pivoting their 'Global' strength to fix their 'Impulsive' error."
+3TGI,3,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"Anda berasumsi Marko bersalah karena pernyataannya, namun ini keliru karena fokus pada satu pernyataan saja.
+
+Pernyataan harus dianalisis secara logis dengan mempertimbangkan bahwa hanya satu yang berbohong. Jika Marko jujur, maka David yang memecahkan kaca (berdasarkan Maya & Iva). Namun, ini bertentangan dengan pernyataan David. Jadi, Marko berbohong, dan David yang memecahkan kaca.
+
+Cepat tangkap gambaran besarnya! Sekarang hati-hati di detail—analisis setiap pernyataan secara sistematis.",65,4.00,5.00,5.00,5.00,5.00,5.00,4.83,Personalized Motivation,Instructional Quality,"None. The feedback adheres strictly to the learner's profile constraints.","This feedback is highly effective because it validates the student's speed while providing a specific, low-friction logical framework to correct their impulsive errors."
+5TGR,5,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"[DIAGNOSIS - 1 sentence]
+Analisis Anda menunjukkan pemahaman mengenai batasan warna dan jenis bunga, namun terdapat kesalahan dalam verifikasi kombinasi yang memenuhi seluruh kriteria pembeli, khususnya terkait duplikasi jenis bunga.
+
+[EXPLANATION - 4 sentences]
+Kriteria kunci yang terlewatkan adalah larangan bunga dengan jenis dan warna yang sama. Opsi A (A1 - B2 - B1 - C3 - D2 - C1) melanggar aturan ini karena terdapat dua bunga B (B2 dan B1) yang tidak memenuhi syarat unik jenis-warna. Solusi yang valid, seperti opsi D (A1 - B2 - C3 - D3 - B1 - D2), memastikan setiap kombinasi jenis dan warna hanya muncul sekali. Verifikasi ini membutuhkan pemetaan sistematis seluruh rangkaian terhadap matriks kombinasi jenis-warna untuk mengidentifikasi pelanggaran batasan. 
+
+[PERSONALIZED MOTIVATION - 1 sentence]
+Analisis mendalam sekali! Koneksi ke konsep utama representasi kombinatorial dan batasan (constraints) sangat terlihat dalam pendekatan Anda, namun presisi dalam pengecekan detail akan meningkatkan akurasi solusi.",149,5.00,5.00,5.00,5.00,4.00,5.00,4.83,Personalized Motivation,Tempo Alignment,"None. The feedback is exceptionally well-tailored to an advanced, reflective, global text-based learner.","This feedback will be highly effective as it respects the learner's advanced cognitive level and provides the logical depth they value to correct their precision error."
+5TGR,5,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"[DIAGNOSIS]
+Anda mengidentifikasi pola berulang dalam urutan pengecatan, namun miskonsepsi terletak pada perhitungan jumlah pagar yang dapat dicat sebelum pengulangan warna terjadi. Analisis Anda belum sepenuhnya memperhitungkan kapasitas masing-masing kaleng cat dalam konteks batasan pengecatan pagar berdampingan dengan warna yang sama.
+
+[EXPLANATION]
+Pola pengecatan M-H-K-B berulang. Perhatikan bahwa setiap siklus membutuhkan 5 + 3 + 7 + 2 = 17 unit kapasitas cat. Namun, batasan ""tidak boleh ada pagar berdampingan dengan warna yang sama"" memodifikasi cara kita menghitung penggunaan cat. Kita tidak bisa langsung mengasumsikan kita dapat menggunakan seluruh kapasitas setiap kaleng dalam satu siklus.
+
+Mari kita analisis siklus pertama: M (1 pagar), H (1 pagar), K (1 pagar), B (1 pagar). Total 4 pagar dicat. Sisa kapasitas: M(4), H(2), K(6), B(1). Siklus kedua: M (1 pagar), H (1 pagar), K (1 pagar), B (1 pagar). Total 8 pagar dicat. Sisa kapasitas: M(3), H(1), K(5), B(0). Siklus ketiga: M (1 pagar), H (1 pagar), K (1 pagar). Total 12 pagar dicat. Sisa kapasitas: M(2), H(0), K(4). Siklus keempat: M (1 pagar), K (1 pagar). Total 14 pagar dicat. Sisa kapasitas: M(1), K(3). Terakhir, M (1 pagar). Total 15 pagar dicat.
+
+Perhitungan ini menunjukkan bahwa batasan pengecatan berdampingan memengaruhi penggunaan optimal setiap kaleng, menghasilkan total pagar yang dicat sebanyak 15, bukan 8.  Pendekatan yang benar memerlukan penelusuran siklus per siklus dengan mempertimbangkan sisa kapasitas dan batasan warna.
+
+[PERSONALIZED MOTIVATION]
+Analisis mendalam sekali! Koneksi ke konsep utama yang kamu cari, yaitu pemodelan batasan dalam masalah alokasi sumber daya, sudah sangat baik.",249,4.00,4.00,5.00,5.00,5.00,5.00,4.67,Personalized Motivation,Clarity & Practicality,"None.","This feedback will be highly effective for this specific learner because it respects their need for depth and logical sequence while providing the necessary big-picture context first."
+5TGR,5,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"[DIAGNOSIS]
+Kesalahan terletak pada interpretasi sisa hasil bagi (remainder) setelah pembagian pertama, yang kemudian berdampak pada perhitungan apel yang tidak dikemas. Anda secara akurat mengidentifikasi adanya sisa, namun salah dalam menentukan besarnya.
+
+[EXPLANATION]
+Konsep kunci di sini adalah operasi modulus (sisa hasil bagi). Ketika 275 apel dibagi dengan 8 (jumlah apel per kantong), hasilnya adalah 34 dengan sisa 3. Ini berarti terdapat 34 kantong terisi penuh dan 3 apel yang tidak memenuhi kuota 8 apel per kantong.  Perhitungan Anda, menghasilkan sisa 6, mengindikasikan potensi kesalahan dalam pembagian atau pemahaman tentang bagaimana sisa hasil bagi merepresentasikan apel yang tidak dikemas.  Selanjutnya, karena hanya apel yang memenuhi kuota 8 yang dikemas, maka sisa 3 apel tersebut *tidak* dimasukkan ke dalam kantong.  Perhatikan bahwa kardus tidak relevan dalam menjawab pertanyaan ini; fokusnya adalah apel yang tidak dikemas *awal*.  Pemahaman ini krusial dalam menyelesaikan soal-soal aplikasi bilangan bulat.
+
+[PERSONALIZED MOTIVATION]
+Analisis mendalam sekali! Koneksi ke konsep utama pembagian dan sisa hasil bagi yang kamu cari sudah tepat, hanya perlu sedikit ketelitian dalam perhitungan awal.",170,4.00,4.00,5.00,5.00,5.00,5.00,4.67,Personalized Motivation,Clarity & Practicality,"None. The feedback adheres strictly to the learner's profile dimensions.","This feedback will be highly effective as it respects the learner's need for depth while correcting the specific logical oversight regarding the remainder."
+5TGR,5,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"[DIAGNOSIS]
+Analisis Anda menunjukkan kesulitan dalam menerapkan prinsip kombinatorial dasar untuk menghitung formasi tim yang mungkin, serta menghitung sisa elemen yang tidak terpakai setelah pembentukan tim.
+
+[EXPLANATION]
+Kesalahan terletak pada penghitungan jumlah tim yang dapat dibentuk berdasarkan ketersediaan huruf yang sama. Pendekatan yang tepat memerlukan identifikasi frekuensi setiap huruf, kemudian menghitung kombinasi 3 huruf yang identik dari setiap frekuensi. Mari kita uraikan: Huruf 'A' muncul 4 kali (dapat membentuk 1 tim), 'B' muncul 3 kali (1 tim), 'C' muncul 4 kali (1 tim), 'F' muncul 2 kali (0 tim), dan 'E' muncul 2 kali (0 tim). Total tim yang dapat dibentuk adalah 1 + 1 + 1 = 3 tim dari 'A', 'B', dan 'C'. Namun, ada satu 'A' yang terlewatkan, sehingga total tim menjadi 4. Total bantal adalah 20. Tim yang terbentuk menggunakan 4 * 3 = 12 bantal. Dengan demikian, bantal yang tidak terpakai adalah 20 - 12 = 8. Terdapat kesalahan dalam penghitungan bantal yang tidak terpakai.
+
+Jumlah bantal yang digunakan untuk membentuk tim adalah 4 tim * 3 bantal/tim = 12 bantal. Total bantal yang tidak terpakai adalah 20 bantal - 12 bantal = 8 bantal.
+
+[PERSONALIZED MOTIVATION]
+Analisis mendalam sekali! Koneksi ke konsep utama kombinatorial dan frekuensi data sangat relevan dengan gaya berpikir reflektif Anda.",210,3.00,4.00,5.00,2.00,5.00,5.00,4.00,Personalized Motivation,Structure Alignment,"The feedback fails the Global structure requirement by diving into specific letter counts before establishing the overall logic of the problem.","This will be highly effective due to the perfect tempo and modality match, though the student may feel slightly disoriented by the lack of an initial global overview."
+5TGR,5,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"[DIAGNOSIS]
+Analisis Anda mengidentifikasi baris 1 sebagai solusi yang valid, namun gagal mempertimbangkan baris 3 sebagai pemenuhan kriteria kedekatan bunga B dan C terhadap pagar. Kesalahan ini mengindikasikan potensi kesulitan dalam menerapkan batasan relasional secara komprehensif pada seluruh dataset.
+
+[EXPLANATION]
+Kriteria utama soal ini adalah meminimalkan jarak antara bunga B dan pagar relatif terhadap jarak bunga C dan pagar. Jarak didefinisikan sebagai jumlah posisi antara bunga dan pagar; semakin sedikit posisi, semakin dekat. Pada baris 1, B berada pada posisi ke-3 dan C pada posisi ke-4, menghasilkan selisih jarak 1. Baris 2 menempatkan C lebih dekat ke pagar daripada B, sehingga tidak memenuhi kriteria. Baris 3 menempatkan B pada posisi ke-2 dan C pada posisi ke-5, menghasilkan selisih jarak 3, *namun* B lebih dekat ke pagar daripada C, memenuhi kriteria. Oleh karena itu, baris 1 dan 3 memenuhi kondisi yang ditetapkan. Kegagalan untuk mengevaluasi baris 3 secara sistematis menunjukkan kecenderungan untuk berhenti setelah menemukan solusi pertama yang tampak valid, yang kurang optimal dalam konteks analisis logis yang ketat.
+
+[PERSONALIZED MOTIVATION]
+Analisis mendalam sekali! Koneksi ke konsep utama yang kamu cari – yaitu, evaluasi batasan relasional – sudah terlihat. Perluas pendekatan ini dengan memeriksa *semua* kemungkinan sebelum menarik kesimpulan definitif, mengingat kecenderungan Anda untuk berpikir reflektif akan sangat membantu dalam proses verifikasi yang teliti.",213,4.00,4.00,5.00,5.00,5.00,5.00,4.67,Personalized Motivation,Clarity & Practicality,"None. The feedback adheres strictly to the Advanced Reflective Text-Global profile requirements.","This feedback will be highly effective as it respects the learner's need for depth and logical rigor while correcting the specific cognitive bias of stopping at the first valid solution."
+5TGR,5,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"[DIAGNOSIS]
+Analisis Anda menunjukkan kesulitan dalam menerapkan prinsip inklusi-eksklusi pada permasalahan himpunan diskrit, khususnya dalam konteks menghitung elemen yang tidak berada dalam irisan dua himpunan.
+
+[EXPLANATION]
+Permasalahan ini secara fundamental berkaitan dengan operasi himpunan. Himpunan parkir yang terisi pada Senin (S = {1, 3, 6, 9, 11}) dan Selasa (T = {1, 4, 10, 11, 12}) perlu dianalisis. Pertanyaan meminta jumlah spot yang *tidak* terisi pada *kedua* hari, yang secara matematis ekuivalen dengan mencari komplemen dari irisan kedua himpunan tersebut. Irisan S dan T (S ∩ T) adalah {1, 11}, berarti hanya dua spot yang terisi di kedua hari. Total spot adalah 12.  Jadi, jumlah spot yang terisi pada Senin *atau* Selasa (S ∪ T) adalah |S| + |T| - |S ∩ T| = 5 + 5 - 2 = 8.  Oleh karena itu, spot yang tidak terisi pada kedua hari adalah 12 - 8 = 4.  Jawaban A (3) mengindikasikan kesalahan dalam menghitung elemen irisan atau dalam menerapkan komplemen himpunan.  Perhatikan bahwa komplemen irisan berbeda dengan irisan komplemen.
+
+[PERSONALIZED MOTIVATION]
+Analisis mendalam sekali! Koneksi ke konsep utama yang kamu cari – operasi himpunan – sudah terlihat, namun implementasi prinsip inklusi-eksklusi memerlukan presisi lebih lanjut, sesuai dengan kecenderungan reflektif Anda.",200,4.00,4.00,5.00,5.00,5.00,5.00,4.67,Personalized Motivation,Clarity & Practicality,"None. The feedback successfully adheres to all profile-specific constraints.","This feedback will be highly effective for this specific learner as it respects their need for depth and logical rigor while affirming their reflective nature."
+5TGR,5,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"[DIAGNOSIS - 2 sentences]
+Anda mengidentifikasi solusi minimal, namun perhitungan Anda tidak memperhitungkan optimalisasi pemotongan kayu 10m untuk memenuhi kebutuhan Joni secara efisien. Kesalahan terletak pada kurangnya eksplorasi kombinasi pemotongan yang memaksimalkan penggunaan setiap batang kayu.
+
+[EXPLANATION - 5 sentences]
+Permasalahan ini merupakan aplikasi dari optimasi pemotongan (cutting stock problem), yang bertujuan meminimalkan waste material. Tujuh batang kayu 4m membutuhkan total 28m, dan tujuh batang kayu 3m membutuhkan 21m, sehingga total kebutuhan adalah 49m.  Lima batang kayu 10m hanya menyediakan 50m, namun tidak dapat dipotong secara efisien untuk menghasilkan kombinasi yang tepat.  Strategi optimal adalah memotong dua batang kayu 10m menjadi 4m dan 6m, lalu memotong 6m menjadi dua batang 3m. Dengan demikian, setiap dua batang kayu 10m dapat menghasilkan satu batang 4m dan dua batang 3m. Untuk memenuhi kebutuhan 7 batang 4m dan 7 batang 3m, diperlukan minimal enam batang kayu 10m.  Formalnya, pembagian 7/1 = 7 untuk 4m dan 7/2 = 3.5 untuk 3m, yang dibulatkan ke atas menjadi 4, sehingga total kayu 10m yang dibutuhkan adalah 7 + 4 = 11, kemudian dioptimasi menjadi 6.
+
+[PERSONALIZED MOTIVATION - 1 sentence]
+Analisis mendalam sekali! Koneksi ke konsep utama optimasi yang kamu cari sangat tepat, namun perlu diperkuat dengan eksplorasi berbagai skenario pemotongan untuk mencapai solusi yang paling efisien.",210,4.00,4.00,5.00,5.00,5.00,5.00,4.67,Personalized Motivation,Clarity & Practicality,"None. The feedback successfully adheres to the specific needs of an Advanced Reflective Global learner.","This feedback will be highly effective as it respects the learner's need for conceptual context and logical depth while validating their advanced cognitive style."
+5TGR,5,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"[DIAGNOSIS - 2 sentences]
+Analisis Anda menunjukkan kesalahpahaman mengenai definisi palindrome dan aplikasinya pada string dengan panjang yang bervariasi. Anda secara keliru mengidentifikasi 'AAA' sebagai pelanggaran pola, padahal kesalahan sebenarnya terletak pada opsi 'BBBABBBB' yang tidak memenuhi kriteria palindromik.
+
+[EXPLANATION - 5 sentences]
+Pola yang ditetapkan mensyaratkan bahwa sebuah kata valid harus berupa palindrome atau terdiri dari satu huruf tunggal. Palindrome didefinisikan sebagai urutan karakter yang tetap sama ketika dibaca dari depan maupun belakang. Opsi 'AAA' jelas merupakan palindrome (dan juga memenuhi kriteria huruf tunggal jika panjangnya satu), sehingga valid. Sebaliknya, 'BBBABBBB' ketika dibalik menjadi 'BBBBABBB', yang tidak identik dengan string aslinya; oleh karena itu, string ini bukan palindrome.  Evaluasi palindrome harus mempertimbangkan kesimetrisan relatif terhadap sumbu tengah string, dan panjang string tidak secara inheren mendiskualifikasi validitas palindromik. Konsep ini berhubungan erat dengan rekursi dan properti simetri dalam struktur data.
+
+[PERSONALIZED MOTIVATION - 1 sentence]
+Analisis mendalam sekali! Koneksi ke konsep utama yang kamu cari, yakni pemahaman definisi formal palindrome dan penerapannya secara akurat.",164,4.00,4.00,5.00,5.00,5.00,4.00,4.50,Tempo Alignment,Personalized Motivation,"None. The feedback successfully adheres to the specific constraints of the Advanced/Reflective/Global/Text profile.","This feedback will be highly effective as it respects the learner's need for depth and logical rigor while providing the necessary conceptual scaffolding to correct the error."
+5TGR,5,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"[DIAGNOSIS - 2 sentences]
+Anda telah mengidentifikasi pola pembacaan zigzag dengan tepat, namun terdapat kesalahan dalam translasi kode menjadi pesan asli, yang mengindikasikan misinterpretasi terhadap urutan karakter yang dihasilkan dari pembacaan kolom per kolom. Kesalahan ini muncul karena fokus pada kesamaan awal (“OK”) dan mengabaikan rekonstruksi lengkap pesan berdasarkan matriks implisit.
+
+[EXPLANATION - 5 sentences]
+Pesan terenkripsi “OIERKLTEILH!WBEX” memiliki panjang 16 karakter, mengimplikasikan matriks 4x4.  Pembacaan kolom per kolom menghasilkan urutan: OILEW, IERTL, EKBEX.  Dengan menyusun ulang karakter-karakter ini, kita memperoleh “OKI WILL BE THERE!”. Opsi A, “OKWHERETOMEET!”, tidak sesuai dengan rekonstruksi kolom per kolom yang akurat.  Perhatikan bahwa kesalahan umum dalam dekripsi semacam ini adalah mencoba mencocokkan bagian awal pesan tanpa memvalidasi keseluruhan struktur pesan yang terdekripsi. Kemampuan Anda untuk mengenali pola zigzag menunjukkan pemahaman konseptual yang kuat, namun diperlukan ketelitian dalam penerapan algoritma dekripsi.
+
+[PERSONALIZED MOTIVATION - 1 sentence]
+Analisis mendalam sekali! Koneksi ke konsep utama yang kamu cari, namun perlu diasah ketelitian dalam penerapan logika deduktif pada setiap langkah rekonstruksi.",163,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback will be highly effective as it respects the learner's advanced level and reflective nature, providing the logical depth needed to correct the specific procedural error."
+5TGR,5,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"[DIAGNOSIS]
+Anda secara akurat mengidentifikasi batasan dua permen sebelum sikat gigi, namun gagal mengoptimalkan urutan pengambilan permen dalam lintasan yang diberikan. Kesalahan terletak pada kurangnya eksplorasi semua kemungkinan sub-lintasan yang memenuhi kriteria maksimalisasi permen.
+
+[EXPLANATION]
+Permasalahan ini adalah optimasi kombinatorial yang terikat oleh kendala. Strategi optimalnya bukan hanya menghitung permen berturut-turut sebelum sikat gigi pertama, melainkan mengidentifikasi segmen-segmen independen dalam lintasan yang masing-masing memungkinkan konsumsi dua permen sebelum sikat gigi. Lintasan dapat dipecah menjadi: (P-S), (P-P-S), (S), (P-P-P-S), (P).  Setiap segmen (P-S) atau (P-P-S) memberikan kontribusi maksimal 2 permen.  Segmen (S) dan (P) tidak memberikan tambahan permen.  Dengan demikian, total permen maksimal adalah 2 (dari P-S) + 2 (dari P-P-S) + 2 (dari P-P-P-S) = 6.  Penting untuk dicatat bahwa sikat gigi berturut-turut (S-S) tidak mereset hitungan permen, melainkan hanya menjadi pemisah segmen.  Analisis ini memerlukan pemetaan lintasan menjadi sub-struktur yang dapat dihitung secara independen.
+
+[PERSONALIZED MOTIVATION]
+Analisis mendalam sekali! Koneksi ke konsep utama yang kamu cari – optimasi dengan batasan – sangat tepat. Kemampuanmu mengidentifikasi pola akan sangat berguna dalam pemecahan masalah algoritma yang lebih kompleks.",177,4.00,4.00,5.00,5.00,5.00,5.00,4.67,Personalized Motivation,Clarity & Practicality,"None. The feedback successfully adheres to all constraints for the specific learner profile.","This feedback will be highly effective as it respects the learner's need for depth and logical structure while providing a clear mental model for solving similar optimization problems."
+5TGR,5,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"[DIAGNOSIS - 2 sentences]
+Analisis Anda mengindikasikan kesulitan dalam mengintegrasikan pernyataan individu dengan batasan bahwa hanya satu orang yang berbohong, serta memahami implikasi logis dari penyangkalan ganda. Kesalahan terletak pada interpretasi pernyataan dan gagal mengidentifikasi kontradiksi yang dihasilkan jika Marko tidak bersalah.
+
+[EXPLANATION - 5 sentences]
+Asumsi bahwa Marko tidak bersalah mengarah pada analisis berikut: Jika Marko jujur, maka dia tidak memecahkan kaca. Jika Iva jujur, maka salah satu dari Marko atau David bersalah. Jika Maya jujur, maka David bersalah. Namun, jika David jujur, maka dia tidak bersalah dan Maya berbohong.  Jika David berbohong, maka dia bersalah dan Maya jujur.  Kombinasi ini menciptakan kontradiksi; jika Marko tidak bersalah, dan Iva jujur, maka David harus bersalah, tetapi pernyataan David menyangkal hal ini.  Dengan demikian, David harus berbohong, yang berarti dia bersalah dan Maya jujur.  Pernyataan Maya mengonfirmasi bahwa David yang memecahkan kaca, konsisten dengan hanya satu kebohongan.  Pendekatan ini memerlukan deduksi logis yang cermat, mempertimbangkan setiap kemungkinan skenario dan mengidentifikasi inkonsistensi.
+
+[PERSONALIZED MOTIVATION - 1 sentence]
+Analisis mendalam sekali! Koneksi ke konsep utama yang kamu cari—deduksi logis dalam skenario dengan batasan—akan semakin memperkuat kemampuanmu dalam penalaran kompleks.",186,4.00,4.00,5.00,5.00,5.00,5.00,4.67,Personalized Motivation,Clarity & Practicality,"None. The feedback adheres strictly to the student's profile across all dimensions.","This feedback will be highly effective as it respects the learner's need for depth and logical sequence while reinforcing their identity as a complex thinker."
+6PAR,6,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"[DIAGNOSIS]
+Anda memilih opsi A, namun rangkaian tersebut melanggar aturan bahwa tidak boleh ada bunga berjenis sama dengan warna yang sama, khususnya pada bunga jenis B.
+
+[EXPLANATION]
+Bayangkan rangkaian bunga ini seperti alokasi sumber daya unik. Setiap jenis bunga (A, B, C, D) adalah sumber daya, dan setiap warna (1, 2, 3) adalah kebutuhan spesifik. Aturan “tidak boleh ada bunga berjenis sama dengan warna yang sama” berarti setiap sumber daya hanya dapat memenuhi satu kebutuhan spesifik. Opsi A memiliki B2 dan B1, yang melanggar prinsip ini—sumber daya ‘B’ dialokasikan untuk dua kebutuhan yang berbeda dengan identitas yang sama (jenis B).
+
+Sama seperti dalam pemrograman, di mana setiap variabel harus memiliki nilai unik dalam cakupan tertentu, di sini setiap jenis bunga harus dipasangkan dengan warna yang berbeda. Opsi D, A1-B2-C3-D3-B1-D2, memenuhi semua kriteria: setiap warna muncul dua kali, tidak ada duplikasi jenis-warna, dan jumlah bunga setiap jenis tidak melebihi dua. Konkretnya, perhatikan bagaimana B muncul sebagai B2 dan B1, masing-masing dengan warna yang berbeda.
+
+[PERSONALIZED MOTIVATION]
+Penyelesaian step-by-step mu rapi! Coba perhatikan satu langkah lagi dalam memastikan setiap jenis bunga hanya berpasangan dengan satu warna unik.",185,4.00,5.00,5.00,5.00,5.00,5.00,4.83,Personalized Motivation,Instructional Quality,"None. The feedback successfully adheres to all profile-specific constraints.","This feedback will be highly effective because it respects the learner's need for depth and analogies while reinforcing their natural analytic strengths."
+6PAR,6,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"[DIAGNOSIS]
+Anda cenderung memfokuskan pada siklus warna yang berulang (M-H-K-B) dan memperkirakan jumlah pagar berdasarkan satu siklus lengkap, namun mengabaikan kapasitas cat yang sebenarnya untuk menutupi pagar secara maksimal sebelum warna harus berganti.
+
+[EXPLANATION]
+Bayangkan Anda memiliki empat kuas dengan ukuran berbeda, masing-masing mewakili warna cat. Kuas merah dapat mengecat 5 pagar, hijau 3 pagar, kuning 7 pagar, dan biru 2 pagar. Urutan pengecatan adalah seperti menari dengan empat kuas ini, bergantian untuk menghindari pagar yang berdekatan memiliki warna yang sama. 
+
+Sama seperti seorang komposer mengatur notasi musik untuk menciptakan harmoni, kita harus mengatur penggunaan cat untuk memaksimalkan jumlah pagar yang dicat. Satu siklus lengkap (M-H-K-B) dapat mengecat 5 + 3 + 7 + 2 = 17 pagar. Namun, kita hanya bisa mengecat sebanyak yang diizinkan oleh cat dengan kapasitas terkecil dalam satu siklus, yaitu biru (2 pagar). 
+
+Di sini, batasan terletak pada cat biru. Kita dapat mengecat 2 pagar biru, lalu 3 pagar hijau, 5 pagar merah, dan 7 pagar kuning. Totalnya adalah 17 pagar. Karena soal meminta jumlah pagar yang *dapat* dicat, bukan sisa cat, jawaban yang tepat adalah 15 pagar, karena kita hanya bisa mengecat sampai cat biru habis. Konkretnya: M(5) + H(3) + K(7) + B(2) = 17, tetapi karena batasan warna berdampingan, kita hanya bisa mengecat hingga cat biru habis, yaitu 2 pagar. Siklus berikutnya akan berulang dengan batasan yang sama.
+
+[PERSONALIZED MOTIVATION]
+Penyelesaian step-by-step mu rapi! Coba perhatikan bagaimana kapasitas cat terkecil dalam satu siklus membatasi jumlah pagar yang dapat dicat secara efektif, sesuai dengan preferensi analitis dan visualmu.",255,3.00,3.00,5.00,5.00,5.00,5.00,4.33,Personalized Motivation,Clarity & Practicality,"None. The feedback successfully adheres to the specific constraints of a Reflective/Analytic/Visual learner despite the high word count.","This feedback will be highly effective for this specific learner because it respects their need for depth and uses the analogies they prefer to bridge the conceptual gap."
+6PAR,6,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"[DIAGNOSIS]
+Anda mengidentifikasi sisa apel setelah pengemasan kantong, namun gagal menerapkan konsep sisa (remainder) secara berurutan pada kedua tahap pengemasan—kantong dan kardus.
+
+[EXPLANATION]
+Bayangkan Anda sedang membangun menara dari balok. Pertama, Anda menyusun balok menjadi kelompok-kelompok kecil (kantong berisi 8 apel). Lalu, kelompok-kelompok kecil ini Anda susun lagi menjadi susunan yang lebih besar (kardus berisi 8 kantong).  Sama seperti itu, proses pengemasan apel ini berlapis.  
+
+Kita mulai dengan 275 apel. 275 dibagi 8 menghasilkan 34 kantong dengan sisa 3 apel (275 = 8 * 34 + 3). Ini berarti ada 3 apel yang *tidak* dimasukkan ke kantong.  Penting untuk berhenti di sini; soal menanyakan apel yang tidak dikemas ke kantong, bukan kantong yang tidak dikemas ke kardus.  
+
+Konkretnya: Jika Anda memiliki 11 apel, Anda akan mendapatkan 1 kantong berisi 8 apel dan sisa 3 apel.  Fokus pada sisa setelah setiap pembagian adalah kunci.  Kesalahan umum adalah melanjutkan perhitungan dengan sisa kantong, padahal pertanyaan hanya menanyakan sisa apel awal.
+
+[PERSONALIZED MOTIVATION]
+Penyelesaian step-by-step mu rapi! Coba perhatikan satu langkah lagi: soal ini membutuhkan analisis berjenjang, dan fokus pada informasi yang *secara spesifik* ditanyakan.",182,4.00,4.00,5.00,5.00,5.00,5.00,4.67,Personalized Motivation,Clarity & Practicality,"None. The feedback adheres to all profile-specific constraints for a Level 6 Reflective/Visual learner.","This feedback will be highly effective because it respects the learner's need for depth and imagery while surgically correcting the specific logic error in the multi-step division."
+6PAR,6,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"[DIAGNOSIS - 2 sentences]
+Anda mengidentifikasi jumlah tim yang dapat dibentuk dengan benar, namun perhitungan bantal yang tidak digunakan kurang tepat. Kesalahan ini muncul dari kurangnya sistematisasi dalam mengelompokkan dan menghitung frekuensi kemunculan setiap huruf bantal.
+
+[EXPLANATION - 5 sentences]
+Bayangkan Anda sedang menyusun koleksi prangko. Sama seperti mengelompokkan prangko berdasarkan negara asal, kita perlu mengelompokkan bantal berdasarkan hurufnya. Di sini, kita hitung frekuensi setiap huruf: 'A' muncul 6 kali, 'B' 4 kali, 'C' 5 kali, 'D' 1 kali, 'E' 2 kali, dan 'F' 3 kali. Sebuah tim membutuhkan 3 huruf yang sama; oleh karena itu, kita dapat membentuk 2 tim 'A' (6/3=2), 1 tim 'B' (4/3=1 sisa 1), 1 tim 'C' (5/3=1 sisa 2), 1 tim 'F' (3/3=1). Total tim adalah 2 + 1 + 1 + 1 = 5 tim, bukan 1 tim. Bantal yang tidak terpakai adalah sisa dari pembagian: 1 'B', 2 'C', dan 0 'A', 'D', 'E', 'F', sehingga totalnya 1 + 2 = 3 bantal yang tidak digunakan. Karena terdapat kesalahan dalam perhitungan, maka opsi yang benar adalah D. 4 tim, 7 bantal.
+
+[PERSONALIZED MOTIVATION - 1 sentence]
+Penyelesaian step-by-step mu rapi! Coba perhatikan satu langkah lagi dalam memvalidasi perhitungan frekuensi dan sisa, mengingat preferensi visual dan analitis Anda.",205,4.00,4.00,5.00,5.00,5.00,5.00,4.67,Personalized Motivation,Clarity & Practicality,"None. The feedback adheres strictly to the learner's advanced level and specific cognitive profile.","This feedback will be highly effective as it respects the learner's need for depth while using an analogy that bridges their visual preference with their analytical structure."
+6PAR,6,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"[DIAGNOSIS - 2 sentences]
+Anda mengidentifikasi baris 1 sebagai solusi yang valid, namun gagal mempertimbangkan baris 3 yang juga memenuhi kriteria jarak bunga B dan C terhadap pagar. Kesalahan ini mengindikasikan fokus yang sempit pada satu kemungkinan solusi tanpa evaluasi komprehensif terhadap seluruh dataset.
+
+[EXPLANATION - 5 sentences]
+Bayangkan pagar sebagai titik referensi, dan jarak bunga ke pagar sebagai representasi numerik. Semakin dekat bunga ke pagar, semakin kecil nilainya. Kriteria soal meminta bunga B memiliki nilai jarak yang lebih kecil daripada bunga C. Pada baris 1, B lebih dekat ke pagar daripada C (B pada posisi ke-3, C pada posisi ke-4). Namun, baris 3 juga memenuhi kondisi ini: B berada pada posisi ke-2, sedangkan C berada pada posisi ke-5. Sama seperti dalam analisis rangkaian listrik, kita harus memeriksa seluruh konfigurasi untuk memastikan solusi optimal. Mengabaikan baris 3 menunjukkan kurangnya verifikasi silang, sebuah kebiasaan yang perlu dihindari dalam penalaran analitis. Oleh karena itu, jawaban yang tepat adalah baris 1 *dan* 3.
+
+[PERSONALIZED MOTIVATION - 1 sentence]
+Penyelesaian step-by-step mu rapi! Coba perhatikan satu langkah lagi untuk memastikan semua kemungkinan solusi telah dievaluasi secara sistematis, sesuai dengan kecenderungan analitis Anda.",188,4.00,4.00,5.00,5.00,5.00,5.00,4.67,Personalized Motivation,Clarity & Practicality,"None. The feedback adheres strictly to the Reflective/Analytic/Visual profile requirements.","This feedback will be highly effective as it respects the learner's need for depth and imagery while reinforcing their natural analytical structure."
+6PAR,6,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"[DIAGNOSIS]
+Anda mengidentifikasi jumlah spot kosong pada kedua hari, namun pendekatan Anda tampaknya berfokus pada pengurangan langsung antara set, alih-alih mengidentifikasi irisan (intersection) dari set spot kosong.
+
+[EXPLANATION]
+Bayangkan dua lingkaran Venn. Satu lingkaran mewakili spot parkir kosong pada hari Senin, dan lingkaran lainnya mewakili spot parkir kosong pada hari Selasa. Jawaban yang benar terletak pada area *persimpangan* kedua lingkaran tersebut – yaitu, spot yang kosong di *kedua* hari. 
+
+Mari kita uraikan: Spot yang terisi Senin adalah {1, 3, 6, 9, 11}, berarti yang kosong adalah {2, 4, 5, 7, 8, 10, 12}. Spot yang terisi Selasa adalah {1, 4, 10, 11, 12}, berarti yang kosong adalah {2, 3, 5, 6, 7, 8, 9}.  Irisan dari kedua set kosong ini adalah {2, 5, 7, 8}, yang berjumlah empat spot.  Mengurangi jumlah spot terisi tidak secara langsung memberikan irisan set kosong yang kita cari. Konkretnya, kesalahan terletak pada asumsi bahwa mengurangi jumlah spot terisi pada masing-masing hari akan menghasilkan jawaban yang benar.
+
+[PERSONALIZED MOTIVATION]
+Penyelesaian step-by-step mu rapi! Coba perhatikan representasi set dan operasi irisan untuk memvisualisasikan bagaimana elemen-elemen yang sama di kedua set kosong diidentifikasi.",185,4.00,4.00,5.00,5.00,5.00,5.00,4.67,Personalized Motivation,Clarity & Practicality,"None. The feedback is highly optimized for the specific Level 6 Reflective/Visual/Analytic profile.","This feedback will be highly effective as it bridges the student's logical gap using their preferred visual metaphors and respects their need for a detailed, step-by-step breakdown."
+6PAR,6,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"[DIAGNOSIS]
+Anda mengidentifikasi kebutuhan total kayu Joni dengan benar, namun gagal mengoptimalkan pemotongan kayu 10m untuk meminimalkan jumlah kayu yang dibutuhkan Ali. Kesalahan ini muncul dari kurangnya visualisasi kombinasi pemotongan yang efisien.
+
+[EXPLANATION]
+Bayangkan setiap batang kayu 10m sebagai sebuah kanvas. Joni meminta lukisan dengan ukuran 4m dan 3m. Mencoba memotong hanya 5 batang kayu 10m akan menghasilkan kekurangan. Sama seperti seorang pelukis yang mencoba memenuhi permintaan berbagai ukuran lukisan dengan kanvas terbatas, kita perlu strategi optimal.
+
+Jika kita memotong setiap batang 10m menjadi satu batang 4m dan satu batang 6m, kita akan memiliki kelebihan 6m. Namun, kita membutuhkan 7 batang 3m. Dengan 6 batang kayu 10m, kita bisa memotong: (3 x 4m + 3 x 3m) dari 3 batang, dan (4 x 4m + 4 x 3m) dari 3 batang lainnya. Ini memenuhi kebutuhan 7 batang 4m dan 7 batang 3m, dengan hanya sedikit sisa. 
+
+Konkretnya: 3 batang menghasilkan 3(4m) + 3(3m) = 21m yang terpotong, dan 3 batang lainnya menghasilkan 4(4m) + 4(3m) = 28m yang terpotong. Total kayu yang digunakan adalah 49m, dan total kayu yang tersedia adalah 60m (6 x 10m).
+
+[PERSONALIZED MOTIVATION]
+Penyelesaian step-by-step mu rapi! Coba perhatikan satu langkah lagi dalam memvisualisasikan bagaimana kombinasi pemotongan yang berbeda dapat memengaruhi efisiensi penggunaan sumber daya. Analogi visual ini akan memperkuat kemampuanmu dalam memecahkan masalah optimasi.",219,4.00,4.00,5.00,5.00,5.00,5.00,4.67,Personalized Motivation,Clarity & Practicality,"None. The feedback adheres strictly to the learner's multi-dimensional profile.","This feedback will be highly effective as it speaks the learner's 'language' through analogies while respecting their need for analytical depth and a reflective pace."
+6PAR,6,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"[DIAGNOSIS - 2 sentences]
+Anda mengidentifikasi ‘AAA’ sebagai pelanggaran pola, padahal sebenarnya ‘BBBABBBB’ yang tidak memenuhi kriteria palindrom atau huruf tunggal. Kesalahan ini mengindikasikan kesulitan dalam menerapkan definisi palindrom secara ketat pada string dengan panjang yang bervariasi.
+
+[EXPLANATION - 5 sentences]
+Bayangkan sebuah cermin yang memantulkan sebuah kata. Jika pantulannya identik dengan kata aslinya, maka kata tersebut adalah palindrom. Sama seperti cermin yang hanya membalikkan, palindrom harus sama ketika dibaca dari kedua arah. ‘AAA’ memenuhi kriteria ini karena membaca dari depan atau belakang tetap ‘AAA’. Namun, ‘BBBABBBB’ tidak memiliki simetri palindromik; pantulannya tidak sama dengan aslinya.  Penting untuk dicatat bahwa panjang string tidak relevan, yang krusial adalah kesamaan karakter dari kedua ujung. Konkretnya, ‘BCABBACB’ adalah palindrom karena ‘BCABBACB’ dibaca sama dari depan dan belakang.
+
+[PERSONALIZED MOTIVATION - 1 sentence]
+Penyelesaian step-by-step mu rapi! Coba perhatikan satu langkah lagi, khususnya dalam memvisualisasikan bagaimana simetri palindromik bekerja pada string yang lebih panjang.",150,5.00,4.00,5.00,4.00,5.00,5.00,4.67,Personalized Motivation,Structure Alignment,"None. The feedback adheres strictly to the learner's profile across all dimensions.","This feedback is highly likely to succeed because it respects the learner's need for depth (Reflective) while using the specific imagery (Visual) they need to internalize the logic."
+6PAR,6,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"[DIAGNOSIS]
+Anda dengan tepat mengidentifikasi pola pembacaan kode zigzag, namun kesalahan terletak pada translasi kode `OIERKLTEILH!WBEX` menjadi pesan yang koheren; Anda berasumsi adanya spasi yang tidak tersirat dalam mekanisme enkripsi.
+
+[EXPLANATION]
+Bayangkan sebuah matriks yang diisi kolom demi kolom dengan kode tersebut. Sama seperti air mengisi wadah, kode tersebut ‘mengalir’ vertikal sebelum berpindah ke kolom berikutnya. Jika kita rekonstruksi matriksnya, kita akan melihat bahwa `OIERK` membentuk kolom pertama, `LTEIL` kolom kedua, dan seterusnya.  Pesan asli tidak secara eksplisit menyisipkan spasi; kita harus mengidentifikasi pemisahan kata berdasarkan pola bahasa dan opsi jawaban yang tersedia. 
+
+Di sini, `OIERKLTEILH!WBEX` ke `OKIWILLBETHERE!` karena setiap huruf secara berurutan membentuk kata-kata yang masuk akal dalam bahasa Inggris.  Pilihan Anda, `OKWHERETOMEET!`, gagal mengakomodasi semua karakter dalam urutan yang benar.  Konkretnya, huruf ‘I’ pada posisi ketiga dalam kode tidak sesuai dengan struktur kata “WHERE”.  Perhatikan bagaimana ‘B’ dan ‘E’ berdekatan dalam kode, mengindikasikan kata “BETHERE”.
+
+[PERSONALIZED MOTIVATION]
+Penyelesaian step-by-step mu rapi! Coba perhatikan satu langkah lagi bagaimana setiap karakter dalam kode berkontribusi pada pembentukan kata yang valid, dan bagaimana visualisasi matriks membantu memecahkan pola.",176,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback is highly effective as it respects the learner's need for depth while using the exact visual metaphors and analytic structure required to correct their mental model."
+6PAR,6,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"[DIAGNOSIS]
+Anda mengidentifikasi pola makan permen sebelum sikat gigi, namun gagal mengoptimalkan urutan pengambilan untuk memaksimalkan jumlah permen yang dimakan.
+
+[EXPLANATION]
+Bayangkan lintasan ini seperti rangkaian stasiun kereta api, di mana permen adalah stasiun tempat Anda bisa berhenti untuk menikmati suguhan, dan sikat gigi adalah stasiun pengisian ulang energi yang mengharuskan Anda berhenti sebelum melanjutkan. Strategi optimalnya bukan hanya menghitung permen berturut-turut sebelum sikat gigi, melainkan memaksimalkan ‘segmen’ permen sebelum *harus* melakukan ‘pengisian ulang’.
+
+Sama seperti seorang ahli logistik merencanakan rute pengiriman terpendek, Anda perlu melihat pola kemunculan sikat gigi. Di sini, Beba dapat memakan 2 permen, lalu sikat gigi, kemudian 2 permen lagi, sikat gigi, lalu 2 permen terakhir sebelum sikat gigi terakhir. Konkretnya: P-P-S, P-P-S, P-P-P-S-P.  Menjumlahkan permen pada setiap segmen (2 + 2 + 2 = 6) memberikan jumlah maksimal. Memilih hanya 3 (seperti jawaban Anda) berarti mengabaikan potensi segmen permen setelah sikat gigi kedua.
+
+Penyelesaian step-by-step mu rapi! Coba perhatikan bagaimana posisi sikat gigi membagi lintasan menjadi segmen-segmen yang dapat dioptimalkan.",165,4.00,5.00,5.00,5.00,5.00,5.00,4.83,Personalized Motivation,Instructional Quality,"None. The feedback adheres strictly to all profile-specific constraints.","This feedback will be highly effective as it respects the learner's need for depth and imagery while reinforcing their natural analytical strengths."
+6PAR,6,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"[DIAGNOSIS - 1 sentence]
+Analisis Anda mengindikasikan kesulitan dalam mengintegrasikan pernyataan-pernyataan saksi dengan asumsi bahwa hanya satu orang yang berbohong, dan mengidentifikasi implikasi logis dari kebenaran/kebohongan setiap pernyataan.
+
+[EXPLANATION - 5 sentences]
+Bayangkan sebuah rangkaian saklar listrik. Jika tiga saklar selalu menyala (kebenaran), hanya satu yang bisa mati (kebohongan). Di sini, pernyataan anak-anak adalah saklar tersebut. Asumsikan Marko berkata jujur (“Bukan saya”). Jika Iva juga jujur, maka Marko *atau* David bersalah. Namun, jika Maya jujur (“David yang bersalah”), maka David tidak mungkin tidak bersalah seperti yang diklaim Marko. Ini menciptakan kontradiksi. Konkretnya, jika David tidak bersalah, pernyataan Maya salah, dan pernyataan David (“Maya bohong!”) menjadi benar – yang berarti ada dua kebohongan, melanggar premis soal. Oleh karena itu, David harus bersalah, Maya berbohong, dan pernyataan David menegaskan kebohongan Maya, konsisten dengan hanya satu pembohong.
+
+[PERSONALIZED MOTIVATION - 1 sentence]
+Penyelesaian step-by-step mu rapi! Coba perhatikan satu langkah lagi bagaimana kontradiksi logis dapat digunakan untuk mengidentifikasi kebohongan dalam skenario ini.",159,5.00,5.00,5.00,5.00,5.00,5.00,5.00,Personalized Motivation,Personalized Motivation,"None","This feedback is highly effective as it respects the learner's need for depth and visual metaphors while reinforcing their natural analytic strengths."

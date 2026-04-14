@@ -1,0 +1,15 @@
+Batch 1/11
+Generated: 2026-03-13T06:55:26.742Z
+Entries: 1
+
+Columns:
+- user_cognitive
+- user_pedagogic_level
+- question
+- option
+- true_answer
+- ai_explained_simple
+- ai_explained_detailed
+
+To generate next batch:
+npm run generate-dataset -- --batch 2

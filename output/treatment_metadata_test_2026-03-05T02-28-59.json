@@ -1,0 +1,12 @@
+{
+  "experiment_type": "treatment_group",
+  "personalization": true,
+  "generation_model": "google/gemma-3-27b-it",
+  "evaluation_method": "LLM-as-Judge (7-Dimension Rubric)",
+  "timestamp": "2026-03-05T02:28:59.462Z",
+  "total_entries": 44,
+  "successful_entries": 0,
+  "failed_entries": 44,
+  "metrics": null,
+  "description": "Personalized feedback with full profile awareness and explicit personalization instructions - Treatment group for research"
+}

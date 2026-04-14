@@ -1,10 +1,16 @@
+// server/src/middleware/errorHandler.ts
 import { Request, Response, NextFunction } from 'express';
 
-export function errorHandler(err: Error, req: Request, res: Response, next: NextFunction) {
-  console.error('Error:', err);
-  
+export function errorHandler(
+  error: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void {
+  console.error('❌ Error handler caught:', error);
+
   res.status(500).json({
     error: 'Internal server error',
-    message: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong'
+    message: error.message
   });
 }

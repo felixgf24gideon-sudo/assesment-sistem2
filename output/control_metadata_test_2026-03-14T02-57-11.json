@@ -1,0 +1,69 @@
+{
+  "experiment_type": "control_group",
+  "personalization": false,
+  "generation_model": "google/gemma-3-27b-it",
+  "evaluation_method": "LLM-as-Judge (6-Dimension Rubric)",
+  "timestamp": "2026-03-14T02:57:11.605Z",
+  "total_entries": 44,
+  "successful_entries": 44,
+  "failed_entries": 0,
+  "metrics": {
+    "totalEntries": 44,
+    "avgWordCount": 279.3863636363636,
+    "minWordCount": 142,
+    "maxWordCount": 570,
+    "avgOverallScore": 3.8318181818181825,
+    "avgInstructionalQuality": 3.272727272727273,
+    "avgSpecificity": 3.909090909090909,
+    "avgClarity": 3.659090909090909,
+    "avgMotivationalTone": 4.931818181818182,
+    "avgLevelSuitability": 3.3863636363636362,
+    "avgCognitiveAlignment": 3.7495454545454554,
+    "avgModalityAlignment": 4.113636363636363,
+    "avgStructureAlignment": 3.8181818181818183,
+    "avgTempoAlignment": 3.3181818181818183,
+    "byLevel": {
+      "1": {
+        "avgWords": 309.8181818181818,
+        "avgOverallScore": 3.5454545454545454,
+        "avgCognitiveAlignment": 3.2409090909090907,
+        "avgLevelSuitability": 3.272727272727273,
+        "count": 11
+      },
+      "3": {
+        "avgWords": 280.3636363636364,
+        "avgOverallScore": 4.181818181818182,
+        "avgCognitiveAlignment": 3.5763636363636366,
+        "avgLevelSuitability": 4,
+        "count": 11
+      },
+      "5": {
+        "avgWords": 261.09090909090907,
+        "avgOverallScore": 3.7090909090909094,
+        "avgCognitiveAlignment": 4.212727272727272,
+        "avgLevelSuitability": 3.1818181818181817,
+        "count": 11
+      },
+      "6": {
+        "avgWords": 266.27272727272725,
+        "avgOverallScore": 3.8909090909090907,
+        "avgCognitiveAlignment": 3.9681818181818183,
+        "avgLevelSuitability": 3.090909090909091,
+        "count": 11
+      }
+    },
+    "byTempo": {
+      "I": {
+        "avgWords": 295.09090909090907,
+        "avgScore": 3.863636363636363,
+        "avgTempoAlignment": 2.272727272727273
+      },
+      "R": {
+        "avgWords": 263.6818181818182,
+        "avgScore": 3.8000000000000003,
+        "avgTempoAlignment": 4.363636363636363
+      }
+    }
+  },
+  "description": "Profile code provided as ID only - No personalization instructions - Control baseline for research"
+}

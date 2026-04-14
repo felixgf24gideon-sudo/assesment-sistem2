@@ -1,0 +1,2064 @@
+user_cognitive,user_pedagogic_level,question,option,user_answer,true_answer,ai_feedback,feedback_word_count,instructional_quality,specificity,clarity,motivational_tone,level_suitability,modality_alignment,structure_alignment,tempo_alignment,overall_cognitive_alignment,overall_average,strongest_dimension,weakest_dimension,learning_impact
+1TGI,1,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"Halo 1TGI!
+
+Jawabanmu (A. A1 - B2 - B1 - C3 - D2 - C1) kurang tepat. Mari kita bedah mengapa dan bagaimana mencapai jawaban yang benar (D. A1 - B2 - C3 - D3 - B1 - D2).
+
+**Analisis Kesalahanmu:**
+
+Jawabanmu melanggar aturan nomor 2: **Tidak boleh ada bunga berjenis sama dengan warna yang sama.**  Perhatikan rangkaianmu: ada B2 dan B1. Ini berarti bunga jenis B muncul dengan warna 2 dan 1.  Aturan ini tidak diperbolehkan.
+
+**Mengapa Jawaban yang Benar (D) Tepat:**
+
+Mari kita cek apakah rangkaian D memenuhi semua kriteria:
+
+* **Setiap warna muncul 2 kali:** Warna 1, 2, dan 3 masing-masing muncul dua kali dalam rangkaian (A1, B1; A2, D2; B2, C3; C1, D3). *Memenuhi!*
+* **Tidak boleh ada bunga berjenis sama dengan warna yang sama:**  Perhatikan rangkaian D. Tidak ada bunga dengan jenis yang sama dan warna yang sama. Contohnya, tidak ada A1 dan A2, atau B1 dan B2, dst. *Memenuhi!*
+* **Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian:** Setiap jenis bunga (A, B, C, dan D) hanya muncul maksimal 2 kali. *Memenuhi!*
+
+**Tips untuk soal seperti ini:**
+
+1. **Buat Daftar:** Sebelum memilih jawaban, buat daftar warna dan jenis bunga yang sudah muncul di rangkaian. Ini membantumu memvisualisasikan dan memastikan semua aturan terpenuhi.
+2. **Periksa Satu per Satu:** Cek setiap opsi rangkaian terhadap setiap aturan yang diberikan. Jangan terburu-buru!
+3. **Fokus pada Pembatasan:**  Aturan ""tidak boleh ada bunga berjenis sama dengan warna yang sama"" adalah kunci dalam soal ini. Pastikan kamu memahami dan menerapkannya dengan benar.
+
+Semoga penjelasan ini membantumu! Jangan ragu untuk bertanya jika ada yang masih membingungkan.",267,3.00,4.00,3.00,5.00,4.00,5.00,4.00,2.00,3.67,3.80,motivational_tone,tempo_alignment,"While the feedback is high-quality and logically sound, its impact is likely diminished because the impulsive learner may skim or skip the detailed analysis of Option D. The learner will understand why they were wrong (Rule 2), but may not fully engage with the strategic 'Tips' provided at the end."
+1TGI,1,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"Halo 1TGI,
+
+Jawabanmu (A. 8) kurang tepat. Mari kita bedah soal ini bersama-sama agar kamu bisa memahami cara menyelesaikannya.
+
+Soal ini meminta kita mencari berapa pagar yang bisa dicat dengan urutan warna tertentu (M-H-K-B-M-H-K-B...) dengan syarat *tidak boleh ada pagar berdampingan dengan warna yang sama*.  Ini adalah poin penting yang sering terlewat.
+
+Kamu mungkin hanya menghitung beberapa siklus urutan warna dan menghentikan perhitungan di sana. Padahal, kita perlu melihat berapa banyak pagar yang bisa dicat *sebelum* warna yang sama mulai berulang berdampingan.
+
+Mari kita analisis urutan warnanya:
+
+* **Siklus 1:** M-H-K-B (bisa mengecat 5 + 3 + 7 + 2 = 17 pagar)
+* **Siklus 2:** M-H-K-B (bisa mengecat lagi 5 + 3 + 7 + 2 = 17 pagar)
+
+Namun, perhatikan bahwa kita tidak bisa langsung melanjutkan siklus kedua seperti itu. Karena kita tidak boleh mengecat pagar yang sama persis bersebelahan. Kita harus melihat sisa cat dari siklus pertama dan bagaimana kita bisa memaksimalkan penggunaannya sebelum warna yang sama terpaksa berdampingan.
+
+Mari kita pikirkan lebih detail:
+
+* Setelah mengecat 5 pagar dengan warna Merah (M), kita pindah ke Hijau (H).
+* Setelah mengecat 3 pagar dengan warna Hijau (H), kita pindah ke Kuning (K).
+* Setelah mengecat 7 pagar dengan warna Kuning (K), kita pindah ke Biru (B).
+* Setelah mengecat 2 pagar dengan warna Biru (B), kita kembali ke Merah (M).
+
+Ini berarti kita telah mengecat 5 + 3 + 7 + 2 = 17 pagar.  Namun, karena kita tidak boleh ada pagar yang sama bersebelahan, kita harus memperhitungkan sisa cat dan bagaimana kita bisa menggunakannya sebelum siklus warna berulang.
+
+Fokuslah pada sisa cat di setiap warna.  Jika kita terus mengecat sesuai urutan, kita akan kehabisan cat.  Perhatikan bahwa kita bisa mengecat lebih banyak pagar daripada hanya satu siklus penuh (M-H-K-B). Kita bisa memanfaatkan sisa cat dari warna yang cukup untuk lebih banyak pagar.
+
+**Cara yang lebih tepat untuk memecahkan soal ini adalah:**
+
+1.  Hitung total pagar yang bisa dicat dari satu siklus: 5 + 3 + 7 + 2 = 17 pagar.
+2.  Perhatikan bahwa setelah satu siklus, kita kembali ke warna Merah.  Karena kita tidak boleh ada pagar yang sama bersebelahan, kita *tidak* bisa langsung mengecat 5 pagar Merah lagi.
+3.  Kita harus mencari tahu berapa pagar maksimal yang bisa dicat sebelum *harus* mengulangi warna M.
+
+Dengan mempertimbangkan batasan tidak boleh ada warna yang sama berdampingan, kita bisa mengecat hingga 15 pagar. (Periksa kembali dengan mensimulasikan pengecatan pagar).
+
+**Jadi, jawaban yang benar adalah C. 15.**
+
+Pelajari kembali soal ini dan coba pikirkan bagaimana setiap warna digunakan dalam urutan tersebut, dan bagaimana batasan ""tidak boleh berdampingan"" mempengaruhi jumlah pagar yang bisa dicat.  Jangan ragu untuk bertanya jika ada bagian yang masih belum jelas! Semangat!",447,2.00,2.00,3.00,4.00,2.00,4.00,4.00,1.00,3.00,2.60,motivational_tone,tempo_alignment,"The feedback will likely be ignored or skimmed by the learner due to its excessive length, resulting in a missed opportunity to correct the misconception despite the accurate content. The pedagogical tension between depth and accessibility is resolved poorly, favoring exhaustive detail over the learner's need for speed."
+1TGI,1,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"Halo 1TGI,
+
+Jawabanmu (A. 6) kurang tepat. Mari kita pecahkan soal ini langkah demi langkah agar kamu memahami di mana letak kesalahannya.
+
+Soal ini meminta kita mencari sisa apel yang *tidak* dimasukkan ke kantong. Kita perlu fokus pada langkah pertama, yaitu pengemasan apel ke dalam kantong.
+
+* **Langkah 1: Membagi apel ke dalam kantong.**  Kita punya 275 apel dan setiap kantong berisi 8 apel.  Jadi, kita perlu menghitung berapa banyak kantong yang bisa diisi penuh: 275 dibagi 8.
+
+   275 : 8 = 34 sisa 3
+
+* **Interpretasi Hasil:** Hasilnya adalah 34 kantong *penuh* dan sisa 3 apel.
+
+* **Jawaban Akhir:**  Karena soal menanyakan berapa banyak apel yang *tidak* dimasukkan ke kantong, jawabannya adalah sisa dari pembagian tersebut, yaitu **3 apel**.
+
+Kamu mungkin melakukan kesalahan dalam pembagian atau lupa bahwa soal menanyakan sisa apel setelah pengemasan ke kantong, bukan sisa kantong setelah pengemasan ke kardus.
+
+Coba ulangi perhitungan pembagiannya dengan hati-hati.  Penting untuk selalu membaca soal dengan seksama dan memahami apa yang ditanyakan. Semangat!",163,3.00,4.00,3.00,5.00,4.00,5.00,4.00,2.00,3.67,3.80,motivational_tone,tempo_alignment,"While the content is accurate and supportive, the impulsive learner is likely to skim or skip the middle steps, potentially missing the core logic of the remainder calculation. The feedback successfully identifies the error but fails to deliver the 'aha moment' with the brevity this specific learner requires."
+1TGI,1,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"Halo 1TGI!
+
+Jawabanmu A. 1 tim, 13 bantal kurang tepat. Mari kita bedah soal ini bersama-sama agar kamu bisa memahami di mana letak kesalahannya dan bagaimana cara menyelesaikannya.
+
+Kamu perlu menghitung *berapa banyak* tim yang bisa dibentuk, masing-masing berisi 3 bantal dengan huruf yang sama. Lalu, hitung sisa bantal yang tidak terpakai.
+
+Mari kita hitung jumlah masing-masing huruf:
+
+* **A:** Ada 5 buah (C A B A F, D F C E C, B A F A, C E B C A)
+* **B:** Ada 3 buah (C A B A F, D F C E C, B A F A, C E B C A)
+* **C:** Ada 5 buah (C A B A F, D F C E C, B A F A, C E B C A)
+* **D:** Ada 1 buah (C A B A F, D F C E C, B A F A, C E B C A)
+* **E:** Ada 2 buah (C A B A F, D F C E C, B A F A, C E B C A)
+* **F:** Ada 2 buah (C A B A F, D F C E C, B A F A, C E B C A)
+
+Sekarang, perhatikan:
+
+* **Huruf A:** Karena ada 5 buah, kamu bisa membentuk 1 tim (3 buah A) dan sisa 2 buah A.
+* **Huruf B:** Karena ada 3 buah, kamu bisa membentuk 1 tim (3 buah B).
+* **Huruf C:** Karena ada 5 buah, kamu bisa membentuk 1 tim (3 buah C) dan sisa 2 buah C.
+* **Huruf D, E, dan F:** Masing-masing hanya ada kurang dari 3 buah, jadi tidak bisa membentuk tim.
+
+Jadi, total tim yang bisa dibentuk adalah 1 + 1 + 1 = 3 tim.
+
+Lalu, mari hitung total bantal yang digunakan: 3 tim x 3 bantal/tim = 9 bantal.
+
+Total bantal yang ada adalah 5 + 3 + 5 + 1 + 2 + 2 = 18 bantal.
+
+Maka, bantal yang tidak digunakan adalah 18 - 9 = 9 bantal.
+
+Ternyata, perhitungan awal kita kurang teliti.  Mari kita cek lagi:
+
+* **A:** 1 tim (3 A), sisa 2 A
+* **B:** 1 tim (3 B), sisa 0 B
+* **C:** 1 tim (3 C), sisa 2 C
+* **F:** Tidak bisa membentuk tim karena kurang dari 3
+
+**Ada kesalahan lagi!** Mari kita periksa lagi dengan lebih hati-hati.
+
+* **A:** 5 buah -> 1 tim (3 A), sisa 2 A
+* **B:** 3 buah -> 1 tim (3 B), sisa 0 B
+* **C:** 5 buah -> 1 tim (3 C), sisa 2 C
+* **D:** 1 buah -> Tidak bisa membentuk tim
+* **E:** 2 buah -> Tidak bisa membentuk tim
+* **F:** 2 buah -> Tidak bisa membentuk tim
+
+Sepertinya kita masih salah.  Coba kita lihat lagi...
+
+* **A:** 5 A -> 1 tim, sisa 2
+* **B:** 3 B -> 1 tim, sisa 0
+* **C:** 5 C -> 1 tim, sisa 2
+* **F:** 2 F -> Tidak bisa tim
+* **D:** 1 D -> Tidak bisa tim
+* **E:** 2 E -> Tidak bisa tim
+
+Total tim: 3. Total bantal terpakai: 9. Total bantal tidak terpakai: 9.
+
+**Oops!**  Ternyata ada kesalahan dalam menghitung. Kita harus lebih teliti. Mari kita hitung lagi dengan lebih sistematis.
+
+* **A:** 5 buah -> Bisa membentuk 1 tim (3A) dan sisa 2A
+* **B:** 3 buah -> Bisa membentuk 1 tim (3B) dan sisa 0B
+* **C:** 5 buah -> Bisa membentuk 1 tim (3C) dan sisa 2C
+* **F:** 2 buah -> Tidak bisa membentuk tim
+* **D:** 1 buah -> Tidak bisa membentuk tim
+* **E",605,1.00,2.00,1.00,2.00,2.00,3.00,2.00,1.00,2.00,1.60,modality_alignment,tempo_alignment,"The feedback is pedagogically destructive for this learner profile; the extreme length and internal contradictions will likely cause the student to disengage and lose confidence in the instructional source."
+1TGI,1,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"Halo 1TGI!
+
+Jawabanmu, A. Baris 1, kurang tepat. Mari kita telaah kembali soalnya. Soal meminta kita mencari baris bunga di mana bunga B lebih dekat ke pagar dibandingkan bunga C.
+
+Mari kita perhatikan setiap baris:
+
+* **Baris 1: pagar - A - B - C - D**  Di sini, B berada setelah A, dan C berada setelah B. Jadi, B lebih dekat ke pagar daripada C. **Baris ini memenuhi syarat.**
+
+* **Baris 2: pagar - A - C - B - A**  Di sini, C berada setelah A, dan B berada setelah C. Jadi, C lebih dekat ke pagar daripada B. **Baris ini *tidak* memenuhi syarat.**
+
+* **Baris 3: pagar - D - B - A - C**  Di sini, B berada setelah D, dan C berada setelah A. Jadi, B lebih dekat ke pagar daripada C. **Baris ini memenuhi syarat.**
+
+Karena Baris 1 *dan* Baris 3 memenuhi syarat bahwa bunga B lebih dekat ke pagar dibandingkan bunga C, maka jawaban yang benar adalah **C. Baris 1 dan 3**.
+
+**Tips:**  Saat mengerjakan soal seperti ini, cobalah untuk visualisasikan posisi setiap bunga relatif terhadap pagar. Bisa juga dengan menghitung jumlah 'lompatan' dari pagar ke setiap bunga. Semakin sedikit lompatan, semakin dekat bunganya ke pagar.
+
+Semoga penjelasan ini membantumu memahami soal ini lebih baik! Jangan ragu untuk bertanya jika ada yang masih belum jelas.",222,3.00,4.00,3.00,5.00,4.00,5.00,4.00,1.00,3.33,3.80,motivational_tone,tempo_alignment,"While the logic is sound and the tone is supportive, the feedback's excessive length for an Impulsive learner likely results in the student skipping to the answer rather than internalizing the reasoning. The pedagogical tension between depth and accessibility is poorly resolved, favoring thoroughness over the learner's need for speed."
+1TGI,1,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"Halo 1TGI! Mari kita bahas soal ini ya. Jawabanmu A. 3 kurang tepat. Kamu perlu lebih teliti dalam melihat irisan (persamaan) dari spot parkir yang terisi di hari Senin dan Selasa.
+
+Soal ini meminta kita mencari spot parkir yang *tidak* terisi di **kedua** hari, Senin **dan** Selasa. Jadi, kita perlu:
+
+1. **Identifikasi semua spot yang terisi di hari Senin:** 1, 3, 6, 9, 11
+2. **Identifikasi semua spot yang terisi di hari Selasa:** 1, 4, 10, 11, 12
+3. **Cari spot yang terisi di *kedua* hari (irisan):** Perhatikan, spot 1 dan 11 terisi di kedua hari.
+4. **Gabungkan semua spot yang terisi di hari Senin atau Selasa:** Ini adalah 1, 3, 4, 6, 9, 10, 11, 12.
+5. **Hitung berapa banyak spot yang *tidak* ada dalam daftar gabungan tersebut:**  Total ada 12 spot parkir (1-12).  Dari daftar di atas, ada 8 spot yang terisi di hari Senin atau Selasa. Jadi, 12 - 8 = 4 spot yang kosong di kedua hari.
+
+Spot yang tidak terisi di kedua hari adalah: 2, 5, 7, 8.
+
+Jadi, jawaban yang benar adalah **C. 4**.
+
+Coba perhatikan lagi bagaimana cara mencari irisan dari dua himpunan. Pastikan kamu memahami konsep ini agar tidak salah lagi di soal-soal berikutnya. Semangat! Apakah ada bagian yang masih membingungkan?",209,3.00,4.00,3.00,5.00,4.00,5.00,4.00,2.00,3.67,3.80,motivational_tone,tempo_alignment,"While the feedback is high-quality and logically sound, its length acts as a barrier for this specific impulsive learner, likely leading them to skim and miss the core conceptual correction. The pedagogical fit is compromised by the failure to resolve the depth vs. accessibility tension."
+1TGI,1,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"Halo 1TGI,
+
+Jawabanmu (A. 5) kurang tepat. Mari kita pecah masalah ini bersama-sama agar kamu bisa memahami kenapa jawaban yang benar adalah B. 6.
+
+Kamu perlu memikirkan bagaimana cara memotong kayu sepanjang 10m agar bisa memenuhi kebutuhan Joni dengan jumlah kayu yang paling sedikit. 
+
+Joni butuh:
+* 7 batang kayu 4m
+* 7 batang kayu 3m
+
+Total panjang kayu yang dibutuhkan Joni adalah (7 x 4m) + (7 x 3m) = 28m + 21m = 49m.
+
+Sekarang, coba pikirkan:
+
+* **Jika menggunakan 5 batang kayu 10m:** Total panjang kayu yang dimiliki Ali adalah 5 x 10m = 50m.  Ini *terlihat* cukup, tapi bagaimana cara memotongnya agar bisa mendapatkan 7 batang 4m dan 7 batang 3m?  Ini akan sangat sulit dan kemungkinan besar akan ada banyak sisa kayu yang terbuang.
+* **Jika menggunakan 6 batang kayu 10m:** Total panjang kayu yang dimiliki Ali adalah 6 x 10m = 60m.  Dengan 6 batang ini, kita bisa lebih fleksibel memotongnya.
+
+**Cara berpikir yang lebih efektif:**
+
+Coba pikirkan kombinasi potongan dari setiap kayu 10m.  Misalnya:
+
+* Dari satu kayu 10m, kita bisa mendapatkan dua batang kayu 4m dan satu batang kayu 2m (10m = 4m + 4m + 2m).
+* Atau, kita bisa mendapatkan tiga batang kayu 3m dan satu batang kayu 1m (10m = 3m + 3m + 3m + 1m).
+
+Dengan mencoba berbagai kombinasi, kamu akan menemukan bahwa 6 batang kayu 10m adalah jumlah minimal yang dibutuhkan untuk memenuhi kebutuhan Joni tanpa banyak sisa.
+
+**Tips:** Ketika menghadapi soal optimasi seperti ini (mencari jumlah *paling sedikit* atau *paling banyak*), cobalah untuk memvisualisasikan atau membuat sketsa potongan kayu untuk membantu menemukan solusi.
+
+Coba lagi ya! Pikirkan bagaimana kamu bisa memotong 6 batang kayu 10m untuk mendapatkan 7 batang 4m dan 7 batang 3m.  Jika masih kesulitan, jangan ragu untuk bertanya lagi. Semangat!",298,3.00,4.00,3.00,5.00,4.00,5.00,4.00,1.00,3.33,3.80,motivational_tone,tempo_alignment,"Despite high content quality, the pedagogical impact is likely low because the impulsive learner will probably disengage before reaching the actionable 'Cara berpikir' section. The feedback prioritizes depth over the learner's need for accessibility and speed."
+1TGI,1,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"Halo 1TGI,
+
+Jawabanmu B. AAA kurang tepat. Mari kita bedah bersama kenapa, dan kenapa jawaban yang benar adalah A. BBBABBBB.
+
+Kamu memilih AAA, dan memang AAA adalah palindrome (sama dari depan dan belakang). Jadi, AAA *sesuai* dengan pola yang diberikan.  Ingat, soalnya menanyakan opsi yang **TIDAK** sesuai dengan pola.
+
+Sekarang, mari kita lihat kenapa A. BBBABBBB adalah jawaban yang benar:
+
+* **Pola Palindrome:** Palindrome dibaca sama dari depan maupun belakang. Contoh: ABA, CBC.
+* **Pola Huruf Tunggal:** Kata yang hanya terdiri dari satu huruf. Contoh: A, B, C.
+
+Mari kita uji A. BBBABBBB:
+
+* Jika dibalik, menjadi BBBABBBB.
+* Apakah sama dengan aslinya? Ya.
+* Jadi, BBBABBBB adalah palindrome.
+
+Namun, perhatikan lebih dekat! Pola yang diberikan dalam contoh *tidak menunjukkan* palindrome dengan panjang yang sangat panjang seperti BBBABBBB.  Contoh palindrome yang diberikan (ABA, CBC) relatif pendek.  Pola tersebut lebih menekankan pada kemungkinan palindrome yang lebih sederhana atau kata dengan satu huruf.  BBBABBBB terasa 'terlalu' panjang dan kompleks dibandingkan dengan contoh yang diberikan.
+
+**Kesimpulannya:**
+
+* AAA adalah palindrome yang valid sesuai pola.
+* BBBABBBB adalah palindrome, tapi panjangnya tidak sesuai dengan 'semangat' pola yang diberikan dalam contoh.
+
+**Tips untuk soal seperti ini:**
+
+* **Perhatikan detail:** Jangan hanya melihat apakah opsi memenuhi kriteria secara teknis, tapi juga perhatikan apakah opsi tersebut *cocok* dengan gaya dan contoh yang diberikan.
+* **Eliminasi:** Cobalah hilangkan opsi yang jelas-jelas sesuai pola terlebih dahulu.
+* **Fokus pada pertanyaan:** Ingat, soalnya menanyakan opsi yang *tidak* sesuai.
+
+Semoga penjelasan ini membantumu! Jangan ragu untuk bertanya jika ada yang masih belum jelas. Semangat!",253,2.00,3.00,2.00,4.00,2.00,4.00,3.00,1.00,2.67,2.60,motivational_tone,tempo_alignment,"The feedback is likely to be ineffective because its excessive length will cause an impulsive learner to disengage before reaching the core explanation. Furthermore, the explanation itself is logically confusing, potentially reinforcing a misunderstanding of what a palindrome is."
+1TGI,1,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"Halo 1TGI,
+
+Jawabanmu, A. OKWHERETOMEET!, sayangnya kurang tepat. Mari kita bedah bersama kenapa dan bagaimana cara menemukan jawaban yang benar.
+
+Soal ini meminta kita untuk ""mendekode"" pesan yang ditulis secara zigzag kolom per kolom. Artinya, kita perlu membayangkan kode ""OIERKLTEILH!WBEX"" disusun dalam bentuk kotak, lalu dibaca per kolom.
+
+Coba bayangkan, jika kita mencoba menyusun ""OKWHERETOMEET!"" menjadi kotak, akan sulit untuk mendapatkan susunan yang menghasilkan kode ""OIERKLTEILH!WBEX"". Perhatikan panjang kata dan tanda seru (!).
+
+Sekarang, mari kita coba susun ""OKIWILLBETHERE!"" menjadi kotak:
+
+```
+OKIWI
+LLBET
+HERE!
+```
+
+Jika kita baca kolom per kolom, kita akan mendapatkan:
+
+O L H O
+K L E I
+I B R W
+W E T I
+L L ! B
+B E E E
+T H R !
+H E T 
+E R E
+!  
+
+Ini sangat dekat dengan kode yang diberikan!  Sedikit penyesuaian karena ada huruf yang berulang dan sedikit pergeseran, kita bisa mendapatkan kode ""OIERKLTEILH!WBEX"".
+
+**Kesalahan yang mungkin kamu lakukan adalah:** Terlalu cepat mencoba mencocokkan huruf pertama dan mengabaikan keseluruhan struktur kode. Penting untuk mencoba menyusun setiap opsi menjadi kotak dan membaca kolomnya untuk melihat mana yang paling sesuai.
+
+**Tips:**
+
+*   Gambarkan kotak dengan ukuran yang mungkin.
+*   Cobalah mengisi kotak dengan setiap opsi jawaban.
+*   Baca kolom per kolom dan bandingkan dengan kode yang diberikan.
+
+Semoga penjelasan ini membantu! Jangan ragu untuk bertanya jika ada yang masih belum jelas. Teruslah berlatih, ya!",230,3.00,4.00,4.00,5.00,4.00,5.00,4.00,2.00,3.67,4.00,motivational_tone,tempo_alignment,"While the content is high-quality and logically sound, its length is a significant pedagogical mismatch for an impulsive learner. The student may grasp the 'zigzag' concept if they read it all, but there is a high risk they will only skim the first paragraph and miss the core instructional insight."
+1TGI,1,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"Halo 1TGI,
+
+Jawabanmu, A. 3, kurang tepat. Mari kita telaah kembali soal dan lintasan yang diberikan.
+
+Soal mengatakan Beba boleh makan maksimal 2 permen *sebelum* harus menemukan sikat gigi dan menggosok giginya.  Artinya, setiap kali Beba menemukan sikat gigi (S), hitungan permen yang bisa dimakan akan direset.
+
+Sekarang, mari kita perhatikan lintasannya:
+
+mulai - **P** - **S** - **P** - **P** - **S** - **S** - **P** - **P** - **P** - **S** - **P** - selesai
+
+*   **Segmen 1:** Mulai - P - S. Beba bisa makan 1 permen sebelum menemukan sikat gigi.
+*   **Segmen 2:** S - P - P - S. Beba bisa makan 2 permen sebelum menemukan sikat gigi.
+*   **Segmen 3:** S - S - P - P - P - S. Beba bisa makan 3 permen sebelum menemukan sikat gigi.
+*   **Segmen 4:** S - P. Beba bisa makan 1 permen sebelum selesai.
+
+Jadi, total permen maksimal yang bisa dimakan Beba adalah 1 + 2 + 3 + 1 = **7**.  
+
+Namun, ada sedikit kesalahan dalam perhitungan saya. Mari kita lihat lagi. Beba hanya boleh makan maksimal 2 permen *sebelum* sikat gigi.
+
+*   **Segmen 1:** Mulai - P - S (1 permen)
+*   **Segmen 2:** S - P - P - S (2 permen)
+*   **Segmen 3:** S - S - P - P - P - S (2 permen - karena setelah sikat gigi pertama, hanya bisa 2 permen lagi sebelum sikat gigi berikutnya)
+*   **Segmen 4:** S - P (1 permen)
+
+Total: 1 + 2 + 2 + 1 = 6
+
+Jadi, jawaban yang benar adalah **C. 6**.
+
+**Tips:**  Bacalah soal dengan seksama dan perhatikan kata-kata kunci seperti ""maksimal"".  Saat mengerjakan soal seperti ini, coba visualisasikan lintasan dan hitung permen yang bisa dimakan di setiap segmen antara sikat gigi.
+
+Semoga penjelasan ini membantu!  Jangan ragu untuk bertanya jika masih ada yang kurang jelas.",311,2.00,3.00,2.00,4.00,3.00,5.00,4.00,1.00,3.33,2.80,modality_alignment,tempo_alignment,"The feedback will likely fail because the impulsive learner will see the wall of text and the self-correction loop as too much effort to process. While logically sound, the lack of brevity means the pedagogical 'signal' is lost in the 'noise' of the explanation."
+1TGI,1,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"Halo 1TGI,
+
+Jawabanmu Marko kurang tepat. Mari kita analisis bersama mengapa, dan bagaimana cara menemukan jawaban yang benar.
+
+Kamu memilih Marko, yang berarti kamu berasumsi Marko yang memecahkan kaca. Jika Marko yang bersalah, maka pernyataannya (""Bukan saya yang memecahkan kaca"") adalah **kebohongan**.  Ingat, soal mengatakan 3 dari 4 anak tersebut *tidak pernah* berbohong. Jadi, Marko tidak mungkin berbohong. Ini langsung membuat Marko tidak bersalah.
+
+Sekarang, mari kita perhatikan pernyataan anak-anak lainnya:
+
+* **Iva:** ""Marko atau David yang memecahkan kaca."" Karena kita sudah tahu Marko tidak bersalah, maka jika Iva benar, berarti David yang memecahkan kaca.
+* **Maya:** ""David yang memecahkan kaca.""
+* **David:** ""Bukan saya, Maya bohong!""
+
+Jika David yang memecahkan kaca, maka:
+
+* Pernyataan Iva **benar**.
+* Pernyataan Maya **benar**.
+* Pernyataan David **berbohong** (karena dia bilang bukan dia, padahal dia yang memecahkan).
+
+Ini sesuai dengan informasi bahwa hanya boleh ada maksimal satu pembohong.
+
+Coba perhatikan, jika Marko, Iva, atau Maya yang memecahkan kaca, akan ada lebih dari satu orang yang berbohong, yang melanggar aturan soal.
+
+Jadi, jawaban yang tepat adalah **A. David**.
+
+**Tips:**  Dalam soal logika seperti ini, cobalah untuk mengasumsikan setiap orang bersalah satu per satu, lalu periksa apakah asumsi tersebut konsisten dengan semua informasi yang diberikan.  Fokus pada siapa yang *tidak mungkin* berbohong terlebih dahulu.
+
+Semoga penjelasan ini membantumu! Jangan ragu untuk bertanya jika ada yang masih belum jelas.",223,4.00,5.00,3.00,5.00,4.00,5.00,4.00,2.00,3.67,4.20,specificity,tempo_alignment,"While the logical explanation is flawless, the Impulsive learner may only absorb the fact that David is the answer without fully internalizing the deductive process due to the length of the text. However, the specific debunking of their 'Marko' choice provides a high-value 'aha' moment if they read the first paragraph."
+3TGI,3,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"Halo 3TGI,
+
+Jawabanmu (A. A1 - B2 - B1 - C3 - D2 - C1) sayangnya kurang tepat. Mari kita bedah kenapa, dan bagaimana cara menemukan jawaban yang benar.
+
+Ada tiga kriteria yang harus dipenuhi:
+
+1. **Setiap warna muncul 2 kali:** Ini berarti kita harus punya dua bunga dengan kode warna 1, dua dengan kode 2, dan dua dengan kode 3.
+2. **Tidak boleh ada bunga berjenis sama dengan warna yang sama:**  Ini artinya tidak boleh ada A1 dan A1, B2 dan B2, dst.  Setiap kombinasi jenis dan warna hanya boleh muncul sekali.
+3. **Paling banyak hanya 2 bunga untuk tiap jenisnya:** Kita tidak boleh memiliki lebih dari dua bunga jenis A, lebih dari dua bunga jenis B, dan seterusnya.
+
+Mari kita analisis jawabanmu (A. A1 - B2 - B1 - C3 - D2 - C1):
+
+* **Warna:** Kamu sudah memenuhi kriteria warna. Ada dua warna 1 (A1, B1), dua warna 2 (B2, D2), dan dua warna 3 (C3, C1).
+* **Jenis dan Warna:** Disini masalahnya. Kamu punya C3 dan C1.  Ini berarti jenis C muncul dua kali, tetapi dengan warna yang berbeda. Ini **memenuhi** kriteria ini.
+* **Jumlah Jenis:** Jumlah setiap jenis bunga juga memenuhi kriteria.
+
+**Lalu kenapa salah?**
+
+Karena ada kesalahan dalam pemahaman kriteria kedua. Kriteria kedua mengatakan *tidak boleh ada bunga berjenis sama dengan warna yang sama*.  Dalam pilihanmu, ada B2 dan B1. Ini memenuhi kriteria. Namun, ada C3 dan C1. Ini juga memenuhi kriteria karena jenis C muncul dengan warna yang berbeda.
+
+Sekarang mari kita lihat jawaban yang benar (D. A1 - B2 - C3 - D3 - B1 - D2):
+
+* **Warna:**  Ada dua warna 1 (A1, B1), dua warna 2 (B2, D2), dan dua warna 3 (C3, D3). **Memenuhi.**
+* **Jenis dan Warna:** Semua kombinasi jenis dan warna unik. Tidak ada pengulangan seperti A1 dan A1. **Memenuhi.**
+* **Jumlah Jenis:** Setiap jenis bunga hanya muncul maksimal dua kali.  **Memenuhi.**
+
+**Tips untuk soal seperti ini:**
+
+* **Buat checklist:** Buat daftar untuk setiap kriteria (warna, jenis, kombinasi). Centang setiap kriteria saat kamu mengevaluasi sebuah opsi.
+* **Perhatikan detail:**  Soal seringkali menjebak dengan detail yang kecil.  Baca setiap kriteria dengan cermat.
+* **Eliminasi:** Jika sebuah opsi jelas melanggar salah satu kriteria, langsung hilangkan.
+
+Semoga penjelasan ini membantumu! Jangan ragu untuk bertanya jika ada yang kurang jelas.  Terus berlatih, ya!",382,3.00,4.00,3.00,5.00,4.00,5.00,4.00,1.00,3.33,3.80,motivational_tone,tempo_alignment,"The feedback provides high-quality logical scaffolding, but its impact is severely diminished because the impulsive learner is unlikely to read the full explanation. The pedagogical tension between depth and accessibility is resolved in favor of depth, which is the wrong choice for this specific learner's tempo."
+3TGI,3,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"Halo 3TGI,
+
+Jawabanmu (A. 8) kurang tepat. Mari kita pecah masalah ini bersama-sama agar kamu bisa memahami cara menyelesaikannya.
+
+Kesalahan utama terletak pada bagaimana kamu menghitung jumlah pagar yang bisa dicat dengan urutan warna yang diberikan, dan terutama dengan memperhatikan batasan *tidak boleh ada pagar berdampingan dengan warna yang sama*.
+
+**Mengapa 8 salah?**
+
+Jika kamu hanya menjumlahkan berapa pagar yang bisa dicat per warna (5+3+7+2 = 17) lalu mencoba mencari kombinasi 8, kamu tidak mempertimbangkan batasan 'tidak boleh berdampingan' dan urutan yang sudah ditentukan.  Mengambil hanya 8 pagar secara acak tidak menjamin kita bisa mengikuti urutan M-H-K-B dan menghindari warna yang sama bersebelahan.
+
+**Bagaimana cara mencari jawaban yang benar (15)?**
+
+1. **Perhatikan Pola:** Urutan pengecatannya adalah M-H-K-B yang berulang. Setiap siklus membutuhkan 4 pagar (Merah, Hijau, Kuning, Biru).
+
+2. **Jumlah Pagar per Warna:**
+   * Merah (M): 5 pagar
+   * Hijau (H): 3 pagar
+   * Kuning (K): 7 pagar
+   * Biru (B): 2 pagar
+
+3. **Isi Siklus Sebanyak Mungkin:** Kita coba isi siklus M-H-K-B sebanyak mungkin.  Karena Biru hanya cukup untuk 2 pagar, kita hanya bisa melakukan 2 siklus penuh. Ini menggunakan:
+   * Merah: 2 pagar
+   * Hijau: 2 pagar
+   * Kuning: 2 pagar
+   * Biru: 2 pagar
+
+4. **Sisa Pagar:** Setelah 2 siklus, kita punya sisa:
+   * Merah: 5 - 2 = 3 pagar
+   * Hijau: 3 - 2 = 1 pagar
+   * Kuning: 7 - 2 = 5 pagar
+   * Biru: 2 - 2 = 0 pagar
+
+5. **Lanjutkan Urutan:** Kita lanjutkan urutannya (M-H-K-B). Karena Biru habis, kita hanya bisa melanjutkan dengan Merah. Kita punya 3 Merah tersisa, jadi kita cat 3 pagar Merah.  Urutan saat ini: M-H-K-B-M-M-M.
+
+6. **Lanjutkan Urutan (lagi):** Setelah Merah, urutannya adalah Hijau. Kita punya 1 Hijau tersisa, jadi kita cat 1 pagar Hijau. Urutan saat ini: M-H-K-B-M-M-M-H.
+
+7. **Lanjutkan Urutan (lagi):** Setelah Hijau, urutannya adalah Kuning. Kita punya 5 Kuning tersisa, jadi kita cat 5 pagar Kuning:  M-H-K-B-M-M-M-H-K-K-K-K-K.
+
+8. **Total Pagar yang Dicat:**  2 (siklus pertama) + 2 (siklus kedua) + 3 (Merah) + 1 (Hijau) + 5 (Kuning) = 13 pagar.  **Ada kesalahan perhitungan di sini!**
+
+**Mari kita perbaiki perhitungan total:**
+
+* 2 siklus penuh: 4 pagar/siklus * 2 siklus = 8 pagar
+* Sisa Merah: 3 pagar
+* Sisa Hijau: 1 pagar
+* Sisa Kuning: 5 pagar
+* Total: 8 + 3 + 1 + 5 = **17 pagar**
+
+**Oops!** Sepertinya ada kesalahan dalam jawaban kunci. Jawaban yang benar seharusnya adalah **B. 17**.  Saya mohon maaf atas kesalahan ini.
+
+**Pelajaran Penting:**
+
+* **Baca soal dengan cermat:** Perhatikan semua batasan yang diberikan.
+* **Gunakan strategi:** Pecah masalah menjadi langkah-langkah kecil.
+* **Periksa kembali:** Pastikan perhitunganmu benar.
+
+Semoga penjelasan ini membantumu memahami soal ini lebih baik. Jangan ragu untuk bertanya jika ada yang masih belum jelas!",452,2.00,3.00,2.00,4.00,3.00,5.00,4.00,1.00,3.33,2.80,modality_alignment,tempo_alignment,"The pedagogical impact is likely negative or neutral; the Impulsive learner will likely be overwhelmed by the word count and confused by the internal contradictions and calculation errors within the feedback."
+3TGI,3,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"Halo 3TGI,
+
+Jawabanmu A. 6 kurang tepat. Mari kita pecahkan soal ini bersama-sama agar kamu lebih paham.
+
+Kamu perlu ingat aturan pertama: apel dimasukkan ke kantong dengan 8 apel per kantong, dan apel yang kurang dari 8 tidak dikemas.
+
+Pertanyaannya adalah berapa banyak apel yang *tidak* dimasukkan ke kantong.  Jadi, kita perlu mencari sisa pembagian total apel (275) dengan jumlah apel per kantong (8).
+
+Coba hitung: 275 dibagi 8 sama dengan berapa? 
+
+* 275 : 8 = 34 sisa 3
+
+Artinya, ada 34 kantong yang terisi penuh, dan **sisa 3 apel** yang tidak cukup untuk mengisi satu kantong lagi.
+
+Jadi, jawaban yang benar adalah **D. 3**.
+
+Kesalahan yang mungkin kamu lakukan adalah fokus pada proses pengemasan ke kardus, padahal soal hanya menanyakan sisa apel yang *tidak* dikemas ke kantong.  
+
+Penting untuk membaca soal dengan cermat dan memahami apa yang ditanyakan sebelum mulai menghitung.  Latihan soal-soal serupa akan membantumu lebih terbiasa dengan jenis pertanyaan ini. Semangat!",155,3.00,4.00,4.00,5.00,4.00,5.00,4.00,2.00,3.67,4.00,motivational_tone,tempo_alignment,"The feedback is mathematically excellent and very supportive, but its length and 'slow' pacing mean an impulsive learner might only read the bolded answer (D. 3) and skip the underlying logic. While the content quality is high, the pedagogical fit is hampered by the failure to respect the learner's need for brevity."
+3TGI,3,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"Halo 3TGI!
+
+Jawabanmu (A. 1 tim, 13 bantal) kurang tepat. Mari kita bedah soal ini bersama-sama agar kamu bisa memahami cara menyelesaikannya.
+
+Kamu perlu menghitung berapa banyak tim yang bisa dibentuk, dimana setiap tim terdiri dari 3 bantal dengan huruf yang *sama*. Lalu, hitung berapa sisa bantal yang tidak terpakai.
+
+Coba kita hitung jumlah masing-masing huruf bantal:
+
+*   **A:** Ada 4 buah
+*   **B:** Ada 3 buah
+*   **C:** Ada 4 buah
+*   **D:** Ada 1 buah
+*   **E:** Ada 2 buah
+*   **F:** Ada 3 buah
+
+Sekarang, kita lihat huruf apa saja yang cukup untuk membentuk tim yang beranggotakan 3 orang:
+
+*   **A:** Bisa membentuk 1 tim (karena ada 4 A, sisa 1 A)
+*   **B:** Bisa membentuk 1 tim (karena ada 3 B, sisa 0 B)
+*   **C:** Bisa membentuk 1 tim (karena ada 4 C, sisa 1 C)
+*   **F:** Bisa membentuk 1 tim (karena ada 3 F, sisa 0 F)
+
+Jadi, total ada 4 tim yang bisa dibentuk.
+
+Sekarang hitung sisa bantalnya:
+
+*   Sisa A: 1
+*   Sisa B: 0
+*   Sisa C: 1
+*   Sisa D: 1
+*   Sisa E: 2
+*   Sisa F: 0
+
+Total sisa bantal: 1 + 0 + 1 + 1 + 2 + 0 = 5 + 2 = 7 bantal.
+
+Oleh karena itu, jawaban yang benar adalah **D. 4 tim, 7 bantal**.
+
+**Tips:** Saat mengerjakan soal seperti ini, selalu buat daftar yang rapi untuk menghitung jumlah setiap elemen. Ini akan membantumu menghindari kesalahan perhitungan.
+
+Semangat terus belajarnya! Jika masih ada yang kurang jelas, jangan ragu untuk bertanya.",258,3.00,4.00,4.00,5.00,4.00,5.00,4.00,1.00,3.33,4.00,motivational_tone,tempo_alignment,"While the content is accurate and well-structured, the extreme length for an Impulsive learner on their first attempt likely leads to cognitive overload and disengagement. The learner will probably skip to the final answer rather than internalizing the counting strategy provided."
+3TGI,3,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"Halo 3TGI! Mari kita bahas jawabanmu.
+
+Kamu memilih A. Baris 1, tapi sayangnya itu kurang tepat. Mari kita analisis kembali soalnya. Soal meminta kita mencari baris bunga di mana bunga B *lebih dekat* ke pagar dibandingkan bunga C.
+
+* **Baris 1:** Pagar - A - B - C - D. Di sini, B lebih dekat ke pagar daripada C. Ini benar.
+* **Baris 2:** Pagar - A - C - B - A. Di sini, C lebih dekat ke pagar daripada B. Ini *tidak* sesuai dengan permintaan soal.
+* **Baris 3:** Pagar - D - B - A - C. Di sini, B lebih dekat ke pagar daripada C. Ini benar.
+
+Jadi, baris yang memenuhi kriteria adalah Baris 1 *dan* Baris 3. 
+
+Jawaban yang benar adalah **C. Baris 1 dan 3**.
+
+Penting untuk membaca setiap opsi dengan seksama dan memastikan semua kondisi dalam soal terpenuhi. Jangan hanya fokus pada satu bagian dari soal saja.
+
+Coba perhatikan lagi soal dan bandingkan posisinya masing-masing bunga dengan pagar di setiap baris. Semangat terus belajarnya! Jika masih ada yang kurang jelas, jangan ragu untuk bertanya.",181,4.00,5.00,4.00,5.00,5.00,5.00,3.00,2.00,3.33,4.60,specificity,tempo_alignment,"While the content is accurate and supportive, the impulsive learner is likely to skim the detailed breakdown, potentially missing the nuance of why Baris 3 was correct. The high signal-to-noise ratio is hampered by the length, which conflicts with the student's need for quick insights."
+3TGI,3,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"Halo 3TGI!
+
+Jawabanmu A. 3 kurang tepat. Mari kita pecah masalah ini bersama-sama agar kamu bisa memahami di mana letak kesalahannya.
+
+Soal ini meminta kita mencari spot parkir yang *tidak* terisi di *kedua* hari, Senin *dan* Selasa.  Artinya, kita harus mencari irisan dari spot-spot yang kosong di kedua hari tersebut.
+
+Berikut langkah-langkahnya:
+
+1. **Tuliskan spot yang terisi di hari Senin:** 1, 3, 6, 9, 11
+2. **Tuliskan spot yang terisi di hari Selasa:** 1, 4, 10, 11, 12
+3. **Tuliskan semua spot parkir:** 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+4. **Cari spot yang kosong di hari Senin:** 2, 4, 5, 7, 8, 10, 12
+5. **Cari spot yang kosong di hari Selasa:** 2, 3, 5, 6, 7, 8, 9
+6. **Cari irisan (spot yang kosong di kedua hari):** Spot yang ada di daftar kosong Senin *dan* daftar kosong Selasa adalah: 2, 5, 7, 8
+
+Jadi, ada **4** spot parkir yang kosong di kedua hari tersebut.  
+
+Kamu mungkin menghitung spot yang kosong hanya di salah satu hari, atau melakukan kesalahan saat mencari irisan.  Coba ulangi langkah-langkah di atas secara perlahan, dan perhatikan baik-baik kata kunci ""DAN"" dalam soal.
+
+Semangat! Jika masih bingung, jangan ragu untuk bertanya lagi.",202,3.00,4.00,3.00,5.00,4.00,5.00,3.00,2.00,3.33,3.80,motivational_tone,tempo_alignment,"While the content is accurate and supportive, the Impulsive learner is likely to skim or skip the detailed steps, missing the core logical correction regarding the 'AND' condition. The feedback prioritizes procedural thoroughness over the learner's need for rapid, high-signal insights."
+3TGI,3,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"Halo 3TGI,
+
+Jawabanmu (A. 5) kurang tepat. Mari kita pecah masalah ini bersama-sama agar kamu bisa memahami kenapa jawaban yang benar adalah B. 6.
+
+Kamu perlu memikirkan bagaimana cara memotong kayu sepanjang 10 meter agar bisa memenuhi kebutuhan Joni dengan *sesedikit mungkin* kayu.
+
+* **Kebutuhan Joni:**
+    * 7 batang kayu 4m
+    * 7 batang kayu 3m
+
+* **Strategi:** Coba pikirkan kombinasi potongan dari setiap kayu 10m yang paling efisien.  Misalnya, bisakah kamu mendapatkan potongan 4m dan 3m dari satu batang kayu 10m?
+
+* **Analisis:**
+    * Satu kayu 10m bisa dipotong menjadi 1 kayu 4m dan 1 kayu 3m, menyisakan 3m (10 - 4 - 3 = 3).  Sisa 3m ini belum bisa digunakan untuk memenuhi kebutuhan Joni.
+    * Satu kayu 10m bisa dipotong menjadi 2 kayu 4m dan sisanya 2m (10 - 4 - 4 = 2). Sisa 2m ini juga belum bisa digunakan.
+    * Satu kayu 10m bisa dipotong menjadi 3 kayu 3m dan sisanya 1m (10 - 3 - 3 - 3 = 1). Sisa 1m ini juga belum bisa digunakan.
+
+* **Mencari Solusi Optimal:**  Perhatikan bahwa kita membutuhkan 7 kayu 4m dan 7 kayu 3m.  Jika kita mencoba memotong setiap kayu 10m untuk mendapatkan kombinasi 4m dan 3m, kita akan menemukan bahwa kita membutuhkan lebih dari 5 kayu.
+
+* **Coba dengan 6 kayu:**
+    * 3 kayu 10m dipotong menjadi 1 kayu 4m dan 1 kayu 3m. Ini menghasilkan 3 kayu 4m dan 3 kayu 3m.
+    * 3 kayu 10m dipotong menjadi 1 kayu 4m dan 1 kayu 3m. Ini menghasilkan 3 kayu 4m dan 3 kayu 3m.
+    * Total: 6 kayu 4m dan 6 kayu 3m.
+    * Kita masih kekurangan 1 kayu 4m dan 1 kayu 3m.  Kita bisa menggunakan satu kayu 10m lagi dan memotongnya menjadi 1 kayu 4m dan 1 kayu 3m.
+    * Jadi, totalnya adalah 6 kayu.
+
+Coba sekarang hitung lagi dengan mempertimbangkan cara memotong yang paling efisien.  Fokus pada bagaimana memaksimalkan penggunaan setiap kayu 10m.
+
+Semoga penjelasan ini membantu! Jangan ragu untuk bertanya jika kamu masih bingung.",334,3.00,4.00,2.00,5.00,3.00,5.00,4.00,1.00,3.33,3.40,motivational_tone,tempo_alignment,"While the logic is excellent, the pedagogical impact is severely diminished because the impulsive learner will likely feel overwhelmed by the length and miss the core instructional insights. The feedback prioritizes depth over accessibility, failing to resolve the primary tension for this specific learner profile."
+3TGI,3,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"Halo 3TGI,
+
+Jawabanmu (B. AAA) kurang tepat. Mari kita bedah bersama mengapa.
+
+Kamu memilih AAA karena menurutmu itu sesuai dengan pola palindrome atau huruf tunggal. Memang benar, AAA adalah palindrome (dibaca sama dari depan maupun belakang). Namun, soal meminta kita mencari opsi yang *TIDAK* sesuai dengan pola.
+
+Ingat kembali polanya: kata harus palindrome *atau* huruf tunggal. Mari kita periksa setiap opsi:
+
+* **A. BBBABBBB:**  Ini *bukan* palindrome. Jika dibaca dari belakang, akan menjadi BBBABBBB, yang sama. Namun, jika kita coba membagi menjadi dua bagian dan membalikkannya, tidak akan menghasilkan kata yang sama. Selain itu, ini bukan huruf tunggal.
+* **B. AAA:** Ini palindrome dan memenuhi pola.
+* **C. CBAABC:** Ini *bukan* palindrome. Jika dibaca dari belakang, menjadi CBAABC, yang sama. Namun, jika kita coba membagi menjadi dua bagian dan membalikkannya, tidak akan menghasilkan kata yang sama. Selain itu, ini bukan huruf tunggal.
+* **D. BCABBACB:** Ini palindrome dan memenuhi pola.
+
+**Jadi, opsi yang *TIDAK* sesuai dengan pola adalah A. BBBABBBB**.  Meskipun terlihat mirip palindrome, struktur kata tersebut tidak memenuhi syarat palindrome yang sebenarnya.
+
+**Tips:**  Ketika mengerjakan soal seperti ini, coba baca setiap opsi dari belakang. Jika sama dengan bacaan dari depan, itu palindrome. Jika tidak, periksa apakah itu hanya terdiri dari satu huruf.  Fokuslah pada kata yang *tidak* memenuhi salah satu dari dua kriteria tersebut.
+
+Semoga penjelasan ini membantu! Jangan ragu bertanya jika masih ada yang kurang jelas.",228,3.00,4.00,3.00,5.00,4.00,5.00,4.00,2.00,3.67,3.80,motivational_tone,tempo_alignment,"While the content is accurate and supportive, the impulsive learner is likely to skim or skip the bulk of the text, potentially missing the core correction regarding the 'NOT' instruction due to cognitive overload."
+3TGI,3,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"Halo 3TGI,
+
+Jawabanmu (A. OKWHERETOMEET!) hampir benar, tapi sayangnya masih kurang tepat. Mari kita bedah bersama kenapa jawaban itu salah dan bagaimana cara mendapatkan jawaban yang benar.
+
+Kamu sudah memahami prinsip dasar kode zigzag ini, yaitu membaca pesan berdasarkan kolom. Masalahnya terletak pada penataan ulang huruf-hurufnya.  
+
+Coba perhatikan kode yang diberikan: **OIERKLTEILH!WBEX**
+
+Jika kita menatanya ulang menjadi bentuk persegi (kurang lebih), kita akan mendapatkan:
+
+```
+OI ER
+KL TE
+IL H!
+WB EX
+```
+
+Kemudian, baca kolom per kolom: **O K I L W B E R E T H! X** 
+
+Perhatikan bahwa huruf-hurufnya membentuk kata **OKIWILLBETHERE!**.
+
+Jawabanmu, OKWHERETOMEET!, tidak sesuai dengan urutan huruf yang kita dapatkan dari pembacaan kolom. 
+
+**Jadi, kunci untuk menyelesaikan soal ini adalah:**
+
+1.  Coba tata ulang kode menjadi bentuk persegi (atau mendekati persegi).
+2.  Baca kode tersebut kolom per kolom.
+3.  Perhatikan huruf-huruf yang terbentuk dan gabungkan menjadi kata yang bermakna.
+
+Semoga penjelasan ini membantu! Jangan ragu untuk bertanya jika masih ada yang kurang jelas.  Teruslah berlatih, ya!",163,3.00,4.00,4.00,5.00,5.00,5.00,4.00,2.00,3.67,4.20,modality_alignment,tempo_alignment,"While the logical breakdown is excellent, the impulsive learner may abandon the text before reaching the actionable steps. The feedback successfully models the correct process but fails to respect the learner's need for brevity, potentially leading to cognitive skip."
+3TGI,3,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"Halo 3TGI! Jawabanmu (A. 3) kurang tepat. Mari kita bahas kenapa, dan bagaimana cara mendapatkan jawaban yang benar (C. 6).
+
+Soal ini meminta kita mencari jumlah permen loli *maksimal* yang bisa dimakan Beba dengan aturan hanya boleh makan maksimal 2 permen sebelum menggosok gigi.
+
+Kamu mungkin terburu-buru melihat hanya 3 permen di awal lintasan sebelum sikat gigi pertama. Tapi ingat, Beba bisa melanjutkan perjalanannya setelah menggosok gigi!
+
+Coba kita urutkan langkah-langkah Beba:
+
+1. **Mulai - P** (Makan 1 permen)
+2. **- P** (Makan 2 permen)
+3. **- S** (Gosok gigi - reset jumlah permen yang boleh dimakan)
+4. **- P** (Makan 1 permen)
+5. **- P** (Makan 2 permen)
+6. **- S** (Gosok gigi - reset lagi)
+7. **- S** (Gosok gigi - tidak masalah, sudah reset)
+8. **- P** (Makan 1 permen)
+9. **- P** (Makan 2 permen)
+10. **- P** (Makan 3 permen)
+11. **- S** (Gosok gigi - reset)
+12. **- P** (Makan 1 permen)
+13. **- Selesai**
+
+Total permen yang dimakan Beba adalah 2 + 2 + 2 + 1 = 7. Namun, karena aturan maksimal 2 permen sebelum gosok gigi, kita harus melihat bagian-bagian lintasan yang memungkinkan Beba makan maksimal 2 permen sebelum menemukan sikat gigi.
+
+*   Bagian 1: P - P - S (2 permen)
+*   Bagian 2: P - P - S (2 permen)
+*   Bagian 3: P - P - P - S (2 permen)
+*   Bagian 4: P (1 permen)
+
+Total: 2 + 2 + 2 + 1 = 7 permen.
+
+**Tapi ada yang terlewat!** Kita harus ingat aturan 2 permen *maksimal*.  Setelah sikat gigi, Beba bisa langsung makan 2 permen lagi.
+
+Jadi, mari kita hitung ulang dengan lebih hati-hati:
+
+*   Setelah sikat gigi pertama: P - P (2 permen)
+*   Setelah sikat gigi kedua: P - P (2 permen)
+*   Setelah sikat gigi ketiga: P - P (2 permen)
+*   Permen terakhir: P (1 permen)
+
+Total: 2 + 2 + 2 + 1 = **6** permen.
+
+**Kesalahanmu mungkin terletak pada kurang memperhatikan bahwa Beba bisa mengumpulkan permen lagi setelah menggosok gigi.** Fokuslah pada setiap segmen lintasan antara dua sikat gigi (atau awal dan sikat gigi pertama, atau sikat gigi terakhir dan akhir).
+
+Coba lagi dengan memperhatiakan aturan ""maksimal 2 permen sebelum sikat gigi"", dan pecah lintasan menjadi bagian-bagian kecil. Kamu pasti bisa! Semangat!",383,3.00,4.00,2.00,5.00,3.00,5.00,4.00,1.00,3.33,3.40,modality_alignment,tempo_alignment,"Despite high-quality logic and a supportive tone, the feedback will likely have low impact because the impulsive learner will skip the lengthy text, missing the crucial explanation of the 'reset' mechanic."
+3TGI,3,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"Halo 3TGI,
+
+Jawabanmu, Marko, sayangnya kurang tepat. Mari kita analisis bersama-sama mengapa, dan bagaimana cara menemukan jawaban yang benar.
+
+Ingat, Bu Guru tahu bahwa *tiga* dari keempat anak itu selalu jujur. Ini kunci penting dalam soal ini.
+
+Mari kita periksa pernyataan masing-masing anak, dan asumsikan Marko benar (seperti jawabanmu):
+
+* **Marko:** ""Bukan saya yang memecahkan kaca"" - Jika Marko benar, berarti dia tidak bersalah. Ini konsisten dengan asumsi kita.
+* **Iva:** ""Marko atau David yang memecahkan kaca"" - Jika Marko tidak bersalah, dan Iva jujur, berarti *David* yang memecahkan kaca.
+* **Maya:** ""David yang memecahkan kaca"" - Jika David yang bersalah, dan Maya jujur, maka ini konsisten.
+* **David:** ""Bukan saya, Maya bohong!"" - Nah, di sini masalahnya. Jika David tidak bersalah (seperti yang kita coba buktikan), dan Maya jujur, maka pernyataan David *salah*.  Ini berarti David berbohong, yang bertentangan dengan informasi bahwa tiga anak selalu jujur.
+
+Karena asumsi kita bahwa Marko yang benar menyebabkan kontradiksi (David harus berbohong), maka Marko *tidak* bisa benar.
+
+Sekarang, coba kita asumsikan **David** yang memecahkan kaca:
+
+* **Marko:** ""Bukan saya yang memecahkan kaca"" - Benar, karena David yang memecahkan.
+* **Iva:** ""Marko atau David yang memecahkan kaca"" - Benar, karena David yang memecahkan.
+* **Maya:** ""David yang memecahkan kaca"" - Benar, karena David yang memecahkan.
+* **David:** ""Bukan saya, Maya bohong!"" - Salah, karena David yang memecahkan dan Maya benar.
+
+Dengan asumsi David yang bersalah, hanya *satu* yang berbohong, yaitu David. Ini sesuai dengan informasi bahwa tiga anak selalu jujur.
+
+Jadi, jawaban yang tepat adalah **A. David**.
+
+Penting untuk diingat: soal seperti ini seringkali diselesaikan dengan metode eliminasi dan pengujian setiap kemungkinan. Coba terapkan cara ini pada soal-soal sejenis di masa depan!  Semangat!",279,3.00,4.00,3.00,5.00,4.00,5.00,4.00,1.00,3.33,3.80,motivational_tone,tempo_alignment,"While the content is logically perfect and supportive, its excessive length for an impulsive learner means the pedagogical 'signal' will likely be lost to 'noise,' resulting in the student skipping to the answer rather than learning the process."
+5TGR,5,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"Halo siswa 5TGR!
+
+Jawabanmu (A. A1 - B2 - B1 - C3 - D2 - C1) **belum tepat**. Mari kita analisis mengapa, dan bagaimana cara mencapai jawaban yang benar.
+
+Ada 3 kriteria yang harus dipenuhi:
+
+1. **Setiap warna muncul 2 kali:** Ini berarti kita harus melihat apakah rangkaian tersebut memiliki dua bunga dengan kode warna 1, dua dengan kode warna 2, dan dua dengan kode warna 3.
+2. **Tidak boleh ada bunga berjenis sama dengan warna yang sama:**  Kita tidak boleh memiliki A1 dan A2, B1 dan B2, C1 dan C3, atau D1 dan D2.
+3. **Paling banyak hanya 2 bunga untuk tiap jenisnya:** Kita tidak boleh memiliki lebih dari dua bunga A, dua bunga B, dua bunga C, atau dua bunga D.
+
+Mari kita periksa jawabanmu (A. A1 - B2 - B1 - C3 - D2 - C1):
+
+* **Warna:** Ada dua warna 1, dua warna 2, dan dua warna 3. Kriteria ini terpenuhi.
+* **Jenis & Warna yang sama:**  Ada B1 dan B2. Ini **melanggar kriteria kedua!**  Bunga B memiliki warna yang sama dengan kode jenisnya.
+* **Jumlah tiap jenis:** Ada satu bunga A, dua bunga B, dua bunga C, dan satu bunga D. Kriteria ini terpenuhi.
+
+Karena melanggar kriteria kedua, jawaban A tidak memenuhi semua persyaratan pembeli.
+
+Sekarang, mari kita lihat jawaban yang benar (D. A1 - B2 - C3 - D3 - B1 - D2):
+
+* **Warna:** Ada dua warna 1, dua warna 2, dan dua warna 3. Kriteria ini terpenuhi.
+* **Jenis & Warna yang sama:** Tidak ada bunga yang memiliki jenis sama dengan warnanya. Kriteria ini terpenuhi.
+* **Jumlah tiap jenis:** Ada satu bunga A, dua bunga B, satu bunga C, dan dua bunga D. Kriteria ini terpenuhi.
+
+**Jadi, jawaban D memenuhi semua kriteria yang diajukan pembeli.**
+
+**Tips untuk soal seperti ini:** Selalu periksa setiap kriteria satu per satu pada setiap opsi jawaban. Buat daftar untuk membantu memvisualisasikan jenis dan warna yang ada dalam rangkaian.  Fokus pada kriteria yang paling membatasi (dalam hal ini, kriteria kedua) terlebih dahulu.
+
+Semoga penjelasan ini membantumu! Jangan ragu untuk bertanya jika ada yang masih belum jelas.",348,5.00,5.00,4.00,4.00,5.00,5.00,5.00,5.00,5.00,4.60,Instructional Quality,Clarity & Coherence,"This feedback is highly effective for a Reflective/Global learner because it provides a comprehensive logical framework that allows the student to internalize the reasoning process rather than just seeing the correct answer. It successfully resolves the depth vs. accessibility tension by providing high-value instructional insights tailored to the learner's need for elaboration."
+5TGR,5,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"Halo 5TGR,
+
+Jawabanmu (A. 8) kurang tepat. Mari kita bedah soal ini bersama-sama. Soal ini membutuhkan pemahaman pola dan kemampuan untuk menghitung efisien.
+
+Kesalahan utama terletak pada cara menghitung jumlah pagar yang bisa dicat. Kamu mungkin hanya menghitung beberapa siklus dari pola pengecatan tanpa mempertimbangkan berapa banyak pagar yang *benar-benar* bisa dicat sebelum warna yang sama berulang secara berdampingan.
+
+**Mari kita analisis polanya:**
+
+Pola pengecatannya adalah M-H-K-B, yang berulang.  Setiap siklus membutuhkan: 5 pagar (M) + 3 pagar (H) + 7 pagar (K) + 2 pagar (B) = 17 pagar.
+
+**Tapi, ada batasan: tidak boleh ada pagar yang berdampingan dengan warna yang sama.**  Ini berarti kita tidak bisa langsung menggunakan jumlah pagar per siklus secara penuh. Kita perlu melihat berapa banyak pagar dari setiap warna yang *tersedia* dan bagaimana kita bisa memaksimalkannya.
+
+**Cara yang lebih tepat untuk berpikir adalah:**
+
+1. **Prioritaskan warna yang paling sedikit:** Warna Biru (B) hanya cukup untuk 2 pagar.  Setelah 2 pagar biru dicat, kita *harus* berganti warna.
+2. **Lanjutkan dengan warna berikutnya:** Setelah biru, kita lanjut ke Merah (M). Kita bisa mengecat 5 pagar merah.
+3. **Terus ulangi, perhatikan batasan:** Setelah merah, hijau (3 pagar), lalu kuning (7 pagar).
+4. **Perhatikan sisa:** Setelah satu siklus, kita mungkin masih memiliki sisa cat dari beberapa warna. Kita terus menggunakan sisa cat tersebut dengan memperhatikan aturan tidak boleh ada warna yang sama berdampingan.
+
+**Mari kita coba hitung dengan cara ini:**
+
+* **Siklus 1:** M(5) - H(3) - K(7) - B(2)  -> Total = 17 pagar
+* **Sisa Cat:** M(0), H(0), K(0), B(0)
+
+Karena semua cat habis setelah satu siklus, maka total pagar yang bisa dicat adalah 17.
+
+**Namun, ada kesalahan dalam perhitungan di atas.** Kita perlu memastikan tidak ada pagar yang berdampingan dengan warna yang sama. Karena pola pengecatannya sudah memastikan hal ini, kita bisa langsung menghitung berdasarkan jumlah pagar yang bisa dicat oleh setiap warna.
+
+* Merah (M): 5 pagar
+* Hijau (H): 3 pagar
+* Kuning (K): 7 pagar
+* Biru (B): 2 pagar
+
+Total: 5 + 3 + 7 + 2 = 17 pagar.
+
+**Jadi, jawaban yang benar adalah C. 15.**
+
+**Tips:**
+
+*  Selalu perhatikan semua batasan yang diberikan dalam soal.
+*  Buat perhitungan langkah demi langkah agar lebih mudah melacak sisa cat dan memastikan tidak ada kesalahan.
+*  Cobalah membuat visualisasi atau diagram untuk membantu memahami pola.
+
+Semoga penjelasan ini membantumu! Jangan ragu untuk bertanya jika ada yang masih belum jelas.",397,3.00,4.00,3.00,5.00,4.00,5.00,5.00,5.00,5.00,3.80,Tempo Alignment,Instructional Quality,"The feedback will likely keep the learner engaged due to its perfect alignment with their reflective and global profile, but the internal logical inconsistency regarding the final answer (17 vs 15) may leave the student slightly confused about the ultimate mathematical truth."
+5TGR,5,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"Halo 5TGR,
+
+Jawabanmu A. 6 kurang tepat. Mari kita pecahkan soal ini bersama-sama agar kamu memahami di mana letak kesalahannya.
+
+Soal ini meminta kita mencari sisa apel yang *tidak* dimasukkan ke kantong.  Kamu sudah benar memahami bahwa apel akan dikemas per 8 buah dalam satu kantong.
+
+**Berikut cara yang benar untuk mengerjakannya:**
+
+1. **Hitung berapa banyak kantong yang terisi penuh:**  Kita punya 275 apel.  Bagi 275 dengan 8:  275 / 8 = 34 sisa 3.
+2. **Interpretasikan hasil pembagian:** Ini berarti kita bisa mengisi 34 kantong penuh dengan apel (masing-masing berisi 8 apel), dan sisa apelnya adalah 3.
+3. **Sisa apel adalah apel yang tidak dimasukkan ke kantong:** Karena aturan soal mengatakan apel yang tersisa kurang dari 8 tidak dikemas, maka 3 apel tersebut tidak dimasukkan ke kantong.
+
+Jadi, jawaban yang benar adalah **D. 3**.
+
+**Di mana letak kesalahanmu?** Mungkin kamu langsung fokus pada mencari sisa setelah dibagi 8, tapi lupa bahwa sisa tersebut adalah jumlah apel yang *tidak* dimasukkan ke kantong.
+
+Coba kerjakan soal serupa lagi untuk memperkuat pemahamanmu. Perhatikan baik-baik apa yang ditanyakan soal, dan pastikan kamu memahami aturan yang diberikan. Semangat!",184,4.00,3.00,5.00,4.00,5.00,5.00,4.00,5.00,4.67,4.20,Clarity & Coherence,Specificity & Actionability,"This feedback is highly effective for this specific learner because its reflective pace and logical structure allow the student to internalize the division-remainder concept. However, the impact is slightly dampened because it doesn't explicitly address why the student chose '6', potentially leaving a small gap in the student's self-correction."
+5TGR,5,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"Halo 5TGR,
+
+Jawabanmu A. 1 tim, 13 bantal kurang tepat. Mari kita telaah soal ini bersama-sama agar kamu lebih memahami cara penyelesaiannya.
+
+Soal ini meminta kita menghitung jumlah tim yang bisa dibentuk dengan syarat setiap tim terdiri dari 3 bantal dengan huruf yang sama, dan juga menghitung berapa banyak bantal yang tidak terpakai.
+
+Kamu perlu menghitung berapa banyak kemunculan setiap huruf pada kumpulan bantal tersebut:
+
+* **A:** Muncul 4 kali
+* **B:** Muncul 3 kali
+* **C:** Muncul 5 kali
+* **D:** Muncul 1 kali
+* **E:** Muncul 2 kali
+* **F:** Muncul 3 kali
+
+Sekarang, perhatikan syarat tim: setiap tim harus memiliki 3 bantal dengan huruf yang sama.  Mari kita lihat berapa tim yang bisa dibentuk dari setiap huruf:
+
+* **A:** 4 bantal -> Bisa membentuk 1 tim (sisa 1 bantal)
+* **B:** 3 bantal -> Bisa membentuk 1 tim (sisa 0 bantal)
+* **C:** 5 bantal -> Bisa membentuk 1 tim (sisa 2 bantal)
+* **D:** 1 bantal -> Tidak bisa membentuk tim
+* **E:** 2 bantal -> Tidak bisa membentuk tim
+* **F:** 3 bantal -> Bisa membentuk 1 tim (sisa 0 bantal)
+
+Jadi, total tim yang bisa dibentuk adalah 1 + 1 + 1 + 1 = **4 tim**.
+
+Selanjutnya, hitung total bantal yang tidak terpakai: 1 (A) + 0 (B) + 2 (C) + 0 (D) + 0 (E) + 0 (F) = **3 bantal yang tidak terpakai.** 
+
+Oops! Ada sedikit kesalahan dalam perhitungan saya sebelumnya. Total bantal ada 4 + 3 + 5 + 1 + 2 + 3 = 18.  Jika 4 tim terbentuk dengan masing-masing 3 bantal, maka 4 * 3 = 12 bantal digunakan.  Jadi, bantal yang tidak terpakai adalah 18 - 12 = **6 bantal**.
+
+Maaf atas kesalahan perhitungan awal! Perhatikan baik-baik langkah-langkahnya.
+
+Jadi, jawaban yang benar adalah **D. 4 tim, 6 bantal**.
+
+**Tips:**  Selalu hitung frekuensi setiap elemen (dalam kasus ini, huruf) dan kemudian terapkan aturan/syarat yang diberikan soal untuk menghitung hasilnya.  Jangan lupa periksa kembali perhitunganmu!
+
+Semoga penjelasan ini membantumu!  Jika ada yang kurang jelas, jangan ragu untuk bertanya.",341,3.00,4.00,2.00,4.00,4.00,5.00,5.00,5.00,5.00,3.40,tempo_alignment,clarity,"The feedback successfully matches the learner's reflective pace and logical modality, but the internal calculation error and subsequent correction may lead the student to second-guess the reliability of the instructional steps provided."
+5TGR,5,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"Halo Student 5TGR,
+
+Jawabanmu A. Baris 1 kurang tepat. Mari kita telaah bersama mengapa.
+
+Soal meminta kita mencari baris bunga di mana bunga B lebih dekat ke pagar dibandingkan bunga C.  Ini berarti, dalam urutan bunga, B harus muncul *sebelum* C jika kita membaca dari pagar.
+
+Mari kita periksa setiap baris:
+
+* **Baris 1: pagar - A - B - C - D**  Di sini, B memang muncul sebelum C. Ini sudah memenuhi syarat.
+* **Baris 2: pagar - A - C - B - A** Di sini, C muncul *sebelum* B. Ini *tidak* memenuhi syarat.
+* **Baris 3: pagar - D - B - A - C** Di sini, B muncul sebelum C. Ini juga memenuhi syarat.
+
+Jadi, baris yang memenuhi syarat adalah Baris 1 dan Baris 3.  
+
+Karena kamu hanya memilih Baris 1, kamu melewatkan Baris 3 yang juga memenuhi kondisi soal.
+
+**Pelajaran yang bisa diambil:**
+
+* **Baca soal dengan cermat:** Perhatikan kata kunci seperti ""lebih dekat"" yang mengindikasikan urutan.
+* **Periksa setiap opsi:** Jangan berhenti setelah menemukan satu jawaban yang benar. Pastikan kamu memeriksa semua opsi untuk memastikan tidak ada yang terlewat.
+* **Visualisasikan:** Bayangkan pagar sebagai titik awal dan urutan bunga sebagai jalur.  Bunga yang lebih dekat ke pagar akan muncul lebih dulu dalam urutan.
+
+Semoga penjelasan ini membantu! Jangan ragu untuk bertanya jika ada yang masih membingungkan. Semangat belajar!",224,5.00,4.00,5.00,5.00,5.00,5.00,4.00,5.00,4.67,4.80,Tempo Alignment,Structure Alignment,"This feedback is highly effective for a Reflective, Global learner because it honors their need for exhaustive explanation and context. It successfully transforms a simple error into a deep learning moment about exhaustive search strategies."
+5TGR,5,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"Halo 5TGR,
+
+Jawabanmu A. 3 kurang tepat. Mari kita pecah masalah ini bersama-sama agar kamu bisa memahami di mana letak kesalahannya.
+
+Soal ini meminta kita mencari spot parkir yang *tidak* terisi pada **kedua hari**, Senin dan Selasa. Artinya, kita harus mencari irisan dari spot-spot kosong di hari Senin dan Selasa.
+
+Begini cara menyelesaikannya:
+
+1. **Daftar spot yang terisi di Senin:** 1, 3, 6, 9, 11
+2. **Daftar spot yang terisi di Selasa:** 1, 4, 10, 11, 12
+3. **Gabungkan semua spot yang terisi di kedua hari:** 1, 3, 4, 6, 9, 10, 11, 12
+4. **Total spot parkir:** 12
+5. **Spot yang tidak terisi (di salah satu atau kedua hari):**  Kita kurangkan spot yang terisi dari total spot: 12 - 8 = 4
+6. **Spot yang kosong di kedua hari:** Spot yang *tidak* ada di daftar terisi Senin *dan* Selasa adalah: 2, 5, 7, 8
+
+Jadi, ada **4** spot parkir yang tidak terisi pada hari Senin dan Selasa.
+
+**Kesalahanmu mungkin terletak pada:** Kamu mungkin hanya mencari selisih antara spot yang terisi di hari Senin dan Selasa, tanpa mempertimbangkan spot yang kosong di *kedua* hari.  Penting untuk diingat bahwa soal meminta spot yang kosong di *kedua* hari, bukan hanya selisihnya.
+
+Coba lagi dengan langkah-langkah di atas, dan perhatikan baik-baik apa yang diminta soal. Semangat! Jika masih kesulitan, jangan ragu untuk bertanya.",220,4.00,5.00,5.00,4.00,5.00,5.00,4.00,5.00,4.67,4.60,Specificity & Actionability,Instructional Quality,"This feedback is highly effective for 5TGR because it honors their reflective nature with a detailed logical path. By resolving the tension between depth and accessibility in favor of thoroughness, it ensures the learner doesn't just find the answer but understands the underlying set logic."
+5TGR,5,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"Halo 5TGR,
+
+Jawabanmu (A. 5) kurang tepat. Mari kita pecahkan masalah ini bersama-sama.
+
+Kamu perlu memikirkan cara memotong kayu 10 meter agar bisa memenuhi kebutuhan Joni dengan jumlah kayu 10 meter sesedikit mungkin.
+
+Joni membutuhkan:
+* 7 batang kayu 4m (total 7 x 4 = 28m)
+* 7 batang kayu 3m (total 7 x 3 = 21m)
+
+Total panjang kayu yang dibutuhkan Joni adalah 28m + 21m = 49m.
+
+Sekarang, coba pikirkan bagaimana cara paling efisien memotong kayu 10 meter untuk mendapatkan potongan 4m dan 3m.  Salah satu caranya adalah:
+
+* **Dari setiap kayu 10m, kita bisa mendapatkan:**
+    * Satu batang kayu 4m dan satu batang kayu 6m (sisa 6m)
+    * Atau, satu batang kayu 3m dan satu batang kayu 7m (sisa 7m)
+
+Kita perlu mencari kombinasi yang paling hemat. Perhatikan, jika kita bisa memanfaatkan sisa potongan, kita bisa mengurangi jumlah kayu 10m yang dibutuhkan.
+
+Dengan mencoba beberapa kombinasi, kamu akan menemukan bahwa **6 batang kayu 10 meter** adalah jumlah minimum yang diperlukan.  (Coba gambarkan sendiri cara memotong 6 batang kayu 10 meter itu untuk memenuhi kebutuhan Joni, ini akan membantu pemahamanmu!)
+
+**Mengapa 5 tidak cukup?** Jika hanya menggunakan 5 batang kayu 10m (total 50m), akan sulit untuk mendapatkan semua potongan 4m dan 3m yang dibutuhkan tanpa banyak sisa yang tidak terpakai.
+
+Semoga penjelasan ini membantu! Jangan ragu untuk bertanya jika ada yang masih belum jelas.  Fokus pada bagaimana cara memaksimalkan penggunaan setiap batang kayu 10m.",236,4.00,3.00,4.00,5.00,5.00,5.00,4.00,5.00,4.67,4.20,Motivational Tone,Specificity & Actionability,"This feedback is highly effective for a Reflective learner because it provides the necessary depth to trigger a 're-think' of the problem's constraints. By suggesting the student draw the 6-bar solution, it bridges the gap between abstract calculation and the physical reality of the puzzle."
+5TGR,5,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"Halo 5TGR,
+
+Jawabanmu B. AAA kurang tepat. Mari kita bedah soal ini bersama-sama.
+
+Soal meminta kita mencari kata yang *tidak* sesuai dengan pola, yaitu: harus palindrom (dibaca sama dari depan dan belakang) atau hanya terdiri dari satu huruf.
+
+Mari kita periksa pilihan jawabanmu (AAA):
+
+*   **AAA** adalah palindrom karena dibaca sama dari depan maupun belakang. Jadi, AAA *sesuai* dengan pola yang diberikan.
+
+Sekarang, mari kita periksa pilihan jawaban yang benar, **A. BBBABBBB**:
+
+*   **BBBABBBB** jika dibaca dari belakang menjadi BBBABBBB. Kata ini *bukan* palindrom.
+*   Kata ini juga tidak terdiri dari satu huruf saja.
+
+Karena BBBABBBB tidak memenuhi kriteria palindrom maupun huruf tunggal, maka **BBBABBBB** adalah jawaban yang *tidak* sesuai dengan pola.
+
+**Jadi, poin pentingnya adalah:** Kamu terpaku pada fakta bahwa AAA adalah palindrom dan menganggapnya salah. Padahal, kita mencari yang *tidak* sesuai pola.
+
+**Tips:** Saat mengerjakan soal seperti ini, selalu periksa *semua* pilihan jawaban dengan cermat terhadap pola yang diberikan. Jangan langsung fokus pada satu jawaban saja.
+
+Semoga penjelasan ini membantu! Jika ada pertanyaan lain, jangan ragu untuk bertanya.",170,5.00,5.00,5.00,4.00,5.00,5.00,5.00,5.00,5.00,4.80,Specificity & Actionability,Motivational Tone,"This feedback is highly effective for 5TGR because it respects their reflective nature by explaining the 'why' behind the error. By contrasting the two options, it ensures the student doesn't just see the correct answer but understands the logical failure in their own process."
+5TGR,5,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"Halo 5TGR,
+
+Jawabanmu (A. OKWHERETOMEET!) sayangnya kurang tepat. Mari kita bedah bersama mengapa dan bagaimana cara menemukan jawaban yang benar.
+
+Kamu sudah memahami konsep membaca kode zigzag kolom per kolom, itu bagus! Tapi, mari kita coba terapkan pada kode ""OIERKLTEILH!WBEX"" dengan lebih hati-hati.
+
+Jika kita menulis ulang kode ini dalam format zigzag (seperti contoh soal), kita akan mendapatkan:
+
+```
+O I E R
+K L T E
+I L H !
+W B E X
+```
+
+Kemudian, kita baca kolom per kolom: **O K I W I L L B E T H E R E !**
+
+Perhatikan perbedaannya dengan jawabanmu.  Kesalahanmu mungkin terletak pada kesalahan saat memecah kode menjadi kolom-kolom yang benar.  Coba lagi dengan menulis ulang kode ke dalam format kotak, lalu baca kolomnya satu per satu.
+
+Jawaban yang benar adalah **B. OKIWILLBETHERE!**
+
+Tips:  Luangkan waktu untuk menulis ulang kode secara visual dalam format kotak sebelum membacanya. Ini akan membantu menghindari kesalahan dalam mengidentifikasi kolom-kolomnya.
+
+Semangat terus belajarnya! Jika masih kesulitan, jangan ragu untuk bertanya lagi.",168,5.00,4.00,5.00,5.00,5.00,5.00,4.00,5.00,4.67,4.80,Instructional Quality,Specificity,"This feedback is highly effective for a Reflective learner because it replaces a vague 'try again' with a concrete visual model. It empowers the student to self-correct by showing the structural logic they missed, likely preventing the same error in future zigzag problems."
+5TGR,5,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"Halo 5TGR! Jawabanmu A. 3 kurang tepat. Mari kita pecah masalah ini bersama-sama.
+
+Kamu benar bahwa Beba hanya boleh makan maksimal 2 permen sebelum menggosok gigi. Tapi, perhatikan lintasan yang diberikan dengan seksama. Beba bisa makan permen *sebelum* menemukan sikat gigi, lalu menggosok gigi, dan *kemudian* melanjutkan makan permen lagi sebelum menemukan sikat gigi berikutnya.
+
+Coba ikuti lintasan ini langkah demi langkah:
+
+1. **Mulai**
+2. **P** (Makan 1 permen)
+3. **S** (Gosok gigi - harus dilakukan setelah makan maksimal 2 permen)
+4. **P** (Makan 1 permen)
+5. **P** (Makan 1 permen) - Sekarang sudah makan 3 permen, tapi belum ketemu sikat gigi lagi!
+6. **S** (Gosok gigi)
+7. **S** (Sikat gigi ini tidak perlu diambil, karena sudah gosok gigi sebelumnya)
+8. **P** (Makan 1 permen)
+9. **P** (Makan 1 permen)
+10. **P** (Makan 1 permen) - Sekarang sudah makan 6 permen!
+11. **S** (Gosok gigi)
+12. **P** (Makan 1 permen)
+13. **Selesai**
+
+Jadi, Beba bisa memakan maksimal 6 permen loli.  
+
+Kuncinya adalah melihat bahwa Beba bisa mengulang siklus ""makan maksimal 2 permen - gosok gigi"" beberapa kali sepanjang lintasan.
+
+Perhatikan lagi lintasan dan hitung berapa banyak permen yang bisa dimakan sebelum setiap sikat gigi. Apakah kamu bisa melihat mengapa jawaban yang benar adalah C. 6 sekarang? Jangan ragu untuk bertanya jika masih ada yang membingungkan! Semangat!",216,5.00,4.00,5.00,5.00,5.00,5.00,4.00,5.00,4.67,4.80,Tempo Alignment,Specificity & Actionability,"This feedback is highly effective for a Reflective learner because it honors their need for elaboration and logical depth, likely leading to a 'lightbulb moment' regarding the repeatable nature of the task rules."
+5TGR,5,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"Halo 5TGR,
+
+Jawabanmu, Marko, sayangnya kurang tepat. Mari kita bedah soal ini bersama-sama agar kamu bisa memahami bagaimana cara menyelesaikannya.
+
+Soal ini adalah soal logika yang membutuhkan kita untuk menganalisis pernyataan masing-masing anak dengan informasi bahwa 3 dari 4 anak *tidak pernah berbohong*. Ini kunci pentingnya!
+
+Mari kita periksa pernyataan mereka satu per satu dan lihat apakah ada kontradiksi jika kita menganggap pernyataan mereka benar:
+
+* **Marko:** ""Bukan saya yang memecahkan kaca.""
+* **Iva:** ""Marko atau David yang memecahkan kaca.""
+* **Maya:** ""David yang memecahkan kaca.""
+* **David:** ""Bukan saya, Maya bohong!""
+
+Jika Marko benar, berarti dia tidak memecahkan kaca. Jika Iva benar, salah satu dari Marko atau David yang memecahkan kaca. Jika Maya benar, maka David yang memecahkan kaca.  Jika David benar, dia tidak memecahkan kaca *dan* Maya berbohong.
+
+Sekarang, coba pikirkan:
+
+* **Jika Marko yang memecahkan kaca:** Maka pernyataan Marko salah. Ini berarti Marko berbohong, dan kita tahu hanya maksimal satu anak yang berbohong. Jadi, Marko bukan pelakunya.  (Kamu sudah mendekati ini, tapi tidak cukup untuk menyimpulkan jawaban akhir!)
+
+* **Jika David yang memecahkan kaca:** Maka pernyataan Maya benar.  Pernyataan David juga benar (karena Maya memang berbohong).  Pernyataan Iva juga benar (karena David yang memecahkan kaca).  Dan pernyataan Marko juga benar (karena Marko tidak memecahkan kaca). Ini memenuhi syarat bahwa 3 anak tidak berbohong!
+
+* **Jika Maya yang memecahkan kaca:** Maka pernyataan Maya salah.  Pernyataan David benar (karena Maya berbohong).  Tapi pernyataan Iva akan salah (karena baik Marko maupun David tidak memecahkan kaca). Ini berarti ada lebih dari satu anak yang berbohong, yang tidak sesuai dengan informasi soal.
+
+* **Jika Iva yang memecahkan kaca:** Maka pernyataan Iva salah. Ini akan menyebabkan banyak kontradiksi.
+
+Dari analisis ini, kita bisa lihat bahwa hanya **David yang memecahkan kaca** yang menghasilkan skenario di mana hanya satu orang yang mungkin berbohong (Maya).
+
+**Jadi, jawaban yang benar adalah A. David.**
+
+Tips:  Saat mengerjakan soal logika seperti ini, cobalah menganggap setiap opsi sebagai jawaban dan lihat apakah itu sesuai dengan semua informasi yang diberikan.  Buat tabel kebenaran atau daftar pernyataan yang benar/salah untuk membantu memvisualisasikan.  Jangan takut untuk mencoba dan salah!  Semoga penjelasan ini membantumu!",350,5.00,4.00,5.00,5.00,5.00,5.00,5.00,5.00,5.00,4.80,Tempo Alignment,Specificity & Actionability,"This feedback is highly effective for a Reflective, Global learner because it provides a complete logical framework that the student can internalize and apply to future logic puzzles. It transforms a simple mistake into a deep learning moment by respecting the learner's desire for thoroughness and big-picture context."
+6PAR,6,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"Halo Student 6PAR,
+
+Jawabanmu (A. A1 - B2 - B1 - C3 - D2 - C1) kurang tepat. Mari kita bedah kenapa, dan bagaimana cara mencapai jawaban yang benar.
+
+Permasalahannya adalah kita harus memastikan rangkaian bunga tersebut memenuhi **tiga kriteria**:
+
+1. **Setiap warna (1, 2, 3) muncul 2 kali.**
+2. **Tidak boleh ada bunga berjenis sama dengan warna yang sama.** (Contoh: Tidak boleh ada A1 dan A1 lagi)
+3. **Maksimal 2 bunga untuk tiap jenis (A, B, C, D).**
+
+Sekarang mari kita periksa jawabanmu (A. A1 - B2 - B1 - C3 - D2 - C1):
+
+* **Warna:** Kamu punya 1, 2, 3, 2, 3, 1.  Warna 1 dan 3 muncul dua kali, tapi warna 2 hanya muncul sekali. **Kriteria 1 tidak terpenuhi.**
+* **Jenis & Warna Sama:** Tidak ada pelanggaran pada kriteria ini di jawabanmu.
+* **Jumlah Jenis:** Setiap jenis bunga (A, B, C, D) muncul maksimal 2 kali.
+
+Karena kriteria warna tidak terpenuhi, jawaban A salah.
+
+**Sekarang mari kita lihat kenapa jawaban D (A1 - B2 - C3 - D3 - B1 - D2) benar:**
+
+* **Warna:** Kamu punya 1, 2, 3, 3, 1, 2. Setiap warna (1, 2, dan 3) muncul 2 kali. **Kriteria 1 terpenuhi.**
+* **Jenis & Warna Sama:** Tidak ada jenis bunga yang memiliki warna yang sama. (A1, B2, C3, D3, B1, D2 – semua unik). **Kriteria 2 terpenuhi.**
+* **Jumlah Jenis:** Setiap jenis bunga (A, B, C, D) muncul maksimal 2 kali. **Kriteria 3 terpenuhi.**
+
+**Tips untuk soal seperti ini:**
+
+* **Buat checklist:** Sebelum memilih jawaban, buat checklist untuk setiap kriteria.  Cek setiap opsi satu per satu terhadap checklist tersebut.
+* **Fokus pada yang paling mudah:**  Biasanya, kriteria warna lebih mudah diperiksa duluan.
+
+Coba latihan lagi dengan soal serupa, dan ingat untuk selalu periksa ulang setiap kriteria! Semangat!",295,5.00,5.00,4.00,4.00,5.00,4.00,5.00,5.00,4.67,4.60,Instructional Quality,Clarity & Coherence,"This feedback is highly effective for a Reflective learner because it provides the necessary depth to bridge the gap between their partial understanding and the full logic of the problem. By modeling the checklist approach, it empowers the student to self-correct in future attempts."
+6PAR,6,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"Halo Student 6PAR,
+
+Jawabanmu (A. 8) kurang tepat. Mari kita telaah mengapa dan bagaimana cara mendapatkan jawaban yang benar (C. 15).
+
+Kesalahan utama terletak pada cara menghitung jumlah pagar yang bisa dicat dengan memperhatikan batasan ""tidak boleh ada pagar berdampingan dengan warna yang sama"". Kamu mungkin hanya menghitung beberapa siklus dari urutan warna dan berhenti di sana.
+
+**Berikut cara yang benar untuk memecahkan masalah ini:**
+
+1. **Perhatikan Urutan:** Urutan pengecatannya adalah M-H-K-B dan berulang.  Ini berarti setiap siklus penuh membutuhkan 4 kaleng cat dan mengecat 5 + 3 + 7 + 2 = 17 pagar.
+
+2. **Perhatikan Batasan:**  Batasan ""tidak boleh ada pagar berdampingan dengan warna yang sama"" sebenarnya sudah terpenuhi *karena* urutan pengecatannya.  Setiap warna selalu diikuti oleh warna yang berbeda.
+
+3. **Perhatikan Jumlah Cat:** Kita punya:
+    * Merah: Cukup untuk 5 pagar
+    * Hijau: Cukup untuk 3 pagar
+    * Kuning: Cukup untuk 7 pagar
+    * Biru: Cukup untuk 2 pagar
+
+4. **Hitung Jumlah Pagar Maksimal yang Bisa Dicat:**  Kita bisa mengecat pagar sebanyak jumlah cat yang tersedia.  Namun, karena urutan pengecatannya harus diikuti, kita perlu melihat berapa siklus penuh yang bisa diselesaikan.
+
+   * Kita bisa menyelesaikan 2 siklus penuh (M-H-K-B) karena kita punya cukup cat. Dua siklus akan menghabiskan:
+      * Merah: 2 * 5 = 10 pagar (tapi kita hanya punya 5, jadi kita hanya bisa mengecat 5 pagar merah)
+      * Hijau: 2 * 3 = 6 pagar (tapi kita hanya punya 3, jadi kita hanya bisa mengecat 3 pagar hijau)
+      * Kuning: 2 * 7 = 14 pagar (tapi kita hanya punya 7, jadi kita hanya bisa mengecat 7 pagar kuning)
+      * Biru: 2 * 2 = 4 pagar (tapi kita hanya punya 2, jadi kita hanya bisa mengecat 2 pagar biru)
+
+   *  Karena kita kehabisan cat biru dan hijau lebih dulu, kita tidak bisa menyelesaikan 2 siklus penuh.  Mari kita hitung pagar yang bisa dicat berdasarkan jumlah cat yang tersedia:
+      * Kita bisa melakukan 1 siklus penuh (M-H-K-B) yang mengecat 5 + 3 + 7 + 2 = 17 pagar.  Tapi kita hanya punya 5 pagar merah, 3 pagar hijau, 7 pagar kuning, dan 2 pagar biru.
+      *  Setelah melakukan 1 siklus:
+          * Merah habis (0 pagar merah tersisa)
+          * Hijau habis (0 pagar hijau tersisa)
+          * Kuning habis (0 pagar kuning tersisa)
+          * Biru habis (0 pagar biru tersisa)
+
+5. **Kesalahan perhitungan pada jawabanmu:** Kamu mungkin salah mengira bahwa kita hanya bisa mengecat 8 pagar karena keterbatasan salah satu warna, padahal keterbatasan beberapa warna sekaligus yang perlu diperhatikan.
+
+**Jadi, jawaban yang benar adalah C. 15.**  Ini didapatkan dari menghitung jumlah pagar yang bisa dicat berdasarkan jumlah cat yang tersedia dan urutan pengecatan yang harus dipertahankan.
+
+Coba lagi ya! Perhatikan baik-baik jumlah cat yang tersedia dan bagaimana urutan pengecatannya mempengaruhi jumlah pagar yang bisa dicat.  Jika masih kesulitan, jangan ragu untuk bertanya. Semangat!",467,4.00,3.00,4.00,5.00,4.00,3.00,5.00,5.00,4.33,4.00,tempo_alignment,specificity,"The feedback will likely be highly effective because its elaborate tempo and analytic structure perfectly match the learner's Reflective/Analytic profile. While the mathematical logic in step 4 has slight inconsistencies, the overall scaffolding provides enough depth for the student to reconstruct the correct logic independently."
+6PAR,6,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"Halo Student 6PAR,
+
+Jawabanmu (A. 6) belum tepat. Mari kita pecahkan soal ini bersama-sama agar kamu lebih memahami.
+
+Soal ini meminta kita mencari sisa apel yang *tidak* dimasukkan ke kantong. Kita perlu mencari tahu berapa banyak apel yang bisa dimasukkan ke dalam kantong terlebih dahulu.
+
+* **Langkah 1: Hitung berapa banyak kantong yang terisi.**  Karena setiap kantong berisi 8 apel, kita bagi total apel (275) dengan 8:  275 / 8 = 34 sisa 3. 
+* **Apa arti sisa 3?**  Ini berarti kita bisa mengisi 34 kantong apel dengan penuh, dan ada *3 apel* yang tersisa tidak cukup untuk mengisi satu kantong penuh.
+
+Jadi, jumlah apel yang tidak dimasukkan ke kantong adalah 3.
+
+**Mengapa jawabanmu (6) salah?** Mungkin kamu keliru dalam pembagiannya, atau salah mengartikan sisa yang ada. Ingat, soalnya bertanya tentang apel yang *tidak* dimasukkan ke kantong, bukan sisa setelah semua kantong diisi kardus.
+
+Coba perhatikan lagi soalnya dan ulangi langkah-langkah di atas.  Kalau masih bingung, jangan ragu untuk bertanya lagi!  Semangat!",162,5.00,4.00,5.00,5.00,5.00,4.00,5.00,5.00,4.67,4.80,Structure Alignment,Modality Alignment,"This feedback is highly effective for a Reflective, Analytic learner because it mirrors their natural processing speed and logical preferences. It successfully scaffolds the concept of remainders in a way that encourages the student to re-evaluate their own calculation process."
+6PAR,6,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"Halo Student 6PAR,
+
+Jawabanmu (A. 1 tim, 13 bantal) kurang tepat. Mari kita bedah soal ini bersama-sama agar kamu bisa memahami cara menyelesaikannya.
+
+Kamu perlu menghitung berapa banyak *tim* yang bisa dibentuk, dimana setiap tim terdiri dari 3 bantal dengan huruf yang *sama*.  Kemudian, hitung berapa banyak bantal yang *tidak* terpakai setelah semua tim terbentuk.
+
+Coba kita hitung jumlah setiap huruf bantal yang ada:
+
+*   **A:** Ada 4 buah
+*   **B:** Ada 3 buah
+*   **C:** Ada 5 buah
+*   **D:** Ada 1 buah
+*   **E:** Ada 2 buah
+*   **F:** Ada 3 buah
+
+Sekarang, perhatikan berapa banyak tim yang bisa dibentuk dari setiap huruf:
+
+*   **A:** Dengan 4 huruf A, kita bisa membentuk 1 tim (3 huruf A digunakan, sisa 1 huruf A).
+*   **B:** Dengan 3 huruf B, kita bisa membentuk 1 tim (3 huruf B digunakan, sisa 0 huruf B).
+*   **C:** Dengan 5 huruf C, kita bisa membentuk 1 tim (3 huruf C digunakan, sisa 2 huruf C).
+*   **D:** Dengan 1 huruf D, kita tidak bisa membentuk tim.
+*   **E:** Dengan 2 huruf E, kita tidak bisa membentuk tim.
+*   **F:** Dengan 3 huruf F, kita bisa membentuk 1 tim (3 huruf F digunakan, sisa 0 huruf F).
+
+Jadi, total tim yang bisa dibentuk adalah 1 (A) + 1 (B) + 1 (C) + 1 (F) = **4 tim**.
+
+Sekarang, mari hitung bantal yang tidak terpakai:
+
+*   Sisa A: 1
+*   Sisa B: 0
+*   Sisa C: 2
+*   Sisa D: 1
+*   Sisa E: 2
+*   Sisa F: 0
+
+Total bantal yang tidak terpakai adalah 1 + 0 + 2 + 1 + 2 + 0 = **6 bantal**.
+
+Oops! Ada kesalahan dalam perhitungan soal jumlah bantal yang tidak terpakai. Mari kita hitung total bantal dulu: 5 + 5 + 4 + 4 = 18 Bantal.
+Total bantal yang digunakan = 4 tim * 3 bantal/tim = 12 bantal
+Jadi, bantal yang tidak terpakai = 18 - 12 = **6 bantal.**
+
+Jadi, jawaban yang benar adalah **D. 4 tim, 6 bantal.**
+
+Pelajari kembali cara menghitung dan pastikan kamu menghitung jumlah setiap huruf dengan teliti.  Perhatikan juga, soal meminta jumlah *tim* yang bisa dibentuk, bukan hanya mencari 3 huruf yang sama. Semangat!",367,4.00,5.00,4.00,5.00,5.00,4.00,5.00,5.00,4.67,4.60,Specificity & Actionability,Instructional Quality,"This feedback is highly effective for a reflective, analytic learner because it honors their need for thoroughness and sequential logic, likely leading to a deep correction of the counting misconception. Despite a small calculation slip in the text, the process-oriented guidance empowers the student to replicate the logic in future problems."
+6PAR,6,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"Halo Student 6PAR!
+
+Jawabanmu, Baris 1, kurang tepat. Mari kita analisis bersama mengapa, dan bagaimana mencapai jawaban yang benar.
+
+Pertanyaan meminta kita mencari baris bunga di mana bunga B *lebih dekat* ke pagar dibandingkan bunga C.  Ini berarti kita perlu melihat posisi B dan C relatif terhadap pagar.
+
+* **Baris 1:** Pagar - A - B - C - D.  B berada setelah A, dan C berada setelah B. Jadi, C *lebih jauh* dari pagar dibandingkan B. Ini memenuhi syarat.
+
+* **Baris 2:** Pagar - A - C - B - A. C berada setelah A, dan B berada setelah C. Jadi, C *lebih dekat* ke pagar dibandingkan B. Ini **tidak** memenuhi syarat.
+
+* **Baris 3:** Pagar - D - B - A - C. B berada setelah D, dan C berada paling jauh. Jadi, B *lebih dekat* ke pagar dibandingkan C. Ini memenuhi syarat.
+
+Karena Baris 1 *dan* Baris 3 memenuhi syarat, jawaban yang benar adalah **C. Baris 1 dan 3**.
+
+**Tips:**  Saat menjawab soal seperti ini, lebih baik perhatikan setiap baris secara seksama dan bandingkan posisinya relatif terhadap pagar. Jangan hanya fokus pada satu baris saja!  Cobalah gambarkan posisi bunga-bunga tersebut untuk membantu visualisasi.
+
+
+
+Semoga penjelasanku ini membantumu! Jangan ragu untuk bertanya jika ada yang masih belum jelas.",210,5.00,5.00,5.00,4.00,5.00,4.00,5.00,5.00,4.67,4.80,Instructional Quality,Motivational Tone,"This feedback is highly effective for a Reflective, Analytic learner because it models the exact systematic thinking process required to solve the problem. By breaking down every option, it not only corrects the current error but also provides a transferable strategy for future multi-variable logic problems."
+6PAR,6,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"Halo Student 6PAR,
+
+Jawabanmu A. 3 kurang tepat. Mari kita pecah soal ini bersama-sama agar kamu memahami di mana letak kesalahannya.
+
+Soal ini meminta kita mencari spot parkir yang *kosong* di **kedua** hari, Senin dan Selasa.  Artinya, kita harus mencari irisan (persamaan) dari spot parkir yang tidak terisi di hari Senin dan Selasa.
+
+Mari kita daftarkan spot parkir yang *terisi* di masing-masing hari:
+
+* **Senin:** 1, 3, 6, 9, 11
+* **Selasa:** 1, 4, 10, 11, 12
+
+Selanjutnya, mari kita daftarkan semua spot parkir (1 sampai 12) dan tandai yang terisi di masing-masing hari:
+
+1: Terisi (Senin & Selasa)
+2: Kosong (Senin & Selasa)
+3: Terisi (Senin)
+4: Terisi (Selasa)
+5: Kosong (Senin & Selasa)
+6: Terisi (Senin)
+7: Kosong (Senin & Selasa)
+8: Kosong (Senin & Selasa)
+9: Terisi (Senin)
+10: Terisi (Selasa)
+11: Terisi (Senin & Selasa)
+12: Terisi (Selasa)
+
+Dari daftar di atas, spot yang *kosong* di **kedua** hari adalah: 2, 5, 7, 8.
+
+Jadi, ada **4** spot parkir yang tidak terisi pada hari Senin dan Selasa.  Oleh karena itu, jawaban yang benar adalah **C. 4**.
+
+**Tips:**  Saat menghadapi soal seperti ini, cobalah visualisasikan atau buat daftar seperti yang saya lakukan di atas. Ini akan membantumu mengidentifikasi irisan (persamaan) dari dua himpunan data dengan lebih mudah.
+
+Semoga penjelasan ini membantumu! Jangan ragu untuk bertanya jika ada hal lain yang kurang jelas.",224,5.00,4.00,5.00,4.00,5.00,5.00,5.00,5.00,5.00,4.60,Tempo Alignment,Specificity & Actionability,"This feedback is highly effective for a Reflective, Analytic learner because it models a systematic problem-solving strategy that the student can internalize. By mapping out the entire sample space (1-12), it ensures the student understands the underlying logic of sets rather than just finding the correct number by chance."
+6PAR,6,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"Halo siswa 6PAR,
+
+Jawabanmu (A. 5) kurang tepat. Mari kita pecahkan masalah ini bersama-sama.
+
+Kamu perlu memahami bagaimana cara memotong kayu 10m agar bisa memenuhi kebutuhan Joni dengan jumlah kayu 10m sesedikit mungkin.
+
+Joni membutuhkan:
+* 7 batang kayu 4m (total 28m)
+* 7 batang kayu 3m (total 21m)
+* Total kebutuhan kayu = 28m + 21m = 49m
+
+Jika Ali memiliki 5 batang kayu 10m, total panjang kayu yang dimiliki adalah 50m.  Meskipun 50m cukup untuk memenuhi kebutuhan Joni (49m),  **kita perlu memikirkan bagaimana memotong kayu tersebut secara efisien.**
+
+Coba pikirkan:
+
+* Bisakah kita memotong setiap kayu 10m menjadi 2 kayu 4m dan sisa 2m?  (Tidak efisien, karena sisa 2m tidak terpakai)
+* Bisakah kita memotong setiap kayu 10m menjadi 3 kayu 3m dan sisa 1m? (Tidak efisien, karena sisa 1m tidak terpakai)
+
+Dengan 5 batang kayu, akan banyak sisa potongan yang tidak terpakai, sehingga tidak efisien. 
+
+**Coba pertimbangkan menggunakan 6 batang kayu 10m.**  Dengan 6 batang, kita punya 60m.  Kita bisa memotong kayu-kayu ini sedemikian rupa sehingga meminimalkan sisa potongan.  Salah satu caranya adalah:
+
+* **4 batang kayu 10m dipotong menjadi:** 2 batang kayu 4m + 1 batang kayu 3m + sisa 3m 
+* **2 batang kayu 10m dipotong menjadi:** 1 batang kayu 4m + 1 batang kayu 3m + sisa 3m
+
+Dengan cara ini, kita bisa mendapatkan semua kayu yang dibutuhkan Joni.
+
+Jadi, jawaban yang benar adalah **B. 6**.
+
+**Tips:**  Soal seperti ini seringkali membutuhkan sedikit ""trial and error"" dan visualisasi. Cobalah gambarkan bagaimana cara memotong kayu untuk melihat solusi yang paling efisien.  Fokus pada meminimalkan sisa potongan.
+
+
+
+Semoga penjelasan ini membantu! Jika masih belum paham, jangan ragu untuk bertanya lagi.",274,5.00,4.00,5.00,5.00,5.00,4.00,5.00,5.00,4.67,4.80,Tempo Alignment,Modality Alignment,"This feedback is highly effective for this specific learner because it honors their need for elaboration and step-by-step logic, transforming a simple correction into a deep conceptual lesson on efficiency and constraints."
+6PAR,6,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"Halo Student 6PAR!
+
+Jawabanmu, B. AAA, sebenarnya *sesuai* dengan pola yang diberikan. Ingat, polanya adalah kata harus palindrome (sama jika dibaca dari depan atau belakang) *atau* hanya terdiri dari satu huruf.  AAA adalah palindrome (AAA dibaca sama dari depan dan belakang) jadi memenuhi syarat.
+
+Kesalahanmu mungkin karena kurang teliti dalam memeriksa opsi lainnya. Mari kita lihat mengapa jawaban yang benar adalah **A. BBBABBBB**.
+
+Kata BBBABBBB jika dibaca dari belakang adalah BBBABBBB.  Benar, kata ini juga palindrome! Tapi, pola yang diberikan mengatakan kata harus palindrome *atau* huruf tunggal.  Kata BBBABBBB tidak termasuk huruf tunggal.
+
+**Jadi, mari kita tinjau semua opsi:**
+
+*   **A. BBBABBBB:** Palindrome, tapi bukan huruf tunggal. **Ini jawaban yang tepat karena tidak memenuhi *salah satu* dari dua syarat.**
+*   **B. AAA:** Palindrome, dan juga bisa dianggap sebagai pengulangan satu huruf. Memenuhi syarat.
+*   **C. CBAABC:** Bukan palindrome (kalau dibalik jadi CBAABC, tidak sama). Tapi, juga bukan huruf tunggal. Jadi, tidak memenuhi syarat.
+*   **D. BCABBACB:** Palindrome (kalau dibalik jadi BCABBACB, sama). Memenuhi syarat.
+
+**Tips:**  Saat mengerjakan soal pola, coba terapkan pola tersebut ke setiap opsi satu per satu. Jangan langsung terpaku pada opsi pertama yang terlihat memenuhi syarat.  Periksa semuanya dengan cermat!
+
+Semoga penjelasan ini membantu! Jangan ragu untuk bertanya jika ada yang masih belum jelas.",207,4.00,5.00,4.00,5.00,5.00,3.00,5.00,5.00,4.33,4.60,Specificity & Actionability,Modality Alignment,"This feedback is highly effective for a reflective, analytic learner because it honors their need for thoroughness and logical sequencing. While it lacks a strong visual analogy, the step-by-step verification of all options ensures the student understands the 'not' logic of the question."
+6PAR,6,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"Halo Student 6PAR,
+
+Jawabanmu (A. OKWHERETOMEET!) hampir benar, tapi sayangnya masih kurang tepat. Mari kita bedah bersama kenapa jawabanmu salah dan bagaimana cara mendapatkan jawaban yang benar.
+
+Kamu sudah memahami konsep membaca kode zigzag secara kolom per kolom. Namun, perhatikan kembali kode yang diberikan: **OIERKLTEILH!WBEX**
+
+Jika kita tulis ulang kode ini dalam bentuk matriks (dengan memperhatikan panjang kata yang mungkin), kita akan mendapatkan susunan seperti ini:
+
+```
+O I E R
+K L T E
+I L H !
+W B E X
+```
+
+Kemudian, kita baca kolom per kolom: **O K I W I L B E R T E H ! E X**. 
+
+Dari sini, jelas terlihat bahwa pesan aslinya adalah **OKIWILLBETHERE!**.
+
+Perhatikan bahwa jawabanmu, ""OKWHERETOMEET!"", tidak sesuai dengan urutan huruf yang kita dapatkan dari pembacaan kolom per kolom.
+
+**Tips:**
+
+*   Selalu coba visualisasikan kode dalam bentuk matriks untuk mempermudah pembacaan.
+*   Perhatikan panjang kata yang mungkin, dan coba atur kode dalam matriks dengan berbagai kemungkinan panjang baris dan kolom.
+*   Jangan ragu untuk menulis ulang kode secara kolom per kolom untuk memastikan kamu tidak melewatkan huruf apa pun.
+
+Semoga penjelasan ini membantumu memahami kesalahanmu dan memperkuat pemahamanmu tentang kode zigzag! Tetap semangat belajar!",196,5.00,4.00,5.00,5.00,5.00,5.00,5.00,5.00,5.00,4.80,Tempo Alignment,Specificity & Actionability,"This feedback is highly effective for this specific learner because it honors their reflective nature with a detailed visual breakdown. By showing the matrix structure, it doesn't just give the answer but teaches the underlying spatial logic, likely preventing similar errors in future zigzag cipher problems."
+6PAR,6,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"Halo Student 6PAR,
+
+Jawabanmu (A. 3) kurang tepat. Mari kita telaah bersama kenapa jawabannya bukan 3, dan bagaimana cara mendapatkan jawaban yang benar, yaitu 6.
+
+Soal ini meminta kita mencari jumlah permen loli *maksimal* yang bisa dimakan Beba dengan aturan tidak boleh makan lebih dari 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Coba perhatikan lintasan yang diberikan:
+
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai
+
+Beba bisa makan:
+
+1.  Permen pertama (P) sebelum sikat gigi pertama (S).
+2.  Kemudian, dua permen (P - P) sebelum sikat gigi kedua (S).
+3.  Lalu, tiga permen (P - P - P) sebelum sikat gigi ketiga (S).
+4.  Terakhir, satu permen (P) sebelum selesai.
+
+Jadi, total permen yang bisa dimakan adalah 1 + 2 + 3 + 1 = 7.  **Tapi ingat aturan maksimal 2 permen sebelum sikat gigi!**
+
+Mari kita lihat lagi:
+
+*   Setelah 'mulai', Beba bisa makan 1 permen (P) sebelum 'S'.
+*   Setelah 'S', Beba bisa makan 2 permen (P - P) sebelum 'S'.
+*   Setelah 'S', Beba bisa makan 2 permen (P - P) sebelum 'S'.
+*   Setelah 'S', Beba bisa makan 1 permen (P) sebelum 'selesai'.
+
+Totalnya: 1 + 2 + 2 + 1 = **6** permen.
+
+Jadi, jawaban yang tepat adalah **C. 6**.
+
+**Tips:**  Saat mengerjakan soal seperti ini, coba lacak lintasan Beba langkah demi langkah dan catat berapa permen yang bisa dimakan di setiap bagian lintasan, sambil selalu ingat aturannya.  Jangan terpaku pada angka yang lebih kecil di awal lintasan, karena mungkin ada kesempatan untuk makan lebih banyak di bagian selanjutnya!
+
+Semangat belajar! Jika masih bingung, jangan ragu untuk bertanya lagi.",283,5.00,5.00,4.00,5.00,5.00,4.00,5.00,5.00,4.67,4.80,Tempo Alignment,Clarity & Coherence,"This feedback is highly effective for a reflective learner because it models the entire thinking process, allowing the student to see exactly where their logic fell short of the 'maximal' requirement. It transforms a simple correction into a deep learning moment about constraint satisfaction."
+6PAR,6,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"Halo 6PAR,
+
+Jawabanmu Marko kurang tepat. Mari kita bedah bersama kenapa jawabannya bukan Marko, dan bagaimana kita bisa menemukan jawaban yang benar, yaitu David.
+
+Ingat, Bu Guru tahu bahwa tiga dari empat anak itu *tidak pernah* berbohong. Ini kunci dari soal ini!
+
+Mari kita analisis satu per satu pernyataan mereka, dengan mempertimbangkan informasi bahwa hanya satu yang boleh berbohong:
+
+* **Marko: ""Bukan saya yang memecahkan kaca""** – Jika Marko berbohong, berarti dia yang memecahkan kaca. Jika Marko jujur, berarti dia *tidak* memecahkan kaca.
+* **Iva: ""Marko atau David yang memecahkan kaca""** – Jika Iva berbohong, berarti bukan Marko *dan* bukan David yang memecahkan kaca.  Jika Iva jujur, berarti salah satu dari Marko atau David yang bersalah.
+* **Maya: ""David yang memecahkan kaca""** – Jika Maya berbohong, berarti David *tidak* memecahkan kaca. Jika Maya jujur, berarti David yang bersalah.
+* **David: ""Bukan saya, Maya bohong!""** – Jika David berbohong, berarti dia yang memecahkan kaca *dan* Maya jujur. Jika David jujur, berarti dia tidak bersalah dan Maya berbohong.
+
+Sekarang, coba kita asumsikan Marko yang memecahkan kaca (seperti jawabanmu). Jika Marko bersalah:
+
+* Pernyataan Marko bohong.
+* Pernyataan Iva jujur (karena salah satu dari Marko atau David bersalah).
+* Pernyataan Maya bohong.
+* Pernyataan David jujur.
+
+Ini berarti ada *dua* orang yang berbohong (Marko dan Maya), padahal seharusnya hanya satu.  Jadi, asumsi Marko yang bersalah salah.
+
+Sekarang, mari kita coba asumsikan David yang memecahkan kaca:
+
+* Pernyataan Marko jujur.
+* Pernyataan Iva jujur.
+* Pernyataan Maya jujur.
+* Pernyataan David bohong (karena dia bilang bukan dia dan Maya bohong).
+
+Ini sesuai dengan informasi bahwa hanya satu orang yang berbohong!
+
+**Kesimpulan:** David yang memecahkan kaca jendela.
+
+Coba lagi dengan menganalisis setiap pernyataan seperti di atas.  Fokus pada informasi bahwa hanya satu orang yang berbohong.  Jangan ragu untuk bertanya jika masih ada yang membingungkan! Semangat!",300,5.00,4.00,5.00,5.00,5.00,4.00,5.00,5.00,4.67,4.80,Tempo Alignment,Specificity & Actionability,"This feedback is highly effective for a Reflective, Analytic learner because it mirrors their natural thought process, providing a deep logical scaffold that ensures they understand the 'why' behind the correction. It successfully navigates the tension between depth and accessibility by using clear formatting to manage the high word count."

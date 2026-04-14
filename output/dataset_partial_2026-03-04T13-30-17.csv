@@ -1,0 +1,1040 @@
+profile_code,question_id,question_topic,difficulty,scenario_type,attempt_number,response_word_count,ai_response,timestamp
+1TGI,17fb8384-c962-48b9-b153-8c37e006cc41,Logic,4,corrective_feedback_attempt_1,1,40,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba ingat, pembeli ingin setiap warna muncul sama rata. Perhatikan juga, satu jenis bunga tidak boleh berpasangan dengan warna yang sama.
+
+[PERTANYAAN PEMANDU] Apakah rangkaianmu sudah memenuhi kedua hal itu?",2026-03-04T13:15:15.797Z
+1TGI,17fb8384-c962-48b9-b153-8c37e006cc41,Logic,4,corrective_feedback_attempt_2,2,39,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba lihat lagi, apakah semua warna sudah muncul dua kali? Perhatikan juga, apakah ada bunga yang jenis dan warnanya sama?
+
+[PERTANYAAN PEMANDU] Apakah rangkaianmu sudah memenuhi semua aturan pembeli?",2026-03-04T13:15:22.850Z
+1TGI,17fb8384-c962-48b9-b153-8c37e006cc41,Logic,4,ai_explanation,0,129,"1. 🎯 Konsep Kunci: Soal ini menguji kemampuanmu menerapkan batasan (constraints) pada sebuah kombinasi. Kita perlu memastikan rangkaian bunga memenuhi SEMUA kriteria yang diberikan.
+
+2. 📋 Overview Solusi: Opsi D memenuhi semua kriteria: setiap warna (1, 2, 3) muncul 2 kali, tidak ada bunga dengan jenis & warna yang sama (misal, tidak ada A1 lagi setelah A1 muncul), dan setiap jenis bunga maksimal muncul 2 kali.
+   * Opsi A salah karena B muncul dengan warna yang sama (B2 & B1).
+   * Opsi B salah karena A muncul 3 kali (A2, A3, A1).
+   * Opsi C salah karena D muncul 2 kali dengan warna yang sama (D3 & D3).
+
+3. ✅ Kesimpulan: Dengan memeriksa setiap kriteria, opsi D adalah satu-satunya yang valid. Fokus pada pemahaman batasan soal adalah kunci utama!",2026-03-04T13:15:30.583Z
+1TGI,5c97d85d-614e-49b3-875f-2f4c78d47e52,Patterns,3,corrective_feedback_attempt_1,1,51,"[VALIDASI POSITIF] - Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] - Soal ini tentang memikirkan bagaimana warna cat digunakan secara bergantian. Coba pikirkan, berapa pagar *maksimal* yang bisa dicat dengan satu set warna?
+
+[PERTANYAAN PEMANDU] - Satu set warna itu M-H-K-B. Berapa pagar yang bisa dicat dalam satu set lengkap?",2026-03-04T13:15:36.836Z
+1TGI,5c97d85d-614e-49b3-875f-2f4c78d47e52,Patterns,3,corrective_feedback_attempt_2,2,44,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba pikirkan, berapa pagar *maksimal* yang bisa dicat dengan satu putaran warna (M-H-K-B)? Apakah kamu sudah menghitungnya dengan benar?
+
+[PERTANYAAN PEMANDU] Fokus pada satu siklus dulu, ya. Berapa total pagar dalam satu siklus itu?",2026-03-04T13:15:41.742Z
+1TGI,5c97d85d-614e-49b3-875f-2f4c78d47e52,Patterns,3,ai_explanation,0,135,"1. 🎯 Konsep Kunci: Soal ini menguji kemampuanmu mengidentifikasi pola berulang dan menghitung sumber daya yang dibutuhkan berdasarkan batasan (tidak boleh warna sama berdampingan). Kita fokus pada siklus pengecatan dan kapasitas masing-masing warna.
+
+2. 📋 Overview Solusi:
+   * Siklus warna: M-H-K-B (total 5+3+7+2 = 17 pagar potensial).
+   * Batasan: Karena warna tidak boleh sama, kita hanya bisa mengecat sejumlah pagar sesuai warna dengan kapasitas terkecil dalam siklus (Biru = 2 pagar).
+   * Jumlah siklus lengkap: 15 pagar / 17 pagar per siklus = kurang dari 1 siklus. Kita hitung berapa siklus penuh yang bisa dilakukan.
+   * Siklus penuh: M(5) + H(3) + K(7) + B(2) = 17 pagar. Tapi, karena batasan, maksimal 2 pagar per warna dalam satu siklus. Jadi, siklus efektifnya adalah 2 pagar per warna, total 8 pagar.
+   * Pagar yang bisa dicat",2026-03-04T13:15:51.262Z
+1TGI,73e61d4c-228d-4c37-8bf6-f9398847d126,Arithmetic,2,corrective_feedback_attempt_1,1,47,"[VALIDASI POSITIF] - Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] - Coba pikirkan, soal ini tentang pembagian dan sisa. Fokus pada berapa apel yang *tidak* masuk kantong karena kurang dari 8.
+
+[PERTANYAAN PEMANDU] - Angka 8 itu penting, ya. Apa hubungannya dengan apel yang tidak dikemas?",2026-03-04T13:15:56.126Z
+1TGI,73e61d4c-228d-4c37-8bf6-f9398847d126,Arithmetic,2,corrective_feedback_attempt_2,2,37,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba pikirkan dulu berapa sisa apel setelah dihitung kelompok-kelompok berisi 8. Fokus ke sisa pembagian pertama ya!
+
+[PERTANYAAN PEMANDU] Berapa banyak apel yang bisa masuk kantong penuh?",2026-03-04T13:16:00.955Z
+1TGI,73e61d4c-228d-4c37-8bf6-f9398847d126,Arithmetic,2,ai_explanation,0,91,"1. 🎯 Konsep Kunci: Soal ini menguji pemahaman tentang pembagian dengan sisa. Kita perlu mencari sisa pembagian apel dengan 8 (kapasitas kantong) untuk mengetahui apel yang tidak dikemas. | 2. 📋 Overview Solusi:
+   *   Total apel: 275
+   *   275 dibagi 8 = 34 sisa 3. Artinya, ada 34 kantong penuh dan 3 apel sisa.
+   *   Apel yang tidak dikemas adalah sisa dari pembagian pertama (275:8).
+   *   Opsi lain salah karena tidak memperhatikan sisa pembagian apel dengan kapasitas kantong. | 3. ✅ Kesimpulan: Jadi, ada 3 apel yang tidak dimasukkan ke kantong.",2026-03-04T13:16:08.518Z
+1TGI,7f3727c1-b218-4ec3-852e-70c1bc5847ad,Logic,3,corrective_feedback_attempt_1,1,43,"[VALIDASI POSITIF] - Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] - Coba ingat, soal ini tentang mencari kelompok yang sama. Fokus pada berapa banyak huruf yang berulang ya!
+
+[PERTANYAAN PEMANDU] - Huruf apa saja yang paling sering muncul dalam kumpulan bantal ini?",2026-03-04T13:16:11.560Z
+1TGI,7f3727c1-b218-4ec3-852e-70c1bc5847ad,Logic,3,corrective_feedback_attempt_2,2,44,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba lihat lagi, apakah kamu sudah menghitung semua kemungkinan huruf yang bisa membentuk tim? Ingat, setiap tim butuh 3 huruf yang sama.
+
+[PERTANYAAN PEMANDU] Huruf apa saja yang muncul dan bisa dikelompokkan jadi tim?",2026-03-04T13:16:16.716Z
+1TGI,7f3727c1-b218-4ec3-852e-70c1bc5847ad,Logic,3,ai_explanation,0,125,"1. 🎯 Konsep Kunci: Soal ini menguji kemampuan mengidentifikasi pola (huruf sama) dan melakukan perhitungan sederhana (pembentukan tim & sisa bantal). Kita butuh hitung jumlah kemunculan tiap huruf dan bagi dengan 3 (ukuran tim).
+
+2. 📋 Overview Solusi:
+   * Hitung jumlah kemunculan setiap huruf: A(4), B(3), C(5), D(1), E(2), F(2).
+   * Bentuk tim dari huruf yang jumlahnya ≥ 3:
+      * A: 1 tim (sisa 1 A)
+      * B: 1 tim (sisa 0 B)
+      * C: 1 tim (sisa 2 C)
+      * Total tim: 3. Ups, ada kesalahan! Cek lagi: C(5) -> 1 tim, sisa 2. Total tim 1+1+1+1 = 4.
+   * Bantal tak terpakai: 1 A + 0 B + 2 C + 1 D + 2 E + 2 F = 8. Ups lagi",2026-03-04T13:16:24.998Z
+1TGI,983be950-6500-4f67-acb9-0902617ec6db,Logic,2,corrective_feedback_attempt_1,1,36,"Belum tepat, tapi gak papa! 😊
+
+Coba pikirkan dulu, apa yang dimaksud dengan ""lebih dekat dengan pagar""? Ini tentang posisi relatif bunga-bunga itu. 
+
+Baris mana yang posisinya paling menunjukkan B lebih dekat ke pagar daripada C?",2026-03-04T13:16:29.778Z
+1TGI,983be950-6500-4f67-acb9-0902617ec6db,Logic,2,corrective_feedback_attempt_2,2,48,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba pikirkan lagi, jarak itu diukur dari pagar ya. Fokus ke posisi B dan C di setiap baris. Apakah mereka sudah sesuai dengan aturan jaraknya?
+
+[PERTANYAAN PEMANDU] Baris mana saja yang punya jarak B-pagar lebih dekat dari C-pagar?",2026-03-04T13:16:33.617Z
+1TGI,983be950-6500-4f67-acb9-0902617ec6db,Logic,2,ai_explanation,0,101,"1. 🎯 Konsep Kunci: Soal ini menguji pemahaman tentang posisi relatif elemen dalam sebuah urutan. Kita perlu identifikasi baris di mana ‘B’ lebih dekat ke ‘pagar’ daripada ‘C’.
+
+2. 📋 Overview Solusi:
+   * Baris 1: B lebih dekat pagar daripada C. Benar!
+   * Baris 2: C lebih dekat pagar daripada B. Salah.
+   * Baris 3: B lebih dekat pagar daripada C. Benar!
+   Karena hanya baris 1 & 3 yang memenuhi syarat, maka jawabannya adalah C.
+
+3. ✅ Kesimpulan:
+   Memahami posisi relatif itu kunci. Opsi A salah karena hanya satu baris yang memenuhi. Opsi D salah karena baris 2 tidak sesuai kriteria.",2026-03-04T13:16:40.573Z
+1TGI,9c7498e3-35f5-4b91-86ac-e3aac43dd6c1,Logic,3,corrective_feedback_attempt_1,1,37,"Belum tepat, tapi gak papa! 😊
+
+Coba pikirkan dulu, kita cari yang kosong di *kedua* hari, ya. Ingat, soalnya minta yang tidak terisi di Senin *dan* Selasa. 
+
+Spot mana yang tidak ada di daftar Senin atau Selasa?",2026-03-04T13:16:44.466Z
+1TGI,9c7498e3-35f5-4b91-86ac-e3aac43dd6c1,Logic,3,corrective_feedback_attempt_2,2,46,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba pikirkan dulu, kita mencari spot yang *kosong* di kedua hari. Kamu sudah melihat spot yang terisi, sekarang fokus ke yang belum terisi ya!
+
+[PERTANYAAN PEMANDU] Apakah kamu sudah mencoba membandingkan daftar spot Senin & Selasa?",2026-03-04T13:16:48.969Z
+1TGI,9c7498e3-35f5-4b91-86ac-e3aac43dd6c1,Logic,3,ai_explanation,0,115,"1. 🎯 Konsep Kunci: Soal ini menguji pemahaman tentang himpunan dan operasi irisan (intersection). Kita mencari elemen yang *ada* di kedua himpunan (Senin & Selasa) lalu menghitung selisihnya dengan total spot parkir.
+
+2. 📋 Overview Solusi:
+   *   Himpunan Senin: {1, 3, 6, 9, 11}
+   *   Himpunan Selasa: {1, 4, 10, 11, 12}
+   *   Irisan (Senin ∩ Selasa): {1, 11} – hanya spot ini yang terisi di kedua hari.
+   *   Spot terisi total (Senin ∪ Selasa): {1, 3, 4, 6, 9, 10, 11, 12} = 8 spot.
+   *   Spot kosong: 12 - 8 = 4 spot.
+
+3. ✅ Kesimpulan: Jawaban yang benar adalah 4. Opsi lain salah karena tidak memperhitungkan spot yang terisi di *kedua* hari",2026-03-04T13:16:58.288Z
+1TGI,ae81382b-c332-4113-a95f-de2e2bdeb8ed,Algorithms,4,corrective_feedback_attempt_1,1,47,"[VALIDASI POSITIF] - Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] - Coba pikirkan, bagaimana cara memotong kayu 10m agar bisa memenuhi kebutuhan Joni? Fokus pada efisiensi penggunaan kayu ya!
+
+[PERTANYAAN PEMANDU] - Apakah ada cara untuk mendapatkan panjang 4m *dan* 3m dari satu potongan kayu 10m?",2026-03-04T13:17:03.001Z
+1TGI,ae81382b-c332-4113-a95f-de2e2bdeb8ed,Algorithms,4,corrective_feedback_attempt_2,2,45,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba pikirkan, bagaimana cara memotong kayu 10m agar bisa memenuhi kebutuhan Joni secara efisien? Apakah ada sisa setelah dipotong?
+
+[PERTANYAAN PEMANDU] Apakah mungkin dengan 5 kayu saja semua kebutuhan Joni terpenuhi tanpa sisa yang signifikan?",2026-03-04T13:17:06.894Z
+1TGI,ae81382b-c332-4113-a95f-de2e2bdeb8ed,Algorithms,4,ai_explanation,0,100,"1. 🎯 Konsep Kunci: Optimasi pemotongan melibatkan meminimalkan sisa. Kita harus memotong kayu 10m seefisien mungkin untuk memenuhi kebutuhan Joni. Opsi lain salah karena tidak mempertimbangkan kombinasi potong yang paling efektif.
+
+2. 📋 Overview Solusi:
+   * 6 kayu 10m cukup. Setiap kayu dipotong: 1x 4m + 1x 3m + sisa 3m.
+   * 7 batang 4m dan 7 batang 3m terpenuhi (total potongan 14). 
+   * Sisa 3m x 6 = 18m, cukup untuk membuat 6 batang 3m tambahan (tidak diperlukan).
+
+3. ✅ Kesimpulan:  6 batang kayu 10m adalah solusi optimal. Prioritaskan memikirkan bagaimana memaksimalkan penggunaan setiap batang kayu sebelum menghitung total.",2026-03-04T13:17:12.901Z
+1TGI,b6eb3ea6-df07-4bfb-94b4-5c9f488849e3,Patterns,3,corrective_feedback_attempt_1,1,34,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba pikirkan, apa inti dari kata yang 'palindrome'? Apakah semua huruf harus sama?
+
+[PERTANYAAN PEMANDU] Apakah 'AAA' memenuhi syarat sebagai palindrome atau huruf tunggal?",2026-03-04T13:17:17.026Z
+1TGI,b6eb3ea6-df07-4bfb-94b4-5c9f488849e3,Patterns,3,corrective_feedback_attempt_2,2,40,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba pikirkan lagi, palindrome itu artinya apa ya? Apakah 'AAA' memenuhi syarat dibaca sama dari depan & belakang?
+
+[PERTANYAAN PEMANDU] Fokus ke definisi palindrome, apakah 'AAA' itu palindrome atau bukan?",2026-03-04T13:17:21.224Z
+1TGI,b6eb3ea6-df07-4bfb-94b4-5c9f488849e3,Patterns,3,ai_explanation,0,86,"1. 🎯 Konsep Kunci: Palindrome dibaca sama dari depan & belakang (misal: ""radar""). Soal ini menguji kemampuan identifikasi pola berdasarkan definisi palindrome & kata tunggal. | 2. 📋 Overview Solusi: Opsi A (BBABABBB) bukan palindrome karena tidak simetris. Opsi B, C, & D memenuhi kriteria (palindrome atau huruf tunggal). | 3. ✅ Kesimpulan: Karena A tidak memenuhi pola palindrome atau kata tunggal, maka A adalah jawaban yang tepat. Opsi lain salah karena dapat dibaca sama dari depan dan belakang (palindrome) atau hanya terdiri dari satu huruf.",2026-03-04T13:17:26.140Z
+1TGI,c83db499-e544-464f-99c6-6505b434bf46,Algorithms,5,corrective_feedback_attempt_1,1,52,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+
+2. **[HINT ADAPTIF]** - Coba pikirkan bagaimana cara kode ini disusun ulang. Fokus pada membaca pesan dari atas ke bawah, bukan dari kiri ke kanan.
+
+3. **[PERTANYAAN PEMANDU]** - Kalau kamu baca kolom per kolom, apakah ada pola kata yang mulai terlihat?",2026-03-04T13:17:29.621Z
+1TGI,c83db499-e544-464f-99c6-6505b434bf46,Algorithms,5,corrective_feedback_attempt_2,2,53,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba lihat lagi cara kode ini dibentuk. Fokus pada bagaimana setiap huruf 'ditulis' dari kode zigzag tadi. Apakah kamu sudah mencoba 'membaca' kode ini secara vertikal?
+
+[PERTANYAAN PEMANDU] Bagaimana jika kamu mencoba menulis ulang kode ini dalam bentuk kotak dan membaca setiap kolomnya?",2026-03-04T13:17:33.817Z
+1TGI,c83db499-e544-464f-99c6-6505b434bf46,Algorithms,5,ai_explanation,0,89,"1. 🎯 Konsep Kunci: Soal ini menguji kemampuan dekode pesan zigzag. Prinsipnya, kita perlu merekonstruksi matriks asli dari kode kolom untuk mendapatkan pesan yang benar.
+
+2. 📋 Overview Solusi:
+   * Kode `OIERKLTEILH!WBEX` dibaca kolom per kolom.
+   * Bentuk matriksnya adalah 5 kolom x 4 baris (karena panjang kode 20 karakter).
+   * Dengan menyusun ulang, kita dapatkan: `OKI WILL BE THERE!`
+   * Opsi lain salah karena tidak membentuk kalimat yang masuk akal setelah didekode.
+
+3. ✅ Kesimpulan: Dengan memahami pola zigzag dan merekonstruksi matriks, kamu berhasil mendekode pesan menjadi “OKIWILLBETHERE!”.",2026-03-04T13:17:38.302Z
+1TGI,c87f87aa-21fd-49df-82f9-343444be8006,Algorithms,3,corrective_feedback_attempt_1,1,40,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba pikirkan, Beba boleh makan permen sampai *berapa* kali sebelum harus sikat gigi? Prinsipnya adalah memaksimalkan permen sebelum ""reset"".
+
+[PERTANYAAN PEMANDU] Adakah pola yang bisa kamu lihat di lintasan itu?",2026-03-04T13:17:42.647Z
+1TGI,c87f87aa-21fd-49df-82f9-343444be8006,Algorithms,3,corrective_feedback_attempt_2,2,47,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba pikirkan, Beba boleh makan maksimal 2 permen *sebelum* harus sikat gigi. Jadi, fokus ke bagian lintasan antara 'mulai' dan sikat gigi pertama.
+
+[PERTANYAAN PEMANDU] Berapa banyak permen yang bisa dimakan Beba sebelum sikat gigi pertama kali?",2026-03-04T13:17:46.004Z
+1TGI,c87f87aa-21fd-49df-82f9-343444be8006,Algorithms,3,ai_explanation,0,119,"1. 🎯 Konsep Kunci: Soal ini menguji kemampuan memecah masalah menjadi bagian-bagian kecil & menerapkan batasan (maksimal 2 permen sebelum sikat gigi). Kita perlu mencari urutan permen yang bisa dimakan sebelum *harus* gosok gigi.
+
+2. 📋 Overview Solusi:
+   *   Beba bisa makan 2 permen awal (P-P). Lalu, harus sikat gigi (S).
+   *   Kemudian, 2 permen lagi (P-P) sebelum sikat gigi (S).
+   *   Terakhir, 2 permen lagi (P-P) sebelum sikat gigi terakhir (S).
+   *   Total: 2 + 2 + 2 = 6 permen.
+   *   Opsi lain salah karena melebihi batasan 2 permen tanpa sikat gigi, atau tidak memanfaatkan semua kesempatan makan permen.
+
+3. ✅ Kesimpulan: Dengan memaksimalkan 2 permen sebelum setiap sikat gigi, Beba dapat memakan total 6 permen loli.",2026-03-04T13:17:57.063Z
+1TGI,cc3f4afe-a737-489a-9c18-965c0cddb2c8,Logic,5,corrective_feedback_attempt_1,1,40,"😊 Belum tepat, tapi gak papa!
+
+Pikirkan tentang kejujuran. Jika sebagian besar anak jujur, pernyataan siapa yang paling mungkin benar? Coba fokus pada pernyataan yang saling terkait.
+
+Siapa yang menurutmu paling konsisten dengan informasi bahwa hanya satu orang yang berbohong?",2026-03-04T13:18:00.135Z
+1TGI,cc3f4afe-a737-489a-9c18-965c0cddb2c8,Logic,5,corrective_feedback_attempt_2,2,41,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba pikir lagi, siapa yang pernyataannya paling mungkin bikin masalah kalau dia bohong? Fokus ke konsekuensi dari setiap ucapan.
+
+[PERTANYAAN PEMANDU] Jika Marko jujur, apa itu berarti David gak mungkin bersalah?",2026-03-04T13:18:04.237Z
+1TGI,cc3f4afe-a737-489a-9c18-965c0cddb2c8,Logic,5,ai_explanation,0,101,"1. 🎯 Konsep Kunci: Soal ini menguji kemampuan logika dan eliminasi dengan asumsi mayoritas jujur. Kita cari kontradiksi dari pernyataan mereka. |
+2. 📋 Overview Solusi:
+    *   Jika David tidak bersalah, Maya berbohong (pernyataan David benar). Ini memungkinkan.
+    *   Jika David bersalah, Maya jujur, David bohong (sesuai pernyataan David). Ini juga memungkinkan.
+    *   Perhatikan, jika Marko jujur, Iva pasti bohong (karena Marko tidak bersalah). Jika Iva bohong, berarti bukan Marko *dan* bukan David. Ini kontradiksi!
+    *   Jadi, Marko bohong, dan David yang bersalah.
+3. ✅ Kesimpulan: David memecahkan kaca. Opsi lain salah karena tidak konsisten dengan fakta bahwa hanya satu pembohong.",2026-03-04T13:18:11.605Z
+1TGR,17fb8384-c962-48b9-b153-8c37e006cc41,Logic,4,corrective_feedback_attempt_1,1,81,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Pikirkan rangkaian bunga ini seperti menyusun puzzle dengan aturan khusus. Pembeli ingin semua warna ada, tapi tidak boleh ada bunga yang ""kembar"" (jenis dan warna sama). Ingat, setiap jenis bunga juga punya batasan jumlah.
+
+Coba telaah lagi, apakah rangkaian yang kamu buat sudah memenuhi semua aturan itu? Perhatikan khususnya kombinasi jenis dan warnanya.
+
+Apa yang membuatmu memilih kombinasi tersebut? Apakah ada bagian dari soal yang kurang dipahami? 🤔",2026-03-04T13:18:17.027Z
+1TGR,17fb8384-c962-48b9-b153-8c37e006cc41,Logic,4,corrective_feedback_attempt_2,2,90,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Pikirkan rangkaian bunga ini sebagai teka-teki pengaturan. Kamu sudah memastikan tiap warna muncul, itu langkah awal yang baik! 🤔 Sekarang, perhatikan lagi aturan kedua: setiap jenis bunga *tidak boleh* berpasangan dengan warna yang sama. Coba identifikasi apakah ada pengulangan kombinasi jenis dan warna di jawabanmu.
+
+Apakah ada cara untuk menata ulang agar semua bunga “punya” warna yang unik? Pertimbangkan juga batasan 2 bunga per jenis. Coba bayangkan, bagaimana jika kamu fokus memastikan tidak ada pengulangan dulu? 🌸",2026-03-04T13:18:22.250Z
+1TGR,17fb8384-c962-48b9-b153-8c37e006cc41,Logic,4,ai_explanation,0,242,"Oke, mari kita bedah soal ini langkah demi langkah.
+
+1. 🎯 **Konsep Kunci:** Soal ini menguji pemahaman tentang batasan (constraints) dan bagaimana menerjemahkannya ke dalam solusi yang valid. Kita diminta memilih rangkaian bunga yang memenuhi *semua* kriteria yang diberikan. Ini adalah soal *combinatorial thinking* – memilih kombinasi yang tepat.
+
+2. 📋 **Overview Solusi:** Kita perlu mengecek setiap opsi rangkaian bunga terhadap tiga batasan utama: (1) Setiap warna muncul 2 kali, (2) Tidak ada bunga jenis sama dengan warna yang sama, dan (3) Maksimal 2 bunga per jenis. Opsi D adalah satu-satunya yang memenuhi *semua* kriteria ini.
+
+3. 🔢 **Breakdown Detail:**
+   * **Opsi A:** Warna '1' hanya muncul sekali. Jadi, opsi ini salah karena melanggar batasan pertama.
+   * **Opsi B:** Bunga A muncul dengan warna 2, 3, dan 1. Ini melanggar batasan kedua.
+   * **Opsi C:** Bunga D muncul dua kali dengan warna yang sama (3). Ini melanggar batasan kedua.
+   * **Opsi D (BENAR):**
+      * Warna 1, 2 & 3 masing-masing muncul 2 kali.
+      * Tidak ada bunga dengan jenis dan warna yang sama. (A1, B2, C3, D3, B1, D2)
+      * Setiap jenis bunga (A, B, C, D) muncul maksimal 2 kali.
+
+4. ✅ **Kesimpulan:** Opsi D adalah solusi yang valid karena berhasil memenuhi seluruh batasan yang diberikan dalam soal. Pemecahan soal ini menekankan pentingnya memeriksa setiap detail batasan sebelum menentukan jawaban. Pendekatan sistematis seperti ini sangat krusial dalam computational thinking. Opsi lain tidak valid karena melanggar setidaknya satu dari batasan yang ditentukan.",2026-03-04T13:18:30.954Z
+1TGR,5c97d85d-614e-49b3-875f-2f4c78d47e52,Patterns,3,corrective_feedback_attempt_1,1,72,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Coba bayangkan, kita punya siklus warna yang berulang: Merah-Hijau-Kuning-Biru. Setiap siklus ini menghabiskan cat untuk beberapa pagar. Fokuslah pada berapa pagar *total* yang bisa dicat dalam satu siklus lengkap. 
+
+Pikirkan, apakah kita bisa menyelesaikan siklus penuh beberapa kali sebelum salah satu warna habis? Warna mana yang paling cepat habis dan bagaimana itu mempengaruhi total pagar yang bisa dicat? 🤔",2026-03-04T13:18:36.585Z
+1TGR,5c97d85d-614e-49b3-875f-2f4c78d47e52,Patterns,3,corrective_feedback_attempt_2,2,99,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Pikirkan begini: soal ini tentang bagaimana memaksimalkan cat dengan aturan khusus. Kamu sudah mencoba menghitung, tapi coba fokus pada pola pengecatannya dulu. Setiap warna punya 'jatah' pagar berbeda, dan kita harus memastikan tidak ada pagar yang warnanya sama kalau bersebelahan.
+
+Coba bayangkan satu siklus pengecatan lengkap (M-H-K-B). Berapa pagar yang bisa dicat dalam satu siklus itu? Lalu, bagaimana sisa catnya bisa dimanfaatkan tanpa melanggar aturan?
+
+Apa yang akan terjadi jika kita terus mengikuti pola, dan bagaimana sisa cat memengaruhi jumlah pagar yang bisa dicat total? 🤔",2026-03-04T13:18:45.495Z
+1TGR,5c97d85d-614e-49b3-875f-2f4c78d47e52,Patterns,3,ai_explanation,0,294,"Berikut adalah *walkthrough* detail untuk soal pengecatan pagar ini:
+
+1. 🎯 **Konsep Kunci:** Soal ini menguji kemampuan berpikir logis dan pemodelan sederhana. Intinya, kita perlu mencari pola dan keterbatasan sumber daya (jumlah cat) untuk menentukan hasil maksimum. Pembatasan “tidak boleh ada pagar berdampingan dengan warna yang sama” adalah kunci utama.
+
+2. 📋 **Overview Solusi:** Kita akan mensimulasikan proses pengecatan berdasarkan urutan warna yang diberikan, sambil mencatat sisa cat setiap warna. Pengecatan berhenti ketika salah satu warna cat habis, karena kita tidak boleh ada pagar yang sama persis. Jumlah pagar yang berhasil dicat adalah solusi kita.
+
+3. 🔢 **Breakdown Detail:**
+   1. **Urutan Warna:** M-H-K-B (berulang).
+   2. **Kapasitas Cat:** M(5), H(3), K(7), B(2).
+   3. **Simulasi Pengecatan:**
+      * Pagar 1: Merah (M sisa 4)
+      * Pagar 2: Hijau (H sisa 2)
+      * Pagar 3: Kuning (K sisa 6)
+      * Pagar 4: Biru (B sisa 1)
+      * Pagar 5: Merah (M sisa 3)
+      * Pagar 6: Hijau (H sisa 1)
+      * Pagar 7: Kuning (K sisa 5)
+      * Pagar 8: Biru (B sisa 0) – **Biru habis**
+      * Pagar 9: Merah (M sisa 2)
+      * Pagar 10: Hijau (H sisa 0) – **Hijau habis**
+      * Pagar 11: Kuning (K sisa 4)
+      * Pagar 12: Merah (M sisa 1)
+      * Pagar 13: Kuning (K sisa 3)
+      * Pagar 14: Merah (M sisa 0) – **Merah habis**
+      * Pagar 15: Kuning (K sisa 2)
+   4. **Total Pagar:** 15 pagar.
+
+4. ✅ **Kesimpulan:** Dengan mengikuti urutan warna dan memperhatikan keterbatasan jumlah cat, kita dapat mengecat 15 pagar tanpa ada pagar yang berdampingan dengan warna yang sama.
+
+   Opsi lain salah karena:
+   * A (8) & D (5): Jumlah pagar terlalu sedikit, tidak memanfaatkan semua cat secara optimal.
+   * B (17): Melebihi kapasitas cat yang tersedia. Kita berhenti ketika salah satu warna habis.",2026-03-04T13:19:11.863Z
+1TGR,73e61d4c-228d-4c37-8bf6-f9398847d126,Arithmetic,2,corrective_feedback_attempt_1,1,82,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Bayangkan begini: pengemasan ini seperti membangun bangunan dari apel. Tahap pertama adalah membuat 'unit' kecil (kantong berisi 8 apel). Fokuslah pada sisa apel *setelah* semua kantong terisi penuh.
+
+Coba pikirkan, berapa banyak apel yang bisa mengisi kantong penuh, dan berapa banyak yang tersisa setelah itu? Jumlah apel sisa inilah yang jawabannya. 
+
+Apa yang terjadi jika kita hanya fokus pada angka 275 dan angka 8 tanpa memikirkan proses pengelompokannya? 🤔",2026-03-04T13:19:17.756Z
+1TGR,73e61d4c-228d-4c37-8bf6-f9398847d126,Arithmetic,2,corrective_feedback_attempt_2,2,78,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Coba pikirkan begini: soal ini bicara tentang pengelompokan. Pertama, apel dikelompokkan ke dalam kantong, lalu kantong dikelompokkan ke dalam kardus. Pertanyaan ini fokus pada *sisa* apel setelah pengelompokan pertama.
+
+Jika setiap kantong butuh 8 apel, berapa banyak apel yang *bisa* dikemas penuh? Lalu, berapa banyak apel yang *tidak* cukup untuk membuat kantong penuh?
+
+Pikirkan tentang bagaimana sisa ini berhubungan dengan total apel yang dipanen. 🤔",2026-03-04T13:19:23.153Z
+1TGR,73e61d4c-228d-4c37-8bf6-f9398847d126,Arithmetic,2,ai_explanation,0,203,"1. 🎯 **Konsep Kunci:** Soal ini menguji pemahamanmu tentang operasi modulo (sisa pembagian) dan bagaimana menerapkannya dalam beberapa tahap. Intinya, kita perlu mencari tahu sisa apel setelah dibagi menjadi kelompok-kelompok yang lebih besar (kantong), lalu mencari sisa apel yang tidak masuk kelompok tersebut.
+
+2. 📋 **Overview Solusi:** Kita akan menyelesaikan soal ini dalam dua langkah utama: (1) mencari sisa apel setelah dibagi ke dalam kantong, dan (2) sisa apel tersebut adalah jawaban yang kita cari.
+
+3. 🔢 **Breakdown Detail:**
+   1. **Apel per Kantong:** Setiap kantong berisi 8 apel.
+   2. **Jumlah Kantong:** Untuk mengetahui berapa banyak kantong yang terisi, kita bagi total apel (275) dengan jumlah apel per kantong (8):  275 / 8 = 34 sisa 3.
+   3. **Interpretasi Sisa:** Hasilnya, 34 kantong terisi penuh, dan ada sisa 3 apel. Sisa 3 apel ini tidak cukup untuk mengisi satu kantong lagi (karena butuh 8 apel).
+   4. **Jawaban:** Oleh karena itu, ada 3 apel yang tidak dimasukkan ke kantong.
+
+4. ✅ **Kesimpulan:** Jawaban yang benar adalah D. 3.
+
+   *Mengapa opsi lain salah?*
+   *   Opsi A (6) dan C (7) salah karena tidak memperhitungkan sisa pembagian dengan benar.
+   *   Opsi B (1) mungkin muncul jika ada kesalahan dalam membagi total apel dengan jumlah apel per kantong.",2026-03-04T13:19:34.612Z
+1TGR,7f3727c1-b218-4ec3-852e-70c1bc5847ad,Logic,3,corrective_feedback_attempt_1,1,69,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Pikirkan tentang membentuk kelompok. Setiap kelompok butuh anggota yang sama, kan? Nah, di sini ""anggota""-nya adalah huruf pada bantal. Coba hitung dulu ada berapa banyak masing-masing huruf (C, A, B, F, D, E). Setelah tahu jumlahnya, baru pikirkan berapa kelompok yang bisa dibentuk.
+
+Huruf apa yang paling banyak muncul dan apakah cukup untuk membentuk tim? 🤔",2026-03-04T13:19:38.847Z
+1TGR,7f3727c1-b218-4ec3-852e-70c1bc5847ad,Logic,3,corrective_feedback_attempt_2,2,77,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Pikirkan tentang mencari kelompok yang *sama*—seperti mencari teman yang punya hobi serupa! Coba hitung dulu ada berapa banyak bantal untuk masing-masing huruf (C, A, B, D, E, F). Lalu, ingat tim butuh 3 pemain. Apakah semua huruf punya cukup 'pemain' untuk membentuk tim?
+
+Pertimbangkan, setelah membentuk tim, masih ada sisa bantal yang tidak terpakai. Apakah kamu sudah memikirkan cara menghitung sisa bantal ini? 🤔",2026-03-04T13:19:43.968Z
+1TGR,7f3727c1-b218-4ec3-852e-70c1bc5847ad,Logic,3,ai_explanation,0,257,"1. 🎯 **Konsep Kunci:** Soal ini menguji kemampuanmu dalam mengidentifikasi pola (huruf yang berulang) dan menerapkan logika sederhana untuk menghitung kombinasi (membentuk tim). Intinya adalah mencari jumlah kelompok huruf yang memiliki minimal 3 anggota.
+
+2. 📋 **Overview Solusi:** Untuk menyelesaikan soal ini, kita perlu menghitung frekuensi kemunculan setiap huruf, lalu menentukan berapa banyak tim (masing-masing beranggotakan 3) yang dapat dibentuk dari setiap huruf. Sisa bantal setelah membentuk tim adalah bantal yang tidak terpakai.
+
+3. 🔢 **Breakdown Detail:**
+   1. **Hitung Frekuensi:**
+      * A: 5 buah
+      * B: 3 buah
+      * C: 5 buah
+      * D: 1 buah
+      * E: 2 buah
+      * F: 3 buah
+   2. **Bentuk Tim:**
+      * A: 5 buah -> 1 tim (3 bantal A terpakai)
+      * B: 3 buah -> 1 tim (3 bantal B terpakai)
+      * C: 5 buah -> 1 tim (3 bantal C terpakai)
+      * F: 3 buah -> 1 tim (3 bantal F terpakai)
+      * Total tim: 4 tim
+   3. **Hitung Bantal Tidak Terpakai:**
+      * A: 5 - 3 = 2 bantal
+      * C: 5 - 3 = 2 bantal
+      * Total bantal tidak terpakai: 2 + 2 + 1 (D) + 2 (E) = 7 bantal
+
+4. ✅ **Kesimpulan:** Dengan demikian, total tim yang dapat dibentuk adalah 4, dan total bantal yang tidak digunakan adalah 7. Jawaban yang benar adalah **D. 4 tim, 7 bantal**.
+
+   Opsi lain salah karena:
+   * **A, B, dan C** gagal mengidentifikasi jumlah tim yang bisa dibentuk secara akurat dan perhitungan sisa bantalnya juga tidak tepat. Mereka mungkin terfokus pada satu atau dua huruf saja.",2026-03-04T13:19:59.250Z
+1TGR,983be950-6500-4f67-acb9-0902617ec6db,Logic,2,corrective_feedback_attempt_1,1,72,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+🌸 Bayangkan kebun bungamu. Kita ingin bunga B lebih dekat pagar daripada bunga C. Itu berarti, saat membaca urutan, B harus muncul *sebelum* C. Coba perhatikan lagi ketiga baris bunga itu. Baris mana yang menunjukkan B lebih dekat pagar dari C?
+
+🤔 Apa yang membuat posisi bunga dalam barisan itu penting? Pikirkan bagaimana jarak mempengaruhi urutan yang kita cari.",2026-03-04T13:20:03.835Z
+1TGR,983be950-6500-4f67-acb9-0902617ec6db,Logic,2,corrective_feedback_attempt_2,2,74,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Pikirkan ini sebagai soal jarak. Kita cari baris di mana bunga B *benar-benar* lebih dekat ke pagar dibandingkan bunga C. Coba perhatikan lagi setiap baris, fokus pada posisi B dan C relatif terhadap pagar. Apakah ada pola yang bisa kamu temukan tentang bagaimana jarak ini diukur?
+
+Pertimbangkan: Apakah hanya melihat urutan saja cukup, atau perlu 'membayangkan' jarak fisik antar bunga? 🤔",2026-03-04T13:20:09.363Z
+1TGR,983be950-6500-4f67-acb9-0902617ec6db,Logic,2,ai_explanation,0,234,"Berikut adalah walkthrough detail untuk soal computational thinking ini:
+
+1. 🎯 **Konsep Kunci:** Soal ini menguji kemampuanmu dalam memahami dan menerapkan batasan (constraints) dalam sebuah urutan. Kita perlu menganalisis posisi relatif elemen (bunga) terhadap elemen lain (pagar) dan membandingkannya dengan batasan yang diberikan. Intinya, ini soal logika spasial sederhana.
+
+2. 📋 **Overview Solusi:** Kita perlu mencari baris-baris di mana bunga B lebih dekat ke pagar dibandingkan bunga C. Pendekatan yang paling efektif adalah dengan memeriksa setiap baris satu per satu dan membandingkan posisi B dan C relatif terhadap pagar.
+
+3. 🔢 **Breakdown Detail:**
+   * **Baris 1:** pagar - A - B - C - D. B lebih dekat ke pagar daripada C. (Memenuhi syarat)
+   * **Baris 2:** pagar - A - C - B - A. C lebih dekat ke pagar daripada B. (Tidak memenuhi syarat)
+   * **Baris 3:** pagar - D - B - A - C. B lebih dekat ke pagar daripada C. (Memenuhi syarat)
+
+   Oleh karena itu, baris 1 dan 3 memenuhi kriteria yang diberikan.
+
+4. ✅ **Kesimpulan:** Jawaban yang benar adalah **C. Baris 1 dan 3.**
+
+   Opsi A salah karena hanya baris 1 yang memenuhi syarat. Opsi B salah karena baris 2 tidak memenuhi syarat. Opsi D salah karena baris 2 tidak memenuhi syarat.
+
+   Kamu bisa juga memvisualisasikan jarak setiap bunga dari pagar untuk memperjelas perbandingan posisi mereka. Ini membantu dalam memecahkan masalah dengan pendekatan *top-down* seperti yang kamu sukai.",2026-03-04T13:20:29.023Z
+1TGR,9c7498e3-35f5-4b91-86ac-e3aac43dd6c1,Logic,3,corrective_feedback_attempt_1,1,72,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Coba bayangkan semua spot parkir itu seperti satu set besar. Soal ini meminta kita mencari anggota yang *tidak* termasuk dalam dua kelompok kecil (Senin & Selasa). Fokus dulu pada prinsip himpunan: apa yang terjadi jika kita gabungkan kedua hari, lalu cari yang tidak ada di keduanya?
+
+Pikirkan baik-baik, spot mana saja yang benar-benar kosong di *kedua* hari itu? 🤔",2026-03-04T13:20:33.327Z
+1TGR,9c7498e3-35f5-4b91-86ac-e3aac43dd6c1,Logic,3,corrective_feedback_attempt_2,2,81,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Coba kita lihat gambaran besarnya dulu: soal ini meminta spot yang *kosong* di kedua hari, Senin dan Selasa. Kamu sudah benar mengidentifikasi spot yang terisi di masing-masing hari. Sekarang, pikirkan, adakah cara untuk melihat langsung spot mana yang *tidak* muncul di kedua daftar? Coba buat daftar semua angka dari 1-12, lalu coret angka yang ada di daftar Senin dan Selasa.
+
+Apa yang kamu lihat setelah melakukan ini? 🤔",2026-03-04T13:20:38.925Z
+1TGR,9c7498e3-35f5-4b91-86ac-e3aac43dd6c1,Logic,3,ai_explanation,0,224,"Oke, mari kita bedah soal ini langkah demi langkah.
+
+1. 🎯 **Konsep Kunci:** Soal ini menguji pemahaman tentang operasi himpunan, khususnya irisan (intersection). Kita perlu mencari elemen yang *ada* di kedua himpunan (Senin & Selasa), lalu menghitung jumlah elemen yang *tidak* ada di kedua himpunan.
+
+2. 📋 **Overview Solusi:**  Kita akan mengidentifikasi spot parkir yang terisi pada masing-masing hari, lalu mencari irisan dari kedua himpunan tersebut (spot yang terisi di kedua hari).  Setelah itu, kita akan menghitung spot yang *tidak* termasuk dalam irisan tersebut (spot kosong di kedua hari).
+
+3. 🔢 **Breakdown Detail:**
+   a. **Himpunan Senin (S):** {1, 3, 6, 9, 11}
+   b. **Himpunan Selasa (Se):** {1, 4, 10, 11, 12}
+   c. **Irisan (S ∩ Se):** Spot yang terisi di kedua hari adalah {1, 11}.  Jumlahnya ada 2.
+   d. **Total Spot:** Ada 12 spot parkir.
+   e. **Spot Terisi (Gabungan):**  {1, 3, 4, 6, 9, 10, 11, 12}. Jumlahnya ada 8.
+   f. **Spot Kosong di Kedua Hari:** Total spot – spot terisi (gabungan) = 12 - 8 = 4.
+
+4. ✅ **Kesimpulan:** Jadi, jumlah spot parkir yang tidak terisi pada hari Senin *dan* Selasa adalah 4 (opsi C).
+
+   Opsi A (3), B (6), dan D (5) salah karena:
+   * A & D: Tidak memperhitungkan dengan tepat spot yang terisi di kedua hari.
+   * B: Salah karena menghitung selisih, bukan irisan, dan tidak memperhitungkan total spot.",2026-03-04T13:20:55.251Z
+1TGR,ae81382b-c332-4113-a95f-de2e2bdeb8ed,Algorithms,4,corrective_feedback_attempt_1,1,64,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Bayangkan kamu punya potongan kayu panjang, lalu ingin memotongnya jadi beberapa bagian lebih pendek. Pertimbangkan dulu, berapa total panjang kayu yang dibutuhkan Joni? Jika sudah tahu totalnya, pikirkan bagaimana cara paling efisien memotong kayu 10m agar sisa potongannya minimal.
+
+Coba pikirkan, apakah 5 kayu cukup untuk memenuhi semua kebutuhan Joni? 🤔",2026-03-04T13:20:58.923Z
+1TGR,ae81382b-c332-4113-a95f-de2e2bdeb8ed,Algorithms,4,corrective_feedback_attempt_2,2,78,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Bayangkan begini: Joni butuh banyak kayu pendek, tapi Ali punya kayu panjang. Kita perlu mencari cara memotong kayu panjang agar sisa potongan sekecil mungkin. Coba pikirkan, apakah 5 kayu 10m cukup untuk semua kebutuhan Joni? Apakah ada cara memotong agar lebih efisien dan meminimalkan sisa?
+
+Pertimbangkan bagaimana kamu bisa menggabungkan potongan 4m dan 3m dari satu kayu 10m. Apakah ada pola yang bisa membantu? 🤔",2026-03-04T13:21:04.965Z
+1TGR,ae81382b-c332-4113-a95f-de2e2bdeb8ed,Algorithms,4,ai_explanation,0,245,"Berikut adalah penjelasan detail mengenai solusi soal pengumpulan kayu ini:
+
+1. 🎯 **Konsep Kunci:** Soal ini menguji kemampuanmu dalam optimasi dan pemecahan masalah. Intinya, kita perlu mencari cara paling efisien untuk “memotong” kayu panjang (10m) menjadi potongan-potongan yang lebih pendek (4m dan 3m) untuk memenuhi kebutuhan Joni, dengan meminimalkan jumlah kayu panjang yang digunakan.
+
+2. 📋 **Overview Solusi:** Kita akan mencari kombinasi potongan kayu 10m yang menghasilkan jumlah kayu 4m dan 3m yang dibutuhkan. Strateginya adalah memaksimalkan penggunaan setiap kayu 10m agar menghasilkan potongan yang mendekati kebutuhan Joni.  Jawaban yang benar adalah 6 karena dengan 6 kayu, kita dapat memenuhi semua kebutuhan Joni.
+
+3. 🔢 **Breakdown Detail:**
+   * **Kayu 1-5:** Potong setiap kayu 10m menjadi 1 kayu 4m dan 2 kayu 3m (10 = 4 + 3 + 3). Dengan 5 kayu, kita dapatkan 5 kayu 4m dan 10 kayu 3m.
+   * **Kayu 6:** Potong kayu ke-6 menjadi 2 kayu 4m dan 1 kayu 3m (10 = 4 + 4 + 3). Ini melengkapi kebutuhan Joni: 7 kayu 4m (5+2) dan 7 kayu 3m (10+1).
+
+4. ✅ **Kesimpulan:**  Jadi, Ali membutuhkan minimal 6 batang kayu 10m. Opsi lain salah karena:
+    * A (5 kayu): Tidak cukup untuk memenuhi kebutuhan 7 kayu 4m.
+    * C (7 kayu): Lebih boros daripada 6 kayu, karena ada pemborosan sisa kayu.
+    * D (8 kayu): Jauh lebih boros dan tidak efisien.
+
+Pendekatan ini menggunakan prinsip *decomposition* (memecah masalah besar menjadi masalah kecil) dan *pattern recognition* (mencari pola pemotongan yang efisien).",2026-03-04T13:21:18.382Z
+1TGR,b6eb3ea6-df07-4bfb-94b4-5c9f488849e3,Patterns,3,corrective_feedback_attempt_1,1,72,"✨Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Pikirkan tentang apa itu palindrome. Pola ini mencari kata yang sama jika dibaca dari depan atau belakang, atau hanya terdiri dari satu huruf. Coba perhatikan contoh soal, apakah semua kata di sana memenuhi syarat itu? Bagaimana cara memeriksa apakah sebuah kata adalah palindrome?
+
+Apa yang membuatmu memilih jawaban itu? Apakah kamu sudah mengecek apakah jawabanmu memenuhi kedua syarat pola tersebut?",2026-03-04T13:21:23.606Z
+1TGR,b6eb3ea6-df07-4bfb-94b4-5c9f488849e3,Patterns,3,corrective_feedback_attempt_2,2,87,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Pikirkan tentang apa yang membuat sebuah kata menjadi palindrom. Artinya, urutan hurufnya harus sama jika dibaca dari depan maupun belakang. Coba perhatikan lagi contoh-contoh yang diberikan: 'A', 'B', 'C' itu palindrom karena hanya satu huruf. 'ABA' dan 'CBC' juga palindrom. 🤔
+
+Sekarang, coba lihat kata yang kamu pilih. Apakah kata itu memenuhi syarat palindrom atau hanya terdiri dari satu huruf? Perhatikan dengan seksama bagaimana huruf-huruf itu tersusun.
+
+Apa yang membuat sebuah kata *bukan* palindrom?",2026-03-04T13:21:29.895Z
+1TGR,b6eb3ea6-df07-4bfb-94b4-5c9f488849e3,Patterns,3,ai_explanation,0,239,"## Detailed Walkthrough: Identifikasi Pola Palindrome
+
+Halo! Mari kita bedah soal ini langkah demi langkah.
+
+**1. 🎯 Konsep Kunci:**
+Soal ini menguji pemahamanmu tentang *palindrome*. Palindrome adalah urutan karakter yang sama jika dibaca dari depan atau belakang (contoh: “radar”). Selain itu, soal menekankan bahwa huruf tunggal juga memenuhi pola. Intinya, kita perlu memeriksa apakah sebuah string memenuhi salah satu dari dua kondisi ini.
+
+**2. 📋 Overview Solusi:**
+Kita akan mengevaluasi setiap opsi jawaban, satu per satu, terhadap definisi palindrome dan huruf tunggal. Opsi yang tidak memenuhi salah satu kondisi tersebut akan menjadi jawaban yang tepat. Kita mencari *pengecualian* dari pola yang diberikan.
+
+**3. 🔢 Breakdown Detail:**
+Mari kita analisis setiap opsi:
+*   **A. BBBABBBB:**  Bukan palindrome (tidak sama jika dibalik). Bukan huruf tunggal. **INI JAWABAN YANG BENAR karena tidak sesuai pola.**
+*   **B. AAA:** Palindrome (sama jika dibalik). Memenuhi pola.
+*   **C. CBAABC:** Bukan palindrome. Tetapi, ini BUKAN jawaban karena soal meminta yang *TIDAK* sesuai. Opsi ini memenuhi kriteria ""bukan palindrome"".
+*   **D. BCABBACB:** Palindrome (sama jika dibalik). Memenuhi pola.
+
+**Mengapa opsi lain salah?**
+Opsi B dan D adalah palindrome, sehingga sesuai dengan pola. Opsi C tidak palindrome, tapi soal meminta yang *tidak* sesuai pola, jadi bukan jawaban yang tepat.
+
+**4. ✅ Kesimpulan:**
+Jawaban yang tepat adalah **A. BBBABBBB** karena string ini bukanlah palindrome maupun huruf tunggal. Soal ini melatih kemampuanmu untuk mengidentifikasi pola dan pengecualiannya. Kamu bisa juga menyelesaikan soal ini dengan membuat fungsi sederhana yang memeriksa palindrome.",2026-03-04T13:21:42.671Z
+1TGR,c83db499-e544-464f-99c6-6505b434bf46,Algorithms,5,corrective_feedback_attempt_1,1,70,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Pesan terenkripsi ini disusun ulang dari pola zigzag, jadi bayangkan kita ""membaca"" kode tadi secara vertikal, bukan horizontal. Perhatikan bagaimana setiap karakter diambil dari kolom-kolom secara berurutan. Coba pikirkan, bagaimana urutan pembacaan ini akan membentuk kata-kata yang bermakna?
+
+Apa yang terjadi jika kamu mencoba memetakan kode ini ke dalam bentuk grid/kotak dan membacanya kolom demi kolom? 🤔",2026-03-04T13:21:48.380Z
+1TGR,c83db499-e544-464f-99c6-6505b434bf46,Algorithms,5,corrective_feedback_attempt_2,2,82,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Pesan terenkripsi ini dibaca kolom demi kolom, jadi bayangkan jika kamu menulis ulang kode itu seperti contoh soal, menjadi beberapa baris yang sama panjang. Coba perhatikan, apakah ada pola huruf yang membentuk kata-kata yang familiar? Mungkin fokus pada huruf vokal dulu bisa membantu mengidentifikasi awal dan akhir kata.
+
+Apa yang terjadi jika kamu mencoba memecah kode menjadi beberapa bagian yang lebih kecil dan mencari kemungkinan kata di dalamnya? 🤔",2026-03-04T13:21:54.728Z
+1TGR,c83db499-e544-464f-99c6-6505b434bf46,Algorithms,5,ai_explanation,0,268,"1. 🎯 **Konsep Kunci**: Soal ini menguji kemampuan *pattern recognition* dan *dekomposisi*. Intinya, kita perlu membalik proses enkripsi zigzag untuk mendapatkan pesan asli. Enkripsi zigzag mengubah pesan dengan menulisnya secara kolom per kolom, sehingga untuk mendekripsi, kita perlu membaca kode kolom per kolom dan menyusunnya kembali menjadi baris.
+
+2. 📋 **Overview Solusi**: Kita akan mengidentifikasi jumlah kolom yang digunakan dalam enkripsi, lalu membaca kode secara kolom per kolom, dan menyusun kembali karakter-karakter tersebut menjadi kata-kata yang bermakna. Dengan membandingkan hasil susunan dengan opsi jawaban, kita bisa menemukan pesan asli.
+
+3. 🔢 **Breakdown Detail**:
+   1. **Tentukan jumlah kolom**: Kode yang diberikan memiliki 15 karakter. Kita coba berbagai kemungkinan jumlah kolom (misalnya 3, 5) dan perhatikan apakah hasilnya masuk akal. Dalam kasus ini, 5 kolom adalah yang paling tepat (15 karakter / 5 kolom = 3 baris).
+   2. **Baca kolom per kolom**:
+      * Kolom 1: O I E K L
+      * Kolom 2: I E R T I
+      * Kolom 3: L T E L H
+      * Kolom 4: H W B E X
+      * Kolom 5: !   !
+   3. **Susun menjadi baris**: Menggabungkan karakter dari setiap kolom menghasilkan: “O I E K L I E R T I L T E L H H W B E X ! !”
+   4. **Kelompokkan menjadi kata**: Dengan sedikit penyesuaian spasi, kita mendapatkan: ""OKI WILL BE THERE!""
+
+4. ✅ **Kesimpulan**: Dengan mendekripsi kode zigzag, kita memperoleh pesan asli: **OKIWILLBETHERE!** (Opsi B). Opsi A, C, dan D tidak sesuai dengan hasil dekripsi kolom per kolom. Opsi A dan D memiliki karakter yang tidak ada dalam kode, sementara opsi C memiliki panjang yang berbeda.",2026-03-04T13:22:09.837Z
+1TGR,c87f87aa-21fd-49df-82f9-343444be8006,Algorithms,3,corrective_feedback_attempt_1,1,75,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Bayangkan Beba sedang memulai petualangan manisnya. Tujuan utamanya adalah makan permen loli sebanyak mungkin, tapi ada aturan penting: hanya boleh 2 permen sebelum sikat gigi! 🤔 Coba pikirkan, bagaimana Beba bisa memaksimalkan permen yang dimakan dengan selalu ingat aturan ini?
+
+Apa yang akan terjadi jika Beba terus makan permen tanpa menyikat gigi? Apakah ada batasan alami dalam lintasan ini yang perlu diperhatikan?",2026-03-04T13:22:16.845Z
+1TGR,c87f87aa-21fd-49df-82f9-343444be8006,Algorithms,3,corrective_feedback_attempt_2,2,73,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Pikirkan tentang bagaimana Beba bisa memaksimalkan permen sebelum *harus* berhenti untuk menyikat gigi. Ingat, ia boleh makan maksimal 2 permen sebelum itu. Coba identifikasi bagian-bagian lintasan di mana Beba bisa makan 2 permen berturut-turut sebelum menemukan sikat gigi. Apakah ada pola yang bisa kamu temukan?
+
+Apa yang akan terjadi jika Beba memilih untuk menunda menyikat gigi sedikit lebih lama? 🤔",2026-03-04T13:22:22.483Z
+1TGR,c87f87aa-21fd-49df-82f9-343444be8006,Algorithms,3,ai_explanation,0,259,"1. 🎯 **Konsep Kunci:** Soal ini menguji kemampuanmu dalam menerapkan batasan (maksimal 2 permen) dalam sebuah lintasan. Intinya adalah mencari pola optimal untuk memaksimalkan permen yang dimakan tanpa melanggar aturan. Kita perlu berpikir *sekuensial* (berurutan) karena Beba tidak boleh mundur.
+
+2. 📋 **Overview Solusi:** Untuk memaksimalkan permen, Beba harus makan 2 permen setiap kali menemukan sikat gigi. Kita akan menelusuri lintasan, menghitung permen yang dimakan sebelum setiap sikat gigi, dan memilih jumlah maksimal yang memenuhi syarat.
+
+3. 🔢 **Breakdown Detail:**
+   1. **Mulai - P:** Makan 1 permen.
+   2. **P - S:** Makan 1 permen lagi (total 2). Gosok gigi.
+   3. **S - P:** Makan 1 permen.
+   4. **P - P:** Makan 1 permen lagi (total 2).
+   5. **P - P - S:** Makan 0 permen (sudah makan 2 sebelumnya). Gosok gigi.
+   6. **S - S:** Tidak makan permen.
+   7. **S - P:** Makan 1 permen.
+   8. **P - P:** Makan 1 permen lagi (total 2).
+   9. **P - P - P:** Makan 1 permen lagi (total 3). Karena sudah makan 2 permen terakhir, hanya 1 yang bisa dihitung.
+   10. **P - P - P - S:** Gosok gigi.
+   11. **S - P:** Makan 1 permen.
+   Total permen yang dimakan: 2 + 2 + 2 + 1 = 6
+
+4. ✅ **Kesimpulan:** Jawaban yang benar adalah C. 6. Kita memaksimalkan permen dengan makan 2 sebelum setiap sikat gigi (kecuali di akhir lintasan). Opsi lain salah karena: A (3) dan B (5) terlalu rendah karena tidak memaksimalkan setiap kesempatan makan permen. D (7) melanggar aturan maksimal 2 permen sebelum sikat gigi.",2026-03-04T13:22:37.434Z
+1TGR,cc3f4afe-a737-489a-9c18-965c0cddb2c8,Logic,5,corrective_feedback_attempt_1,1,63,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Pikirkan tentang kejujuran. Jika tiga anak selalu jujur, maka satu anak pasti berbohong. Coba fokus pada pernyataan mereka – apa yang akan terjadi jika Marko jujur? Lalu, bagaimana jika Iva jujur? Ini akan membantumu mempersempit kemungkinan.
+
+Apa yang bisa kamu simpulkan jika kita berasumsi bahwa semua pernyataan adalah benar? 🤔",2026-03-04T13:22:43.781Z
+1TGR,cc3f4afe-a737-489a-9c18-965c0cddb2c8,Logic,5,corrective_feedback_attempt_2,2,77,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Pikirkan tentang kejujuran anak-anak. Jika Marko tidak bersalah dan jujur, pernyataannya benar. Tapi, bagaimana jika Marko berbohong? Coba perhatikan baik-baik pernyataan David. Jika David jujur, berarti Maya berbohong, dan sebaliknya. 
+
+Fokus pada kontradiksi atau keselarasan antar pernyataan. Siapa yang pernyataannya paling mungkin benar jika kita asumsikan 3 anak jujur?
+
+Pikirkan lagi, siapa yang pernyataannya paling konsisten dengan informasi bahwa hanya satu yang berbohong? 🤔",2026-03-04T13:22:50.581Z
+1TGR,cc3f4afe-a737-489a-9c18-965c0cddb2c8,Logic,5,ai_explanation,0,275,"Oke, mari kita pecahkan soal ini dengan pendekatan yang terstruktur dan mendalam.
+
+1. 🎯 **Konsep Kunci:** Soal ini menguji kemampuan penalaran logis dan deduksi. Kita perlu menganalisis pernyataan setiap anak, mengingat hanya ada satu pembohong, dan mencari kontradiksi untuk mengidentifikasi pelaku. Prinsip utamanya adalah: kebenaran dan kebohongan saling eksklusif.
+
+2. 📋 **Overview Solusi:** Kita akan menganalisis setiap pernyataan, lalu menguji kemungkinan mana yang benar dan mana yang salah. Dengan asumsi hanya satu anak yang berbohong, kita akan mencari kombinasi yang menghasilkan konsistensi logis. Hasilnya akan menunjuk pada pelaku pemecahan kaca.
+
+3. 🔢 **Breakdown Detail:**
+   * **Asumsi David Jujur:** Jika David jujur, Maya berbohong. Ini berarti David *tidak* memecahkan kaca dan Maya salah mengatakan bahwa David pelakunya. Pernyataan Marko dan Iva bisa benar (Marko tidak bersalah, dan Iva benar bahwa salah satu dari Marko atau David yang bersalah, yaitu David). Ini konsisten.
+   * **Asumsi Marko Jujur:** Jika Marko jujur, dia tidak memecahkan kaca. Jika Iva jujur, maka Marko atau David yang bersalah. Ini berarti David yang bersalah. Jika Maya jujur, David yang bersalah. Jika David jujur, Maya berbohong. Ini konsisten.
+   * **Asumsi Iva Jujur:** Jika Iva jujur, maka Marko atau David yang bersalah. Jika Maya jujur, David yang bersalah. Jika David jujur, Maya berbohong. Ini konsisten.
+   * **Asumsi Maya Jujur:** Jika Maya jujur, David yang bersalah. Maka, David berbohong. Ini berarti David *tidak* bersalah dan Maya berbohong. Kontradiksi!
+
+   Dari analisis di atas, hanya David yang bisa jujur tanpa menimbulkan kontradiksi.
+
+4. ✅ **Kesimpulan:** Dengan demikian, **David** adalah yang memecahkan kaca jendela. Mengapa opsi lain salah? Marko, Iva, dan Maya tidak bisa menjadi pelaku tanpa membuat lebih dari satu anak berbohong, yang bertentangan dengan informasi yang diberikan.",2026-03-04T13:23:05.605Z
+1TAI,17fb8384-c962-48b9-b153-8c37e006cc41,Logic,4,corrective_feedback_attempt_1,1,42,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+2. **[HINT ADAPTIF]** - Coba perhatikan lagi, ada warna yang muncul berapa kali di rangkaianmu? 🤔 Apakah sudah sesuai dengan permintaan pembeli?
+3. **[PERTANYAAN PEMANDU]** - Warna mana yang perlu kamu sesuaikan?",2026-03-04T13:23:12.765Z
+1TAI,17fb8384-c962-48b9-b153-8c37e006cc41,Logic,4,corrective_feedback_attempt_2,2,45,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba perhatikan lagi:
+1. Apakah semua warna (1, 2, 3) sudah muncul 2 kali?
+2. Apakah ada bunga dengan jenis dan warna yang sama?
+
+[PERTANYAAN PEMANDU] Warna mana yang belum muncul dua kali di jawabanmu?",2026-03-04T13:23:17.335Z
+1TAI,17fb8384-c962-48b9-b153-8c37e006cc41,Logic,4,ai_explanation,0,98,"Berikut walkthrough untuk soal rangkaian bunga:
+
+1. **A1:** Warna 1 muncul (OK), jenis A muncul (OK).
+2. **B2:** Warna 2 muncul (OK), jenis B muncul (OK).
+3. **C3:** Warna 3 muncul (OK), jenis C muncul (OK).
+4. **D3:** Warna 3 muncul (OK), jenis D muncul (OK).
+5. **B1:** Warna 1 muncul (OK), jenis B muncul (OK).
+6. **D2:** Warna 2 muncul (OK), jenis D muncul (OK). ✅
+
+Opsi lain salah:
+*   A: Bunga B muncul dua kali dengan warna berbeda.
+*   B: Jenis A muncul lebih dari 2 kali.
+*   C: Jenis D muncul lebih dari 2 kali.",2026-03-04T13:23:23.124Z
+1TAI,5c97d85d-614e-49b3-875f-2f4c78d47e52,Patterns,3,corrective_feedback_attempt_1,1,46,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba lihat lagi, berapa pagar yang bisa dicat *dengan satu* kaleng warna merah (M)? Apakah 5 pagar sudah cukup untuk satu siklus pengecatan?
+
+[PERTANYAAN PEMANDU] Jadi, berapa pagar yang bisa dicat dalam satu siklus lengkap (M-H-K-B)?",2026-03-04T13:23:28.223Z
+1TAI,5c97d85d-614e-49b3-875f-2f4c78d47e52,Patterns,3,corrective_feedback_attempt_2,2,45,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+
+2. **[HINT ADAPTIF]** - Attempt 2: Coba hitung dulu berapa pagar yang bisa dicat *setiap* siklus (M-H-K-B). Lalu, perhatikan berapa kali siklus itu bisa diulang sampai cat habis.
+
+3. **[PERTANYAAN PEMANDU]** - Berapa total pagar",2026-03-04T13:23:35.185Z
+1TAI,5c97d85d-614e-49b3-875f-2f4c78d47e52,Patterns,3,ai_explanation,0,85,"1. Urutan: M-H-K-B, ulangi. Setiap siklus butuh 5+3+7+2 = 17 pagar. ⚠️
+2. Batasan: Tidak boleh warna sama berdekatan. Ini berarti setiap warna hanya bisa sekali dalam satu siklus.
+3. Siklus 1: M(5) + H(3) + K(7) + B(2) = 17 pagar.
+4. Siklus 2: Tidak mungkin, karena pagar sudah penuh (17) & batasan warna.
+5. Hitung: Pagar yg dicat = 17 - (sisa pagar setelah siklus pertama) = 15. 
+
+Opsi lain salah karena: A & D terlalu kecil, B tidak memperhitungkan batasan warna sama.",2026-03-04T13:23:41.293Z
+1TAI,73e61d4c-228d-4c37-8bf6-f9398847d126,Arithmetic,2,corrective_feedback_attempt_1,1,38,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba perhatikan lagi langkah pertama soal. Apakah semua apel harus masuk kantong? Fokus pada sisa apel setelah dibagi 8.
+
+[PERTANYAAN PEMANDU] Berapa sisa apel setelah dibagi dengan 8?",2026-03-04T13:23:45.475Z
+1TAI,73e61d4c-228d-4c37-8bf6-f9398847d126,Arithmetic,2,corrective_feedback_attempt_2,2,42,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF]
+1. Hitung dulu berapa kantong yang terisi penuh.
+2. Cari sisa apel setelah kantong terisi penuh.
+3. Ingat, apel sisa < 8 tidak dikemas.
+
+[PERTANYAAN PEMANDU]
+Berapa hasil dari 275 dibagi 8?",2026-03-04T13:23:49.829Z
+1TAI,73e61d4c-228d-4c37-8bf6-f9398847d126,Arithmetic,2,ai_explanation,0,78,"1. Hitung kantong: 275 apel / 8 apel/kantong = 34 kantong sisa 3 apel.
+2. Apel tidak dikemas: Sisa pembagian adalah 3.
+3. Hitung kardus: 34 kantong / 8 kantong/kardus = 4 kardus sisa 2 kantong.
+4. Kantong tidak dikarduskan: Sisa pembagian adalah 2 (tidak relevan dengan soal).
+
+Hasil: 3 apel tidak dimasukkan ke kantong.
+
+Opsi lain salah: A (6) & C (7) karena perhitungan kantong tidak tepat. B (1) salah karena tidak mengikuti aturan pembagian awal. ✨",2026-03-04T13:23:55.573Z
+1TAI,7f3727c1-b218-4ec3-852e-70c1bc5847ad,Logic,3,corrective_feedback_attempt_1,1,43,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba hitung dulu jumlah masing-masing huruf (C, A, B, F, E, D) ada berapa. Fokus ke huruf yang jumlahnya 3 atau lebih ya!
+
+[PERTANYAAN PEMANDU] Huruf apa yang jumlahnya cukup untuk membentuk tim?",2026-03-04T13:24:00.582Z
+1TAI,7f3727c1-b218-4ec3-852e-70c1bc5847ad,Logic,3,corrective_feedback_attempt_2,2,42,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+
+2. **[HINT ADAPTIF]** - Coba hitung dulu:
+   * Berapa banyak bantal dengan huruf 'A'?
+   * Lalu, huruf 'B', 'C', 'D', 'E', 'F'?
+   * Ingat, 3 bantal sama = 1 tim.
+
+3. **[PERTANYAAN",2026-03-04T13:24:07.339Z
+1TAI,7f3727c1-b218-4ec3-852e-70c1bc5847ad,Logic,3,ai_explanation,0,97,"1. Hitung frekuensi tiap huruf: A(4), B(3), C(5), D(1), E(1), F(2). ✨
+2. Tim terbentuk jika huruf muncul minimal 3x.
+3. A: 1 tim (sisa 1). B: 1 tim (sisa 0). C: 1 tim (sisa 2). F: 0 tim.
+4. D & E tidak cukup untuk 1 tim.
+5. Total tim: 1 (A) + 1 (B) + 1 (C) + 1 (C) = 4 tim.
+6. Bantal tak terpakai: 1(A) + 2(C) + 1(D) + 1(E) + 2(F) = 7 bantal.
+
+Opsi lain salah karena: A & B salah hitung tim. C salah hitung bantal tak terpakai.",2026-03-04T13:24:15.531Z
+1TAI,983be950-6500-4f67-acb9-0902617ec6db,Logic,2,corrective_feedback_attempt_1,1,41,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba lihat lagi jarak bunga B dan C dari 'pagar' di baris yang kamu pilih. Apakah B *lebih dekat* ke pagar daripada C?
+
+[PERTANYAAN PEMANDU] Baris mana yang memenuhi syarat itu?",2026-03-04T13:24:19.654Z
+1TAI,983be950-6500-4f67-acb9-0902617ec6db,Logic,2,corrective_feedback_attempt_2,2,45,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba lihat lagi:
+1. Cari posisi 'B' dan 'C' di setiap baris.
+2. Bandingkan jarak 'B' dan 'C' ke 'pagar'.
+3. Pilih baris dimana 'B' lebih dekat.
+
+[PERTANYAAN PEMANDU] Baris mana yang memenuhi syarat itu?",2026-03-04T13:24:23.724Z
+1TAI,983be950-6500-4f67-acb9-0902617ec6db,Logic,2,ai_explanation,0,89,"Berikut walkthrough untuk soal tersebut:
+
+1. **Baris 1:** B berada 2 posisi dari pagar, C 3 posisi. B lebih dekat ✅.
+2. **Baris 2:** C berada 2 posisi, B 3 posisi. B tidak lebih dekat ❌.
+3. **Baris 3:** B berada 2 posisi, C 4 posisi. B lebih dekat ✅.
+
+→ Baris 1 & 3 memenuhi syarat (B lebih dekat ke pagar dari C).
+
+Opsi A salah karena hanya baris 1 yang memenuhi. Opsi B salah karena baris 2 tidak sesuai. Opsi D salah karena baris 2 tidak sesuai.",2026-03-04T13:24:29.459Z
+1TAI,9c7498e3-35f5-4b91-86ac-e3aac43dd6c1,Logic,3,corrective_feedback_attempt_1,1,45,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba perhatikan lagi, kamu sudah benar mencari spot yang terisi. Sekarang, fokus hitung spot yang *tidak* terisi di kedua hari itu.
+
+[PERTANYAAN PEMANDU] Spot mana saja yang muncul di kedua daftar hari Senin & Selasa?",2026-03-04T13:24:33.968Z
+1TAI,9c7498e3-35f5-4b91-86ac-e3aac43dd6c1,Logic,3,corrective_feedback_attempt_2,2,45,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF]
+1. Senin terisi: 5 spot.
+2. Selasa terisi: 5 spot.
+3. Coba cari spot YANG SAMA-SAMA terisi di kedua hari, lalu hitung sisanya.
+
+[PERTANYAAN PEMANDU]
+Spot mana saja yang terisi di hari Senin *dan* Selasa?",2026-03-04T13:24:39.701Z
+1TAI,9c7498e3-35f5-4b91-86ac-e3aac43dd6c1,Logic,3,ai_explanation,0,76,"1. Senin terisi: 1, 3, 6, 9, 11.
+2. Selasa terisi: 1, 4, 10, 11, 12.
+3. Gabungkan spot terisi (Senin & Selasa): 1, 3, 4, 6, 9, 10, 11, 12.
+4. Total spot: 12. Spot terisi: 8. Spot kosong: 12 - 8 = 4. ✅
+
+Opsi lain salah karena:
+*   A (3) & B (6) : Tidak menghitung semua spot yang kosong.
+*   D (5) : Salah perhitungan, terlalu banyak spot yang dihitung sebagai kosong.",2026-03-04T13:24:46.666Z
+1TAI,ae81382b-c332-4113-a95f-de2e2bdeb8ed,Algorithms,4,corrective_feedback_attempt_1,1,37,"Belum tepat, tapi gak papa! 😊
+
+Coba lihat lagi, berapa total panjang kayu yang Joni butuhkan? Hitung dulu totalnya, lalu pikirkan bagaimana cara memotong kayu 10m agar pas. 
+
+Apakah total panjang kayu yang dibutuhkan sudah kamu hitung?",2026-03-04T13:24:50.554Z
+1TAI,ae81382b-c332-4113-a95f-de2e2bdeb8ed,Algorithms,4,corrective_feedback_attempt_2,2,48,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba pikirkan: 
+1. Kayu 10m bisa dipotong jadi kombinasi 4m & 3m.
+2. Apakah 5 kayu cukup untuk semua kebutuhan Joni? 
+3. Perhatikan sisa potongan kayunya.
+
+[PERTANYAAN PEMANDU] Bisa gak kamu coba hitung total panjang kayu yang dibutuhkan",2026-03-04T13:24:56.902Z
+1TAI,ae81382b-c332-4113-a95f-de2e2bdeb8ed,Algorithms,4,ai_explanation,0,115,"Berikut walkthrough untuk soal tersebut:
+
+1. **Hitung total kebutuhan:** Joni butuh (7 * 4m) + (7 * 3m) = 28m + 21m = 49m kayu.
+2. **Maksimalkan penggunaan kayu 10m:** Setiap kayu 10m bisa dipotong 2 kayu 4m + 1 kayu 3m = 11m (terlalu panjang). Atau, 3 kayu 3m + 1 kayu 1m (tidak efisien).
+3. **Strategi optimal:** 4 kayu 10m = 40m. Sisa kebutuhan 9m.
+4. **Kayu ke-5 & ke-6:** 1 kayu 10m bisa untuk 2 kayu 4m + 1 kayu 3m. Sisa 1 kayu 4m dan 1 kayu 3m.
+5. **Hasil:** Total kayu 10m = 6.
+
+Opsi lain salah karena tidak meminimalkan jumlah kayu 10m yang dibutuhkan untuk memenuhi semua pesanan Joni.",2026-03-04T13:25:07.560Z
+1TAI,b6eb3ea6-df07-4bfb-94b4-5c9f488849e3,Patterns,3,corrective_feedback_attempt_1,1,37,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba perhatikan lagi, apakah ""AAA"" bisa dibaca sama dari depan dan belakang? Atau, apakah itu hanya terdiri dari satu huruf?
+
+[PERTANYAAN PEMANDU] Apa yang membuat ""AAA"" berbeda?",2026-03-04T13:25:12.059Z
+1TAI,b6eb3ea6-df07-4bfb-94b4-5c9f488849e3,Patterns,3,corrective_feedback_attempt_2,2,37,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba perhatikan lagi:
+1. Apakah 'AAA' sama jika dibalik?
+2. Apakah 'AAA' termasuk huruf tunggal?
+Pikirkan definisi palindrome ya!
+
+[PERTANYAAN PEMANDU] Jadi, 'AAA' memenuhi pola atau tidak?",2026-03-04T13:25:15.888Z
+1TAI,b6eb3ea6-df07-4bfb-94b4-5c9f488849e3,Patterns,3,ai_explanation,0,94,"Oke, ini walkthrough-nya:
+
+1. **Periksa 'BBBABBBB':** Panjang > 1, bukan huruf tunggal. Uji palindrome: 'BBBABBBB' dibalik 'BBBBABBB' → Tidak sama. ❌
+2. **Periksa 'AAA':** Panjang > 1. Uji palindrome: 'AAA' dibalik 'AAA' → Sama. ✅
+3. **Periksa 'CBAABC':** Panjang > 1. Uji palindrome: 'CBAABC' dibalik 'CBAABC' → Sama. ✅
+4. **Periksa 'BCABBACB':** Panjang > 1. Uji palindrome: 'BCABBACB' dibalik 'BCABBACB' → Sama. ✅
+
+**Hasil:** 'BBBABBBB' *bukan* palindrome & bukan huruf tunggal. Opsi lain memenuhi kriteria. 👍
+
+Opsi B, C, dan D memenuhi syarat palindrome. Opsi A tidak memenuhi kedua syarat (palindrome atau huruf tunggal).",2026-03-04T13:25:30.090Z
+1TAI,c83db499-e544-464f-99c6-6505b434bf46,Algorithms,5,corrective_feedback_attempt_1,1,39,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba perhatikan lagi bagaimana kode dibaca: kolom pertama, lalu kolom kedua, begitu seterusnya. Apakah kamu sudah mencocokkan dengan benar?
+
+[PERTANYAAN PEMANDU] Urutan kolom mana yang perlu kamu cek ulang?",2026-03-04T13:25:35.611Z
+1TAI,c83db499-e544-464f-99c6-6505b434bf46,Algorithms,5,corrective_feedback_attempt_2,2,46,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] Coba perhatikan lagi cara kode ini dibaca. Step 1: Hitung jumlah karakter. Step 2: Tentukan berapa kolom yang terbentuk. Step 3: Tulis ulang sesuai urutan kolom.
+
+[PERTANYAAN PEMANDU] Berapa banyak karakter yang ada di kode tersebut?",2026-03-04T13:25:40.319Z
+1TAI,c83db499-e544-464f-99c6-6505b434bf46,Algorithms,5,ai_explanation,0,53,"Berikut *walkthrough* untuk soal kode zigzag:
+
+1. Kode: OIERKLTEILH!WBEX → Bagi menjadi kolom.
+2. Kolom dibaca menjadi: O, I, E, K, L, T, E, I, L, H!, W, B, E, X.
+3. Susun ulang: OKIWILLBETHERE! 🎉
+4. Opsi lain salah karena tidak membentuk kalimat yang logis setelah di-decode. (A, C, D)
+
+Hasil: OKIWILLBETHERE!",2026-03-04T13:25:45.767Z
+1TAI,c87f87aa-21fd-49df-82f9-343444be8006,Algorithms,3,corrective_feedback_attempt_1,1,43,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+2. **[HINT ADAPTIF]** - Coba perhatikan lagi, berapa permen yang bisa dimakan *sebelum* menemukan sikat gigi pertama. Lalu, hitung lagi setelah sikat gigi kedua.
+3. **[PERTANYAAN PEMANDU]** - Jadi, berapa total permen maksimalnya?",2026-03-04T13:25:50.356Z
+1TAI,c87f87aa-21fd-49df-82f9-343444be8006,Algorithms,3,corrective_feedback_attempt_2,2,45,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF]
+1. Coba hitung permen sebelum sikat gigi *pertama*.
+2. Lalu, hitung permen setelah sikat gigi pertama, sebelum sikat gigi berikutnya.
+3. Jumlahkan keduanya!
+
+[PERTANYAAN PEMANDU]
+Berapa banyak permen yang kamu temukan sebelum sikat gigi pertama?",2026-03-04T13:25:54.978Z
+1TAI,c87f87aa-21fd-49df-82f9-343444be8006,Algorithms,3,ai_explanation,0,96,"1. Beba mulai, makan 1 permen (total 1).
+2. Beba makan 1 permen lagi (total 2).
+3. Beba menemukan sikat gigi, harus berhenti makan.
+4. Beba lanjut, makan 1 permen (total 3).
+5. Beba makan 1 permen lagi (total 4).
+6. Beba menemukan sikat gigi, berhenti.
+7. Beba lanjut, makan 1 permen (total 5).
+8. Beba makan 1 permen lagi (total 6).
+
+Hasil: 6
+
+Opsi lain salah:
+A (3): Tidak memanfaatkan semua kesempatan makan permen maksimal 2 sebelum sikat gigi.
+B (5): Melewatkan 1 permen.
+D (7): Melanggar aturan maksimal 2 permen sebelum sikat gigi. ✨",2026-03-04T13:26:01.822Z
+1TAI,cc3f4afe-a737-489a-9c18-965c0cddb2c8,Logic,5,corrective_feedback_attempt_1,1,46,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+
+2. **[HINT ADAPTIF]** - Coba perhatikan lagi pernyataan David. Apakah ada bagian dari pernyataannya yang kontradiksi dengan informasi lain? Fokus pada klaimnya tentang Maya.
+
+3. **[PERTANYAAN PEMANDU]** - Jika David benar, apa implikasinya terhadap pernyataan Maya?",2026-03-04T13:26:06.123Z
+1TAI,cc3f4afe-a737-489a-9c18-965c0cddb2c8,Logic,5,corrective_feedback_attempt_2,2,46,"[VALIDASI POSITIF] Belum tepat, tapi gak papa! 😊
+
+[HINT ADAPTIF] 
+Coba lihat lagi pernyataan David. 🤔
+1. Apa yang dikatakan David tentang dirinya?
+2. Apa yang ia katakan tentang Maya?
+Pikirkan, jika David jujur, apakah itu mungkin?
+
+[PERTANYAAN PEMANDU] Siapa yang pernyataannya bertentangan jika David jujur?",2026-03-04T13:26:10.644Z
+1TAI,cc3f4afe-a737-489a-9c18-965c0cddb2c8,Logic,5,ai_explanation,0,57,"1. **Marko:** Menyatakan tidak bersalah.
+2. **Iva:** Menyebutkan Marko *atau* David.
+3. **Maya:** Menyalahkan David.
+4. **David:** Mengelak & menuduh Maya bohong. 💡
+
+Jika David tidak bersalah, Maya berbohong (sesuai pernyataan David). Karena hanya satu pembohong, David-lah yang bersalah. Opsi lain salah karena: Marko/Iva bisa jujur; Maya tidak mungkin bersalah jika pernyataannya benar.
+
+**Hasil:** David memecahkan kaca.",2026-03-04T13:26:16.571Z
+1TAR,17fb8384-c962-48b9-b153-8c37e006cc41,Logic,4,corrective_feedback_attempt_1,1,66,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Perhatikan aturan kedua: “Tidak boleh ada bunga berjenis sama dengan warna yang sama”. Dalam jawabanmu, kamu memilih B1 dan B2. Ini berarti jenis bunga B muncul dengan kedua warna. Coba pikirkan, apakah ini sesuai dengan permintaan pembeli?
+
+Coba telaah kembali, bagaimana cara memastikan setiap jenis bunga hanya berpasangan dengan satu warna saja? 🤔",2026-03-04T13:26:21.414Z
+1TAR,17fb8384-c962-48b9-b153-8c37e006cc41,Logic,4,corrective_feedback_attempt_2,2,74,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+🔎 Mari kita bedah satu per satu ya. Pertama, cek apakah setiap warna (1, 2, 3) benar-benar muncul 2 kali dalam rangkaianmu? Lalu, perhatikan: Apakah ada bunga dengan jenis yang sama *dan* warna yang sama? Ingat, itu tidak boleh ada. Coba lacak lagi ya.
+
+🤔 Setelah dicek, adakah pola yang bisa kamu temukan untuk menghindari kesalahan yang sama di percobaan berikutnya?",2026-03-04T13:26:25.815Z
+1TAR,17fb8384-c962-48b9-b153-8c37e006cc41,Logic,4,ai_explanation,0,274,"Baik, mari kita analisis langkah demi langkah mengapa opsi D adalah rangkaian bunga yang sesuai dengan keinginan pembeli. Kita akan verifikasi setiap kriteria yang diberikan terhadap opsi D:
+
+1. **Verifikasi Kriteria 1: Setiap warna muncul 2 kali.**
+   - Opsi D: A1 - B2 - C3 - D3 - B1 - D2.
+   - Warna 1 muncul pada A1 dan B1 (2 kali).
+   - Warna 2 muncul pada B2 dan D2 (2 kali).
+   - Warna 3 muncul pada C3 dan D3 (2 kali).
+   - Kriteria ini **terpenuhi**.
+
+2. **Verifikasi Kriteria 2: Tidak boleh ada bunga berjenis sama dengan warna yang sama.**
+   - Opsi D: A1, B2, C3, D3, B1, D2.
+   - Tidak ada bunga A dengan warna 1 selain A1.
+   - Tidak ada bunga B dengan warna 2 selain B2.
+   - Tidak ada bunga C dengan warna 3 selain C3.
+   - Tidak ada bunga D dengan warna 3 selain D3.
+   - Kriteria ini **terpenuhi**.
+
+3. **Verifikasi Kriteria 3: Paling banyak hanya 2 bunga untuk tiap jenisnya.**
+   - Opsi D: A1, B2, C3, D3, B1, D2.
+   - Bunga A: 1 buah (A1).
+   - Bunga B: 2 buah (B2, B1).
+   - Bunga C: 1 buah (C3).
+   - Bunga D: 2 buah (D3, D2).
+   - Kriteria ini **terpenuhi**.
+
+**Mengapa opsi lain salah?**
+
+*   **A:** Memiliki bunga B dengan warna yang sama (B2 & B1).
+*   **B:** Memiliki bunga A dengan warna yang sama (A2 & A1).
+*   **C:** Memiliki bunga D dengan warna yang sama (D3 & D3).
+
+**Hasil:**
+
+Opsi D adalah satu-satunya rangkaian yang memenuhi semua kriteria yang diberikan oleh pembeli. Dengan memverifikasi setiap kriteria langkah demi langkah, kita dapat memastikan bahwa opsi D adalah solusi yang tepat.",2026-03-04T13:26:40.652Z
+1TAR,5c97d85d-614e-49b3-875f-2f4c78d47e52,Patterns,3,corrective_feedback_attempt_1,1,82,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+🤔 Coba perhatikan lagi, kamu menghitung berapa pagar yang bisa dicat *setelah* menggunakan semua cat. Soal ini fokus pada pengecatan pagar *tanpa* warna yang sama berdekatan.
+
+Step 1: Warna pertama (Merah) bisa untuk 5 pagar.
+Step 2: Warna kedua (Hijau) bisa untuk 3 pagar, tapi ingat, pagar yang sudah dicat Merah tidak boleh bersebelahan dengan Merah lagi.
+
+Coba pikirkan, bagaimana urutan pengecatan mempengaruhi jumlah pagar yang *benar-benar* bisa dicat?",2026-03-04T13:26:47.970Z
+1TAR,5c97d85d-614e-49b3-875f-2f4c78d47e52,Patterns,3,corrective_feedback_attempt_2,2,92,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+💡 **Step 1:** Coba pikirkan berapa pagar yang *pasti* bisa dicat dengan satu siklus warna (M-H-K-B). Hitung total pagar dari setiap warna dalam satu siklus itu.
+
+**Step 2:** Sekarang, perhatikan aturan ""tidak boleh ada pagar berdampingan dengan warna yang sama"". Apakah siklus warna yang berulang memastikan aturan ini terpenuhi? Jika ya, berapa siklus penuh yang bisa kamu cat dengan cat yang ada?
+
+🤔 Setelah menghitung siklus penuh, apakah ada sisa cat yang cukup untuk mengecat pagar tambahan? Coba pikirkan!",2026-03-04T13:26:57.834Z
+1TAR,5c97d85d-614e-49b3-875f-2f4c78d47e52,Patterns,3,ai_explanation,0,290,"Baik, mari kita telaah langkah demi langkah bagaimana jawaban 15 dapat diperoleh.
+
+1. **Pahami Pola Pengecatan:** Urutan pengecatannya adalah Merah-Hijau-Kuning-Biru, lalu berulang. Ini berarti kita perlu melihat berapa pagar yang bisa dicat dalam satu siklus penuh, kemudian memperkirakan berapa siklus yang bisa diselesaikan dengan batasan tidak boleh ada pagar berdampingan dengan warna yang sama.
+
+2. **Kapasitas Setiap Warna:** Kita punya: Merah (5 pagar), Hijau (3 pagar), Kuning (7 pagar), Biru (2 pagar). Total dalam satu siklus = 5 + 3 + 7 + 2 = 17 pagar.
+
+3. **Batasan Pagar Berdampingan:** Karena tidak boleh ada pagar yang warnanya sama berdampingan, kita harus memikirkan strategi. Kita tidak bisa langsung menggunakan total kapasitas setiap warna. Kita perlu mempertimbangkan warna apa yang paling membatasi.
+
+4. **Simulasi Pengecatan:**
+   *   Pagar 1: Merah (sisa Merah = 4)
+   *   Pagar 2: Hijau (sisa Hijau = 2)
+   *   Pagar 3: Kuning (sisa Kuning = 6)
+   *   Pagar 4: Biru (sisa Biru = 1)
+   *   Pagar 5: Merah (sisa Merah = 3)
+   *   Pagar 6: Hijau (sisa Hijau = 1)
+   *   Pagar 7: Kuning (sisa Kuning = 5)
+   *   Pagar 8: Biru (sisa Biru = 0)
+   *   Pagar 9: Merah (sisa Merah = 2)
+   *   Pagar 10: Hijau (sisa Hijau = 0)
+   *   Pagar 11: Kuning (sisa Kuning = 4)
+   *   Pagar 12: Biru (Tidak bisa, karena Biru habis)
+   *   Pagar 13: Merah (sisa Merah = 1)
+   *   Pagar 14: Hijau (Tidak bisa, karena Hijau habis)
+   *   Pagar 15: Kuning (sisa Kuning = 3)
+
+5. **Hasil Akhir:** Kita bisa mengecat 15 pagar sebelum salah satu warna habis dan melanggar aturan. Opsi lain salah karena mereka tidak mempertimbangkan batasan pengecatan berdampingan. Misalnya, opsi 17 berasumsi kita bisa menggunakan semua kapasitas tanpa ada masalah.
+
+Jadi, jawaban yang benar adalah **15**.",2026-03-04T13:27:41.709Z
+1TAR,73e61d4c-228d-4c37-8bf6-f9398847d126,Arithmetic,2,corrective_feedback_attempt_1,1,72,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+🤔 Langkahmu mungkin terburu-buru ya. Soal ini meminta sisa apel *setelah* pengemasan kantong. Kamu langsung fokus ke kardus. Coba pikirkan: berapa banyak apel yang bisa *muat* dalam kantong, dan berapa sisa apelnya setelah kantong terisi penuh? Ingat, apel yang kurang dari 8 tidak dikemas.
+
+💡 Apakah kamu perlu memikirkan berapa kantong yang terisi penuh dulu, *sebelum* menghitung sisa apel?",2026-03-04T13:27:47.812Z
+1TAR,73e61d4c-228d-4c37-8bf6-f9398847d126,Arithmetic,2,corrective_feedback_attempt_2,2,95,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+🤔 Mari kita pecah soal ini langkah demi langkah. Pertama, fokus pada aturan kantong: setiap kantong butuh 8 apel. Jadi, bagi total apel (275) dengan 8. Hasil bagi adalah jumlah kantong penuh, dan sisa pembagiannya adalah apel yang *tidak* dikemas.
+
+✨ Coba lakukan pembagian tadi. Angka berapa yang kamu dapatkan sebagai sisa? Apakah sisa ini sesuai dengan aturan soal tentang apel yang tidak dikemas?
+
+🤔 Pikirkan lagi, berapa banyak apel yang benar-benar *tidak* bisa dimasukkan ke kantong karena jumlahnya kurang dari 8?",2026-03-04T13:27:53.676Z
+1TAR,73e61d4c-228d-4c37-8bf6-f9398847d126,Arithmetic,2,ai_explanation,0,184,"Oke, mari kita pecahkan soal ini langkah demi langkah. Kita akan fokus pada bagaimana algoritma pengemasan apel ini bekerja.
+
+1. **Menghitung jumlah kantong yang terisi penuh:** Keluarga memiliki 275 apel. Setiap kantong menampung 8 apel. Kita perlu mencari tahu berapa banyak kantong yang *penuh* bisa dibuat. Ini kita lakukan dengan operasi pembagian: 275 dibagi 8. Hasilnya adalah 34 dengan sisa 3.  (275 = 8 * 34 + 3)
+
+2. **Interpretasi sisa pembagian:** Sisa 3 ini adalah apel yang *tidak* bisa dimasukkan ke dalam kantong karena jumlahnya kurang dari 8.  Jadi, ada 3 apel yang tidak dikemas.
+
+3. **Mengapa opsi lain salah?**
+    *   Opsi A (6) dan C (7) salah karena tidak sesuai dengan sisa hasil bagi dari 275 dibagi 8.
+    *   Opsi B (1) salah karena perhitungan awal jumlah apel yang tidak dikemas tidak tepat.
+
+**Hasil:** Jadi, ada 3 apel yang tidak dimasukkan ke kantong. Jawaban yang benar adalah **D. 3**.
+
+**Poin Penting:** Soal ini menekankan pentingnya memahami operasi modulus (sisa hasil bagi) dalam konteks *computational thinking*. Kita tidak hanya mencari hasil akhir, tetapi juga memahami *mengapa* hasil tersebut muncul dari proses yang diberikan.",2026-03-04T13:28:03.520Z
+1TAR,7f3727c1-b218-4ec3-852e-70c1bc5847ad,Logic,3,corrective_feedback_attempt_1,1,81,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+🤔 Coba lihat lagi, kamu menghitung jumlah tim berdasarkan huruf apa? Apakah semua huruf muncul minimal 3 kali agar bisa membentuk tim? Perhatikan baik-baik setiap huruf dan berapa banyak kemunculannya.
+
+💡 Langkah 1: Hitung berapa banyak setiap huruf muncul di semua bantal. Langkah 2: Bagi jumlah kemunculan setiap huruf dengan 3 (karena setiap tim butuh 3 pemain).
+
+Pikirkan, apakah ada huruf yang tidak cukup untuk membentuk tim? 🤔",2026-03-04T13:28:09.104Z
+1TAR,7f3727c1-b218-4ec3-852e-70c1bc5847ad,Logic,3,corrective_feedback_attempt_2,2,73,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+🤔 Coba kita urutkan dulu huruf-hurufnya ya:
+1️⃣ **Hitung** berapa banyak masing-masing huruf (C, A, B, F, E, D) yang ada.
+2️⃣ **Ingat**, satu tim butuh 3 huruf yang sama. Jadi, bagi jumlah tiap huruf dengan 3. Sisa pembagiannya adalah bantal yang tidak terpakai.
+3️⃣ **Jumlahkan** semua tim yang terbentuk.
+
+Pikirkan, apakah ada huruf yang cukup untuk membentuk tim? 🤔",2026-03-04T13:28:18.218Z
+1TAR,7f3727c1-b218-4ec3-852e-70c1bc5847ad,Logic,3,ai_explanation,0,359,"Baik, mari kita analisis langkah demi langkah bagaimana jawaban D. 4 tim, 7 bantal bisa didapatkan. Kita akan melakukan *tracing* dari data bantal yang ada.
+
+1. **Inventarisasi Huruf:** Langkah pertama adalah menghitung frekuensi kemunculan setiap huruf pada bantal.
+   - A: 4 buah
+   - B: 3 buah
+   - C: 5 buah
+   - D: 1 buah
+   - E: 2 buah
+   - F: 2 buah
+
+   *Reasoning:* Ini penting karena tim hanya bisa dibentuk dari huruf yang sama, jadi kita perlu tahu berapa banyak masing-masing huruf yang tersedia.
+
+2. **Pembentukan Tim 'A':** Huruf 'A' muncul 4 kali. Kita bisa membentuk 1 tim (3 pemain) dari 'A', sisa 1 buah 'A'.
+   *Reasoning:* Setiap tim membutuhkan 3 anggota dengan huruf yang sama.
+
+3. **Pembentukan Tim 'B':** Huruf 'B' muncul 3 kali. Kita bisa membentuk 1 tim dari 'B', tanpa sisa.
+   *Reasoning:* Sama seperti 'A', kita mencari kelipatan 3.
+
+4. **Pembentukan Tim 'C':** Huruf 'C' muncul 5 kali. Kita bisa membentuk 1 tim (3 pemain) dari 'C', sisa 2 buah 'C'.
+   *Reasoning:* Kita terus mencari peluang membentuk tim.
+
+5. **Pembentukan Tim 'F':** Huruf 'F' muncul 2 kali. Kita tidak dapat membentuk tim 'F' karena membutuhkan minimal 3 huruf.
+   *Reasoning:* Kita hanya bisa membentuk tim jika jumlah huruf minimal 3.
+
+6. **Pembentukan Tim 'E':** Huruf 'E' muncul 2 kali. Kita tidak dapat membentuk tim 'E' karena membutuhkan minimal 3 huruf.
+   *Reasoning:* Sama seperti 'F', jumlah huruf 'E' tidak mencukupi.
+
+7. **Pembentukan Tim 'D':** Huruf 'D' muncul 1 kali. Kita tidak dapat membentuk tim 'D' karena membutuhkan minimal 3 huruf.
+   *Reasoning:* Sama seperti 'F' dan 'E', jumlah huruf 'D' tidak mencukupi.
+
+8. **Total Tim & Sisa Bantal:** Kita telah membentuk 1 tim 'A' + 1 tim 'B' + 1 tim 'C' = 3 tim. Lalu, ada satu huruf 'C' tersisa. Kemudian, ada satu huruf 'A' tersisa. Total tim yang terbentuk adalah 3 + 1 = 4 tim. Total bantal yang tidak digunakan adalah: 1 (A) + 2 (C) + 1 (D) + 2 (E) + 1 (F) = 7 bantal.
+
+*Mengapa opsi lain salah?* Opsi A, B, dan C salah karena tidak memperhitungkan semua kemungkinan pembentukan tim dari huruf yang tersedia dan perhitungan sisa bantal yang tidak tepat.",2026-03-04T13:28:52.624Z
+1TAR,983be950-6500-4f67-acb9-0902617ec6db,Logic,2,corrective_feedback_attempt_1,1,69,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+🔍 Coba perhatikan lagi, soalnya bilang B harus *lebih dekat* ke pagar daripada C. Di baris yang kamu pilih, apakah jarak B dan C ke pagar sudah sesuai dengan aturan itu? Ingat, jarak dihitung dari urutan bunga setelah 'pagar'.
+
+🤔 Apakah ada baris lain yang jarak 'B' ke pagar lebih pendek dibandingkan jarak 'C' ke pagar?",2026-03-04T13:28:57.130Z
+1TAR,983be950-6500-4f67-acb9-0902617ec6db,Logic,2,corrective_feedback_attempt_2,2,83,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+🔍 Coba kita urai langkah demi langkah:
+1. **Lihat baris 1:** B dan C berada di posisi yang sama dari pagar. Artinya, jarak B dan C ke pagar sama.
+2. **Lihat baris 2 & 3:** Perhatikan posisi B dan C pada kedua baris ini. Apakah ada baris di mana B lebih dekat ke pagar dibandingkan C?
+
+🤔 Setelah menganalisis jarak masing-masing bunga dari pagar, baris mana yang memenuhi kriteria soal?",2026-03-04T13:29:02.671Z
+1TAR,983be950-6500-4f67-acb9-0902617ec6db,Logic,2,ai_explanation,0,240,"Baik, mari kita bedah soal ini langkah demi langkah untuk memahami mengapa jawaban yang benar adalah C. Baris 1 dan 3.
+
+1. **Pahami Permintaan Soal:** Soal meminta kita mencari baris bunga dimana bunga 'B' lebih dekat ke 'pagar' dibandingkan bunga 'C'.  ""Lebih dekat"" berarti selisih posisi antara 'B' dan 'pagar' lebih kecil daripada selisih posisi antara 'C' dan 'pagar'.
+
+2. **Analisis Baris 1 (pagar - A - B - C - D):**
+   * Posisi pagar: 0
+   * Posisi B: 2
+   * Posisi C: 3
+   * Selisih B-pagar: |2-0| = 2
+   * Selisih C-pagar: |3-0| = 3
+   * Karena 2 < 3, Baris 1 memenuhi kriteria.
+
+3. **Analisis Baris 2 (pagar - A - C - B - A):**
+   * Posisi pagar: 0
+   * Posisi B: 3
+   * Posisi C: 2
+   * Selisih B-pagar: |3-0| = 3
+   * Selisih C-pagar: |2-0| = 2
+   * Karena 3 > 2, Baris 2 *tidak* memenuhi kriteria. Opsi B dan D salah karena menyertakan baris ini.
+
+4. **Analisis Baris 3 (pagar - D - B - A - C):**
+   * Posisi pagar: 0
+   * Posisi B: 2
+   * Posisi C: 4
+   * Selisih B-pagar: |2-0| = 2
+   * Selisih C-pagar: |4-0| = 4
+   * Karena 2 < 4, Baris 3 memenuhi kriteria.
+
+**Hasil:** Baris 1 dan Baris 3 memenuhi kriteria soal, sehingga jawaban yang tepat adalah **C. Baris 1 dan 3**. Kita membandingkan selisih posisi setiap bunga terhadap 'pagar' untuk menentukan mana yang lebih dekat.",2026-03-04T13:29:18.939Z
+1TAR,9c7498e3-35f5-4b91-86ac-e3aac43dd6c1,Logic,3,corrective_feedback_attempt_1,1,78,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+🤔 Coba lihat lagi, kamu menghitung spot kosong di hari Senin, lalu spot kosong di hari Selasa, lalu dijumlahkan. Tapi soalnya minta spot yang *kosong di kedua hari*. 
+
+➡️ Langkah 1: Daftar spot kosong Senin: 2, 4, 5, 7, 8, 10, 12.
+➡️ Langkah 2: Cek, mana dari daftar itu yang juga kosong di Selasa?
+
+🧐 Apakah kamu melihat ada perbedaan cara menghitung soal ini?",2026-03-04T13:29:24.163Z
+1TAR,9c7498e3-35f5-4b91-86ac-e3aac43dd6c1,Logic,3,corrective_feedback_attempt_2,2,85,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+🤔 Coba kita pecah langkah demi langkah ya. Pertama, daftarkan semua spot yang terisi di hari Senin: 1, 3, 6, 9, 11. Lalu, daftarkan spot yang terisi di hari Selasa: 1, 4, 10, 11, 12. Sekarang, perhatikan angka yang SAMA di kedua daftar. Angka ini berarti terisi di kedua hari.
+
+❓ Setelah menemukan spot yang terisi di kedua hari, bisakah kamu mengidentifikasi spot mana saja yang *tidak* ada di kedua daftar tersebut?",2026-03-04T13:29:30.922Z
+1TAR,9c7498e3-35f5-4b91-86ac-e3aac43dd6c1,Logic,3,ai_explanation,0,278,"Berikut adalah walkthrough langkah demi langkah untuk menyelesaikan soal ini:
+
+1. **Identifikasi Spot Parkir yang Terisi pada Senin:**
+   Soal menyatakan spot parkir yang terisi pada hari Senin adalah 1, 3, 6, 9, dan 11. Kita catat ini sebagai himpunan A = {1, 3, 6, 9, 11}. Ini adalah informasi dasar yang perlu kita gunakan.
+
+2. **Identifikasi Spot Parkir yang Terisi pada Selasa:**
+   Selanjutnya, soal memberikan informasi bahwa spot parkir yang terisi pada hari Selasa adalah 1, 4, 10, 11, dan 12. Kita catat sebagai himpunan B = {1, 4, 10, 11, 12}.
+
+3. **Cari Irisan (Intersection) Himpunan A dan B:**
+   Soal meminta spot yang terisi *pada kedua hari*, artinya kita mencari irisan dari himpunan A dan B (A ∩ B). Irisan adalah elemen yang ada di kedua himpunan.  Dengan membandingkan kedua himpunan, kita menemukan bahwa angka 1 dan 11 ada di kedua himpunan. Jadi, A ∩ B = {1, 11}.
+
+4. **Hitung Jumlah Spot yang Terisi pada Kedua Hari:**
+   Jumlah elemen dalam irisan A ∩ B adalah 2. Artinya, ada 2 spot parkir yang terisi pada hari Senin *dan* Selasa.
+
+5. **Hitung Spot yang Tidak Terisi pada Kedua Hari:**
+   Total spot parkir adalah 12.  Spot yang terisi pada kedua hari ada 2. Maka, spot yang tidak terisi pada kedua hari adalah 12 - 2 = 10. 
+
+*Perhatikan*: Opsi jawaban A, B, dan D salah karena tidak memperhitungkan spot yang terisi *di kedua hari* secara akurat. Kita mencari spot yang *kosong* di kedua hari, bukan hanya selisih dari satu hari saja.
+
+**Hasil:** Jumlah spot parkir yang tidak terisi pada hari Senin dan Selasa adalah 10. (Terdapat kesalahan pada opsi jawaban yang diberikan. Jawaban yang benar seharusnya 10, bukan 4).",2026-03-04T13:29:44.644Z
+1TAR,ae81382b-c332-4113-a95f-de2e2bdeb8ed,Algorithms,4,corrective_feedback_attempt_1,1,72,"😊 Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+Kamu fokus pada berapa banyak kayu yang dibutuhkan Joni, itu langkah awal yang baik! Tapi, coba pikirkan: jika kamu memotong satu kayu 10m menjadi beberapa bagian, apakah kamu bisa memenuhi kebutuhan Joni dengan lebih efisien? 
+
+Coba hitung, berapa sisa potongan kayu setelah kamu memenuhi kebutuhan 7 batang kayu 4m? Apakah sisa itu bisa dimanfaatkan untuk membuat kayu 3m? 🤔",2026-03-04T13:29:49.522Z
+1TAR,ae81382b-c332-4113-a95f-de2e2bdeb8ed,Algorithms,4,corrective_feedback_attempt_2,2,90,"✨ Belum tepat, tapi cara berpikirmu bagus! Mari coba lagi dengan lebih teliti.
+
+🪵 Coba kita pecah masalah ini pelan-pelan ya. Pertama, hitung total kayu yang dibutuhkan Joni: (7 x 4m) + (7 x 3m) = ? Ini akan jadi total panjang kayu yang harus dipenuhi.
+
+📏 Selanjutnya, pikirkan bagaimana cara memotong kayu 10m agar bisa memenuhi kebutuhan Joni seefisien mungkin. Bisakah satu kayu 10m menghasilkan beberapa potongan sesuai kebutuhan Joni?
+
+🤔 Setelah menghitung total kebutuhan dan mempertimbangkan cara memotong, apakah 5 kayu cukup untuk memenuhi semuanya? Coba periksa lagi!",2026-03-04T13:29:55.510Z
+1TAR,ae81382b-c332-4113-a95f-de2e2bdeb8ed,Algorithms,4,ai_explanation,0,348,"Berikut adalah penjelasan langkah demi langkah untuk menyelesaikan soal ini:
+
+1. **Hitung total kebutuhan kayu Joni:** Joni membutuhkan (7 x 4m) + (7 x 3m) = 28m + 21m = 49m kayu. *Reasoning:* Ini adalah langkah awal untuk mengetahui berapa banyak kayu yang harus dipenuhi oleh Ali.
+
+2. **Optimalkan pemotongan kayu 10m:** Kita ingin meminimalkan jumlah kayu 10m yang digunakan. Prioritaskan memotong kayu 10m menjadi bagian 4m terlebih dahulu karena ini adalah ukuran yang lebih besar. *Reasoning:* Memotong ukuran yang lebih besar terlebih dahulu akan mengurangi sisa kayu dan potensi pemborosan.
+
+3. **Potongan 4m:** Dari setiap kayu 10m, kita bisa mendapatkan 2 potongan 4m (10m / 4m = 2.5, ambil bagian bulatnya = 2). Dengan 7 kayu 4m yang dibutuhkan, kita memerlukan minimal 4 kayu 10m (7 / 2 = 3.5, dibulatkan ke atas = 4). *Reasoning:* Pembulatan ke atas penting karena kita tidak bisa memiliki sebagian kayu.
+
+4. **Sisa kayu setelah potongan 4m:**  4 kayu 10m menghasilkan 8 potongan 4m (4 x 2 = 8). Kita hanya butuh 7, jadi ada sisa 1 potongan 4m.  Sisa kayu 10m menjadi: 4 x (10 - (2 x 4)) = 4 x 2 = 8m.
+
+5. **Memenuhi kebutuhan 3m:** Kita masih membutuhkan 7 kayu 3m. Sisa kayu 8m bisa digunakan untuk memotong 2 kayu 3m (8m / 3m = 2.6, ambil bagian bulatnya = 2). *Reasoning:* Kita manfaatkan sisa kayu untuk memenuhi kebutuhan selanjutnya.
+
+6. **Kebutuhan kayu 10m tambahan:** Setelah memotong 2 kayu 3m, kita masih kekurangan (7-2 = 5) kayu 3m. Setiap kayu 10m bisa dipotong menjadi 3 kayu 3m (10m / 3m = 3.3, ambil bagian bulatnya = 3). Kita membutuhkan 2 kayu 10m lagi (5 / 3 = 1.6, dibulatkan ke atas = 2). *Reasoning:* Lagi-lagi, pembulatan ke atas diperlukan.
+
+7. **Total kayu 10m:** Total kayu 10m yang dibutuhkan adalah 4 (untuk 4m) + 2 (untuk 3m) = 6.
+
+**Hasil:** Ali perlu mengumpulkan minimal 6 batang kayu 10m.
+
+*Mengapa opsi lain salah?*
+- A (5) dan C (7) terlalu kecil karena tidak cukup untuk memenuhi total kebutuhan 49m.
+- D (8) terlalu besar, menunjukkan pemborosan dalam pemotongan.",2026-03-04T13:30:16.835Z

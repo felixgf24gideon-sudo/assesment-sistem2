@@ -1,0 +1,985 @@
+user_cognitive,user_pedagogic_level,question,option,user_answer,true_answer,ai_feedback,feedback_word_count,quality_score
+1TGI,1,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+
+2. **[HINT ADAPTIF]** - Coba pikirkan, setiap warna harus ada dua kali. Apakah rangkaianmu sudah memenuhi itu? Fokus dulu ke warna, jenis bunga nanti.
+
+3. **[PERTANYAAN PEMANDU]** - Apakah kamu sudah memastikan tidak ada bunga dengan jenis & warna yang sama?",51,3.30
+1TGI,1,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+
+2. **[HINT ADAPTIF]** - Pikirkan berapa pagar yang *bisa* dicat dengan satu putaran warna (M-H-K-B). Lalu, perhatikan batasan: warna pagar yang berdekatan harus beda.
+
+3. **[PERTANYAAN PEMANDU]** - Apakah kamu sudah mencoba menghitung total",44,4.00
+1TGI,1,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+2. **[HINT ADAPTIF]** - Coba pikirkan dulu sisa pembagian apel dengan 8. Sisa ini menunjukkan apel yang *tidak* masuk kantong.
+3. **[PERTANYAAN PEMANDU]** - Berapa sisa apel setelah dibagi 8?",40,3.30
+1TGI,1,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+
+2. **[HINT ADAPTIF]** - Coba lihat dulu huruf apa saja yang paling banyak muncul. Apakah ada huruf yang cukup untuk membentuk tim beranggotakan 3 pemain?
+
+3. **[PERTANYAAN PEMANDU]** - Huruf apa yang menurutmu paling mungkin membentuk tim?",47,3.30
+1TGI,1,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+
+2. **[HINT ADAPTIF]** - Coba pikirkan, baris mana yang punya jarak 'B' dengan 'pagar' paling pendek? Fokus ke posisi relatif 'B' dan 'C' ya.
+
+3. **[PERTANYAAN PEMANDU]** - Baris mana yang memenuhi syarat jarak 'B' lebih dekat ke pagar daripada '",51,3.30
+1TGI,1,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+
+2. **[HINT ADAPTIF]** - Coba pikirkan dulu semua spot yang terisi di kedua hari. Lalu, lihat angka mana yang *tidak* muncul di daftar itu.
+
+3. **[PERTANYAAN PEMANDU]** - Spot apa saja yang terisi di hari Senin?",46,3.30
+1TGI,1,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+
+2. **[HINT ADAPTIF]** - Coba pikirkan, bagaimana kalau memotong kayu 10m jadi beberapa bagian? Apakah ada cara efisien agar tidak banyak sisa?
+
+3. **[PERTANYAAN PEMANDU]** -  Bagaimana jika kita fokus dulu pada kebutuhan kayu 4m? Bisa dipenuhi dari kayu 10",50,3.60
+1TGI,1,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+
+2. **[HINT ADAPTIF]** - Palindrom itu seperti kaca: bayangannya sama meski dibalik. Coba perhatikan lagi, apakah semua opsi bisa ""dibalik"" jadi dirinya sendiri?
+
+3. **[PERTANYAAN PEMANDU]** - Fokus ke setiap huruf! Apakah ada huruf yang ""tidak punya pasangan"" saat dibalik",50,4.30
+1TGI,1,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+2. **[HINT ADAPTIF]** - Coba bayangkan kode ini ditulis ulang jadi kotak-kotak. Perhatikan berapa banyak huruf dalam satu ""baris"" kotak itu!
+3. **[PERTANYAAN PEMANDU]** - Apakah dengan begitu kamu bisa melihat pola kata yang mungkin terbentuk?",46,3.60
+1TGI,1,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+2. **[HINT ADAPTIF]** - Coba pikirkan, Beba maksimal makan 2 permen lalu *harus* sikat gigi. Cari pola ini di lintasan!
+3. **[PERTANYAAN PEMANDU]** - Setelah sikat gigi pertama, Beba bisa lanjut berapa permen lagi?",44,3.30
+1TGI,1,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"1. **[VALIDASI POSITIF]** - Belum tepat, tapi gak papa! 😊
+
+2. **[HINT ADAPTIF]** - Coba pikirkan, siapa yang pernyataannya bisa jadi kunci utama kalau kita cari tahu siapa yang jujur? Fokus ke pernyataan yang saling berkaitan.
+
+3. **[PERTANYAAN PEMANDU]** - Siapa yang pernyataannya paling spesifik menyebut nama orang lain?",49,3.60
+3TGI,3,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"1. **[VALIDASI POSITIF]** - Belum tepat. Mari coba lagi.
+2. **[HINT ADAPTIF]** - Fokus pada representasi setiap warna harus seimbang. Coba pikirkan, bagaimana memastikan warna 1, 2, dan 3 muncul sama rata dalam rangkaian bunga ini?
+3. **[PERTANYAAN PEMANDU]** - Apakah kamu sudah mempertimbangkan batasan jumlah bunga per jenis (maksimal 2)?",51,4.00
+3TGI,3,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"1. **[VALIDASI POSITIF]** - Belum tepat. Mari coba lagi.
+
+2. **[HINT ADAPTIF]** - Fokus pada siklus warna. Setiap warna hanya muncul sekali dalam satu siklus pengecatan (M-H-K-B). Hitung dulu berapa pagar yang bisa dicat dalam satu siklus lengkap.
+
+3. **[PERTANYAAN PEMANDU]** - Berapa total pagar yang bisa dicat dalam satu siklus warna tersebut?",53,4.00
+3TGI,3,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"1. **[VALIDASI POSITIF]** - Belum tepat. Mari coba lagi.
+
+2. **[HINT ADAPTIF]** - Fokus pada sisa pembagian. Ingat, aturan hanya mengemas *penuh*. Coba pikirkan, berapa sisa apel jika dibagi 8?
+
+3. **[PERTANYAAN PEMANDU]** - Apakah sisa apel tersebut kurang dari 8?",41,4.00
+3TGI,3,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"1. **[VALIDASI POSITIF]** - Belum tepat. Mari coba lagi.
+
+2. **[HINT ADAPTIF]** - Fokus pada frekuensi kemunculan setiap huruf. Identifikasi huruf yang muncul minimal 3 kali untuk membentuk tim. Hitung berapa banyak tim yang bisa dibuat.
+
+3. **[PERTANYAAN PEMANDU]** - Setelah menemukan jumlah tim, bagaimana cara menghitung bantal yang tidak terpakai?",51,4.00
+3TGI,3,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"1. **[VALIDASI POSITIF]** - Belum tepat. Mari coba lagi.
+2. **[HINT ADAPTIF]** - Fokus pada posisi relatif bunga B dan C terhadap pagar. Pertimbangkan jarak; 'lebih dekat' berarti lebih sedikit bunga di antara mereka dan pagar.
+3. **[PERTANYAAN PEMANDU]** - Baris mana yang memenuhi kriteria jarak B dan C ke pagar?",51,4.00
+3TGI,3,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"1. **[VALIDASI POSITIF]** - Belum tepat. Mari coba lagi.
+
+2. **[HINT ADAPTIF]** - Fokus pada irisan himpunan parkir yang terisi di Senin & Selasa. Coba visualisasikan, spot mana yang *sama-sama* tidak terisi di kedua hari itu?
+
+3. **[PERTANYAAN PEMANDU]** - Apakah kamu sudah mengidentifikasi semua spot yang terisi di masing-masing hari?",51,4.40
+3TGI,3,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"1. **[VALIDASI POSITIF]** - Belum tepat. Mari coba lagi.
+
+2. **[HINT ADAPTIF]** - Fokus pada bagaimana memotong kayu 10m agar efisien memenuhi kebutuhan Joni. Coba pikirkan kombinasi potongan yang meminimalkan sisa.
+
+3. **[PERTANYAAN PEMANDU]** - Apakah ada cara memotong satu kayu 10m menjadi lebih dari satu ukuran yang dibutuhkan Joni?",50,4.30
+3TGI,3,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"1. **[VALIDASI POSITIF]** - Belum tepat. Mari coba lagi. Pola palindrome itu penting!
+
+2. **[HINT ADAPTIF]** - Ingat, palindrome dibaca sama dari depan maupun belakang. Coba fokus pada panjang kata dan simetri hurufnya.
+
+3. **[PERTANYAAN PEMANDU]** - Apakah kamu sudah memeriksa apakah kata tersebut memenuhi syarat dibaca sama dari kedua sisi?",51,4.40
+3TGI,3,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"1. **[VALIDASI POSITIF]** - Belum tepat. Mari coba lagi.
+2. **[HINT ADAPTIF]** - Pesan terenkripsi disusun kolom per kolom. Coba bayangkan pesan asli dibaca secara horizontal, bukan vertikal seperti kode. Perhatikan pola pengulangan huruf.
+3. **[PERTANYAAN PEMANDU]** - Apakah kamu bisa mengidentifikasi kemungkinan kata yang terbentuk dari setiap kolom?",49,4.00
+3TGI,3,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"1. **[VALIDASI POSITIF]** - Belum tepat. Mari coba lagi. Fokus pada batasan maksimal 2 permen sebelum sikat gigi.
+
+2. **[HINT ADAPTIF]** - Pikirkan pola 'makan-gosok'. Identifikasi kelompok permen yang bisa dimakan *sebelum* menemukan sikat gigi. Hitung total permen dari kelompok-kelompok tersebut.
+
+3. **[PERTANYAAN PEMANDU]** - Bisakah kamu identifikasi berapa banyak kelompok 'makan-",52,4.00
+3TGI,3,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"1. **[VALIDASI POSITIF]** - Belum tepat. Mari coba lagi.
+
+2. **[HINT ADAPTIF]** - Fokus pada konsistensi pernyataan. Jika ada yang berbohong, pernyataan lainnya jadi penting. Coba identifikasi kontradiksi dalam pernyataan mereka.
+
+3. **[PERTANYAAN PEMANDU]** - Apa implikasi jika David berbohong, dan bagaimana itu memengaruhi kebenaran pernyataan lainnya?",47,4.30
+5TGR,5,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"1. **[VALIDASI POSITIF]** - Incorrect. Let's analyze the reasoning more carefully.
+
+2. **[HINT ADAPTIF]** - Pembentukan rangkaian dengan batasan ini melibatkan kombinatorik dan logika. Coba telaah kembali batasan pertama: ""Setiap warna muncul 2 kali."" Apakah rangkaianmu memenuhi kriteria ini? Kemudian, fokus pada batasan kedua; perhatikan bagaimana kode jenis bunga berinteraksi dengan kode warna. Pertimbangkan representasi visual untuk membantu identifikasi konflik.
+
+3. **[PERTANYAAN PEMANDU]** - Bagaimana strategi yang dapat kamu gunakan untuk memastikan semua batasan terpenuhi secara simultan, terutama menghindari pengulangan jenis bunga dengan warna yang sama?",86,4.70
+5TGR,5,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"1. **[VALIDASI POSITIF]** - Incorrect. Let's analyze the reasoning more carefully.
+
+2. **[HINT ADAPTIF]** - Fokus pada batasan utama soal: tidak ada pagar berdampingan dengan warna yang sama. Pertimbangkan bagaimana siklus warna (M-H-K-B) memengaruhi efisiensi penggunaan cat. Evaluasi apakah siklus ini secara konsisten memanfaatkan kapasitas setiap kaleng sebelum berulang. Konsep 'capacity constraint' menjadi kunci. Analisis bagaimana urutan warna memaksimalkan jumlah pagar yang dicat dengan mempertimbangkan jumlah pagar yang dapat dicat oleh setiap warna.
+
+3. **[PERTANYAAN PEMANDU]** - Bagaimana strategi alokasi cat yang optimal dapat diidentifikasi dengan mempertimbangkan siklus warna dan keterbatasan kapasitas setiap kaleng?",94,3.90
+5TGR,5,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"1. **[VALIDASI POSITIF]** - Incorrect. Let's analyze the reasoning more carefully.
+
+2. **[HINT ADAPTIF]** - Konsep kunci di sini adalah operasi modulo (sisa pembagian). Perhatikan, soal menanyakan *apel yang tidak dikemas*, bukan sisa setelah pengemasan kantong. Pertama, tentukan berapa banyak apel yang bisa dikemas ke dalam kantong secara utuh. Kemudian, hitung selisih antara total apel dengan apel yang berhasil dikemas.
+
+3. **[PERTANYAAN PEMANDU]** - Bagaimana penerapan konsep modulo dapat membantu Anda mengidentifikasi apel yang tidak memenuhi syarat untuk dimasukkan ke dalam kantong? Apakah ada hubungan antara sisa dari pembagian apel dengan jumlah apel yang tidak dikemas?",96,3.60
+5TGR,5,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"1. **[VALIDASI POSITIF]** - Incorrect. Let's analyze the reasoning more carefully.
+
+2. **[HINT ADAPTIF]** - Pertanyaan ini menguji kemampuan analisis frekuensi dan kombinasi. Mulailah dengan mengidentifikasi frekuensi kemunculan setiap huruf pada bantal. Kemudian, fokus pada bagaimana frekuensi tersebut dapat dikonversi menjadi jumlah tim yang mungkin, mengingat setiap tim membutuhkan tiga huruf identik. Pertimbangkan juga bantal mana yang tersisa setelah pembentukan tim.
+
+3. **[PERTANYAAN PEMANDU]** - Apakah pendekatan sistematis dalam mengidentifikasi dan mengelompokkan huruf berdasarkan frekuensinya akan membantu memvisualisasikan potensi pembentukan tim secara lebih efisien?",84,3.90
+5TGR,5,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"1. **[VALIDASI POSITIF]** - Incorrect. Let's analyze the reasoning more carefully.
+
+2. **[HINT ADAPTIF]** – Secara konseptual, soal ini menguji pemahaman tentang konsep *relative positioning* atau posisi relatif antar elemen dalam suatu urutan. Fokuskan pada bagaimana jarak bunga B dan C terhadap 'pagar' berperan sebagai parameter utama. Pertimbangkan bahwa 'lebih dekat' adalah relasi komparatif. Coba identifikasi baris mana yang secara konsisten memenuhi kriteria jarak B < C dari pagar.
+
+3. **[PERTANYAAN PEMANDU]** - Bagaimana definisi operasional dari 'lebih dekat' memengaruhi interpretasi Anda terhadap struktur urutan bunga tersebut? Apakah ada asumsi implisit mengenai pemahaman spasial yang perlu dieksplorasi lebih lanjut?",99,3.60
+5TGR,5,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"1. **[VALIDASI POSITIF]** - Incorrect. Let's analyze the reasoning more carefully.
+
+2. **[HINT ADAPTIF]** - Fokus pada konsep himpunan. Pertimbangkan representasi visual atau notasi himpunan untuk memodelkan spot parkir yang terisi di masing-masing hari. Identifikasi terlebih dahulu himpunan spot parkir yang terisi pada hari Senin, kemudian lakukan hal yang sama untuk hari Selasa. Selanjutnya, tentukan operasi himpunan yang tepat untuk menemukan irisan (intersection) dari kedua himpunan tersebut – yaitu, spot parkir yang terisi *di kedua* hari.
+
+3. **[PERTANYAAN PEMANDU]** - Bagaimana representasi himpunan dapat membantu memvisualisasikan dan memecahkan masalah ini secara sistematis? Apakah dengan memahami operasi himpunan, kita dapat menghindari kesalahan dalam menghitung spot yang kosong di kedua hari?",109,4.00
+5TGR,5,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"1. **[VALIDASI POSITIF]** - Incorrect. Let's analyze the reasoning more carefully.
+
+2. **[HINT ADAPTIF]** - Pertimbangkan pendekatan *optimasi pemotongan*. Bayangkan setiap batang kayu 10m sebagai sumber daya yang perlu dialokasikan secara efisien. Fokus pada bagaimana meminimalkan sisa pemotongan. Apakah ada kombinasi pemotongan yang memungkinkan pemenuhan kebutuhan Joni dengan jumlah kayu 10m yang paling sedikit? Coba visualisasikan berbagai skenario pemotongan untuk mengidentifikasi pola optimal.
+
+3. **[PERTANYAAN PEMANDU]** - Bagaimana strategi pemotongan yang berbeda dapat memengaruhi jumlah sisa kayu? Apakah sisa kayu yang dihasilkan dapat dimanfaatkan kembali untuk memenuhi kebutuhan lain, ataukah mereka menjadi pemborosan sumber daya?",95,3.90
+5TGR,5,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"1. **[VALIDASI POSITIF]** - Incorrect. Let's analyze the reasoning more carefully.
+
+2. **[HINT ADAPTIF]** - Mari kita tinjau kembali definisi palindrome. Pola ini mendefinisikan struktur simetris. Selain itu, huruf tunggal valid karena secara inheren simetris terhadap dirinya sendiri. Evaluasi setiap opsi dengan mempertimbangkan kedua karakteristik ini: simetri dan minimal satu huruf. Apakah logika ini membantu mengidentifikasi potensi inkonsistensi dalam jawabanmu?
+
+3. **[PERTANYAAN PEMANDU]** - Bagaimana karakteristik fundamental dari palindrome memengaruhi cara kita memvalidasi sebuah string? Bisakah kita merumuskan sebuah algoritma sederhana untuk menguji suatu kata terhadap pola yang diberikan?",89,4.70
+5TGR,5,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"1. **[VALIDASI POSITIF]** - Incorrect. Let's analyze the reasoning more carefully.
+
+2. **[HINT ADAPTIF]** - Dekripsi pesan zigzag membutuhkan rekonstruksi matriks dari string kode. Pertimbangkan dimensi matriks yang memungkinkan (misalnya, 4x5, 5x4). Fokus pada identifikasi pola penyusunan berdasarkan contoh yang diberikan. Perhatikan bagaimana pembacaan kolom per kolom menghasilkan pesan asli. Coba visualisasikan bagaimana kode OIERKLTEILH!WBEX dapat disusun ulang menjadi matriks yang bermakna.
+
+3. **[PERTANYAAN PEMANDU]** - Bagaimana pemilihan dimensi matriks memengaruhi proses dekripsi, dan apa implikasinya terhadap interpretasi pesan yang dihasilkan?",81,3.90
+5TGR,5,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"1. **[VALIDASI POSITIF]** - Incorrect. Let's analyze the reasoning more carefully.
+
+2. **[HINT ADAPTIF]** - Pertimbangkan batasan bahwa Beba harus menggosok gigi setelah memakan maksimal dua permen. Fokus pada identifikasi sub-lintasan optimal: rangkaian permen yang dapat dimakan sebelum *harus* menemukan sikat gigi. Pikirkan, bagaimana memaksimalkan permen dalam setiap sub-lintasan tersebut, dengan mempertimbangkan posisi sikat gigi sebagai ""reset"" untuk memakan permen lagi. Optimalisasi ini berkaitan dengan menemukan ‘puncak’ permen sebelum ‘lembah’ sikat gigi.
+
+3. **[PERTANYAAN PEMANDU]** - Bagaimana strategi mempartisi lintasan menjadi beberapa segmen, dengan memaksimalkan jumlah permen di setiap segmen sebelum mencapai sikat gigi, dapat memengaruhi solusi optimalnya?",98,3.90
+5TGR,5,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"1. **[VALIDASI POSITIF]** - Incorrect. Let's analyze the reasoning more carefully.
+
+2. **[HINT ADAPTIF]** - Mari kita tinjau pendekatan deduktif. Fokus pada konsistensi pernyataan. Asumsikan tiga anak mengatakan benar. Jika Marko tidak bersalah, apa implikasinya terhadap pernyataan Iva dan David? Perhatikan bagaimana setiap pernyataan saling terkait dan potensi kontradiksi yang muncul. Evaluasi kemungkinan skenario berdasarkan asumsi kebenaran minimal.
+
+3. **[PERTANYAAN PEMANDU]** - Bagaimana jika kita menganalisis pernyataan David sebagai titik awal, mempertimbangkan implikasinya terhadap pernyataan Maya? Apakah ada pola inkonsistensi yang bisa diidentifikasi dengan pendekatan ini?",86,3.60
+6PAR,6,"Sebuah toko bunga memiliki 4 jenis bunga dengan kode A, B, C, dan D serta 3 warna dengan kode 1, 2, 3.
+
+Apabila terdapat pembeli dengan keinginan sebagai berikut:
+1. Setiap warna muncul 2 kali
+2. Tidak boleh ada bunga berjenis sama dengan warna yang sama
+3. Paling banyak hanya 2 bunga untuk tiap jenisnya pada satu rangkaian
+
+Opsi rangkaian mana yang sesuai dengan keinginan pembeli tersebut?","A.
+A1 - B2 - B1 - C3 - D2 - C1
+
+B.
+A2 - B2 - A3 - B1 - D3 - A1
+
+C.
+A1 - B2 - D3 - D3 - B1 - C2
+
+D.
+A1 - B2 - C3 - D3 - B1 - D2",A,D,"[VALIDASI POSITIF] Incorrect. Reconsider the edge cases and underlying principles. Pendekatanmu perlu diperbaiki untuk memastikan semua batasan terpenuhi.
+
+[HINT ADAPTIF] Mari kita telaah kembali. Pertama, visualisasikan matriks 4x3, merepresentasikan setiap kombinasi jenis bunga dan warna. Pastikan setiap warna (1, 2, 3) muncul tepat dua kali di seluruh rangkaian. Kedua, perhatikan larangan: tidak boleh ada duplikasi jenis bunga *dan* warna (misal, A1 tidak boleh muncul lebih dari sekali). 
+
+[PERTANYAAN PEMANDU] Bagaimana strategi sistematis yang bisa kamu rancang untuk mengeksplorasi semua kemungkinan kombinasi, sambil secara konsisten memverifikasi terhadap ketiga batasan yang diberikan?",90,4.30
+6PAR,6,"Apabila terdapat 4 kaleng cat dengan warna sebagai berikut:
+
+• Merah (M) → Cukup untuk 5 pagar
+• Hijau (H) → Cukup untuk 3 pagar
+• Kuning (K) → Cukup untuk 7 pagar
+• Biru (B) → Cukup untuk 2 pagar
+
+Urutan pengecatan: M-H-K-B-M-H-K-B-dst (berulang)
+
+Berapa pagar yang dapat dicat apabila tidak boleh ada pagar berdampingan dengan warna yang sama?","A.
+8
+
+B.
+17
+
+C.
+15
+
+D.
+5",A,C,"**[VALIDASI POSITIF]** - Incorrect. Reconsider the edge cases and underlying principles. Pendekatanmu baik, namun perlu diperdalam lagi terkait batasan pengecatan berdampingan.
+
+**[HINT ADAPTIF]** - Mari kita visualisasikan siklus warna: M-H-K-B. Setiap warna punya kapasitas pagar yang berbeda. Fokus pada warna dengan sisa kapasitas *terkecil* setelah satu siklus penuh (M-H-K-B). Ini akan menjadi *bottleneck* yang membatasi jumlah pagar yang dicat. Hitung sisa kapasitas masing-masing warna setelah satu siklus, lalu identifikasi warna yang habis terlebih dahulu.
+
+**[PERTANYAAN PEMANDU]** - Bagaimana identifikasi 'bottleneck' ini memengaruhi strategi pengecatan selanjutnya? Apakah ada potensi optimasi dengan memprioritaskan penggunaan warna tertentu?",94,4.30
+6PAR,6,"Sebuah keluarga ingin mengemas apel sesuai aturan sebagai berikut:
+
+1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari 8 apel, apel dibiarkan tidak dikemas.
+2. Kantong akan dimasukkan ke kardus. Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong, kantong yang tersisa tidak dimasukkan ke kardus.
+
+Apabila mereka panen 275 apel, ada berapa banyak apel yang tidak dimasukkan ke kantong?","A.
+6
+
+B.
+1
+
+C.
+7
+
+D.
+3",A,D,"[VALIDASI POSITIF] - Incorrect. Reconsider the edge cases and underlying principles.
+
+[HINT ADAPTIF] - Mari kita dekonstruksi masalah ini. Pertama, fokus pada tahap pengemasan apel ke dalam kantong. Pertimbangkan operasi matematika yang tepat untuk menentukan sisa apel setelah pembagian dengan kapasitas kantong (8 apel). Sisa inilah yang merepresentasikan apel yang *tidak* dikemas. Ingat, kita hanya tertarik pada sisa apel di tahap pertama ini.
+
+[PERTANYAAN PEMANDU] - Bagaimana hasil pembagian 275 dengan 8 memengaruhi pemahamanmu tentang jumlah apel yang tidak dapat dikemas ke dalam kantong? Apakah konsep 'modulo' relevan di sini?",90,4.00
+6PAR,6,"Terdapat kumpulan bantal dengan berbagai huruf sebagai berikut:
+
+C A B A F
+D F C E C
+B A F A
+C E B C A
+
+Apabila sebuah tim hanya dapat dibentuk dari 3 pemain dengan huruf bantal yang sama, maka berapakah total tim yang dapat dibentuk dan total bantal yang tidak digunakan?","A.
+1 tim, 13 bantal
+
+B.
+2 tim, 10 bantal
+
+C.
+3 tim, 10 bantal
+
+D.
+4 tim, 7 bantal",A,D,"**[VALIDASI POSITIF]** Incorrect. Reconsider the edge cases and underlying principles. Pendekatanmu perlu diperjelas dengan mengidentifikasi frekuensi kemunculan setiap huruf secara sistematis.
+
+**[HINT ADAPTIF]** Mari kita mulai dengan menganalisis frekuensi tiap huruf. Buatlah tabel yang menunjukkan jumlah kemunculan huruf 'A', 'B', 'C', 'D', 'E', dan 'F' dalam seluruh kumpulan bantal.  Setelah itu, fokuskan pada huruf yang kemunculannya minimal 3, karena hanya huruf-huruf ini yang dapat membentuk tim.
+
+**[PERTANYAAN PEMANDU]** Bagaimana representasi visual (tabel frekuensi) ini mempermudah identifikasi potensi tim yang dapat dibentuk? Apakah ada strategi lain untuk memastikan tidak ada bantal yang terlewat dalam perhitungan?",94,4.30
+6PAR,6,"Apabila terdapat 3 baris bunga dengan urutan sebagai berikut:
+
+1. pagar - A - B - C - D
+2. pagar - A - C - B - A
+3. pagar - D - B - A - C
+
+Manakah urutan bunga yang sesuai apabila bunga B harus berada lebih dekat dengan pagar dibandingkan bunga C?","A.
+Baris 1
+
+B.
+Baris 1 dan 2
+
+C.
+Baris 1 dan 3
+
+D.
+Semua baris",A,C,"1. **[VALIDASI POSITIF]** - Incorrect. Reconsider the edge cases and underlying principles. Analisis Anda menunjukkan usaha memahami pola, namun perlu diperdalam lagi.
+
+2. **[HINT ADAPTIF]** - Mari kita visualisasikan jarak. Bayangkan pagar sebagai titik referensi (0). Bunga A, B, C, dan D memiliki posisi numerik. Kondisi soal mengharuskan nilai absolut posisi B < nilai absolut posisi C. Langkah 1: Tentukan posisi setiap bunga relatif terhadap pagar pada setiap baris. Langkah 2: Bandingkan jarak B dan C untuk tiap baris.
+
+3. **[PERTANYAAN PEMANDU]** - Bagaimana hasil perbandingan jarak (B vs. C) pada setiap baris memengaruhi kesimpulan Anda tentang baris mana yang memenuhi kriteria soal? Apakah ada baris yang jarak B-nya *selalu* lebih dekat ke pagar dibandingkan C, tanpa memandang posisi bunga lainnya?",121,4.30
+6PAR,6,"Terdapat 12 spot parkir dengan kode 1 hingga 12 dengan ketentuan spot yang terisi sebagai berikut:
+
+• Senin → 1, 3, 6, 9, 11
+• Selasa → 1, 4, 10, 11, 12
+
+Berapa jumlah spot parkir yang tidak terisi pada hari Senin DAN Selasa (spot yang kosong di kedua hari)?","A.
+3
+
+B.
+6
+
+C.
+4
+
+D.
+5",A,C,"1. **[VALIDASI POSITIF]** - Incorrect. Reconsider the edge cases and underlying principles. Pendekatanmu menunjukkan usaha, namun perlu diperjelas bagaimana kamu mengidentifikasi irisan (intersection) dari kedua set data parkir.
+
+2. **[HINT ADAPTIF]** - Mari kita visualisasikan. Bayangkan dua lingkaran Venn. Lingkaran pertama mewakili spot parkir yang terisi Senin, lingkaran kedua mewakili spot parkir yang terisi Selasa. Area irisan kedua lingkaran adalah spot parkir yang terisi *di kedua hari*. Fokuslah mencari spot yang *tidak* berada di irisan tersebut. Coba buat daftar spot yang terisi di masing-masing hari, lalu bandingkan.
+
+3. **[PERTANYAAN PEMANDU]** - Setelah mengidentifikasi spot yang terisi di kedua hari, bagaimana kamu akan menentukan spot mana yang kosong di *kedua* hari tersebut? Apakah representasi visual Venn diagram membantu memperjelas logika penyelesaiannya?",120,4.00
+6PAR,6,"Ali mengumpulkan sejumlah batang kayu dengan panjang 10m dan ingin memberikan batang kayu dengan jumlah sesedikit mungkin kepada Joni.
+
+Apabila Joni membutuhkan:
+• 7 batang kayu dengan panjang 4m
+• 7 batang kayu dengan panjang 3m
+
+Berapa banyak kayu 10m paling sedikit yang perlu dikumpulkan oleh Ali?","A.
+5
+
+B.
+6
+
+C.
+7
+
+D.
+8",A,B,"[VALIDASI POSITIF] - Incorrect. Reconsider the edge cases and underlying principles.
+
+[HINT ADAPTIF] - Mari kita pecah masalah ini dengan pendekatan optimasi pemotongan. Pertama, hitung total kebutuhan kayu Joni: (7 x 4m) + (7 x 3m) = 28m + 21m = 49m. Selanjutnya, bayangkan setiap batang kayu 10m sebagai sumber daya yang harus dimaksimalkan. Pertimbangkan bagaimana cara memotong kayu 10m untuk memenuhi kebutuhan 4m dan 3m secara efisien, minimalkan sisa. Apakah ada pola pemotongan yang bisa mengurangi jumlah kayu 10m yang dibutuhkan?
+
+[PERTANYAAN PEMANDU] - Bagaimana strategi pemotongan yang Anda pilih akan memengaruhi optimasi penggunaan setiap batang kayu 10m? Bisakah Anda mengidentifikasi trade-off antara memotong untuk panjang 4m versus 3m?",110,3.60
+6PAR,6,"Terdapat sebuah kata dengan contoh penulisan sebagai berikut:
+
+1. A
+2. B
+3. C
+4. ABA
+5. CBC
+
+Pola: Kata harus palindrome (sama dari depan dan belakang) atau huruf tunggal.
+
+Manakah dari opsi jawaban berikut yang TIDAK sesuai dengan pola?","A.
+BBBABBBB
+
+B.
+AAA
+
+C.
+CBAABC
+
+D.
+BCABBACB",B,A,"**[VALIDASI POSITIF]** - Incorrect. Reconsider the edge cases and underlying principles. Pola palindrome dan huruf tunggal cukup fundamental, namun implementasinya perlu diperhatikan secara cermat.
+
+**[HINT ADAPTIF]** - Mari kita bedah definisi palindrome: urutan karakter yang sama jika dibaca dari depan maupun belakang. Fokus pada panjang string. Apakah ada panjang string tertentu yang *selalu* memenuhi kriteria palindrome? Pertimbangkan juga kasus huruf tunggal sebagai pengecualian. Visualisasikan: ‘X’ adalah palindrome, ‘XY’ umumnya bukan, kecuali ‘XYX’.
+
+**[PERTANYAAN PEMANDU]** - Bagaimana strategi Anda memeriksa apakah sebuah string memenuhi kondisi palindrome secara efisien, tanpa harus membandingkan seluruh karakter satu per satu? Apakah ada properti simetri yang bisa dimanfaatkan?",102,4.70
+6PAR,6,"Terdapat sebuah pesan yang diubah menjadi kode dengan cara menulis secara zigzag (kolom per kolom):
+
+Contoh:
+MEET
+BILL
+YBEA
+VERA
+T6XX
+
+Dibaca kolom per kolom: MBYVTEIBE6ELERXTLAAX → MEETBILLYBEAVERAT6
+
+Apabila terdapat sebuah kode sebagai berikut:
+OIERKLTEILH!WBEX
+
+Apa pesan asli yang ingin disampaikan?","A.
+OKWHERETOMEET!
+
+B.
+OKIWILLBETHERE!
+
+C.
+WILLYOUBETHERETOO?
+
+D.
+OKIWILLMEETHIM!",A,B,"**[VALIDASI POSITIF]** - Incorrect. Reconsider the edge cases and underlying principles. Pola zigzag memang menjebak, namun pendekatan sistematis akan membantu.
+
+**[HINT ADAPTIF]** - Mari kita rekonstruksi. Bayangkan kode tersebut ditulis dalam matriks. Panjang kode (16 karakter) perlu dibagi dengan perkiraan panjang kata untuk menentukan jumlah kolom. Coba tentukan dimensi matriks yang memungkinkan (misalnya 4x4, 8x2, dll.). Kemudian, tulis ulang kode secara kolom per kolom. Perhatikan, ada karakter khusus (!) yang mungkin menandai akhir kalimat.
+
+**[PERTANYAAN PEMANDU]** - Bagaimana pemilihan dimensi matriks memengaruhi keterbacaan pesan yang dihasilkan? Apakah ada asumsi tentang panjang kata rata-rata yang memengaruhi proses dekoding ini?",98,3.60
+6PAR,6,"Beba ingin memakan permen loli sebanyak mungkin. Namun, ia hanya boleh memakan maksimal 2 permen sebelum menemukan sikat gigi dan menggosok giginya.
+
+Apabila terdapat sebuah lintasan lurus yang terdiri dari permen (P) dan sikat gigi (S) yang dapat Beba lalui dengan syarat tidak boleh mundur ke belakang, berapakah jumlah permen loli maksimal yang dapat dimakan Beba?
+
+Lintasan:
+mulai - P - S - P - P - S - S - P - P - P - S - P - selesai","A.
+3
+
+B.
+5
+
+C.
+6
+
+D.
+7",A,C,"**[VALIDASI POSITIF]** - Incorrect. Reconsider the edge cases and underlying principles. Pendekatanmu menunjukkan upaya pemahaman, namun perlu diperdalam lagi terkait batasan yang diberikan.
+
+**[HINT ADAPTIF]** - Mari kita pecah masalah ini. Pertama, identifikasi segmen lintasan di mana Beba dapat memakan permen tanpa terhenti oleh sikat gigi. Bayangkan Beba memulai, lalu hitung permen berturut-turut sebelum menemui sikat gigi pertama. Lalu, ulangi proses ini setelah setiap sikat gigi.  Visualisasikan setiap “blok” permen sebelum sikat gigi.
+
+**[PERTANYAAN PEMANDU]** - Apakah batasan ""maksimal 2 permen"" memengaruhi cara Anda mengidentifikasi dan menghitung blok permen tersebut? Bagaimana Anda dapat memodelkan lintasan ini sebagai rangkaian keputusan yang optimal?",101,4.00
+6PAR,6,"Pada suatu hari yang cerah, Maya, David, Iva, dan Marko bermain sepak bola. Malangnya, salah satu melempar bola dan memecahkan kaca kelas. Bu Guru ingin tahu siapa yang menyebabkan kaca jendela tsb pecah.
+
+Bu Guru mengenal dengan baik bahwa tiga di antara anak tersebut tidak pernah bohong. Tapi ia tidak yakin siapa yang bersalah.
+
+Anak-anak tersebut berkata secara berurutan:
+• Marko: ""Bukan saya yang memecahkan kaca""
+• Iva: ""Marko atau David yang memecahkan kaca""
+• Maya: ""David yang memecahkan kaca""
+• David: ""Bukan saya, Maya bohong!""
+
+Siapa yang memecahkan kaca jendela?","A.
+David
+
+B.
+Marko
+
+C.
+Maya
+
+D.
+Iva",B,A,"1. **[VALIDASI POSITIF]** - Incorrect. Reconsider the edge cases and underlying principles. Pendekatan logis diperlukan untuk memecahkan masalah ini.
+
+2. **[HINT ADAPTIF]** - Mari kita telaah pernyataan mereka secara sistematis. Asumsikan hanya satu orang yang berbohong. Buatlah tabel kebenaran sederhana: kolom untuk setiap anak, kolom untuk pernyataan mereka (Benar/Salah), dan kolom untuk asumsi siapa yang bersalah. Analisis setiap baris, mencari kontradiksi. Fokus pada implikasi jika Marko jujur, lalu jika Iva jujur, dan seterusnya.
+
+3. **[PERTANYAAN PEMANDU]** - Bagaimana jika kita mengasumsikan David yang bersalah? Apakah semua pernyataan lainnya konsisten dengan asumsi ini? Jelaskan penalaran Anda.",95,4.00
