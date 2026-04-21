@@ -11,25 +11,25 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors({
-  origin: 'http://localhost:3000',
-    credentials: true
-    }));
-    app.use(express.json());
+  origin: '*'
+}));
 
-    // API Routes
-    app.post('/api/feedback', validateRequest, getFeedback);
-    app.post('/api/explanation', getExplanation);  // NEW: Detailed walkthrough endpoint
+app.use(express.json());
 
-    app.get('/health', (req, res) => {
-      res.json({ status: 'ok', message: 'Server is running' });
-      });
+// API Routes
+app.post('/api/feedback', validateRequest, getFeedback);
+app.post('/api/explanation', getExplanation);  // NEW: Detailed walkthrough endpoint
 
-      app.use(errorHandler);
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', message: 'Server is running' });
+});
 
-      app.listen(PORT, () => {
-        console.log(`🚀 Server running on http://localhost:${PORT}`);
-          console.log(`📡 API endpoints:`);
-            console.log(`   - POST /api/feedback (corrective/positive feedback)`);
-              console.log(`   - POST /api/explanation (detailed walkthrough)`);
-                console.log(`   - GET  /health (health check)`);
-                });
+app.use(errorHandler);
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`📡 API endpoints:`);
+  console.log(`   - POST /api/feedback (corrective/positive feedback)`);
+  console.log(`   - POST /api/explanation (detailed walkthrough)`);
+  console.log(`   - GET  /health (health check)`);
+});
