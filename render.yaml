@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: assesment-backend
+    env: node
+    region: virginia
+    plan: free
+    
+    # Repository connection
+    repo: felixgf24gideon-sudo/assesment-sistem2
+    branch: main
+    rootDir: server
+    
+    # Build & Start commands
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    
+    # Environment variables (add your secrets here)
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false  # Set manually in dashboard
+      - key: AI_MODEL
+        value: google/gemma-3-27b-it
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "3001"
+    
+    # Health check
+    healthCheckPath: /health
+    
+    # Scaling
+    autoDeploy: true  # Auto-deploy on push
+    
+    # Free tier limits
+    maxNumInstances: 1
+    minNumInstances: 1

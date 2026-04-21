@@ -7,7 +7,7 @@ import { createClient } from '@supabase/supabase-js';
 import { 
   generateCorrectiveFeedback, 
   generateDetailedWalkthrough 
-} from '../services/openrouterService';
+} from './services/openrouterService';
 import * as fs from 'fs';
 import * as path from 'path';
 
