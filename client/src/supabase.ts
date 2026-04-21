@@ -13,7 +13,7 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 // Test connection (optional - for debugging)
 export async function testConnection() {
   try {
-    const { data, error } = await supabase.from('questions').select('count');
+    const { error } = await supabase.from('questions').select('count');
     if (error) throw error;
     console.log('✅ Client: Supabase connected successfully');
     return true;
