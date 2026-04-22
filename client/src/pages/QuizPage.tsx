@@ -77,7 +77,7 @@ export default function QuizPage() {
       }
 
       if (data && data.length > 0) {
-        console.log(`✅ Loaded ${data.length} active questions from Supabase`);
+        console.log(`Loaded ${data.length} active questions from Supabase`);
         setAllQuestions(data as Question[]);
         
         // Load first question
@@ -247,7 +247,7 @@ export default function QuizPage() {
       {/* Header */}
       <div className="max-w-4xl mx-auto mb-6">
         <div className="flex justify-between items-center mb-4">
-          <h1 className="text-3xl font-bold text-gray-900">🎯 Practice Quiz</h1>
+          <h1 className="text-3xl font-bold text-gray-900"> Practice Quiz</h1>
           <div className="text-right">
             <p className="text-sm text-gray-600">
               Question {currentIndex + 1} of {TOTAL_QUESTIONS}
@@ -273,7 +273,7 @@ export default function QuizPage() {
           {/* Profile Info Box */}
           <div className="mb-6 p-4 bg-green-100 border-l-4 border-green-600 rounded">
             <p className="text-sm font-semibold text-green-900">
-              ✅ Profile Locked: {profileCode} - Your feedback will be personalized to this profile
+               {profileCode} - Your feedback will be personalized to this profile
             </p>
           </div>
 
