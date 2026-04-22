@@ -49,7 +49,7 @@ export default function PracticePage() {
         
         if (data?.profile) {
           setUserProfile(data.profile);
-          console.log('✅ User profile loaded from DB:', data.profile);
+          console.log(' User profile loaded from DB:', data.profile);
         }
       }
     } catch (error) {
@@ -174,16 +174,16 @@ export default function PracticePage() {
       }
 
       const data = await response.json();
-      console.log('✅ AI feedback received');
+      console.log('AI feedback received');
 
       if (correct) {
         console.log('Answer is CORRECT!');
         setIsCorrect(true);
         setAnsweredQuestions(prev => [...prev, currentQuestion.id]);
-        setFeedback(data.feedback || '🎉 Benar! Jawaban Anda tepat.');
+        setFeedback(data.feedback || 'Benar! Jawaban Anda tepat.');
       } else {
         console.log('Answer is WRONG - Allow retry');
-        setFeedback(data.feedback || `💡 Belum tepat. Coba lagi! (Percobaan ke-${newAttemptCount})`);
+        setFeedback(data.feedback || `Belum tepat. Coba lagi! (Percobaan ke-${newAttemptCount})`);
         setSelectedAnswer(null);
       }
       
@@ -346,11 +346,11 @@ export default function PracticePage() {
             value={userProfile}
             onChange={(e) => {
               setUserProfile(e.target.value);
-              console.log('✅ Profile changed to:', e.target.value);
+              console.log('Profile changed to:', e.target.value);
             }}
             className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition font-medium"
           >
-            <optgroup label="📚 Pemula (Level 1-2)">
+            <optgroup label="Pemula (Level 1-2)">
               <option value="1TGI">1TGI - Pemula, Text, Global, Cepat (~40 kata)</option>
               <option value="1TGR">1TGR - Pemula, Text, Global, Detail (~80 kata)</option>
               <option value="1TAI">1TAI - Pemula, Text, Analytic, Cepat</option>
@@ -370,7 +370,7 @@ export default function PracticePage() {
               <option value="2PAR">2PAR - Pemula-Menengah, Visual, Analytic, Detail</option>
             </optgroup>
             
-            <optgroup label="📖 Menengah (Level 3-4)">
+            <optgroup label="Menengah (Level 3-4)">
               <option value="3TGI">3TGI - Menengah, Text, Global, Cepat (Default, ~50 kata)</option>
               <option value="3TGR">3TGR - Menengah, Text, Global, Detail (~100 kata)</option>
               <option value="3TAI">3TAI - Menengah, Text, Analytic, Cepat</option>
