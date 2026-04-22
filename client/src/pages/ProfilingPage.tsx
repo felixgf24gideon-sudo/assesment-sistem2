@@ -99,7 +99,7 @@ export default function ProfilingPage() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-6">
         <div className="max-w-2xl bg-white rounded-xl shadow-2xl p-12 text-center">
-          <div className="text-6xl mb-6">📊</div>
+          <div className="text-6xl mb-6"></div>
 
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Your Learning Profile</h1>
 
@@ -153,7 +153,7 @@ export default function ProfilingPage() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
         <div className="max-w-3xl mx-auto mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">📋 Data Peserta</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2"> Data Peserta</h1>
           <p className="text-gray-600">
             Silakan isi biodata dan setujui pernyataan sebelum melanjutkan ke asesmen profil.
           </p>
@@ -258,7 +258,7 @@ export default function ProfilingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
       <div className="max-w-3xl mx-auto mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">📋 Learning Style Assessment</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2"> Learning Style Assessment</h1>
         <p className="text-gray-600">
           Answer questions to find your personalized learning profile ({currentIndex + 1} of{' '}
           {PROFILING_QUESTIONS.length})
