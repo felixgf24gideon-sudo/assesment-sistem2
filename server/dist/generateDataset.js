@@ -115,12 +115,12 @@ async function generateDataset() {
                     user_answer: wrongAnswerText,
                     scenario_type: 'corrective_feedback_attempt_1',
                     attempt_number: 1,
-                    ai_response: feedback1.response,
-                    response_word_count: countWords(feedback1.response),
+                    ai_response: feedback1,
+                    response_word_count: countWords(feedback1),
                     timestamp: new Date().toISOString()
                 });
                 totalProcessed++;
-                console.log(`   ✅ Done (${totalProcessed}/${totalItems}) - ${countWords(feedback1.response)} words`);
+                console.log(`   ✅ Done (${totalProcessed}/${totalItems}) - ${countWords(feedback1)} words`);
                 await delay(1000); // 1 second delay to avoid rate limits
             }
             catch (error) {
@@ -146,12 +146,12 @@ async function generateDataset() {
                     user_answer: wrongAnswerText,
                     scenario_type: 'corrective_feedback_attempt_2',
                     attempt_number: 2,
-                    ai_response: feedback2.response,
-                    response_word_count: countWords(feedback2.response),
+                    ai_response: feedback2,
+                    response_word_count: countWords(feedback2),
                     timestamp: new Date().toISOString()
                 });
                 totalProcessed++;
-                console.log(`   ✅ Done (${totalProcessed}/${totalItems}) - ${countWords(feedback2.response)} words`);
+                console.log(`   ✅ Done (${totalProcessed}/${totalItems}) - ${countWords(feedback2)} words`);
                 await delay(1000);
             }
             catch (error) {
@@ -176,12 +176,12 @@ async function generateDataset() {
                     user_answer: correctAnswerText, // Correct answer
                     scenario_type: 'ai_explanation',
                     attempt_number: 0,
-                    ai_response: explanation.response,
-                    response_word_count: countWords(explanation.response),
+                    ai_response: explanation,
+                    response_word_count: countWords(explanation),
                     timestamp: new Date().toISOString()
                 });
                 totalProcessed++;
-                console.log(`   ✅ Done (${totalProcessed}/${totalItems}) - ${countWords(explanation.response)} words`);
+                console.log(`   ✅ Done (${totalProcessed}/${totalItems}) - ${countWords(explanation)} words`);
                 await delay(1000);
             }
             catch (error) {

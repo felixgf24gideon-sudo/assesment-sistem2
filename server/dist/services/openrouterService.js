@@ -7,8 +7,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateAdaptiveFeedback = generateAdaptiveFeedback;
 exports.generateCorrectiveFeedbackForResearch = generateCorrectiveFeedbackForResearch;
+exports.generateFeedback = generateFeedback;
+exports.generateCorrectiveFeedback = generateCorrectiveFeedback;
+exports.generateDetailedWalkthrough = generateDetailedWalkthrough;
+exports.generateExplanation = generateExplanation;
 const axios_1 = __importDefault(require("axios"));
 const profileSystem_1 = require("../config/profileSystem");
+const openrouterService_1 = require("../openrouterService");
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const GENERATION_MODEL = process.env.AI_MODEL || 'google/gemma-3-27b-it';
 // ===== PARSE PROFILE =====
@@ -256,3 +261,64 @@ async function generateCorrectiveFeedbackForResearch(req) {
     });
     return response.feedback;
 }
+function getProfileFromCode(profileCode) {
+    const parts = (profileCode || '3TGI').toUpperCase();
+    return {
+        profileCode: parts,
+        pedagogicLevel: parseInt(parts[0]) || 3,
+        visualPreference: (parts[1] === 'P' ? 'P' : 'T'),
+        processingOrientation: (parts[2] === 'A' ? 'A' : 'G'),
+        behavioralTempo: (parts[3] === 'R' ? 'R' : 'I'),
+    };
+}
+async function generateFeedback(params) {
+    const profile = getProfileFromCode(params.profileCode || params.userProfile || '3TGI');
+    return (0, openrouterService_1.generateCorrectiveFeedback)({
+        profileCode: profile.profileCode,
+        pedagogicLevel: profile.pedagogicLevel,
+        visualPreference: profile.visualPreference,
+        processingOrientation: profile.processingOrientation,
+        behavioralTempo: profile.behavioralTempo,
+        questionText: params.questionText,
+        correctAnswer: params.correctAnswer,
+        studentAnswer: params.userAnswer || params.studentAnswer || '',
+        attemptNumber: parseInt(String(params.attemptCount || params.attemptNumber || 1)) || 1,
+    });
+}
+async function generateCorrectiveFeedback(params) {
+    return generateFeedback(params);
+}
+async function generateDetailedWalkthrough(params) {
+    const profile = getProfileFromCode(params.profileCode);
+    return (0, openrouterService_1.generateExplanation)({
+        profileCode: profile.profileCode,
+        pedagogicLevel: profile.pedagogicLevel,
+        visualPreference: profile.visualPreference,
+        processingOrientation: profile.processingOrientation,
+        behavioralTempo: profile.behavioralTempo,
+        questionText: params.questionText,
+        correctAnswer: params.correctAnswer,
+        attemptNumber: 1,
+    });
+}
+async function generateExplanation(params) {
+    const profile = getProfileFromCode(params.profileCode);
+    return (0, openrouterService_1.generateExplanation)({
+        profileCode: profile.profileCode,
+        pedagogicLevel: params.pedagogicLevel || profile.pedagogicLevel,
+        visualPreference: params.visualPreference || profile.visualPreference,
+        processingOrientation: params.processingOrientation || profile.processingOrientation,
+        behavioralTempo: params.behavioralTempo || profile.behavioralTempo,
+        questionText: params.questionText,
+        correctAnswer: params.correctAnswer,
+        attemptNumber: params.attemptNumber || 1,
+    });
+}
+exports.default = {
+    generateAdaptiveFeedback,
+    generateCorrectiveFeedbackForResearch,
+    generateFeedback,
+    generateCorrectiveFeedback,
+    generateDetailedWalkthrough,
+    generateExplanation,
+};

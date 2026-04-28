@@ -3,6 +3,10 @@
 
 import axios from 'axios';
 import { ProfileParams, getAIStrategy } from '../config/profileSystem';
+import {
+  generateCorrectiveFeedback as legacyGenerateCorrectiveFeedback,
+  generateExplanation as legacyGenerateExplanation,
+} from '../openrouterService';
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY!;
 const GENERATION_MODEL = process.env.AI_MODEL || 'google/gemma-3-27b-it';
@@ -309,5 +313,128 @@ export async function generateCorrectiveFeedbackForResearch(req: {
 
   return response.feedback;
 }
+
+function getProfileFromCode(profileCode: string) {
+  const parts = (profileCode || '3TGI').toUpperCase();
+
+  return {
+    profileCode: parts,
+    pedagogicLevel: parseInt(parts[0]) || 3,
+    visualPreference: (parts[1] === 'P' ? 'P' : 'T') as 'T' | 'P',
+    processingOrientation: (parts[2] === 'A' ? 'A' : 'G') as 'G' | 'A',
+    behavioralTempo: (parts[3] === 'R' ? 'R' : 'I') as 'I' | 'R',
+  };
+}
+
+export async function generateFeedback(params: {
+  questionText: string;
+  questionTopic?: string;
+  userAnswer?: string;
+  studentAnswer?: string;
+  correctAnswer: string;
+  allOptions?: string[];
+  isCorrect?: boolean;
+  attemptCount?: number | string;
+  attemptNumber?: number | string;
+  profileCode?: string;
+  userProfile?: string;
+  pedagogicLevel?: number;
+  visualPreference?: 'T' | 'P';
+  processingOrientation?: 'G' | 'A';
+  behavioralTempo?: 'I' | 'R';
+  difficulty?: number | string;
+  imageDescription?: string;
+}): Promise<string> {
+  const profile = getProfileFromCode(params.profileCode || params.userProfile || '3TGI');
+
+  return legacyGenerateCorrectiveFeedback({
+    profileCode: profile.profileCode,
+    pedagogicLevel: profile.pedagogicLevel,
+    visualPreference: profile.visualPreference,
+    processingOrientation: profile.processingOrientation,
+    behavioralTempo: profile.behavioralTempo,
+    questionText: params.questionText,
+    correctAnswer: params.correctAnswer,
+    studentAnswer: params.userAnswer || params.studentAnswer || '',
+    attemptNumber: parseInt(String(params.attemptCount || params.attemptNumber || 1)) || 1,
+  });
+}
+
+export async function generateCorrectiveFeedback(params: {
+  questionText: string;
+  questionTopic?: string;
+  userAnswer?: string;
+  studentAnswer?: string;
+  correctAnswer: string;
+  allOptions?: string[];
+  isCorrect?: boolean;
+  attemptCount?: number | string;
+  attemptNumber?: number | string;
+  profileCode?: string;
+  userProfile?: string;
+  pedagogicLevel?: number;
+  visualPreference?: 'T' | 'P';
+  processingOrientation?: 'G' | 'A';
+  behavioralTempo?: 'I' | 'R';
+  difficulty?: number | string;
+  imageDescription?: string;
+}): Promise<string> {
+  return generateFeedback(params);
+}
+
+export async function generateDetailedWalkthrough(params: {
+  profileCode: string;
+  questionText: string;
+  correctAnswer: string;
+  allOptions?: string[];
+  imageDescription?: string;
+}): Promise<string> {
+  const profile = getProfileFromCode(params.profileCode);
+
+  return legacyGenerateExplanation({
+    profileCode: profile.profileCode,
+    pedagogicLevel: profile.pedagogicLevel,
+    visualPreference: profile.visualPreference,
+    processingOrientation: profile.processingOrientation,
+    behavioralTempo: profile.behavioralTempo,
+    questionText: params.questionText,
+    correctAnswer: params.correctAnswer,
+    attemptNumber: 1,
+  });
+}
+
+export async function generateExplanation(params: {
+  profileCode: string;
+  pedagogicLevel?: number;
+  visualPreference?: 'T' | 'P';
+  processingOrientation?: 'G' | 'A';
+  behavioralTempo?: 'I' | 'R';
+  questionText: string;
+  correctAnswer: string;
+  attemptNumber?: number;
+  imageDescription?: string;
+}): Promise<string> {
+  const profile = getProfileFromCode(params.profileCode);
+
+  return legacyGenerateExplanation({
+    profileCode: profile.profileCode,
+    pedagogicLevel: params.pedagogicLevel || profile.pedagogicLevel,
+    visualPreference: params.visualPreference || profile.visualPreference,
+    processingOrientation: params.processingOrientation || profile.processingOrientation,
+    behavioralTempo: params.behavioralTempo || profile.behavioralTempo,
+    questionText: params.questionText,
+    correctAnswer: params.correctAnswer,
+    attemptNumber: params.attemptNumber || 1,
+  });
+}
+
+export default {
+  generateAdaptiveFeedback,
+  generateCorrectiveFeedbackForResearch,
+  generateFeedback,
+  generateCorrectiveFeedback,
+  generateDetailedWalkthrough,
+  generateExplanation,
+};
 
 export { FeedbackGenerationRequest, FeedbackGenerationResponse };
