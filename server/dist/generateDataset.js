@@ -124,7 +124,7 @@ async function generateDataset() {
                 await delay(1000); // 1 second delay to avoid rate limits
             }
             catch (error) {
-                console.error(`   ❌ Error: ${error.message}`);
+                console.error(`   Error: ${error.message}`);
             }
             // ========== SCENARIO 2: Corrective Feedback (Attempt 2) ==========
             try {
