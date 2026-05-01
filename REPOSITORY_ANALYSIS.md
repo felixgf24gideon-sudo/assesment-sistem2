@@ -1,615 +1,564 @@
-# Repository Analysis: Adaptive Practice System
+# Repository Analysis: Adaptive Learning + Research Evaluation System
 
-## 📋 Project Overview
-
-**assesment-sistem2** is an **Adaptive Learning Assessment Platform** designed to provide personalized educational feedback based on individual student cognitive profiles and pedagogical levels.
-
-The system uses:
-- **AI-powered personalized feedback** via OpenRouter API (using DeepSeek R1 model)
-- **Cognitive style assessment** to tailor content delivery
-- **Multi-attempt adaptive hints** that escalate from subtle to explicit guidance
-- **Full-stack TypeScript** for type safety across client and server
+> **CRITICAL INSIGHT:** Ini bukan hanya "practice quiz" biasa. Ini adalah **HYBRID RESEARCH SYSTEM** yang menggabungkan:
+> 1. **Adaptive Learning** (AI-powered personalized feedback)
+> 2. **Research Evaluation** (rubrik penilaian terhadap KUALITAS feedback)
 
 ---
 
-## 🏗️ Architecture Overview
+## 🎯 Arsitektur Sistem yang SEBENARNYA
 
-### Directory Structure
-
-```
-assesment-sistem2/
-├── client/                          # React Frontend (Vite)
-│   ├── src/
-│   │   ├── App.tsx                 # Main app with page routing
-│   │   ├── components/             # Reusable UI components
-│   │   ├── contexts/               # React Context (SurveyContext)
-│   │   ├── pages/                  # Main pages (Profiling, Quiz, Evaluation, Thank You)
-│   │   ├── services/               # API client services
-│   │   ├── supabase.ts            # Supabase client initialization
-│   │   └── types/                  # TypeScript definitions
-│   ├── index.html
-│   └── package.json
-│
-├── server/                          # Express Backend
-│   ├── src/
-│   │   ├── server.ts               # Express app setup
-│   │   ├── openrouterService.ts   # OpenRouter API integration
-│   │   ├── generateDataset.ts      # Dataset generation (root level)
-│   │   ├── controllers/            # Route handlers (EMPTY - missing implementation)
-│   │   ├── middleware/             # Express middleware (EMPTY - missing implementation)
-│   │   ├── services/               # Business logic (EMPTY)
-│   │   └── scripts/                # Data processing scripts
-│   │       ├── generateDataset.ts
-│   │       ├── generateDatasetFinal.ts
-│   │       ├── generateAndEvaluate.ts
-│   │       ├── generateFeedbackControl.ts
-│   │       └── generataDataset.ts  # ⚠️ TYPO: "generat**a**" instead of "generat**e**"
-│   └── package.json
-│
-├── shared/                          # Shared Utilities
-│   ├── types.ts                    # Shared type definitions
-│   └── questions.ts                # 20 assessment questions
-│
-└── output/                          # Generated data files (empty)
-```
-
----
-
-## 🎯 Core Functionality
-
-### 1. **Student Profiling**
-Students answer questions to establish their **cognitive style profile**:
-
+### **Fase 1: PROFILING**
 ```typescript
-interface CognitiveStyle {
-  visualPreference: 'T' | 'P';      // Text vs Pictures
-  processingOrientation: 'G' | 'A'; // Global vs Analytic
-  behavioralTempo: 'I' | 'R';       // Impulsive vs Reflective
+// ProfilingPage.tsx
+// Mengumpulkan cognitive style setiap student
+CognitiveStyle {
+  visualPreference: 'T' | 'P'        // Text vs Pictures
+  processingOrientation: 'G' | 'A'   // Global vs Analytic  
+  behavioralTempo: 'I' | 'R'         // Impulsive vs Reflective
 }
-
-interface StudentProfile {
-  pedagogicalLevel: 1-6;             // Expertise level
-  cognitiveStyle: CognitiveStyle;
-  profileCode: string;               // e.g., "L2_T_G_I"
-}
+// Generates: Profile Code (e.g., "L3_T_G_R" = Level 3, Text, Global, Reflective)
 ```
 
-**Profile Code Format:** `L{level}_{visual}_{processing}_{tempo}`
-- Example: `L3_T_G_R` = Level 3, Text-focused, Global processing, Reflective
-
-### 2. **Adaptive Assessment**
-- **20 questions** covering: algorithms, data structures, React, databases, networking, web dev, programming
-- **Difficulty range:** 1-4 (progressively harder)
-- **Multiple attempts** (up to 3) with escalating guidance
-
-### 3. **Personalized Feedback Loop**
-
-**When answer is INCORRECT:**
-```
-AI generates hints based on:
-  ├─ Attempt #1 → Subtle hint (guide toward pattern)
-  ├─ Attempt #2 → Clearer hint (mention key concept)
-  └─ Attempt #3 → Direct hint (almost reveal answer)
-
-PLUS adaptation for:
-  ├─ Pedagogical Level (language complexity)
-  ├─ Visual Preference (text vs metaphors)
-  ├─ Processing Style (big picture vs step-by-step)
-  └─ Tempo (concise vs elaborate)
-```
-
-**When answer is CORRECT:**
-```
-AI generates explanation of WHY with:
-  ├─ Brief praise
-  ├─ Conceptual explanation
-  ├─ Connection to broader concepts
-  └─ Tailored to student profile
-```
-
-### 4. **API Endpoints**
-
-```
-POST /api/feedback
-├─ Input: Question, student answer, profile, attempt number
-├─ Uses: openrouterService.generateCorrectiveFeedback() OR generateExplanation()
-└─ Output: Adaptive feedback string
-
-POST /api/explanation
-├─ Input: Question, profile
-├─ Uses: openrouterService.generateExplanation()
-└─ Output: Detailed walkthrough
-
-GET /health
-└─ Output: { status: 'ok', message: 'Server is running' }
-```
-
----
-
-## ⚠️ Known Issues & Errors
-
-### 1. **CRITICAL: Empty Controller Files**
-```
-Status: 🔴 BLOCKER
-File: server/src/feedbackController.ts
-Issue: File is EMPTY (0 bytes)
-```
-
-**Impact:** 
-- API endpoints `/api/feedback` and `/api/explanation` cannot route to handlers
-- Server will crash when requests hit these endpoints
-- The imported functions `getFeedback`, `getExplanation` don't exist
-
-**Required Implementation:**
+### **Fase 2: QUIZ (Adaptive Assessment)**
 ```typescript
-// server/src/controllers/feedbackController.ts
-import { Request, Response } from 'express';
-import { generateCorrectiveFeedback, generateExplanation } from '../openrouterService';
-
-export async function getFeedback(req: Request, res: Response) {
-  try {
-    const { profileCode, isCorrect, studentAnswer, correctAnswer, questionText, attemptNumber, cognitiveStyle, pedagogicalLevel } = req.body;
-    
-    let feedback: string;
-    if (isCorrect) {
-      feedback = await generateExplanation({
-        profileCode,
-        pedagogicLevel: pedagogicalLevel,
-        visualPreference: cognitiveStyle.visualPreference,
-        processingOrientation: cognitiveStyle.processingOrientation,
-        behavioralTempo: cognitiveStyle.behavioralTempo,
-        questionText,
-        correctAnswer,
-        attemptNumber,
-      });
-    } else {
-      feedback = await generateCorrectiveFeedback({
-        profileCode,
-        pedagogicLevel: pedagogicalLevel,
-        visualPreference: cognitiveStyle.visualPreference,
-        processingOrientation: cognitiveStyle.processingOrientation,
-        behavioralTempo: cognitiveStyle.behavioralTempo,
-        questionText,
-        correctAnswer,
-        studentAnswer,
-        attemptNumber,
-      });
-    }
-    
-    res.json({ feedback, isCorrect });
-  } catch (error: any) {
-    res.status(500).json({ error: error.message });
-  }
-}
-
-export async function getExplanation(req: Request, res: Response) {
-  try {
-    const { profileCode, questionText, correctAnswer, pedagogicalLevel, cognitiveStyle, attemptNumber } = req.body;
-    
-    const explanation = await generateExplanation({
-      profileCode,
-      pedagogicLevel: pedagogicalLevel,
-      visualPreference: cognitiveStyle.visualPreference,
-      processingOrientation: cognitiveStyle.processingOrientation,
-      behavioralTempo: cognitiveStyle.behavioralTempo,
-      questionText,
-      correctAnswer,
-      attemptNumber: attemptNumber || 1,
-    });
-    
-    res.json({ explanation });
-  } catch (error: any) {
-    res.status(500).json({ error: error.message });
-  }
-}
-```
-
-### 2. **CRITICAL: Missing Middleware**
-```
-Status: 🔴 BLOCKER
-Files: 
-  - server/src/middleware/validateRequest.ts (EMPTY)
-  - server/src/middleware/errorHandler.ts (EMPTY)
-```
-
-**Impact:**
-- Request validation doesn't work
-- Errors aren't properly caught/formatted
-- Server will crash on unexpected input
-
-**Required Implementation:**
-```typescript
-// server/src/middleware/validateRequest.ts
-import { Request, Response, NextFunction } from 'express';
-
-export function validateRequest(req: Request, res: Response, next: NextFunction) {
-  const { profileCode, cognitiveStyle, pedagogicalLevel, questionText } = req.body;
+// QuizPage.tsx - LINE 68-82
+async function initializeQuiz() {
+  // FETCH QUESTIONS dari SUPABASE (bukan dari shared/questions.ts!)
+  const { data, error } = await supabase
+    .from('questions')
+    .select('*')
+    .eq('is_active', true)
+    .order('id');
   
-  if (!profileCode || !cognitiveStyle || pedagogicalLevel === undefined || !questionText) {
-    return res.status(400).json({ 
-      error: 'Missing required fields: profileCode, cognitiveStyle, pedagogicalLevel, questionText' 
-    });
+  // Data structure dari Supabase:
+  interface Question {
+    id: string;
+    text: string;
+    options: string[] | string;      // Array atau JSON string
+    correct_answer: number;           // Index of correct option
+    difficulty: number;               // 1-4
+    topic: string;
+    cognitive_tag?: string;           // For adaptive selection
+    is_active: boolean;               // Toggle questions on/off
   }
-  
-  next();
-}
-
-// server/src/middleware/errorHandler.ts
-import { Request, Response, NextFunction } from 'express';
-
-export function errorHandler(err: any, req: Request, res: Response, next: NextFunction) {
-  console.error('❌ Error:', err);
-  res.status(500).json({ 
-    error: err.message || 'Internal server error',
-    message: process.env.NODE_ENV === 'development' ? err.stack : undefined
-  });
 }
 ```
 
-### 3. **CRITICAL: Empty Services Directory**
-```
-Status: 🔴 BLOCKER
-File: server/src/services/ (EMPTY)
-```
+**Quiz Flow:**
+1. Load ALL active questions dari Supabase (Line 79-81)
+2. Pilih random unanswered question (Line 112-114)
+3. Max 8 questions per session (Line 51)
+4. Submit answer → AI feedback via OpenRouter (Line 155-168)
 
-**Issue:** Services layer is missing. Business logic should be separated from controllers.
+**Key Insight:** 
+- Soal TIDAK hardcoded di `shared/questions.ts`
+- Soal di-fetch dari SUPABASE database
+- Ini memungkinkan **dynamic question management** (tambah/kurangi/update soal tanpa redeploy)
 
-### 4. **⚠️ HIGH: Typo in Script Filename**
-```
-Status: 🟡 HIGH PRIORITY
-File: server/src/scripts/generataDataset.ts
-Issue: Filename has typo: "generat**a**" instead of "generat**e**"
-```
-
-**Current files:**
-- `generateDataset.ts` ✅
-- `generateDatesetFinal.ts` ❌ (another typo: "Dateset" instead of "Dataset")
-- `generataDataset.ts` ❌ (typo: "generat**a**")
-
-**Impact:** Confusing, hard to find correct script, npm scripts may reference wrong file
-
-**Fix:** Rename to `generateDataset.ts` (standardize naming)
-
-### 5. **⚠️ MEDIUM: Missing Environment Variables**
-```
-Status: 🟡 MEDIUM PRIORITY
-File: server/.env.example
-Content: Minimal (only 67 bytes)
-```
-
-**Missing critical vars:**
-```
-OPENROUTER_API_KEY=your_key_here
-OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
-AI_MODEL=deepseek/deepseek-r1
-APP_NAME=adaptive-practice
-APP_URL=http://localhost:3000
-PORT=3001
-SUPABASE_URL=your_url
-SUPABASE_KEY=your_key
-```
-
-### 6. **🟡 MEDIUM: Client-Server API URL Not Configured**
-```
-Status: 🟡 MEDIUM PRIORITY
-File: client/.env.production
-Issue: May have hardcoded API URL instead of environment variable
-```
-
-**Should be:**
-```
-VITE_API_BASE_URL=https://api.yourdomain.com
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_anon_key
-```
-
-### 7. **🟡 MEDIUM: No Request/Response Validation Schema**
-```
-Status: 🟡 MEDIUM PRIORITY
-Issue: No Zod/Joi validation schemas defined
-```
-
-**Risk:** Type mismatches, undefined field access leading to runtime errors
-
-### 8. **🟡 MEDIUM: Hardcoded CORS Policy**
-```
-File: server/src/server.ts, Line 13-15
-Code:
-  app.use(cors({
-    origin: '*'  // ⚠️ SECURITY RISK
-  }));
-```
-
-**Issue:** Allows requests from ANY origin (security vulnerability for production)
-
-**Fix:**
+### **Fase 3: EVALUATION RUBRIC (Research Data Collection)**
 ```typescript
-app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
-  credentials: true
-}));
+// EvaluationPage.tsx - LINE 14-80
+// PENILAIAN RUBRIK terhadap KUALITAS FEEDBACK dari AI
+
+const RATING_DIMENSIONS = [
+  {
+    key: 'accuracy_positive',
+    section: 'Akurasi Penjelasan',
+    question: 'AI berhasil mendeteksi letak kesalahan saya dengan sangat tepat.',
+  },
+  {
+    key: 'accuracy_negative',
+    section: 'Akurasi Penjelasan',
+    question: 'Saya merasa koreksi yang diberikan AI tidak sesuai dengan kesalahan yang saya buat.',
+  },
+  {
+    key: 'clarity_positive',
+    section: 'Kejelasan Bahasa',
+    question: 'Penjelasan yang diberikan AI sangat mudah dipahami dalam sekali baca.',
+  },
+  // ... lebih banyak dimensions
+];
+
+// Likert Scale: 1-5
+const LIKERT_SCALE = [
+  { value: 1, label: 'Sangat Tidak Setuju' },
+  { value: 2, label: 'Tidak Setuju' },
+  { value: 3, label: 'Netral' },
+  { value: 4, label: 'Setuju' },
+  { value: 5, label: 'Sangat Setuju' },
+];
 ```
 
-### 9. **🟡 MEDIUM: No Error Handling in OpenRouter Service**
+**Evaluation Dimensions:**
+1. **Akurasi Penjelasan** (Accuracy) - 2 items
+2. **Kejelasan Bahasa** (Clarity) - 2 items  
+3. **Kesesuaian Gaya Belajar** (Personalization Fit) - 2 items
+4. **Panjang Penjelasan** (Pacing/Tempo) - 2 items
+5. **Dampak Belajar** (Empowerment) - 2 items
+**Total: 10 Likert-scale items + Open-ended feedback**
+
+---
+
+## 📊 Complete Data Flow
+
 ```
-File: server/src/openrouterService.ts
-Issue: If API key is missing, error thrown during module load (crashes immediately)
+STUDENT ─────────────────────────────────────────────────────────→
+
+1. PROFILING PAGE
+   └─→ Select cognitive style dimensions
+       └─→ Generate Profile Code (L1-6_T/P_G/A_I/R)
+           └─→ Stored in SurveyContext
+               └─→ Pass to next phase
+
+2. QUIZ PAGE  
+   ├─→ Fetch questions from SUPABASE
+   │   └─→ Filter: is_active = true
+   │       └─→ Load N questions (max 8)
+   │
+   ├─→ For each question:
+   │   ├─→ Pick random unanswered question
+   │   ├─→ Display question + 4-5 options
+   │   ├─→ Student selects answer
+   │   │
+   │   └─→ Submit to backend
+   │       │
+   │       └─→ POST /api/feedback
+   │           ├─ Body: {questionText, correctAnswer, studentAnswer, ...}
+   │           │
+   │           └─→ openrouterService.ts
+   │               ├─→ Call OpenRouter API (DeepSeek R1)
+   │               ├─→ Generate adaptive feedback based on:
+   │               │   ├─ Is answer correct or incorrect?
+   │               │   ├─ Attempt number (1-3)
+   │               │   ├─ Student's cognitive profile
+   │               │   └─ Difficulty level
+   │               │
+   │               └─→ Return personalized feedback
+   │
+   │   └─→ Display feedback
+   │       └─→ Record response in SurveyContext:
+   │           {
+   │             question_id,
+   │             question_text,
+   │             selected_answer,
+   │             correct_answer,
+   │             feedback,
+   │             is_correct,
+   │             timestamp
+   │           }
+
+3. EVALUATION PAGE (Rubrik Penilaian)
+   ├─→ For each answered question:
+   │   ├─→ Show question + student answer + AI feedback
+   │   │
+   │   └─→ Present 10 rating dimensions:
+   │       ├─→ Accuracy (2 items - positive & negative)
+   │       ├─→ Clarity (2 items)
+   │       ├─→ Personalization (2 items)
+   │       ├─→ Pacing (2 items)
+   │       └─→ Empowerment (2 items)
+   │
+   │   └─→ Student rates each on Likert 1-5
+   │       └─→ Store ratings for this question
+   │
+   │   └─→ Open-ended feedback (optional)
+
+4. THANK YOU PAGE
+   └─→ Survey complete
+       └─→ Data saved (questionsAnswered + ratings)
+
+════════════════════════════════════════════════════════════════
+
+DATA COLLECTED (for research):
+├─ Student Profile Code (cognitive style)
+├─ Quiz Responses (8 questions max)
+│  ├─ Question ID
+│  ├─ Student answer
+│  ├─ Correct answer
+│  ├─ AI feedback received
+│  └─ Correctness
+├─ Evaluation Ratings (10 dimensions per question)
+│  ├─ Accuracy of explanation
+│  ├─ Clarity of language
+│  ├─ Fit to learning style
+│  ├─ Appropriate length
+│  ├─ Learning impact
+│  └─ Open-ended feedback
+└─ Timestamps
 ```
 
-**Current (Line 10-12):**
-```typescript
-if (!OPENROUTER_API_KEY) {
-  throw new Error('OPENROUTER_API_KEY is not set in environment variables');
-}
+---
+
+## 🔌 Data Source Architecture
+
+### **Questions: SUPABASE DATABASE**
+```
+NOT from shared/questions.ts (that's fallback/legacy)
+
+SUPABASE Table: "questions"
+├─ Columns:
+│  ├─ id (primary key)
+│  ├─ text (question text)
+│  ├─ options (JSON array of choices)
+│  ├─ correct_answer (index: 0-4)
+│  ├─ difficulty (1-4)
+│  ├─ topic (string)
+│  ├─ cognitive_tag (optional - for adaptive selection)
+│  └─ is_active (boolean - to enable/disable questions)
+
+Data Fetching (QuizPage.tsx Line 68-72):
+  const { data, error } = await supabase
+    .from('questions')
+    .select('*')
+    .eq('is_active', true)  ← Filter only active questions
+    .order('id');
+
+This allows:
+✅ Add/remove questions without code changes
+✅ A/B test different question sets
+✅ Disable problematic questions
+✅ Manage large question banks
 ```
 
-**Better approach:** Validate at runtime when API is actually called
-
-### 10. **🟡 MEDIUM: No TypeScript Path Aliases**
+### **Feedback: OpenRouter API**
 ```
-Status: 🟡 MEDIUM PRIORITY
-File: tsconfig.json
-Issue: Complex imports like `../../../services/` instead of `@/services/`
+Student Answer → Backend Controller → openrouterService.ts
+
+callOpenRouter(messages, options)
+├─ AI Model: deepseek/deepseek-r1 (from .env)
+├─ Temperature: 0.7
+├─ Max Tokens: 150-250
+└─ System Prompt: Adaptive based on student profile
+
+Generates TWO types of feedback:
+1. generateCorrectiveFeedback() - when answer is WRONG
+   └─ Adaptive hints (Attempt 1-3 escalation)
+
+2. generateExplanation() - when answer is CORRECT
+   └─ Congratulatory explanation + why correct
 ```
 
-**Add to tsconfig.json:**
-```json
+### **Evaluation Data: SurveyContext State**
+```
+// client/src/contexts/SurveyContext.tsx (likely implementation)
+
+State Structure (inferred from usage):
 {
-  "compilerOptions": {
-    "paths": {
-      "@/*": ["./src/*"],
-      "@controllers/*": ["./src/controllers/*"],
-      "@services/*": ["./src/services/*"]
-    }
-  }
+  profileCode: "L3_T_G_R",
+  questionsAnswered: [
+    {
+      question_id: "q1",
+      question_text: "...",
+      selected_answer: 1,
+      correct_answer: 1,
+      feedback: "...",
+      is_correct: true,
+      timestamp: Date
+    },
+    // ... 8 questions max
+  ],
+  evaluations: [
+    {
+      question_id: "q1",
+      ratings: {
+        accuracy_positive: 4,
+        accuracy_negative: 2,
+        clarity_positive: 5,
+        clarity_negative: 1,
+        // ... all 10 dimensions
+      },
+      open_feedback: "..."
+    },
+    // ... for each question
+  ]
 }
 ```
 
-### 11. **🟢 LOW: Duplicate Dataset Generation Scripts**
+---
+
+## 🧪 Research Study Design Hypothesis
+
+Based on the rubric structure, this appears to be evaluating:
+
+**"How well does AI-personalized feedback (based on cognitive styles) match student learning preferences?"**
+
+**Variables:**
+- **Independent:** Cognitive style profile (3 dimensions)
+- **Dependent:** Perceived feedback quality (10 dimensions rated on Likert scale)
+
+**Research Question:**
 ```
-Files:
-  - generateDataset.ts (in src/scripts/)
-  - generateDataset.ts (in src/ root)
-  - generateAndEvaluate.ts
-  - generateFeedbackControl.ts
-  - generateDatasetFinal.ts
+Does adapting AI feedback to student cognitive profiles 
+improve perceived:
+  1. Accuracy of explanation
+  2. Clarity of language
+  3. Fit to learning style
+  4. Appropriate pacing
+  5. Learning impact
+  
+...compared to generic feedback?
 ```
 
-**Issue:** Multiple scripts do similar work. Unclear which is the "main" one.
+---
 
-**npm scripts in package.json show:**
-```json
-"generate-dataset": "ts-node src/scripts/generateDataset.ts",
-"generate-final": "ts-node src/scripts/generateDatasetFinal.ts",
-"generate-and-evaluate": "ts-node src/scripts/generateAndEvaluate.ts",
-"generate-feedback-full": "ts-node src/scripts/generateAndEvaluate.ts --full",
-"generate-control": "ts-node src/scripts/generateFeedbackControl.ts",
-"generate-control-full": "ts-node src/scripts/generateFeedbackControl.ts --full"
+## ⚠️ Critical Implementation Issues (Updated)
+
+### **CRITICAL: Supabase Integration Not Fully Implemented**
+```
+Status: 🔴 CRITICAL
+File: server/src/ (NO Supabase service layer)
+Issue: Backend doesn't fetch/validate questions from Supabase
 ```
 
-### 12. **🟢 LOW: Missing Client Context Implementation**
+**Current State:**
+- Client fetches questions directly from Supabase (QuizPage.tsx Line 68)
+- Server has NO verification that questions are valid
+- Server doesn't track which questions were shown
+- **Security Risk:** Client could manipulate `is_active` flag
+
+**Fix Needed:**
+```typescript
+// server/src/services/supabaseService.ts (MISSING)
+export async function getActiveQuestions() {
+  const supabase = createClient(url, key); // Server-side client
+  const { data, error } = await supabase
+    .from('questions')
+    .select('*')
+    .eq('is_active', true);
+    
+  if (error) throw error;
+  return data;
+}
+
+export async function validateAnswer(questionId: string, selectedIndex: number) {
+  const { data } = await supabase
+    .from('questions')
+    .select('correct_answer')
+    .eq('id', questionId)
+    .single();
+    
+  return data.correct_answer === selectedIndex;
+}
 ```
-Status: 🟢 LOW PRIORITY
+
+### **CRITICAL: Missing SurveyContext Implementation**
+```
+Status: 🔴 CRITICAL
 File: client/src/contexts/SurveyContext.tsx
-Issue: Likely incomplete or minimal implementation
+Issue: Context is imported but NOT FOUND in repo
 ```
 
-Should handle:
-- Current page state (profiling → quiz → evaluation → thank-you)
-- Student profile data
-- Quiz progress/answers
-- API communication
+**Used in:** App.tsx, QuizPage.tsx, EvaluationPage.tsx, etc.
 
-### 13. **🟢 LOW: No Error Boundaries**
-```
-Status: 🟢 LOW PRIORITY
-Issue: React app has no error boundary components
-```
+```typescript
+// client/src/contexts/SurveyContext.tsx (MUST CREATE)
+import { createContext, useContext, useState } from 'react';
 
-**Risk:** One component crash crashes entire app
+interface QuizResponse {
+  question_id: string;
+  question_text: string;
+  selected_answer: number;
+  correct_answer: number;
+  correct_answer_text: string;
+  feedback: string;
+  is_correct: boolean;
+  timestamp: Date;
+}
 
----
+interface EvaluationRating {
+  question_id: string;
+  ratings: Record<string, number>; // 10 dimensions
+  open_feedback: string;
+}
 
-## 🚨 Priority Fix Checklist
+interface SurveyContextType {
+  currentPage: 'profiling' | 'quiz' | 'evaluation' | 'thank-you';
+  profileCode: string;
+  questionsAnswered: QuizResponse[];
+  evaluations: EvaluationRating[];
+  
+  setProfileCode: (code: string) => void;
+  addQuizResponse: (response: QuizResponse) => void;
+  addEvaluation: (eval: EvaluationRating) => void;
+  completeQuiz: () => void;
+  completeSurvey: () => Promise<void>;
+}
 
-### **CRITICAL (Blocks Deployment):**
-- [ ] Implement `server/src/controllers/feedbackController.ts`
-- [ ] Implement `server/src/middleware/validateRequest.ts`
-- [ ] Implement `server/src/middleware/errorHandler.ts`
-- [ ] Verify all environment variables in `.env`
-- [ ] Test OpenRouter API connectivity
+const SurveyContext = createContext<SurveyContextType | null>(null);
 
-### **HIGH (Should Fix):**
-- [ ] Rename/consolidate duplicate dataset scripts
-- [ ] Fix file naming typos (`generataDataset.ts` → `generateDataset.ts`)
-- [ ] Implement complete `SurveyContext` on client
-- [ ] Add request validation schemas
+export function SurveyProvider({ children }: { children: React.ReactNode }) {
+  const [currentPage, setCurrentPage] = useState<'profiling' | 'quiz' | 'evaluation' | 'thank-you'>('profiling');
+  const [profileCode, setProfileCode] = useState('');
+  const [questionsAnswered, setQuestionsAnswered] = useState<QuizResponse[]>([]);
+  const [evaluations, setEvaluations] = useState<EvaluationRating[]>([]);
 
-### **MEDIUM (Should Fix Soon):**
-- [ ] Fix CORS to specific origin instead of `*`
-- [ ] Add TypeScript path aliases
-- [ ] Implement comprehensive error handling
-- [ ] Add client-side API URL configuration
-- [ ] Move OpenRouter API key check to runtime
+  const addQuizResponse = (response: QuizResponse) => {
+    setQuestionsAnswered(prev => [...prev, response]);
+  };
 
-### **LOW (Nice to Have):**
-- [ ] Add React Error Boundary
-- [ ] Consolidate dataset generation into single utility
-- [ ] Add logging/monitoring
-- [ ] Add unit & integration tests
+  const addEvaluation = (eval: EvaluationRating) => {
+    setEvaluations(prev => [...prev, eval]);
+  };
 
----
+  const completeQuiz = () => {
+    setCurrentPage('evaluation');
+  };
 
-## 🔌 Dependencies
+  const completeSurvey = async () => {
+    // Save all data somewhere (Supabase, backend, etc.)
+    try {
+      const response = await fetch('/api/survey/complete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          profileCode,
+          questionsAnswered,
+          evaluations,
+          timestamp: new Date(),
+        }),
+      });
+      if (!response.ok) throw new Error('Failed to save survey');
+      setCurrentPage('thank-you');
+    } catch (error) {
+      console.error('Error completing survey:', error);
+      throw error;
+    }
+  };
 
-### **Client Dependencies:**
-```json
-{
-  "@supabase/supabase-js": "^2.96.0",  // Database client
-  "axios": "^1.6.2",                    // HTTP client
-  "react": "^18.2.0",                   // UI library
-  "react-dom": "^18.2.0",               // DOM rendering
-  "uuid": "^13.0.0"                     // ID generation
+  return (
+    <SurveyContext.Provider value={{
+      currentPage,
+      profileCode,
+      questionsAnswered,
+      evaluations,
+      setProfileCode,
+      addQuizResponse,
+      addEvaluation,
+      completeQuiz,
+      completeSurvey,
+    }}>
+      {children}
+    </SurveyContext.Provider>
+  );
+}
+
+export function useSurvey() {
+  const context = useContext(SurveyContext);
+  if (!context) throw new Error('useSurvey must be used within SurveyProvider');
+  return context;
 }
 ```
 
-### **Server Dependencies:**
-```json
-{
-  "@supabase/supabase-js": "^2.39.3",  // Database client
-  "axios": "^1.6.5",                    // HTTP client for OpenRouter API
-  "cors": "^2.8.5",                     // CORS middleware
-  "dotenv": "^16.3.1",                  // Environment variables
-  "express": "^4.18.2"                  // Web framework
+### **HIGH: Survey Completion Endpoint Missing**
+```
+Status: 🟡 HIGH
+Endpoint: POST /api/survey/complete
+Issue: Not implemented in server
+```
+
+**Needed:**
+```typescript
+// server/src/controllers/surveyController.ts
+export async function completeSurvey(req: Request, res: Response) {
+  const { profileCode, questionsAnswered, evaluations } = req.body;
+  
+  // Save to database (Supabase or other)
+  // Log for research analysis
+  // Return success
 }
 ```
 
+### **HIGH: No Fallback Question Source**
+```
+Status: 🟡 HIGH
+Issue: If Supabase fetch fails, system breaks
+```
+
+**shared/questions.ts exists but is NOT USED**
+- This should be fallback for when Supabase is unavailable
+
 ---
 
-## 🌊 Data Flow
+## 📈 Data Analytics Opportunities
+
+The rubric collects data for analyzing:
 
 ```
-┌─────────────────┐
-│  STUDENT        │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────────────────────────┐
-│  PROFILING PAGE                     │
-│  (Cognitive Style Quiz)             │
-│  → Generates Profile Code (e.g. L3_T_G_R)
-└────────┬────────────────────────────┘
-         │
-         ▼
-┌─────────────────────────────────────┐
-│  QUIZ PAGE                          │
-│  - Load question from shared/questions.ts
-│  - Show options                      │
-│  - Collect answer                    │
-│  - Track attempts (max 3)            │
-└────────┬────────────────────────────┘
-         │
-         ▼
-    POST /api/feedback ◄─────────┐
-    with:                         │
-    ├─ profileCode               │
-    ├─ cognitiveStyle            │
-    ├─ pedagogicalLevel          │
-    ├─ questionText              │
-    ├─ studentAnswer             │
-    ├─ correctAnswer             │
-    ├─ isCorrect                 │
-    └─ attemptNumber             │
-         │                        │
-         ▼                        │
-    ┌──────────────────────────┐  │
-    │ BACKEND                  │  │
-    │ feedbackController       │──┘
-    │   ↓                       │
-    │ openrouterService.ts     │
-    │   ├─ generateCorrectiveFeedback()
-    │   └─ generateExplanation()
-    │   ↓                       │
-    │ OpenRouter API           │
-    │ (DeepSeek R1)            │
-    └──────────────────────────┘
-         │
-         ▼
-    Returns adaptive feedback
-         │
-         ▼
-┌─────────────────────────────────────┐
-│  QUIZ PAGE (Display Feedback)       │
-│  - Show personalized feedback       │
-│  - Allow retry or proceed           │
-└─────────────────────────────────────┘
-         │
-         ▼
-┌─────────────────────────────────────┐
-│  EVALUATION PAGE                    │
-│  (Results Summary)                  │
-└─────────────────────────────────────┘
-         │
-         ▼
-┌─────────────────────────────────────┐
-│  THANK YOU PAGE                     │
-└─────────────────────────────────────┘
+1. ACCURACY DIMENSION
+   • Do adaptive profiles improve error detection accuracy?
+   • Which cognitive styles have highest accuracy satisfaction?
+
+2. CLARITY DIMENSION
+   • Which pedagogical levels prefer which explanation styles?
+   • Text vs Picture learners: clarity differences?
+
+3. PERSONALIZATION FIT
+   • Does matching cognitive style to feedback improve perception?
+   • Which dimension combinations work best?
+
+4. PACING DIMENSION
+   • Do reflective (R) learners prefer longer explanations?
+   • Do impulsive (I) learners prefer concise feedback?
+
+5. EMPOWERMENT DIMENSION
+   • Which profiles show highest learning confidence post-feedback?
+   • Correlation between engagement and perceived learning?
+
+═══════════════════════════════════════════════════════════
+
+RESEARCH OUTCOME:
+├─ Dataset: 10 Likert scales × 8 questions × N students
+├─ Analysis: ANOVA/Regression on cognitive style factors
+├─ Publication: "Adaptive Feedback and Cognitive Styles in Online Learning"
+└─ Contribution: Evidence for personalization in EdTech AI
 ```
 
 ---
 
-## 📊 Question Set Overview
+## 🔄 Evolution of the System
 
-- **Total Questions:** 20
-- **Topics:** algorithms (4), data structures (1), networking (3), React (2), databases (3), web-development (2), programming (4), javascript (1), version-control (1)
-- **Difficulty Range:** 1 (easiest) to 4 (hardest)
-- **Format:** Multiple choice (4 options each)
+```
+TIMELINE RECONSTRUCTION:
+
+Version 1 (Original - App.tsx.old)
+├─ Auth system (Login/Register)
+├─ User dashboard
+├─ Persistent profiles in database
+├─ Practice mode for learning
+└─ LearningContext for state
+
+                    ↓ REFACTORED ↓
+
+Version 2 (Current - App.tsx)  
+├─ Removed: Authentication
+├─ Removed: Dashboard
+├─ Removed: Persistent user storage
+├─ Added: Linear survey flow
+├─ Added: Evaluation rubric
+├─ Changed Purpose: 
+│  From: "Interactive learning platform for students"
+│  To: "One-time research study on adaptive feedback"
+└─ SurveyContext (replaces LearningContext + Auth)
+```
+
+**This is INTENTIONAL:** The system was converted from a **learning platform** to a **research evaluation tool**.
 
 ---
 
-## 🚀 Getting Started (Setup Guide)
+## ✅ Summary: What This System Actually Does
 
-### **Server Setup:**
-```bash
-cd server
-npm install
+| Phase | Purpose | Data Source | Data Collected |
+|-------|---------|-------------|-----------------|
+| **Profiling** | Establish student cognitive profile | User input | 3-dim profile code |
+| **Quiz** | Assess understanding + generate AI feedback | **SUPABASE** questions | Answer + feedback |
+| **Evaluation** | Rate quality of AI feedback | Manual Likert ratings | 10 rubric dimensions |
+| **Completion** | Compile research data | SurveyContext | Full dataset |
 
-# Create .env file with OpenRouter API key
-cp .env.example .env
-# Edit .env with:
-# OPENROUTER_API_KEY=your_key_here
-# AI_MODEL=deepseek/deepseek-r1
-# PORT=3001
-
-npm run dev  # Start development server
-```
-
-### **Client Setup:**
-```bash
-cd client
-npm install
-
-# Create .env.local
-VITE_API_BASE_URL=http://localhost:3001
-
-npm run dev  # Start Vite dev server
-```
-
-### **Test Health Endpoint:**
-```bash
-curl http://localhost:3001/health
-# Expected: { status: 'ok', message: 'Server is running' }
-```
-
----
-
-## 🔗 API Integration Points
-
-### **Missing Implementation (Client → Server):**
-1. Client needs to call `/api/feedback` after each answer
-2. Error handling for API timeouts/failures not implemented
-3. Retry logic for failed requests missing
-
-### **Backend Issues:**
-1. No request validation
-2. No error handling middleware
-3. Controllers not implemented
-4. No logging/monitoring
-
----
-
-## 📝 Summary
-
-This is a **well-architected adaptive learning system** with:
-✅ Clear separation of concerns (client/server/shared)
-✅ Type-safe TypeScript implementation
-✅ Intelligent AI-powered personalization
-✅ Scalable question bank system
-
-But it has **critical blockers**:
-❌ Empty controller files (API endpoints non-functional)
-❌ Missing middleware implementations
-❌ No request validation
-❌ Security issues (CORS, env vars)
-
-**Next steps:** Implement missing controllers and middleware to make the system functional.
+**Key Finding:** 
+- ✅ Questions come from **SUPABASE** (dynamic, not hardcoded)
+- ✅ Feedback from **OpenRouter API** (personalized AI)
+- ✅ Rubric evaluation **IN-APP** (research data collection)
+- ❌ Backend survey save endpoint MISSING
+- ❌ SurveyContext NOT FOUND (implementation missing)
+- ❌ Supabase service layer NOT FOUND (server-side)
