@@ -30,7 +30,7 @@ export async function getFeedback(req: Request, res: Response, next: NextFunctio
       });
     }
 
-    console.log('📥 Feedback request received:');
+    console.log(' Feedback request received:');
     console.log(`   Profile: ${userProfile}`);
     console.log(`   Correct: ${isCorrect}`);
     console.log(`   Attempt: ${attemptCount}`);
@@ -49,7 +49,7 @@ export async function getFeedback(req: Request, res: Response, next: NextFunctio
       imageDescription
     });
 
-    console.log('✅ Feedback generated successfully');
+    console.log(' Feedback generated successfully');
 
     res.json({
       success: true,
@@ -59,7 +59,7 @@ export async function getFeedback(req: Request, res: Response, next: NextFunctio
     });
 
   } catch (error: any) {
-    console.error('❌ Error in getFeedback:', error);
+    console.error(' Error in getFeedback:', error);
     next(error);
   }
 }
@@ -86,7 +86,7 @@ export async function getExplanation(req: Request, res: Response, next: NextFunc
       });
     }
 
-    console.log('📥 Explanation request received:');
+    console.log(' Explanation request received:');
     console.log(`   Profile: ${userProfile}`);
     console.log(`   Question: ${questionText.substring(0, 50)}...`);
 
@@ -99,7 +99,7 @@ export async function getExplanation(req: Request, res: Response, next: NextFunc
       imageDescription
     });
 
-    console.log('✅ Explanation generated successfully');
+    console.log(' Explanation generated successfully');
 
     res.json({
       success: true,
@@ -109,7 +109,7 @@ export async function getExplanation(req: Request, res: Response, next: NextFunc
     });
 
   } catch (error: any) {
-    console.error('❌ Error in getExplanation:', error);
+    console.error(' Error in getExplanation:', error);
     next(error);
   }
 }
