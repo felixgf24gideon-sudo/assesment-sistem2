@@ -3,7 +3,7 @@
 import { useSurvey } from '../contexts/SurveyContext';
 
 export default function ThankYouPage() {
-  const { profileCode, biodata, resetSurvey } = useSurvey();
+  const { profileCode, biodata } = useSurvey();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-6">

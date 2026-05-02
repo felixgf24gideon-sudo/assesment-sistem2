@@ -35,3 +35,9 @@ export interface RegisterData {
   full_name: string;
   profile_code: string;
 }
+
+// API Response Types
+export interface FeedbackResponse {
+  feedback: string;
+  isCorrect: boolean;
+}

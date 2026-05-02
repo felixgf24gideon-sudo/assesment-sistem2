@@ -460,7 +460,7 @@ export default function QuizPage() {
 
           {isCorrect === true && (
             <button
-              onClick={handleNextQuestion}
+              onClick={() => handleNextQuestion()}
               className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all"
             >
               {currentIndex + 1 >= TOTAL_QUESTIONS ? 'Move to Evaluation →' : 'Next Question →'}
