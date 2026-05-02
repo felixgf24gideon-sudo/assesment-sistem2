@@ -15,6 +15,14 @@ interface Question {
   is_active: boolean;
 }
 
+interface SubmissionData {
+  question: Question;
+  selectedAnswer: number;
+  selectedOptionText: string;
+  correctOptionText: string;
+  isCorrect: boolean;
+}
+
 // Helper function to parse options
 function parseOptions(options: string[] | string): string[] {
   if (Array.isArray(options)) {
@@ -45,12 +53,14 @@ export default function QuizPage() {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [answered, setAnswered] = useState<string[]>([]);
+  const [feedbackError, setFeedbackError] = useState<string | null>(null);
+  const [lastSubmission, setLastSubmission] = useState<SubmissionData | null>(null);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
 
   const TOTAL_QUESTIONS = 8;
   const currentIndex = questionsAnswered.length;
   const progress = ((currentIndex + 1) / TOTAL_QUESTIONS) * 100;
+  const answeredIds = questionsAnswered.map(item => item.question_id);
 
   useEffect(() => {
     if (!profileCode) {
@@ -81,7 +91,7 @@ export default function QuizPage() {
         setAllQuestions(data as Question[]);
         
         // Load first question
-        loadQuestion(data as Question[], []);
+        loadQuestion(data as Question[], answeredIds);
       } else {
         console.error('No active questions found');
         setCurrentQuestion(null);
@@ -126,86 +136,159 @@ export default function QuizPage() {
     setSelectedAnswer(null);
     setFeedback(null);
     setIsCorrect(null);
+    setFeedbackError(null);
+    setLastSubmission(null);
   }
 
-  function handleNextQuestion() {
+  function handleNextQuestion(overrideAnsweredIds?: string[]) {
     if (currentIndex < TOTAL_QUESTIONS) {
-      loadQuestion(allQuestions, answered);
+      loadQuestion(allQuestions, overrideAnsweredIds || answeredIds);
     } else {
       completeQuiz();
     }
+  }
+
+  async function requestFeedback(submission: SubmissionData): Promise<string> {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+    const response = await fetch(`${API_URL}/api/feedback`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        questionText: submission.question.text,
+        userProfile: profileCode,
+        userAnswer: submission.selectedOptionText,
+        correctAnswer: submission.correctOptionText,
+        allOptions: currentOptions,
+        isCorrect: submission.isCorrect,
+        difficulty: submission.question.difficulty,
+        questionTopic: submission.question.topic,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to get feedback');
+    }
+
+    const data = await response.json();
+    return data.feedback || 'No feedback available';
   }
 
   async function handleSubmit() {
     if (selectedAnswer === null || !currentQuestion) return;
 
     setIsSubmitting(true);
-    const correct = selectedAnswer === currentQuestion.correct_answer;
-    const selectedOptionText = currentOptions[selectedAnswer];
-    const correctOptionText = currentOptions[currentQuestion.correct_answer];
+    setFeedbackError(null);
+
+    const submission: SubmissionData = {
+      question: currentQuestion,
+      selectedAnswer,
+      selectedOptionText: currentOptions[selectedAnswer],
+      correctOptionText: currentOptions[currentQuestion.correct_answer],
+      isCorrect: selectedAnswer === currentQuestion.correct_answer,
+    };
+
+    setLastSubmission(submission);
 
     try {
       console.log('🔍 Submitting answer:');
-      console.log(`   Selected: ${selectedAnswer} = "${selectedOptionText}"`);
-      console.log(`   Correct: ${currentQuestion.correct_answer} = "${correctOptionText}"`);
-      console.log(`   Is Correct: ${correct}`);
+      console.log(`   Selected: ${submission.selectedAnswer} = "${submission.selectedOptionText}"`);
+      console.log(`   Correct: ${submission.question.correct_answer} = "${submission.correctOptionText}"`);
+      console.log(`   Is Correct: ${submission.isCorrect}`);
 
-      // Get AI feedback
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-      const response = await fetch(`${API_URL}/api/feedback`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          questionText: currentQuestion.text,
-          userProfile: profileCode,
-          userAnswer: selectedOptionText,
-          correctAnswer: correctOptionText,
-          allOptions: currentOptions,
-          isCorrect: correct,
-          difficulty: currentQuestion.difficulty,
-          questionTopic: currentQuestion.topic,
-        }),
-      });
+      const feedbackText = await requestFeedback(submission);
 
-      if (!response.ok) {
-        throw new Error('Failed to get feedback');
-      }
-
-      const data = await response.json();
-      const feedbackText = data.feedback || 'No feedback available';
-
-      console.log(` Feedback received (${correct ? 'correct' : 'incorrect'})`);
+      console.log(` Feedback received (${submission.isCorrect ? 'correct' : 'incorrect'})`);
 
       // Record response
       addQuizResponse({
-        question_id: currentQuestion.id,
-        question_text: currentQuestion.text,
-        selected_answer: selectedAnswer,
-        correct_answer: currentQuestion.correct_answer,
-        correct_answer_text: correctOptionText,
+        question_id: submission.question.id,
+        question_text: submission.question.text,
+        selected_answer: submission.selectedAnswer,
+        correct_answer: submission.question.correct_answer,
+        correct_answer_text: submission.correctOptionText,
         feedback: feedbackText,
-        is_correct: correct,
+        is_correct: submission.isCorrect,
         timestamp: new Date(),
       });
 
-      // Update answered questions
-      setAnswered(prev => [...prev, currentQuestion.id]);
+      setLastSubmission(null);
 
-      setIsCorrect(correct);
+      setIsCorrect(submission.isCorrect);
       setFeedback(feedbackText);
 
       // Auto-advance if correct
-      if (correct) {
+      if (submission.isCorrect) {
+        const nextAnsweredIds = [...answeredIds, submission.question.id];
         setTimeout(() => {
-          handleNextQuestion();
+          handleNextQuestion(nextAnsweredIds);
         }, 2000);
       }
     } catch (error) {
       console.error('Error getting feedback:', error);
-      setFeedback('Error getting feedback. Please try again.');
+      setFeedbackError('Feedback sedang tidak tersedia. Silakan coba lagi atau lanjut tanpa feedback.');
     } finally {
       setIsSubmitting(false);
     }
+  }
+
+  async function handleRetryFeedback() {
+    if (!lastSubmission) return;
+
+    setIsSubmitting(true);
+    setFeedbackError(null);
+
+    try {
+      const feedbackText = await requestFeedback(lastSubmission);
+
+      addQuizResponse({
+        question_id: lastSubmission.question.id,
+        question_text: lastSubmission.question.text,
+        selected_answer: lastSubmission.selectedAnswer,
+        correct_answer: lastSubmission.question.correct_answer,
+        correct_answer_text: lastSubmission.correctOptionText,
+        feedback: feedbackText,
+        is_correct: lastSubmission.isCorrect,
+        timestamp: new Date(),
+      });
+
+      setLastSubmission(null);
+      setIsCorrect(lastSubmission.isCorrect);
+      setFeedback(feedbackText);
+
+      if (lastSubmission.isCorrect) {
+        const nextAnsweredIds = [...answeredIds, lastSubmission.question.id];
+        setTimeout(() => {
+          handleNextQuestion(nextAnsweredIds);
+        }, 2000);
+      }
+    } catch (error) {
+      console.error('Error getting feedback:', error);
+      setFeedbackError('Masih belum bisa mengambil feedback. Silakan coba lagi nanti.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  function handleSkipFeedback() {
+    if (!lastSubmission) return;
+
+    addQuizResponse({
+      question_id: lastSubmission.question.id,
+      question_text: lastSubmission.question.text,
+      selected_answer: lastSubmission.selectedAnswer,
+      correct_answer: lastSubmission.question.correct_answer,
+      correct_answer_text: lastSubmission.correctOptionText,
+      feedback: 'Feedback tidak tersedia untuk saat ini. Jawaban disimpan tanpa feedback.',
+      is_correct: lastSubmission.isCorrect,
+      timestamp: new Date(),
+    });
+
+    const nextAnsweredIds = [...answeredIds, lastSubmission.question.id];
+    setLastSubmission(null);
+    setFeedbackError(null);
+    setFeedback(null);
+    setIsCorrect(null);
+    handleNextQuestion(nextAnsweredIds);
   }
 
   if (isLoading) {
@@ -308,6 +391,11 @@ export default function QuizPage() {
           </div>
 
           {/* Feedback */}
+          {feedbackError && (
+            <div className="mb-6 p-4 rounded-lg border-l-4 border-red-500 bg-red-50 whitespace-pre-wrap leading-relaxed">
+              <p className="text-red-900">{feedbackError}</p>
+            </div>
+          )}
           {feedback && (
             <div
               className={`mb-8 p-4 rounded-lg border-l-4 whitespace-pre-wrap leading-relaxed ${
@@ -321,7 +409,7 @@ export default function QuizPage() {
           )}
 
           {/* Buttons */}
-          {!feedback && (
+          {!feedback && !feedbackError && (
             <button
               onClick={handleSubmit}
               disabled={selectedAnswer === null || isSubmitting}
@@ -340,6 +428,34 @@ export default function QuizPage() {
                 'Submit Answer'
               )}
             </button>
+          )}
+
+          {feedbackError && (
+            <div className="grid gap-3 sm:grid-cols-3">
+              <button
+                onClick={handleRetryFeedback}
+                disabled={isSubmitting}
+                className="w-full py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all disabled:opacity-70"
+              >
+                {isSubmitting ? 'Retrying...' : 'Retry Feedback'}
+              </button>
+              <button
+                onClick={handleSkipFeedback}
+                className="w-full py-3 bg-gradient-to-r from-gray-600 to-gray-700 text-white rounded-lg font-semibold hover:shadow-lg transition-all"
+              >
+                Skip Feedback
+              </button>
+              <button
+                onClick={() => {
+                  setFeedbackError(null);
+                  setLastSubmission(null);
+                  setSelectedAnswer(null);
+                }}
+                className="w-full py-3 bg-gradient-to-r from-orange-600 to-yellow-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all"
+              >
+                Back
+              </button>
+            </div>
           )}
 
           {isCorrect === true && (

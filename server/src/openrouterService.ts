@@ -1,5 +1,8 @@
 // server/src/services/openrouterService.ts
+import dotenv from 'dotenv';
 import axios from 'axios';
+
+dotenv.config();
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_BASE_URL = process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1';
