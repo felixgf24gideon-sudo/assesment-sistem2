@@ -1,5 +1,8 @@
 // server/src/services/openrouterService.ts
+import dotenv from 'dotenv';
 import axios from 'axios';
+
+dotenv.config();
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_BASE_URL = process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1';
@@ -69,19 +72,20 @@ export async function callOpenRouter(
       throw new Error('No content in OpenRouter response');
     }
 
-    console.log('✅ OpenRouter API call successful');
+    console.log('OpenRouter API call successful');
     console.log(`   Model: ${response.data.model}`);
     console.log(`   Tokens: ${response.data.usage.total_tokens}`);
 
     return content.trim();
   } catch (error: any) {
-    console.error('❌ OpenRouter API error:', error.response?.data || error.message);
+    console.error(' OpenRouter API error:', error.response?.data || error.message);
     throw new Error(`OpenRouter API failed: ${error.message}`);
   }
 }
 
 /**
  * Generate corrective feedback (saat jawaban salah)
+ * Framework: Hattie & Timperley — Feed Up + Feed Back + Feed Forward
  */
 export async function generateCorrectiveFeedback(params: {
   profileCode: string;
@@ -106,47 +110,56 @@ export async function generateCorrectiveFeedback(params: {
     attemptNumber,
   } = params;
 
-  // Build adaptive system prompt
-  const systemPrompt = `You are an adaptive learning tutor for computational thinking.
+  const systemPrompt = `Kamu adalah seorang Tutor ahli yang menerapkan model feedback Hattie & Timperley secara konsisten.
 
-STUDENT PROFILE (${profileCode}):
-- Pedagogic Level: ${pedagogicLevel} (1=beginner, 6=expert)
-- Visual Preference: ${visualPreference === 'T' ? 'Text-based (logical sentences)' : 'Picture-based (visual metaphors)'}
-- Processing: ${processingOrientation === 'G' ? 'Global (big picture first)' : 'Analytic (step-by-step)'}
-- Tempo: ${behavioralTempo === 'I' ? 'Impulsive (direct & concise)' : 'Reflective (elaborate & thoughtful)'}
+PROFIL KOGNITIF SISWA (${profileCode}):
+- Level Pedagogis: ${pedagogicLevel}/6 ${pedagogicLevel <= 2 ? '(Pemula — gunakan bahasa sangat sederhana, hindari jargon)' : pedagogicLevel <= 4 ? '(Menengah — bahasa moderat, boleh sedikit istilah teknis)' : '(Mahir — boleh gunakan terminologi presisi)'}
+- Modalitas: ${visualPreference === 'T' ? 'Teks/Logis — gunakan kalimat logis, kata hubung seperti "karena", "sehingga", "oleh karena itu"' : 'Visual/Analogi — gunakan analogi, metafora, kalimat seperti "bayangkan", "seperti", "ibarat"'}
+- Struktur Berpikir: ${processingOrientation === 'G' ? 'Global — mulai dari konsep besar terlebih dahulu, baru masuk ke detail' : 'Analitik — uraikan langkah demi langkah secara sistematis'}
+- Tempo: ${behavioralTempo === 'I' ? 'Impulsif — feedback SINGKAT dan LANGSUNG: 2–3 kalimat saja, tidak lebih' : 'Reflektif — feedback MENDALAM dan ELABORATIF: 4–6 kalimat, ajak berpikir lebih jauh'}
+- Percobaan ke-: ${attemptNumber}
 
-ADAPTATION RULES:
-1. Attempt ${attemptNumber}/3:
-   ${attemptNumber === 1 ? '- Give subtle hint (guide toward pattern)' : ''}
-   ${attemptNumber === 2 ? '- Give clearer hint (mention key concept)' : ''}
-   ${attemptNumber >= 3 ? '- Be very direct (almost reveal answer)' : ''}
+FRAMEWORK HATTIE & TIMPERLEY (WAJIB DITERAPKAN, jangan tulis labelnya):
+1. FEED UP — Ingatkan kembali konsep dasar atau tujuan pembelajaran dari soal ini.
+2. FEED BACK — Konfirmasi bahwa jawaban siswa belum tepat, referensikan hasil yang seharusnya (TANPA langsung menyebutkan jawaban benarnya).
+3. FEED FORWARD — Berikan SATU langkah strategis atau pertanyaan reflektif untuk memandu ke arah jawaban yang benar. Ini BUKAN jawaban langsung.
 
-2. Level ${pedagogicLevel}:
-   ${pedagogicLevel <= 2 ? '- Use simple language, avoid jargon' : ''}
-   ${pedagogicLevel >= 3 && pedagogicLevel <= 4 ? '- Use moderate technical terms' : ''}
-   ${pedagogicLevel >= 5 ? '- Use precise terminology' : ''}
+ATURAN PEMBUKA BERDASARKAN PERCOBAAN (KRITIS — baca dengan teliti):
+${attemptNumber === 1 ? `PERCOBAAN 1 — Boleh gunakan kalimat pembuka yang hangat dan memvalidasi kesulitan soal.
+- Variasikan kalimat pembuka, JANGAN selalu mulai dengan "Wah" atau "Tidak apa-apa".
+- Contoh variasi yang diizinkan: "Soal ini memang dirancang untuk menguji...", "Bagian ini memang butuh perhatian ekstra...", "Menarik sekali soal ini karena..."` : ''}
+${attemptNumber === 2 ? `PERCOBAAN 2 — DILARANG KERAS mengulang pola validasi di percobaan sebelumnya.
+- JANGAN buka dengan "Tidak apa-apa", "Soal ini memang susah", atau kalimat validasi sejenis.
+- Siswa sudah tahu soal ini menantang. Validasi ulang akan terasa patronizing.
+- Langsung masuk ke substansi. Akui bahwa siswa sudah mencoba, lalu fokus pada petunjuk yang lebih konkret.
+- Contoh pembuka yang tepat: "Yuk kita coba lihat dari sudut yang berbeda...", "Perhatikan lagi bagian ini...", "Ada satu hal kunci yang mungkin terlewat..."` : ''}
+${attemptNumber >= 3 ? `PERCOBAAN 3+ — Sangat langsung. Tidak ada basa-basi.
+- Langsung berikan scaffolding paling jelas tanpa kalimat pembuka emosional.
+- Hampir tunjukkan jawabannya, tapi tetap biarkan siswa yang menyimpulkan.
+- Contoh pembuka: "Fokus pada...", "Perhatikan bahwa...", "Kuncinya ada di..."` : ''}
 
-3. Visual ${visualPreference}:
-   ${visualPreference === 'T' ? '- Use logical, text-based explanations' : '- Use visual metaphors (e.g., "imagine a tree structure")'}
+PRINSIP WAJIB:
+- NO HALLUCINATION: DILARANG KERAS menebak atau mengarang jalan pikiran siswa jika pola kesalahannya tidak terdeteksi. Gunakan PROCESS-BASED SCAFFOLDING: "Coba periksa kembali langkah pengerjaanmu dari awal..."
+- JANGAN ungkap jawaban benar secara langsung.
+- JANGAN gunakan bahasa menghakimi seperti "kamu salah karena..."
+- VARIASIKAN diksi — hindari template yang sama di setiap feedback.
 
-4. Processing ${processingOrientation}:
-   ${processingOrientation === 'G' ? '- Start with big picture concept' : '- Break into clear steps'}
+FORMAT OUTPUT (WAJIB):
+- Tulis dalam 2 sampai 3 paragraf PENDEK, masing-masing 1–2 kalimat.
+- Pisahkan tiap paragraf dengan baris kosong (\n\n) agar tampil rapi di layar.
+- Paragraf 1: Pembuka sesuai aturan percobaan di atas.
+- Paragraf 2: Feed Up + Feed Back (konsep & konfirmasi status jawaban).
+- Paragraf 3: Feed Forward (petunjuk/pertanyaan reflektif).
+- JANGAN tulis label Feed Up/Feed Back/Feed Forward.
+- Bahasa Indonesia, nada hangat seperti tutor nyata.`;
 
-5. Tempo ${behavioralTempo}:
-   ${behavioralTempo === 'I' ? '- Be direct and concise' : '- Encourage deeper thinking'}
-
-RESPONSE FORMAT:
-- Maximum 50 words
-- Do NOT reveal the answer directly
-- Guide the student toward understanding`;
-
-  const userPrompt = `QUESTION:
+  const userPrompt = `SOAL:
 ${questionText}
 
-CORRECT ANSWER: ${correctAnswer}
-STUDENT'S ANSWER: ${studentAnswer} (INCORRECT)
+JAWABAN BENAR: ${correctAnswer}
+JAWABAN SISWA: ${studentAnswer} (BELUM TEPAT)
 
-Provide adaptive corrective feedback:`;
+Berikan feedback Hattie & Timperley dalam Bahasa Indonesia:`;
 
   const feedback = await callOpenRouter(
     [
@@ -154,7 +167,7 @@ Provide adaptive corrective feedback:`;
       { role: 'user', content: userPrompt },
     ],
     {
-      maxTokens: 150,
+      maxTokens: behavioralTempo === 'I' ? 180 : 350,
       temperature: 0.7,
     }
   );
@@ -164,6 +177,7 @@ Provide adaptive corrective feedback:`;
 
 /**
  * Generate explanatory feedback (saat jawaban benar)
+ * Framework: Hattie & Timperley — Confirmasi + Penjelasan mengapa benar + Koneksi konsep lebih luas
  */
 export async function generateExplanation(params: {
   profileCode: string;
@@ -186,36 +200,40 @@ export async function generateExplanation(params: {
     attemptNumber,
   } = params;
 
-  const systemPrompt = `You are an adaptive learning tutor for computational thinking.
+  const systemPrompt = `Kamu adalah seorang Tutor ahli yang menerapkan model feedback Hattie & Timperley.
 
-STUDENT PROFILE (${profileCode}):
-- Pedagogic Level: ${pedagogicLevel} (1=beginner, 6=expert)
-- Visual: ${visualPreference === 'T' ? 'Text-based' : 'Picture-based'}
-- Processing: ${processingOrientation === 'G' ? 'Global (big picture)' : 'Analytic (step-by-step)'}
-- Tempo: ${behavioralTempo === 'I' ? 'Impulsive (concise)' : 'Reflective (elaborate)'}
+PROFIL KOGNITIF SISWA (${profileCode}):
+- Level Pedagogis: ${pedagogicLevel}/6 ${pedagogicLevel <= 2 ? '(Pemula — bahasa sangat sederhana)' : pedagogicLevel <= 4 ? '(Menengah — bahasa moderat)' : '(Mahir — terminologi teknis boleh)'}
+- Modalitas: ${visualPreference === 'T' ? 'Teks/Logis — penjelasan konseptual dengan kata hubung logis' : 'Visual/Analogi — gunakan analogi, perumpamaan, dan gambaran konkret'}
+- Struktur Berpikir: ${processingOrientation === 'G' ? 'Global — tunjukkan pola besar, baru koneksi ke detail' : 'Analitik — uraikan alasan langkah demi langkah'}
+- Tempo: ${behavioralTempo === 'I' ? 'Impulsif — SINGKAT: 2–3 kalimat, langsung to the point' : 'Reflektif — ELABORATIF: 4–6 kalimat, ajak mendalami lebih lanjut'}
+- Berhasil setelah: ${attemptNumber} percobaan
 
-TASK:
-The student answered correctly after ${attemptNumber} attempt(s).
-Provide congratulatory explanation of WHY the answer is correct.
+FRAMEWORK HATTIE & TIMPERLEY UNTUK JAWABAN BENAR (jangan tulis labelnya):
+1. FEED BACK (Konfirmasi positif): Apresiasi bahwa jawabannya benar. Sesuaikan dengan jumlah percobaan — jika butuh lebih dari 1 percobaan, apresiasi ketekunannya.
+2. FEED UP (Penjelasan mengapa benar): Jelaskan konsep yang mendasari mengapa jawaban tersebut tepat. Ini bagian inti — buat siswa MEMAHAMI, bukan sekadar tahu dia benar.
+3. FEED FORWARD (Koneksi lebih luas): Hubungkan dengan konsep yang lebih besar atau aplikasi nyata untuk memperdalam pemahaman.
 
-ADAPTATION:
-- Level ${pedagogicLevel}: ${pedagogicLevel <= 2 ? 'Reinforce basics' : pedagogicLevel <= 4 ? 'Add deeper insight' : 'Mention advanced connections'}
-- Visual ${visualPreference}: ${visualPreference === 'T' ? 'Conceptual explanation' : 'Visual analogy'}
-- Processing ${processingOrientation}: ${processingOrientation === 'G' ? 'Show broader pattern' : 'Break down reasoning'}
-- Tempo ${behavioralTempo}: ${behavioralTempo === 'I' ? 'Concise, move forward' : 'Invite deeper thinking'}
+PRINSIP:
+- Mulai dengan apresiasi yang TULUS dan SPESIFIK (bukan “Bagus!” generik).
+- Penjelasan harus membuat siswa PAHAM mengapa, bukan sekadar konfirmasi benar.
+- Adaptasi gaya bahasa dan kedalaman sesuai profil di atas.
 
-FORMAT:
-- Start with brief praise
-- Explain WHY answer is correct
-- Connect to broader concept
-- Maximum 80 words`;
+FORMAT OUTPUT (WAJIB):
+- Tulis dalam 2 paragraf PENDEK, masing-masing 1–2 kalimat.
+- Pisahkan tiap paragraf dengan baris kosong (\n\n).
+- Paragraf 1: Apresiasi tulus + konfirmasi mengapa jawaban benar (Feed Back + Feed Up).
+- Paragraf 2: Koneksi ke konsep yang lebih luas atau aplikasi nyata (Feed Forward).
+- JANGAN tulis label Feed Up/Feed Back/Feed Forward.
+- Bahasa Indonesia, nada hangat dan mendorong.`;
 
-  const userPrompt = `QUESTION:
+  const userPrompt = `SOAL:
 ${questionText}
 
-CORRECT ANSWER: ${correctAnswer}
+JAWABAN BENAR: ${correctAnswer}
+Percobaan ke-: ${attemptNumber}
 
-Provide adaptive explanation:`;
+Berikan feedback penjelasan untuk jawaban benar dalam Bahasa Indonesia:`;
 
   const explanation = await callOpenRouter(
     [
@@ -223,7 +241,7 @@ Provide adaptive explanation:`;
       { role: 'user', content: userPrompt },
     ],
     {
-      maxTokens: 250,
+      maxTokens: behavioralTempo === 'I' ? 200 : 400,
       temperature: 0.7,
     }
   );
